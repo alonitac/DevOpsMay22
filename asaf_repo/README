@@ -21,7 +21,7 @@
 1.git branch
 2.git checkout -b ‘feature/lambda_migration’
 3.from branch feature/lambda_migration we run the command git merge feature/version1
-4.
+4.merge from feature/lambda_migration to git_ex1/asaf was made
 5.
    1.
    2.
@@ -32,8 +32,8 @@
 
 # Cherry picking
 
-1.
-2.
+1.feature/kanbda_migration2 branch was made from git_ex1/asaf
+2.negatived to the local feature/lambda_migration2 branch in the log console
 3.
     1.
     2.
