@@ -75,13 +75,18 @@ Your assignment is to supply a brief description of what the program does in the
 
 
 ### Binary Numbers
-(20 Points)
+(10 Points)
 
 1. Convert the following binary numbers to a decimals: 
 111, 100, 10110
 2. What is the available decimal range represented by a 8 bits binary number?
 3. Given a 9 bits binary number, suggest a method to represent a negative numbers between 0-255
 4. Suggest a method to represent a floating point numbers (e.g. 12.3,  15.67, 0.231) using a 8 bits binary numbers
+
+### Broken Symlink
+(10 Points)
+
+
 
 ### File System Manipulations
 (60 points)
@@ -104,7 +109,7 @@ At the end, given a clean version of *src* directory (without the changes you've
 
 ![Commit Msg](img/commitmsg.png)
 
-- Push ![Push Button](img/push.png) your changes, and wait for results :-)
+7. Push ![Push Button](img/push.png) your changes. Your script will be checked automatically, and you will get an email with tests status.
 
 
 # Good Luck
