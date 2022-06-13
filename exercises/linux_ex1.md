@@ -4,23 +4,22 @@ Due date: 04/07/22 23:59
 ## Preliminaries
 
 1. Make sure your Pycharm terminal is configured to run Git Bash (not Powershell)
-2. Open (or clone if you didn't do it yet) [our shared git repo](https://github.com/alonitac/DevOpsMay22) in PyCharm and pull the repository ![Pull Button](img/pull.png) to get an up-to-date version
+2. Open (or clone if you didn't do it yet) [our shared git repo](https://github.com/alonitac/DevOpsMay22) in PyCharm (Git -> clone...) and pull the repository ![Pull Button](img/pull.png) to get an up-to-date version.
 3. From Pycharm button right bar, create your own git branch (Git branches will be discussed later):
 
 ![New Branch](img/branch.png)
 
-Then change <alias\> to your nickname. e.g. `linux_ex1/alonit`. The branch name must start with `linux_ex1/`
+Then change `<alias>` to your nickname. e.g. `linux_ex1/alonit`. The branch name must start with `linux_ex1/`
 
 ![Branch Name](img/branch2.png)
 
 ### Submission
 
-At the end of this exercise, under `01_linux_ex1` directory, you should commit and push **only** 2 files as your solution:
+At the end of this exercise, under `01_linux_ex1` directory in the repository, you should commit and push **only** 2 files as your solution:
 
-- `README` file with your email at the first line, your generated secret (see last question below), and open answers for the first two questions below, as following:
+- `README` file with your generated secret in the first list (see last question below), and open answers for the first two questions below, as following:
 ```text
-name@example.com
-< your secret here >
+< your secret here >     << secret must be in the first line!!!
 
 
 Kernel System Calls
@@ -63,16 +62,17 @@ To run the program, do the following:
 
 - Open a linux terminal in an empty directory and perform:
 ```shell
-wget https://devops-jan22.s3.eu-north-1.amazonaws.com/whatIdo
-chmod 700 ./whatIdo
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/whatIdo
 ```
 The `wget` command is able to retrieve data from the internet.
 
-- Run the program using `strace`.
-- Follow strace output. Tip: many lines in the beginning are part of the load of the
-program. The first “interesting” lines comes only at the end of the output
+1. Give `whatIdo` file an execution permission (make sure you don't get Permission denied when running it).
+2. Run the program using strace: `strace whatIdo`.
+3. Follow strace output. Tip: many lines in the beginning are part of the load of the
+program. The first “interesting” lines comes only at the end of the output. 
 
-Your assignment is to supply a brief description of what the program does in the README file
+Your assignment is to supply a brief description of what the program does in the README file. Don't copy & paste the terminal output as your answer, neither explain any single command. Try to get a general idea of what this program does by observing the sys calls.
+
 
 ### Binary Numbers
 (20 Points)
@@ -86,21 +86,21 @@ Your assignment is to supply a brief description of what the program does in the
 ### File System Manipulations
 (60 points)
 
-- Open a linux terminal and perform:
+- Open a **Linux terminal** and perform:
 ```shell
-wget https://devops-jan22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
 ```
 
-- Use `tar` to extract the compressed file. `cd` to *src* directory. Explore the files and their content.
+1. Use `tar` to extract the compressed file. `cd` to *src* directory. Explore the files and their content.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-- Your goal is to generate a secret. The secret can be generated using `/bin/bash generateSecret.sh`.
+2. Your goal is to generate a secret. The secret can be generated using `/bin/bash generateSecret.sh`.
 
-- Once you've generated it, copy it to the designated place in the README file (33 characters). 
+3. Once you've generated it, copy it to the designated place in the README file (33 characters). 
 
-- Use `nano` or your preferred text editor, and **write a complete commands set** that let you to generate the secret in `yourSolution.sh` file (single command in each line).
+4. Use `nano` or your preferred text editor, and **write a complete commands set** that let you generate the secret in `yourSolution.sh` file (single command in each line).
 At the end, given a clean version of *src* directory (without the changes you've made) you should be able to run `/bin/bash yourSolution.sh` and the secret should be generated without any errors. 
-- Copy the content of `yourSolution.sh` into the same file in the Git repo (_02_linux_ex1/yourSolution.sh_). 
-- Commit ![Commit Button](img/commit.png) **ONLY** *02_linux_ex1/README* and *02_linux_ex1/yourSolution.sh* files **ONLY**. by:
+5. Copy the content of `yourSolution.sh` into the same file in the Git repo (_01_linux_ex1/yourSolution.sh_). 
+6. Commit ![Commit Button](img/commit.png) **ONLY** *01_linux_ex1/README* and *01_linux_ex1/yourSolution.sh* files. by:
 
 ![Commit Msg](img/commitmsg.png)
 
