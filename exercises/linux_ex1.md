@@ -4,14 +4,14 @@ Due date: 04/07/22 23:59
 ## Preliminaries
 
 1. Make sure your Pycharm terminal is configured to run Git Bash (not Powershell)
-2. Open (or clone if you didn't do it yet) [our shared git repo](https://github.com/alonitac/DevOpsMay22) in PyCharm and pull the repository ![Pull Button](exercises/img/pull.png) to get an up-to-date version
+2. Open (or clone if you didn't do it yet) [our shared git repo](https://github.com/alonitac/DevOpsMay22) in PyCharm and pull the repository ![Pull Button](img/pull.png) to get an up-to-date version
 3. From Pycharm button right bar, create your own git branch (Git branches will be discussed later):
 
-![New Branch](exercises/img/branch.png)
+![New Branch](img/branch.png)
 
 Then change <alias\> to your nickname. e.g. `linux_ex1/alonit`. The branch name must start with `linux_ex1/`
 
-![Branch Name](exercises/img/branch2.png)
+![Branch Name](img/branch2.png)
 
 ### Submission
 
@@ -100,11 +100,11 @@ wget https://devops-jan22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
 - Use `nano` or your preferred text editor, and **write a complete commands set** that let you to generate the secret in `yourSolution.sh` file (single command in each line).
 At the end, given a clean version of *src* directory (without the changes you've made) you should be able to run `/bin/bash yourSolution.sh` and the secret should be generated without any errors. 
 - Copy the content of `yourSolution.sh` into the same file in the Git repo (_02_linux_ex1/yourSolution.sh_). 
-- Commit ![Commit Button](exercises/img/commit.png) **ONLY** *02_linux_ex1/README* and *02_linux_ex1/yourSolution.sh* files **ONLY**. by:
+- Commit ![Commit Button](img/commit.png) **ONLY** *02_linux_ex1/README* and *02_linux_ex1/yourSolution.sh* files **ONLY**. by:
 
-![Commit Msg](exercises/img/commitmsg.png)
+![Commit Msg](img/commitmsg.png)
 
-- Push ![Push Button](exercises/img/push.png) your changes, and wait for results :-)
+- Push ![Push Button](img/push.png) your changes, and wait for results :-)
 
 
 # Good Luck
