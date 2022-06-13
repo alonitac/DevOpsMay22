@@ -86,7 +86,30 @@ Your assignment is to supply a brief description of what the program does in the
 ### Broken Symlink
 (10 Points)
 
+Uber has an automated daily backup system. Every day another backup file is created in the form `backup-<date>.obj`. e.g. `backup-13-06-2022.obj`.
+To be able to restore the system from a backup copy in a convenient way,
+they want to point to the last generated backup file using a static file named `backup.obj`. To do so, they create a symbolic link pointing to the last generated backup file.  
 
+1. Let's create the daily backup file:
+```shell
+FILENAME=backup-$(date +"%d-%m-%Y").obj
+touch $FILENAME
+echo "backup data..." >> $FILENAME
+```
+
+2. Then, create a symlink (soft link) to the daily backup file:
+```shell
+ln -s $FILENAME backup.obj
+```
+
+Great. Now, at some point in the development lifecycle of the product,
+the devops team organize all backup links in a directory `backups`. They moved the link `backup.obj` into `backups` directory:
+```shell
+mkdir backups
+mv backup.obj backups/
+```
+
+What's wrong here? provide a fix to Uber's code. 
 
 ### File System Manipulations
 (60 points)
