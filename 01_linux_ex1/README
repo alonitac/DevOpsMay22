@@ -1,17 +1,31 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+The starce command records any syscall made by the command such as :
+open file, inspection , show current dir and content retrived.
 
 
 Broken Symlink
 -------------------
-< Your Answer >
-
+1.To fix the broken link, remove the old link and run the following commands"
+  cd /backups
+2.create new simlink
+  ln -s ~/$FILENAME backup.obj
+3.verify the new simlink
+  ls -la
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1. 111 = (1*2**2)+(1*2**1)+(1*2**0) = 7
+   100 = (1*2**2)+(0*2**1)+(0*2**0) = 4
+   10110 = (1*2**4)+(0*2**3)+(1*2**2)+(1*2**1)+(0*2**0) = 22
+2.  a. 8 bit = 255 decimal
+    b. First bit = sign (+/-)
+       Last 8 bits = the number (0-255)
+    c. First bit = sign (+/-)
+       3 bits = expression
+       4 bits = significand
+
