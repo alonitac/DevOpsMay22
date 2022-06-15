@@ -8,9 +8,9 @@ Kernel System Calls
 
 Broken Symlink
 -------------------
-< Your Answer >
-
-
+Solution for Uber's broken code due to moving file to a different path from the one that is used in code:
+    ln backups/backup.obj backup.obj
+Create new linked file with the same name and path that is used in the Uber's code to a linked moved file
 
 Binary Numbers
 --------------

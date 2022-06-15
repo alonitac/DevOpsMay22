@@ -98,7 +98,7 @@ echo "backup data..." >> $FILENAME
 ```
 
 2. Then, create a symlink (soft link) to the daily backup file:
-```shell
+```shell    
 ln -s $FILENAME backup.obj
 ```
 
