@@ -19,7 +19,8 @@ Broken Symlink
 -------------------
 Solution for Uber's broken code due to moving file to a different path from the one that is used in code:
     ln backups/backup.obj backup.obj
-Create new linked file with the same name and path that is used in the Uber's code to a linked moved file
+Create new linked file with the same name and path that is used in the Uber's code to a linked moved file and that will
+prevent unnecessary changing in code.
 
 Binary Numbers
 --------------
@@ -32,7 +33,8 @@ Binary Numbers
 3. Given a 9 bits binary number, suggest a method to represent a negative numbers between 0-255
     a. (1/0)[1 for negative, 0 for positive] 11111111 for exmple: 111111111 would be -255 or 1101 would be -5.
 4. Suggest a method to represent a floating point numbers (e.g. 12.3,  15.67, 0.231) using a 8 bits binary numbers:
-    a. bit[7]bit[6]bit[5]bit[4]bit[3]bit[2]bit[1]bit[0].bit[7]bit[6]bit[5]bit[4]bit[3]bit[2]bit[1]bit[0] ... bit[7]bit[6]bit[5]bit[4]bit[3]bit[2]bit[1]bit[0]
+    a. bit[7]bit[6]bit[5]bit[4]bit[3]bit[2]bit[1]bit[0].bit[7]bit[6]bit[5]bit[4]bit[3]bit[2]bit[1]bit[0]
+       ... bit[7]bit[6]bit[5]bit[4]bit[3]bit[2]bit[1]bit[0]
         Example for the calculation of not integer base10 to base2:
         12.3
         12 in base2 = 1100
@@ -55,7 +57,7 @@ Binary Numbers
         0.2*2=0.4 --> taking 0 and moving .4 to next bit calculation until we receive .0
         0.4*2=0.8 --> taking 0 and moving .8 to next bit calculation until we receive .0
         ----- The 12.3 in base2 starts to look like 00001100.01001100
-        and so on until: 00001100.01001100 11001100 11001100 11001100 11001100 11001100 11001100 11001101
+        and so on until the final result: 00001100.01001100 11001100 11001100 11001100 11001100 11001100 11001100 11001101
         with the same method
         15.67 = 00001111.10101011 10000101 00011110 10111000 01010001 11101011 10000101 00011110 00000001
         0.231 = 0000000.00111011 00100010 11010000 11100101 01100000 01000001 10001001 00110111 00000001
