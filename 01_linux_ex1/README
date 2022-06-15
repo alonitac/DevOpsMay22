@@ -3,15 +3,16 @@
 
 Kernel System Calls
 -------------------
-In general, the program whatIdo designed to create welcomeToDevOpsMay22 directory with 7-0-0 permisions for the owner of the file and no other permissions
+In general, the program whatIdo designed to create welcomeToDevOpsMay22
 in that folder ASCII file with no line terminators under the name: goodluck
 is created with 7-5-5 permissions
 that contains text line: There you go... tell me what I do...
 Running strace on the file shows that:
-The file designed to be run with sudo permissions otherwise exits with 1, permission denied.
-
-
-
+Checks heap
+Reserves memory
+checks if there is a directory welcomeToDevOpsMay22 and its executable and empty
+writes a file goodluck with 755 permissions
+writes There you go... tell me what I do... to the file googluck
 
 
 Broken Symlink
