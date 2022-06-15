@@ -1,4 +1,4 @@
-< your secret here >
+< 814c5723c21e7e90a3eae36c8df3c513  - >
 
 
 Kernel System Calls
@@ -10,7 +10,7 @@ that contains text line: There you go... tell me what I do...
 Running strace on the file shows that:
 Checks heap
 Reserves memory
-checks if there is a directory welcomeToDevOpsMay22 and its executable and empty
+checks if there is a welcomeToDevOpsMay22 and its executable and it is a directory
 writes a file goodluck with 755 permissions
 writes There you go... tell me what I do... to the file googluck
 

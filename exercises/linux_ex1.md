@@ -62,7 +62,7 @@ To run the program, do the following:
 
 - Open a linux terminal in an empty directory and perform:
 ```shell
-wget https://devops-may22.s3.eu-north-1.amazonaws.com/whatIdo
+    wget https://devops-may22.s3.eu-north-1.amazonaws.com/whatIdo
 ```
 The `wget` command is able to retrieve data from the internet.
 
