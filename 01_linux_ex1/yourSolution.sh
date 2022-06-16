@@ -1,0 +1,1 @@
+cat ./CONTENT_TO_HASH | xargs | md5sum > secretDir/.secret

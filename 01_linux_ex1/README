@@ -1,17 +1,23 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513  -
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+creates a welcomeToDevOpsMay22 dir and a text file with the name goodluck
+inside the file "There you go... tell me what I do..."
 
 
 Broken Symlink
 -------------------
-< Your Answer >
+ln -s $FILENAME backups/backup.obj
 
 
 
 Binary Numbers
 --------------
-< Your Answer >
+111 = 7
+100 = 4
+10110 = 22
+maximum range 256
+Signed Magnitude Method
+Floating-Point Binary
