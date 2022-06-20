@@ -1,7 +1,7 @@
 name: Students Presubmit Tests
 on: [push]
 jobs:
-  LinuxEx2Test:
+  LinuxEx1Test:
     runs-on: ubuntu-latest
     if: ${{ startsWith(github.ref, 'refs/heads/linux_ex1/')  }}
     steps:
