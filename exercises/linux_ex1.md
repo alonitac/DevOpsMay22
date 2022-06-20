@@ -67,7 +67,7 @@ wget https://devops-may22.s3.eu-north-1.amazonaws.com/whatIdo
 The `wget` command is able to retrieve data from the internet.
 
 1. Give `whatIdo` file an execution permission (make sure you don't get Permission denied when running it).
-2. Run the program using strace: `strace whatIdo`.
+2. Run the program using strace: `strace ./whatIdo`.
 3. Follow strace output. Tip: many lines in the beginning are part of the load of the
 program. The first “interesting” lines comes only at the end of the output. 
 
