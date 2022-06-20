@@ -12,10 +12,32 @@ Kernel System Calls
 
 Broken Symlink
 -------------------
-< Your Answer >
+<  >
 
 
 
 Binary Numbers
 --------------
-< Your Answer >
+< first question-------
+ a.111= 1x1 + 1x2 +1x4= 7
+ b.100= 0x1 + 0x2+ 1x4 = 4
+ c.10110= 0x1 + 1x2 + 1x4 + 0x8 + 1x16 = 2+4+16 = 22
+
+ second question ------
+
+8 bits, can represent positive numbers from 0 to 255
+11111111= 1x128+ 1x64 + 1x32 + 1x16 + 1x8 + 1x4 + 1x2 + 1x1 = 255
+or
+00000000= 0x128+ 0x64 + 0x32 + 0x16 + 0x8 + 0x4 + 0x2 + 0x1 = 0
+that's the range between 8 bits numbers.
+
+third question ----
+you need to take the first number as +/- sign
+1= minus
+0= plus
+so when you do that you left with 8 more bits and just pick a random number
+between 0-255
+1-01010101= -1x64 + -1x16 + -1x4+ -1x1 = -64 + -16 + -4 + -1= -85
+
+fourth question ---
+
