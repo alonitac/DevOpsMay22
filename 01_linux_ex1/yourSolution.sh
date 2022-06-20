@@ -26,11 +26,11 @@ if [ -d "src" ];
 then
   echo -e "Src directory is alreade exists\nremove old dir and extracting content from the tar.gz file to the Home dir"
   sudo rm -rf /src
-  tar -xf home/runner/secretGenerator.tar.gz
+  tar -xf /home/runner/secretGenerator.tar.gz
   echo "-------Extract complete-------" && sleep 2
 else
   echo -e "SecretGenerator.tar.gz is already downloaded\nextracting the file content to Home dir"
-  tar -xf home/runner/secretGenerator.tar.gz
+  tar -xf /home/runner/secretGenerator.tar.gz
   echo "-------Extract complete-------" && sleep 2
 fi
 
