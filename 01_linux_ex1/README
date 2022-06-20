@@ -5,7 +5,8 @@ Kernel System Calls
 -------------------
 < if was to go one by one i can explain each one but.
  in general the task was to download through wget the files from the
- web and with the strace to gets information about it
+ web give it permissions with chmod to be able to use strace
+  and with the strace to gets information about it
  >
 
 
