@@ -3,7 +3,10 @@
 
 Kernel System Calls
 -------------------
-< Your Answer >
+< if was to go one by one i can explain each one but.
+ in general the task was to download through wget the files from the
+ web and with the strace to gets information about it
+ >
 
 
 Broken Symlink
