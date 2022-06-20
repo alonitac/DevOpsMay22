@@ -1,17 +1,28 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+The program creates new folder named: "welcomeToDevOpsMay22".
+Inside the folder it creates file named: "goodLuck".
+"goodLuck" is text file and written there: "There you go... tell me what I d"
 
 
 Broken Symlink
 -------------------
 < Your Answer >
-
+The thing that gone wrong in the question is that when we moved the softlink into the "backups" folder, the soft link
+has been broken.
+The solution is to do the command "ln" with specific paths.
+for example: ln -s /filepath /symlinkpath
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1)
+111 = 7
+100 = 4
+10110 = 22
+
+2)
+0 - 255
