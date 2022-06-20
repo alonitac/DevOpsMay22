@@ -1,17 +1,24 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513  -
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+The program makes a directory "/welcomeToDevOpsMay22"
+Gives permissions to the directory
+Creates file inside the new directory called "goodLuck"
+Inside the new created file write the line "There you go... tell me what I d"
+
 
 
 Broken Symlink
 -------------------
-< Your Answer >
+
 
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1. 111=7,100=4,10110=22
+2. 2^8 = 256
+3.
+4.
