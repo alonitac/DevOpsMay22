@@ -3,15 +3,111 @@
 
 Kernel System Calls
 -------------------
-< Your Answer >
+WhatIdo:
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/whatIdo
+chmod u=rwx ./whatIdo
+strace ./whatIdo
+
+WhatIdo file  code steps:
+Fist step code try set some set architecture-specific thread and get invalid argument : arch_prctl(0x3001 /* ARCH_??? */, 0x7fff326d88e0) = -1 EINVAL (Invalid argument)
+Next step is trying load missinig file and get error : access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+For next step , code open file and read file : "/lib/x86_64-linux-gnu/libc.so.6"
+after readinig file , thred is close , and start ne call as arch_prctl - set architecture-specific thread and get success
+next step is stat() create directory welcomeToDevOpsMay22/. System will create and write into file goodLuck this text : "There you go... tell me what I d"
+
+short check :
+cd welcomeToDevOpsMay22/goodLuck
+cat goodLuck
+There you go... tell me what I d
+
+STRACE Command :
+Strace command is help us to get "human" view for system call commands and read system calls code parts .
+This command should help with debug on a system , for get exactly steps that we should run , not a programming language code command.
+
+Binary Numbers:
+----------------
+Task1:
+111 = 7
+100 = 4
+10110 = 22
+
+Task2:
+8 bits range :
+00000000 = 0
+11111111 = 255
+Range is : 0-255 (like an octet in IP address)
+
+Task3:
+1|11111111
+^|<-num-->
+we can use fist num for sign like:
+0 is positive (+)
+1 is negotive (-)
+
+Task4:
 
 
 Broken Symlink
 -------------------
-< Your Answer >
+Issue is related to moving file from pointed location .
+Fix is :
+rm backup.obj
+ln -s ../$FILENAME backups/backup.obj
+Check :
+devops@devops:~$ cat backups/backup.obj
+backup data...
+devops@devops:~$
+End
+
+File System Manipulations:
+--------------------------
+Manual steps:
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
+tar -xvf ./secretGenerator.tar.gz
+chmod u=rxw src/yourSolution.sh
+
+SCRIPT:
+#!/bin/bash
+echo "-------------------------------------------------------"
+echo "---- Start all pre-requsits for : generateSecret.sh ---"
+echo "-------------------------------------------------------"
+cd "$(dirname "$(readlink -f "$0")")"
+secretDIR="secretDir"
+maliciousDIR="maliciousFiles"
+if [ ! -d $secretDIR ] ; then
+echo "---- Folder creation: secretDir ..."
+mkdir $secretDIR
+echo "---- Folder created: secretDir !!! "
+fi
+if [ -d $maliciousDIR  ]; then
+echo "---- Removing folder: maliciousFiles ..."
+rm -r $maliciousDIR
+echo "---- Removed folder: maliciousFiles !!! "
+fi
+echo "New file creation :  secretDir/.secret"
+touch secretDir/.secret
+echo "New file permission change :  secretDir/.secret"
+chmod 600 secretDir/.secret
+ls -l secretDir
+echo "New file creation : someFileIsLinkingToMe.BeAware"
+touch someFileIsLinkingToMe.BeAware
+echo "Redirection path for importan.link file to  someFileIsLinkingToMe.BeAware"
+ln -sfn someFileIsLinkingToMe.BeAware important.link
+echo "-------------------------------------------------------"
+echo "------------ All pre-requsits done !!! ----------------"
+echo "-------------------------------------------------------"
+echo ">>>>> Running generateSecret.sh <<<<<<<<"
+echo ""
+echo ""
+/bin/bash generateSecret.sh
+echo ""
+echo "Content of secretDir/.secret : "
+cat secretDir/.secret
+echo "End of content of secretDir/.secret : "
+echo ""
+echo "***************************************"
+echo "******* Task complet by DeniZ!!! ******"
+echo "***************************************"
 
 
 
-Binary Numbers
---------------
-< Your Answer >
