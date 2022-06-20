@@ -1,4 +1,4 @@
-814c5723c21e7e90a3eae36c8df3c513  -
+'814c5723c21e7e90a3eae36c8df3c513'
 
 
 Kernel System Calls
@@ -12,7 +12,8 @@ Inside the new created file write the line "There you go... tell me what I d"
 
 Broken Symlink
 -------------------
-
+rm backup.obj
+backup.obj -> /home/saar/Downloads/src/backup-18-06-2022.obj
 
 
 
