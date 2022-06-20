@@ -4,7 +4,7 @@
 Kernel System Calls
 -------------------
 The program makes a directory "/welcomeToDevOpsMay22"
-Gives permissions to the directory
+Gives permissions to the directory 775
 Creates file inside the new directory called "goodLuck"
 Inside the new created file write the line "There you go... tell me what I d"
 
@@ -15,13 +15,20 @@ Broken Symlink
 Broken link
 
 rm backup.obj
-touch backup.obj -> /home/saar/Downloads/src/backup-18-06-2022.obj
+ln -s $FILENAME backup/backup.obj
 
 
 
 Binary Numbers
 --------------
 1. 111=7,100=4,10110=22
+
 2. 2^8 = 256
-3.
+
+3. The first digit representing if the number positive or negative.
+
+0 positive 1 negative
+ 0000011 = 3
+1000011 = -3
+
 4.
