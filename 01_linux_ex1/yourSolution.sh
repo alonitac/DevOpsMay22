@@ -30,7 +30,7 @@ then
   echo "-------Extract complete-------" && sleep 2
 else
   echo -e "SecretGenerator.tar.gz is already downloaded\nextracting the file content to Home dir"
-  ls ll
+  ls -a
   tar -xf /home/runner/secretGenerator.tar.gz
   echo "-------Extract complete-------" && sleep 2
 fi
