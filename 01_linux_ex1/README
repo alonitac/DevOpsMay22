@@ -12,8 +12,10 @@ Inside the new created file write the line "There you go... tell me what I d"
 
 Broken Symlink
 -------------------
+Broken link
+
 rm backup.obj
-backup.obj -> /home/saar/Downloads/src/backup-18-06-2022.obj
+touch backup.obj -> /home/saar/Downloads/src/backup-18-06-2022.obj
 
 
 
