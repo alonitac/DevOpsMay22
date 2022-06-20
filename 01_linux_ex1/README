@@ -4,7 +4,7 @@
 Kernel System Calls
 -------------------
 The starce command records any syscall made by the command such as :
-open file, inspection , show current dir and content retrived.
+open file and directories,create new dir , print directories content, inspection , write command , show errors.
 
 
 Broken Symlink
