@@ -3,7 +3,16 @@
 
 Kernel System Calls
 -------------------
-< Your Answer >
+< The program whatIdo create a folder and in this folder it is create a file named gooLuck.
+with permission 7-5-5.
+once you run this file. it ask you what you want me to do?
+i think it's calling the Kernel System Calls  and you can make folders ,files and delete and display files.
+once you run the file this is what you get in terminal :
+There you go... tell me what I do...root@DESKTOP-VLLKEER:~/welcomeToDevOpsMay22#>
+
+
+
+
 
 
 Broken Symlink
