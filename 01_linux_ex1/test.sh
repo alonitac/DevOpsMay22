@@ -37,4 +37,4 @@ then
   exit 1
 fi
 
-echp "Well Done! you've passed all tests"
+echo "Well Done! you've passed all tests"
