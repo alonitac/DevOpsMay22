@@ -3,15 +3,46 @@
 
 Kernel System Calls
 -------------------
-< Your Answer >
+< # The actions according to the "strace" command
+#-------------------------------
+# 1) Checks if a subfolder named "welcomeToDevOpsMay22" exits in currnet location.
+# 2) Then if doesn't exits it creates it with permitions 700 (rwx owner only).
+# 3) Creates the file welcomeToDevOpsMay22/goodLuck with permitions 666.
+# 4) Then write the text "There you go... tell me what I do..." into the file.
+ >
 
 
 Broken Symlink
 -------------------
-< Your Answer >
+< # The $FILENAME variable contain only with the file name itself,
+# without its full path location.
+# So in the command: "ln -s $FILENAME backup.obj"
+# the current relative path is used so backup.obj is point OK when in the same folder.
+# but when backup.obj changes its location so the file in its current location doesn't exist.
+#
+# the fix will be is to state the full current path in the ln command like this:
+#    ln -s "$PWD/$FILENAME" backup.obj
+ >
 
 
 
 Binary Numbers
 --------------
-< Your Answer >
+< # 1)   111 bin =  7 dec
+#      100 bin =  4 dec
+#    10110 bin = 22 dec
+#
+# 2) 8 bit binary that is: 8    7    6    5    4    3    2    1
+#                          |    |    |    |    |    |    |    |
+#                          v    v    v    v    v    v    v    v
+#                        128 + 64 + 32 + 16  + 8  + 4  + 2  + 1  = 255
+#
+#    So the decimal number range is 0 - 255
+#
+# 3) The first digit can represent a +/- sign value.
+#    where the next 8 digits a value range 0-255.
+#    so actually a number ranged -255 to +255 can be represented.
+#
+# 4) 1st 8 bit number will represent natural numbers,
+#    And a 2nd 8 bit number, a decimal digits after the decimal dot.
+ >
