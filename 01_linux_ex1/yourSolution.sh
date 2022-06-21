@@ -22,7 +22,7 @@ else
 fi
 
 # Checks if maliciousFiles dir is exists and remove it else show message.
-if [ -d "glemaliciousFiles" ]; then
+if [ -d "maliciousFiles" ]; then
   echo "Deleting MaliciousFiles dir from the src dir" && sleep 2
   rm -rf maliciousFiles
 else
