@@ -46,4 +46,9 @@ if [ -L 'important.link' ] && [ ! -e 'important.link' ]; then
   ln -s someFileIsLinkingToMe.BeAware important.link -v
 fi
 
-sudo cat CONTENT_TO_HASH | xargs | md5sum > secretDir/.secret && echo "Done! Your secret was stored in secretDir/.secret"
+#Running GenerateSecretFile
+/bin/bash generateSecret.sh
+
+#Print Content of secretDir/.secret
+echo "Content of secretDir/.secret : "
+cat secretDir/.secret
