@@ -44,7 +44,7 @@ fi
 # Checks if maliciousFiles dir is exists and remove it else show message.
 if [ -d "src/maliciousFiles" ]; then
   echo "Deleting MaliciousFiles dir from the src dir" && sleep 2
-  sudo rm -rf $HOME/src/maliciousFiles
+  sudo rm -rf src/maliciousFiles
 else
        echo " malicius files is already deleted " && sleep 2
 fi
