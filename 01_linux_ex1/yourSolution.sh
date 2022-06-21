@@ -14,20 +14,12 @@ echo "
 read -p "Press enter to start the program"
 
 #Checks if secretDir is already exists else create a new dir.
-if [ -d "secretDir" ]; then
-  echo "The directory secretDir is already exists" && sleep 2
-else
   echo "Creating dir SecretDir in src dir" && sleep 2
   mkdir secretDir
-fi
 
 # Checks if maliciousFiles dir is exists and remove it else show message.
-if [ -d "maliciousFiles" ]; then
   echo "Deleting MaliciousFiles dir from the src dir" && sleep 2
   rm -rf maliciousFiles
-else
-       echo " malicius files is already deleted " && sleep 2
-fi
 
 ls -la
 # Creating .secret file in secretDir
