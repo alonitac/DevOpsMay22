@@ -32,7 +32,7 @@ fi
 ls -la
 # Creating .secret file in secretDir
   echo -e "Creating .secret file in the src/secretDir dir " && sleep 2
-  touch secretDir/.secret -v
+  touch secretDir/.secret
 
 # Checks if the .secret file permission is not 600 and add R and W to the other users
 OCTAL_PERMISSIONS=$(stat -c "%a" src/secretDir/.secret)
