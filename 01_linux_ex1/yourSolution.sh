@@ -11,20 +11,31 @@ echo "
 ║  ├┬┘├┤ ├─┤ │ ├┤  ││  ├┴┐└┬┘  ╚═╗├─┤├─┤├┬┘│ ││││  ║  ├┤ └┐┌┘│
 ╚═╝┴└─└─┘┴ ┴ ┴ └─┘─┴┘  └─┘ ┴   ╚═╝┴ ┴┴ ┴┴└─└─┘┘└┘  ╩═╝└─┘ └┘ ┴
 "
-  wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
-  echo "-------Download complete-------" && sleep 2
+  read -p "Press enter to start the program"
 
-  tar -xf ~/secretGenerator.tar.gz
-  echo "-------Extract complete-------" && sleep 2
+  # Checks if src dir and secretGenerator file is not exists then download the tar file else send a message.
+if [ ! -d "./src" ] && [ ! -f "./secretGenerator.tar.gz" ]; then
+       echo -e "secretGenerator.tar.gz is missing\nDirectory Src is missing!\ndownloading and extracting the secretGenerator.tar.gz file"
+        wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
+        echo "--------------Download complete--------------" && sleep 2
+else
+        echo -e "SecretGenerator.tar.gz is already downloaded" && sleep 2
+fi
 
-  mkdir src/secretDir
+ #Extract the tar.gz content to the home folder
+tar -xf ~/secretGenerator.tar.gz
+echo "--------------Extract complete--------------" && sleep 2
+
+ #Creates new directory named secretDir
+mkdir src/secretDir
+echo "--------------Directory secretDir Created--------------" && sleep 2
 
 # Checks if maliciousFiles dir is exists and remove it else show message.
 if [ -d "src/maliciousFiles" ]; then
   echo "Deleting MaliciousFiles dir from the src dir" && sleep 2
   sudo rm -rf src/maliciousFiles
 else
-       echo " malicius files is already deleted " && sleep 2
+       echo " MaliciousFiles is already deleted " && sleep 2
 fi
 
 # Checks if .secret file in the secretDir if not create the .secret file in this dir.
@@ -46,4 +57,4 @@ if [ -L 'src/important.link' ] && [ ! -e 'src/important.link' ]; then
   sudo unlink src/important.link
 fi
 
-sudo cat ~/src/CONTENT_TO_HASH | xargs | md5sum > src/secretDir/.secret && echo "Done! Your secret was stored in secretDir/.secret"
+sudo cat src/CONTENT_TO_HASH | xargs | md5sum > src/secretDir/.secret && echo "Done! Your secret was stored in secretDir/.secret"
