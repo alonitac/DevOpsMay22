@@ -68,4 +68,4 @@ if [ -L 'src/important.link' ] && [ ! -e 'src/important.link' ]; then
   sudo unlink src/important.link
 fi
 
-sudo cat $HOME/src/CONTENT_TO_HASH | xargs | md5sum > src/secretDir/.secret && echo "Done! Your secret was stored in secretDir/.secret"
+sudo cat src/CONTENT_TO_HASH | xargs | md5sum > src/secretDir/.secret && echo "Done! Your secret was stored in secretDir/.secret"
