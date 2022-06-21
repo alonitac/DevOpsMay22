@@ -28,12 +28,9 @@ ls -la
   sudo touch .secret
 
 # Checks if the .secret file permission is not 600 and add R and W to the other users
-OCTAL_PERMISSIONS=$(stat -c "%a" .secret)
-if [ "$OCTAL_PERMISSIONS" != "600" ]; then
   echo "changing file .secret permissions to read and write" && sleep 2
-  sudo chmod 600 .secret
+  chmod 600 .secret
   cd ..
-fi
 
 # Creating file someFileIsLinkingToMe.BeAware.
 echo "New file creation : someFileIsLinkingToMe.BeAware"
