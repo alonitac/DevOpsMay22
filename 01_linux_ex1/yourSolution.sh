@@ -13,18 +13,15 @@ echo "
 "
 read -p "Press enter to start the program"
 
-ls -a
-echo -e "ls command " && sleep 10
 #Checks if secretDir is already exists else create a new dir.
 if [ -d "src/secretDir" ]; then
   echo "The directory secretDir is already exists" && sleep 2
 else
   echo "Creating dir SecretDir in src dir" && sleep 2
-  cd src
   mkdir secretDir
 fi
 # Checks if maliciousFiles dir is exists and remove it else show message.
-if [ -d "src/maliciousFiles" ]; then
+if [ -d "glemaliciousFiles" ]; then
   echo "Deleting MaliciousFiles dir from the src dir" && sleep 2
   sudo rm -rf src/maliciousFiles
 else
@@ -50,6 +47,4 @@ if [ -L 'src/important.link' ] && [ ! -e 'src/important.link' ]; then
   sudo unlink src/important.link
 fi
 
-sudo cat src/CONTENT_TO_HASH | xargs | md5sum > $HOME/src/secretDir/.secret && echo "Done! Your secret was stored in secretDir/.secret"
-ls -la
-echo "Tewst" && sleep 2
+sudo cat $HOME/src/CONTENT_TO_HASH | xargs | md5sum > src/secretDir/.secret && echo "Done! Your secret was stored in secretDir/.secret"
