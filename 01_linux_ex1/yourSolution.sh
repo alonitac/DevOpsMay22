@@ -31,7 +31,8 @@ fi
 # Checks if .secret file in the secretDir if not create the .secret file in this dir.
 if [ ! -f "secretDir/.secret" ]; then
         echo -e "Creating .secret file in the src/secretDir dir " && sleep 2
-  sudo touch secretDir/.secret
+  cd secretDir
+  sudo touch .secret
 fi
 
 # Checks if the .secret file permission is not 600 and add R and W to the other users
