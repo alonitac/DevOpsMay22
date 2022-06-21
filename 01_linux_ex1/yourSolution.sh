@@ -24,23 +24,16 @@ ls -la
 
 # Creating .secret file in secretDir
   echo -e "Creating .secret file in the src/secretDir dir " && sleep 2
-  cd secretDir
-  sudo touch .secret
+  sudo touch secretDir/.secret
 
 # Checks if the .secret file permission is not 600 and add R and W to the other users
   echo "changing file .secret permissions to read and write" && sleep 2
-  chmod 600 .secret
-  cd ..
-
-# Creating file someFileIsLinkingToMe.BeAware.
-echo "New file creation : someFileIsLinkingToMe.BeAware"
-touch someFileIsLinkingToMe.BeAware
+  sudo chmod 600 secretDir/.secret
 
 # unlink and link important file to the file above
 if [ -L 'important.link' ] && [ ! -e 'important.link' ]; then
   echo "Remove the linking from important file a redirect for the someFileIsLinkingToMe.BeAware file" && sleep 2
   sudo unlink important.link
-  ln -s someFileIsLinkingToMe.BeAware important.link -v
 fi
 
 #Running GenerateSecretFile
