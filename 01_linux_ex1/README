@@ -1,17 +1,73 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+WhatIdo:
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/whatIdo
+chmod u=rwx ./whatIdo
+strace ./whatIdo
 
+WhatIdo file  code steps:
+create directory welcomeToDevOpsMay22/. System will create and write into file goodLuck this text : "There you go... tell me what I d"
+
+cd welcomeToDevOpsMay22/goodLuck
+cat goodLuck
+There you go... tell me what I d
+
+STRACE Command :
+
+
+Binary Numbers:
+----------------
+Task1:
+111 = 7
+100 = 4
+10110 = 22
+
+Task2:
+8 bits range :
+00000000 = 0
+11111111 = 255
+Range: 0-255 - 256 bits
+
+Task3:
+1|10101010 = -172
+we can use fist num for sign like:
+0 is positive (+)
+1 is negotive (-)
+
+Task4:
+floating point:
+12.3
+12 / 2  = 6 - 0
+6 / 2   = 3 - 0
+3 / 2   = 1.5 - 1
+1 / 2   = 1
+
+0.3 * 2 = 0.6 = 0
+0.6 * 2 = 1.2 = 1
+0.2 * 2 = 0.4 = 0
+0.4 * 2 = 0.8 = 0
+0.8 * 2 = 1.6 = 1
+
+1100.01001
 
 Broken Symlink
 -------------------
-< Your Answer >
+Issue is related to moving file from pointed location .
+Fix:
+rm backup.obj
+ln -s ../$FILENAME backups/backup.obj
+tamir@tamir-VirtualBox: cat backups/backup.obj
+backup data...
+
+File System Manipulations:
+--------------------------
+Manual steps:
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
+tar -xvf ./secretGenerator.tar.gz
+chmod u=rxw src/yourSolution.sh
 
 
 
-Binary Numbers
---------------
-< Your Answer >
