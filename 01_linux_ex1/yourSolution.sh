@@ -29,6 +29,7 @@ else
        echo " malicius files is already deleted " && sleep 2
 fi
 
+ls -la
 # Checks if .secret file in the secretDir if not create the .secret file in this dir.
 if [ ! -f "secretDir/.secret" ]; then
         echo -e "Creating .secret file in the src/secretDir dir " && sleep 2
