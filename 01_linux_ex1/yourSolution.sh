@@ -13,6 +13,8 @@ echo "
 "
 read -p "Press enter to start the program"
 
+ls -a
+echo -e "ls command " && sleep 10
 #Checks if secretDir is already exists else create a new dir.
 if [ -d "src/secretDir" ]; then
   echo "The directory secretDir is already exists" && sleep 2
