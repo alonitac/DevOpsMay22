@@ -30,9 +30,8 @@ else
 fi
 
 ls -la
-# Checks if .secret file in the secretDir if not create the .secret file in this dir.
-if [ ! -f "secretDir/.secret" ]; then
-        echo -e "Creating .secret file in the src/secretDir dir " && sleep 2
+# Creating .secret file in secretDir
+  echo -e "Creating .secret file in the src/secretDir dir " && sleep 2
   touch secretDir/.secret
 fi
 
