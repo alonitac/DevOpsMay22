@@ -13,27 +13,6 @@ echo "
 "
 read -p "Press enter to start the program"
 
-# Checks if src dir and secretGenerator file is not exists then download the tar file else send a message.
-if [ ! -d "$HOME/src" ] && [ ! -f "$HOME/secretGenerator.tar.gz" ]; then
-       echo -e "secretGenerator.tar.gz is missing\nDirectory Src is missing!\ndownloading and extracting the secretGenerator.tar.gz file"
-        wget -P $HOME https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
-        echo "-------Download complete-------" && sleep 2
-else
-        echo -e "SecretGenerator.tar.gz is already downloaded" && sleep 2
-fi
-# Checks if src dir already exists, remove the exisiting src and extract the content from the tar file else only extract the tar file.
-if [ -d "src" ];
-then
-  echo -e "Src directory is alreade exists\nremove old dir and extracting content from the tar.gz file to the Home dir"
-  sudo rm -rf /src
-  tar -xf $HOME/secretGenerator.tar.gz
-  echo "-------Extract complete-------" && sleep 2
-else
-  echo -e "SecretGenerator.tar.gz is already downloaded\nextracting the file content to Home dir"
-  tar -xf $HOME/secretGenerator.tar.gz
-  echo "-------Extract complete-------" && sleep 2
-fi
-
 #Checks if secretDir is already exists else create a new dir.
 if [ -d "src/secretDir" ]; then
   echo "The directory secretDir is already exists" && sleep 2
