@@ -14,13 +14,9 @@ echo "
   read -p "Press enter to start the program"
 
   # Checks if src dir and secretGenerator file is not exists then download the tar file else send a message.
-if [ ! -d "./src" ] && [ ! -f "./secretGenerator.tar.gz" ]; then
-       echo -e "secretGenerator.tar.gz is missing\nDirectory Src is missing!\ndownloading and extracting the secretGenerator.tar.gz file"
-        wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
-        echo "--------------Download complete--------------" && sleep 2
-else
-        echo -e "SecretGenerator.tar.gz is already downloaded" && sleep 2
-fi
+
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
+echo "--------------Download complete--------------" && sleep 2
 
  #Extract the tar.gz content to the home folder
 tar -xf ~/secretGenerator.tar.gz
