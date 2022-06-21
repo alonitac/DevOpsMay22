@@ -11,27 +11,42 @@ echo "
 ║  ├┬┘├┤ ├─┤ │ ├┤  ││  ├┴┐└┬┘  ╚═╗├─┤├─┤├┬┘│ ││││  ║  ├┤ └┐┌┘│
 ╚═╝┴└─└─┘┴ ┴ ┴ └─┘─┴┘  └─┘ ┴   ╚═╝┴ ┴┴ ┴┴└─└─┘┘└┘  ╩═╝└─┘ └┘ ┴
 "
-  read -p "Press enter to start the program"
+read -p "Press enter to start the program"
 
-  # Checks if src dir and secretGenerator file is not exists then download the tar file else send a message.
+# Checks if src dir and secretGenerator file is not exists then download the tar file else send a message.
+if [ ! -d "$HOME/src" ] && [ ! -f "$HOME/secretGenerator.tar.gz" ]; then
+       echo -e "secretGenerator.tar.gz is missing\nDirectory Src is missing!\ndownloading and extracting the secretGenerator.tar.gz file"
+        wget -P $HOME https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
+        echo "-------Download complete-------" && sleep 2
+else
+        echo -e "SecretGenerator.tar.gz is already downloaded" && sleep 2
+fi
+# Checks if src dir already exists, remove the exisiting src and extract the content from the tar file else only extract the tar file.
+if [ -d "src" ];
+then
+  echo -e "Src directory is alreade exists\nremove old dir and extracting content from the tar.gz file to the Home dir"
+  sudo rm -rf /src
+  tar -xf $HOME/secretGenerator.tar.gz
+  echo "-------Extract complete-------" && sleep 2
+else
+  echo -e "SecretGenerator.tar.gz is already downloaded\nextracting the file content to Home dir"
+  tar -xf $HOME/secretGenerator.tar.gz
+  echo "-------Extract complete-------" && sleep 2
+fi
 
-wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
-echo "--------------Download complete--------------" && sleep 2
-
- #Extract the tar.gz content to the home folder
-tar -xf ~/secretGenerator.tar.gz
-echo "--------------Extract complete--------------" && sleep 2
-
- #Creates new directory named secretDir
-mkdir src/secretDir
-echo "--------------Directory secretDir Created--------------" && sleep 2
-
+#Checks if secretDir is already exists else create a new dir.
+if [ -d "src/secretDir" ]; then
+  echo "The directory secretDir is already exists" && sleep 2
+else
+  echo "Creating dir SecretDir in src dir" && sleep 2
+  mkdir src/secretDir
+fi
 # Checks if maliciousFiles dir is exists and remove it else show message.
 if [ -d "src/maliciousFiles" ]; then
   echo "Deleting MaliciousFiles dir from the src dir" && sleep 2
   sudo rm -rf src/maliciousFiles
 else
-       echo " MaliciousFiles is already deleted " && sleep 2
+       echo " malicius files is already deleted " && sleep 2
 fi
 
 # Checks if .secret file in the secretDir if not create the .secret file in this dir.
@@ -53,4 +68,4 @@ if [ -L 'src/important.link' ] && [ ! -e 'src/important.link' ]; then
   sudo unlink src/important.link
 fi
 
-sudo cat src/CONTENT_TO_HASH | xargs | md5sum > src/secretDir/.secret && echo "Done! Your secret was stored in secretDir/.secret"
+sudo cat $HOME/src/CONTENT_TO_HASH | xargs | md5sum > src/secretDir/.secret && echo "Done! Your secret was stored in secretDir/.secret"
