@@ -2,17 +2,20 @@
 
 
 Kernel System Calls
--------------------
-< if was to go one by one i can explain each one but.
- in general the task was to download through wget the files from the
- web give it permissions with chmod to be able to use strace
-  and with the strace to gets information about it
+-------------------n about it
  >
 
 
 Broken Symlink
+< if was to go one by one i can explain each one but.
+ in general the task was to download through wget the files from the
+ web give it permissions with chmod to be able to use strace
+  and with the strace to gets informatio
 -------------------
-<  >
+<  the issues comes from the moving of the file
+in order to fix the issue
+remove the current the correct symlink with rm command
+and create a new one with the right path.>
 
 
 
@@ -23,7 +26,7 @@ Binary Numbers
  b.100= 0x1 + 0x2+ 1x4 = 4
  c.10110= 0x1 + 1x2 + 1x4 + 0x8 + 1x16 = 2+4+16 = 22
 
- second question ------
+second question ------
 
 8 bits, can represent positive numbers from 0 to 255
 11111111= 1x128+ 1x64 + 1x32 + 1x16 + 1x8 + 1x4 + 1x2 + 1x1 = 255
@@ -39,5 +42,5 @@ so when you do that you left with 8 more bits and just pick a random number
 between 0-255
 1-01010101= -1x64 + -1x16 + -1x4+ -1x1 = -64 + -16 + -4 + -1= -85
 
-fourth question ---
+
 
