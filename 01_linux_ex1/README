@@ -4,13 +4,12 @@
 Kernel System Calls
 -------------------n about it
  >
-
-
-Broken Symlink
 < if was to go one by one i can explain each one but.
  in general the task was to download through wget the files from the
  web give it permissions with chmod to be able to use strace
-  and with the strace to gets informatio
+  and with the strace to gets information
+
+  Broken Symlink
 -------------------
 <  the issues comes from the moving of the file
 in order to fix the issue
@@ -40,7 +39,7 @@ you need to take the first number as +/- sign
 0= plus
 so when you do that you left with 8 more bits and just pick a random number
 between 0-255
-1-01010101= -1x64 + -1x16 + -1x4+ -1x1 = -64 + -16 + -4 + -1= -85
+1-01010101= -1x64 + -1x16 + -1x4+ -1x1 = -64 + -16 + -4 + -1= -85>
 
 
 
