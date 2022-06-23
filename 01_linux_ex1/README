@@ -3,7 +3,15 @@
 
 Kernel System Calls
 -------------------
-< Your Answer >
+
+when we ran the whatIdo executable a few things happened in the background before the program ran this call the most common things that happened are:
+ - a child process is created to load the new program.
+ - the process gets a memory address from the kernel.
+ - the kernel checks permissions on the file.
+ - the kernel map the memory location with the size of the file he got from the fstat() function and the preparation end with the close() function.
+ after the preparation, the kernel opens the file with the openat() function and creates welcomeToDevOpsMay22/goodLuck and then
+ the kernel uses the write() function to write "There you go... tell me what I d"... all of this process ends with close() and exit_group().
+
 
 
 Broken Symlink
@@ -14,4 +22,21 @@ Broken Symlink
 
 Binary Numbers
 --------------
-< Your Answer >
+
+ 1. conversion between binary to decimal numbers
+ a.111 = 1*2^2 + 1*2^1 + 1*2^0 = 4 + 2 + 1 = 7
+ b.100 = 1*2^2 + 0*2^1 + 0*2^0 = 4 + 0 + 0 = 4
+ c.10110 = 1*2^4 + 0*2^3 + 1*2^2 + 1*2^1 + 0*2^0 = 16+0+4+2+0 = 22
+
+2. decimal range in 8 bit
+full 8 bit use - 11111111 =
+1*2^7 + 1*2^6 + 1*2^5 + 1*2^4 + 1*2^3 1*2^2 1*2^1 1*2^0 = 128+64+32+16+8+4+2+1 = 255
+
+3. negative number in 9 bits
+in order to represent a negative number we need to use the ninth bit that in charge on the positive(0) and negative(1) value
+9 bit use - 111111111 =
+negative 1*2^7 + 1*2^6 + 1*2^5 + 1*2^4 + 1*2^3 1*2^2 1*2^1 1*2^0 = 128+64+32+16+8+4+2+1 = -255
+
+4. representing a floating point number
+
+
