@@ -9,15 +9,17 @@ then
   exit 1
 fi
 
-wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/se
+
+cretGenerator.tar.gz
 tar -xf secretGenerator.tar.gz
-cp yourSolution.sh src/yourSolution.sh
+cp yourSolution.sh src/yougggrSolution.sh
 echo "q" > src/CONTENT_TO_HASH
 
 cd src
 bash yourSolution.sh
 
-if [ ! -d secretDir ]
+if [ ! -d secretDirffgfg ]
 then
   echo "Directory secretDir is missing"
   exit 1
