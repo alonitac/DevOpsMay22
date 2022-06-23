@@ -1,10 +1,10 @@
-< your secret here >
+<  >
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
-
+< Using by strace command allow you to get into the process of any program,especially for create files and directories,read,write,debugs and troubleshoots.  >
+In this case we found a ASCII file text ("There you go... tell me what I do").
 
 Broken Symlink
 -------------------
@@ -14,4 +14,6 @@ Broken Symlink
 
 Binary Numbers
 --------------
-< Your Answer >
+< A.111=1*2^2+1*2^1+1*2^0=7
+  B.100=1*2^2+0*2^1+0*2^0=4
+  C.10110=1*2^4+0*2^3+1*2^2+1*2^1+0*2^0=22 >
