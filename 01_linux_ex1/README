@@ -9,10 +9,54 @@ Kernel System Calls
 
 Broken Symlink
 -------------------
-< Your Answer >
+< set the file name with date suffix
+  create current day backup file
+  append text to the file >
+
+FILENAME=backup-$(date +"%d-%m-%Y").obj
+touch $FILENAME
+echo "backup data..." >> $FILENAME
+
+< create short link symlink to the file >
+
+ln -s $FILENAME backup.obj
+
+< create backup directory
+  move short link to backup directory >
+
+mkdir backups
+mv backup.obj backups/
+
+< ERROR the link is not relative
+ll -l
+...
+lrwxrwxrwx 1 tammit tammit   21 Jun 22 16:46 backup.obj -> backup-22-06-2022.obj
+...
+>
+
+REPLACE
+ln -s $FILENAME backup.obj
+WITH
+ln -s ~/$FILENAME backup.obj
+
 
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1.
+    111 = 7,
+    100 = 4,
+    10110 = 22
+2. 8 bits Binary represents:
+    0 - 255 Decimal
+3. 9 bits Binary to represent positive / negative 0-255 range
+    1 bit sign (0 positive, 1 negative)
+    8 bits 0 - 255
+4. binary represenaion of floating point number
+    4 bits - the integer part
+    4 bits - the fractional part
+    - in case of signed number
+    1 bit sign (0 positive, 1 negative)
+    4 bits - the integer part
+    3 bits - the fractional part
