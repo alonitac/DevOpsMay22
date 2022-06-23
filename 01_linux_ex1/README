@@ -1,20 +1,20 @@
-< 814c5723c21e7e90a3eae36c8df3c513 >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< # The actions according to the "strace" command
+# The actions according to the "strace" command
 #-------------------------------
 # 1) Checks if a subfolder named "welcomeToDevOpsMay22" exits in currnet location.
 # 2) Then if doesn't exits it creates it with permitions 700 (rwx owner only).
 # 3) Creates the file welcomeToDevOpsMay22/goodLuck with permitions 666.
 # 4) Then write the text "There you go... tell me what I do..." into the file.
- >
+
 
 
 Broken Symlink
 -------------------
-< # The $FILENAME variable contain only with the file name itself,
+# The $FILENAME variable contain only with the file name itself,
 # without its full path location.
 # So in the command: "ln -s $FILENAME backup.obj"
 # the current relative path is used so backup.obj is point OK when in the same folder.
@@ -22,13 +22,13 @@ Broken Symlink
 #
 # the fix will be is to state the full current path in the ln command like this:
 #    ln -s "$PWD/$FILENAME" backup.obj
- >
+
 
 
 
 Binary Numbers
 --------------
-< # 1)   111 bin =  7 dec
+# 1)   111 bin =  7 dec
 #      100 bin =  4 dec
 #    10110 bin = 22 dec
 #
@@ -45,4 +45,3 @@ Binary Numbers
 #
 # 4) 1st 8 bit number will represent natural numbers,
 #    And a 2nd 8 bit number, a decimal digits after the decimal dot.
- >
