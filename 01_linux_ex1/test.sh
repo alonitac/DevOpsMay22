@@ -31,7 +31,7 @@ fi
 
 SECRET=$(head -n 1 secretDir/.secret)
 
-if [ "$SECRET" != "c3be117041a113540deb0ff532b19543  -" ]
+if [ "$SECRET" != "814c5723c21e7e90a3eae36c8df3c513  -" ]
 then
   echo "Failed to generate a successful secret"
   exit 1
