@@ -1,9 +1,11 @@
-'814c5723c21e7e90a3eae36c8df3c513'
+ '814c5723c21e7e90a3eae36c8df3c513'
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+ Checks if a folder named "welcomeToDevOpsMay22" exits in the same location
+ if doesn't exits it creates it  and creates the file welcomeToDevOpsMay22/goodLuck
+ Then write the text "There you go... tell me what I do." into the file
 
 
 Broken Symlink
@@ -23,6 +25,5 @@ the available decimal range represented by a 8 bits binary number is 256
 extra sign bit at MSB position is added to a regular binary number
 bit 0 at MSB represents positive number
 bit 1 at MSB represents negative number
-4 = 0100    -4 = 1100
 
 
