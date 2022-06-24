@@ -1,4 +1,4 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
@@ -22,7 +22,7 @@ in order to fix this problem we will need to create the link again with the comm
 ln -s $FILENAME backup.obj only this time instead using only the variable $FILENAME we will use its absolute path
 to make sure that as long as the original file didnt move we will be able to move the soft link as much as we want.
 ln -s full_path/$FILENAME backup.obj
-
+we can verify the full path of the object with the command/tool realpath.
 
 
 Binary Numbers
