@@ -16,7 +16,12 @@ when we ran the whatIdo executable a few things happened in the background befor
 
 Broken Symlink
 -------------------
-< Your Answer >
+because we created the soft link without giving it an absolute path the soft link was created pointing on the current directory,
+when we moved the soft link to the backup directory the soft link couldn't find the file he was pointing to.
+in order to fix this problem we will need to create the link again with the command:
+ln -s $FILENAME backup.obj only this time instead using only the variable $FILENAME we will use its absolute path
+to make sure that as long as the original file didnt move we will be able to move the soft link as much as we want.
+ln -s full_path/$FILENAME backup.obj
 
 
 
