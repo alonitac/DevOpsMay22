@@ -1,10 +1,12 @@
-< your secret here >
-
+814c5723c21e7e90a3eae36c8df3c513
 
 Kernel System Calls
 -------------------
-< Your Answer >
-
+# whatIdo (strace)
+Creates subdir in the current dir "./welcomeToDevOpsMay22".
+Opens/creates file "goodLuck" in dir "welcomeToDevOpsMay22/goodLuck".
+Writes some text there: "There you go... tell me what I do".
+Then closes connection and exits.
 
 Broken Symlink
 -------------------
@@ -14,4 +16,13 @@ Broken Symlink
 
 Binary Numbers
 --------------
-< Your Answer >
+# Original commands
+FILENAME=backup-$(date +"%d-%m-%Y").obj
+touch $FILENAME
+echo "backup data..." >> $FILENAME
+ln -s $FILENAME backup.obj
+mkdir backup
+mv backtest/backup.obj backup
+
+Problem: backup.obj will not work after moving to another directory because it relates to the relative path.
+Solution: to create an absolute path with command: ln -s /tmp/test/$FILENAME backup.obj
