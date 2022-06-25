@@ -23,4 +23,12 @@ Solution: create an absolute path with command: ln -s /tmp/test/$FILENAME backup
 
 Binary Numbers
 --------------
-
+1. Convert the following binary numbers to a decimals:
+111, 100, 10110
+7, 4, 22
+2. What is the available decimal range represented by a 8 bits binary number?
+0-255
+3. Given a 9 bits binary number, suggest a method to represent a negative numbers between 0-255
+111111111
+4. Suggest a method to represent a floating point numbers (e.g. 12.3,  15.67, 0.231) using a 8 bits binary numbers
+The 1st bit will represtent the sign of the number (- \ +), then the next 4 bits will represent the exponent + 7 and the last 3 bits will represent the mantissa (the numbers after the decimal point)
