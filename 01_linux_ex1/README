@@ -10,12 +10,6 @@ Then closes connection and exits.
 
 Broken Symlink
 -------------------
-< Your Answer >
-
-
-
-Binary Numbers
---------------
 # Original commands
 FILENAME=backup-$(date +"%d-%m-%Y").obj
 touch $FILENAME
@@ -26,3 +20,7 @@ mv backtest/backup.obj backup
 
 Problem: backup.obj will not work after moving to another directory because it relates to the relative path.
 Solution: to create an absolute path with command: ln -s /tmp/test/$FILENAME backup.obj
+
+Binary Numbers
+--------------
+
