@@ -19,7 +19,7 @@ mkdir backup
 mv backtest/backup.obj backup
 
 Problem: backup.obj will not work after moving to another directory because it relates to the relative path.
-Solution: to create an absolute path with command: ln -s /tmp/test/$FILENAME backup.obj
+Solution: create an absolute path with command: ln -s /tmp/test/$FILENAME backup.obj
 
 Binary Numbers
 --------------
