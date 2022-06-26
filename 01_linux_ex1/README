@@ -29,7 +29,8 @@ A valid symbolic link will appear in green, in case it is broken it will appear 
 ## Fix:
 In addition to repositioning the files in the same folder level, it is possible to turn the symbolic link into a hard link by typing the command:
 # ln -sfn /a/full/path/$FILEPATH backup.obj
-  (-s symbolic  -f force -n
+or
+# ln $FILENAME backup.obj
 
 
 
