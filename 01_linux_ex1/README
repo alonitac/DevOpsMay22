@@ -3,23 +3,57 @@
 
 Kernel System Calls
 -------------------
-< The program whatIdo create a folder and in this folder it is create a file named gooLuck.
+
+ The program whatIdo create a folder and in this folder it is create a file named gooLuck.
 with permission 7-5-5.
 once you run the file this is what you get in terminal :
 There you go... tell me what I do...root@DESKTOP-VLLKEER:~/welcomeToDevOpsMay22#
 once you run this file. it ask you what you want me to do?
 i think it's calling the Kernel System Calls  and you can make folders ,files and delete and display files.
->
+
 
 
 
 
 Broken Symlink
 -------------------
-< Your Answer >
+When we created the file $FILENAME at first it was in the same folder as the file so the link was good.
+and we show by using ls ( it is shown in green color).
+once we move it to a different folder we broken the the soft link( it is show in red color).
+
+the way we fix it:
+to provide the full path in the command
+for example:
+command: ln -s /root/backups/$FILENAME backup.obj
+in order to fix the link
 
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1.
+   111 = (1*2**2)+(1*2**1)+(1*2**0) = 7
+   100 = (1*2**2)+(0*2**1)+(0*2**0) = 4
+   10110 = (1*2**4)+(0*2**3)+(1*2**2)+(1*2**1)+(0*2**0) = 22
+
+2. 8 bit = 255
+ full 8 bit use - 11111111 =
+ 1*2^7 + 1*2^6 + 1*2^5 + 1*2^4 + 1*2^3 1*2^2 1*2^1 1*2^0 = 128+64+32+16+8+4+2+1 = 255
+
+3. 9 bits = 111111111 -255
+   011001010 = (0) 1*2^7 + 1*2^6 + 1*2^3 + 1*2^1 = -202
+
+4. in order represent a floating point numbers we need to separate the number before the floating point and divide by
+ two  until we get 0
+and then we deal with the number after the floating point and we multiply it by 2 until we get 0 again/
+and then we can write it done
+in the example you see
+
+for example:
+23.625  = 10111.101
+__23__   .   ___0625___
+23/2 1       0625*2=1.250  1
+11/2 1       0.25*2  0
+5/2  1       0.5 * 2  1
+2/2  1        1
+1    0
