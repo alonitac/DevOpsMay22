@@ -1,17 +1,34 @@
-< your secret here >
 
+814c5723c21e7e90a3eae36c8df3c513  -
 
 Kernel System Calls
 -------------------
-< Your Answer >
-
-
-Broken Symlink
--------------------
-< Your Answer >
-
+Strace logs all the system calls done by a program when it is run.
+The calls and (arguments) are written in the left side, and after the = sign, we see the result of the call which is
+marked by a number (0, 3, 68...), or a pointer to a memory address (like 0x7f9967a56000).
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1.  111 binary = (2^0 * 1) + (2^1 * 1) + (2^2 * 1) = 1 + 2 + 4 = 7 decimal
+    100 binary = (2^0 * 0) + (2^1 * 0) + (2^2 * 1) = 0 + 0 + 4 = 4 decimal
+    10110 binary = (2^0 * 0) + (2^1 * 1) + (2^2 * 1) + (2^3 * 0) + (2^4 * 1) = 0 + 2 + 4 + 0 + 16 = 22 decimal
+2. With 8 bits we can have a range of:
+    00000000 binary = (2^0 * 0) + .... + (2^7 * 0) = 0 decimal
+    11111111 binary = (2^0 * 1) + .... + (2^7 * 1) = 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 = 255 decimal
+3. We can decide that the left most bit will represent a negative number if set to 1, or a positive number if set to 0.
+   example:
+   0100 binary = (2^0 * 0) + (2^1 * 0) + (2^2 * 1) + (0 for positive) = 0 + 0 + 4 (positive) = 4 decimal
+   1111 binary = (2^0 * 1) + (2^1 * 1) + (2^2 * 1) = 1 + 2 + 4 + (1 for negative) = 1 + 2 + 4 (negative) = -7 decimal
+4. My suggestion is to divide the 8 bits to 2 groups of 4 bits. One group (lets say the left one in the example),
+    will represent the numerator, and the other will represent the denominator,and thus we can create a fraction.
+    example -
+    0001/0100 binary = 1/4
+
+Broken Symlink
+-------------------
+Symlinks does not track changes in file position. once the files were moved, the symlink broke and now it needs to
+be recreated
+
+
+
