@@ -12,10 +12,11 @@ mkdir src/secretDir
 chmod 764 src/secretDir
 umask 066 # in order to give the files that i create permissions
 cd src/secretDir
-touch .secret #creates a fuke
+ # now needed to create a file  ./secret
+touch .secret #
 cd ~
 cd home/
 chmod 777 generateSecret.sh
 sudo ./generateSecret.sh
 
- # now needed to create a file  ./secret
+# all is left is to view the secret with a cat command.
