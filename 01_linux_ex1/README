@@ -1,17 +1,33 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
-
+Strace Command-
+Records any syscalls made by a command and helps with debugging.
 
 Broken Symlink
 -------------------
 < Your Answer >
+The link is broken because the file moved to another location
 
+Solution -
+cd /backups
+ln -s ~/$FILENAME backup.obj
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1]
+111 = (1x2^0=1) + (1x2^1=2) + (1x2^2=4) = 7
+100 = (0x2^0=0) + (0x2^1=0) + (1x2^4) = 4
+10110 = (0x2^0=0) + (1x2^1=2) + (1x2^2=4) + (0x2^3=0) + (1x2^4=16) = 22
+
+2] 11111111 = (1x2^0=1) + (1x2^1=2) + (1x2^2=4) + (1x2^3=8) + (1x2^4=16) (1x2^5=32) + (1x2^6=64) + (1x2^7=128) = 255
+
+3] Using 1 for the first number will give us negative (-) result.
+
+
+
+
+
