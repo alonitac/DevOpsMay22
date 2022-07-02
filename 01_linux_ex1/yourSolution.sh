@@ -1,4 +1,3 @@
-cd src
 mkdir secretDir
 rm -rf maliciousFiles/
 touch secretDir/.secret
