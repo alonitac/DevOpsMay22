@@ -31,4 +31,12 @@ Binary Numbers
  0000011 = 3
 1000011 = -3
 
-4.
+4. There is no standard 8-bit floating point format.
+One way to do it is: 1 sign bit, 3 exponent bits and 4 significant bits.
+Binary point following first significant digit.
+
+ Example        0    0    1    1    1  .  1     0      0        3-3=0 --> +2^0 X  1.5 = 1.5
+                0+   4    2    1    1    0.5  0.25   0.125
+                1-
+
+ Example2:       11011010        -  5-3=2    1.25                     -2^2 X 1.25 = -5
