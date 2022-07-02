@@ -8,7 +8,6 @@ Records any syscalls made by a command and helps with debugging.
 
 Broken Symlink
 -------------------
-< Your Answer >
 The link is broken because the file moved to another location
 
 Solution -
