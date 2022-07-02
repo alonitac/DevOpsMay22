@@ -8,7 +8,9 @@ In this case we found a ASCII file text ("There you go... tell me what I do").
 
 Broken Symlink
 -------------------
-< Your Answer >
+<#!/bin/sh
+
+ Your Answer >
 
 
 
