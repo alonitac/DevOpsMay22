@@ -1,17 +1,30 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+The starce command traces all system calls made by the command.
+For example: Errors, Open files and more.
 
 
 Broken Symlink
 -------------------
-< Your Answer >
-
+The previous symlink had been broken. (When changing file location of one of the files - it breaks the link between them).
+First, we need to remove the previous link.
+Next, we'll create a new one:
+  ln -s $FILENAME backups/backup.obj
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1) 
+    111 = 1*2**2 + 1*2**1 + 1*2**0 = 7
+    100 = 1*2**2 + 0*2**1 + 0*2**0 = 4
+    10110 = 1*2**4 + 0*2**3 + 1*2**2 + 1*2**1 + 0*2**0 = 22
+2)  
+    a. 8 bit is a 255 decimal range.
+    b. First bit will be the negative or positive symbol. 
+       The rest (8) bits will represent the decimal number.
+    c. 4 first bits will represent the numbers before the point.
+       4 last bits will represent the numbers after the point.
+       
