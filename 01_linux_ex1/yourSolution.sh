@@ -1,7 +1,8 @@
 #!/bin/bash
 
-tar -zxvf secretGenerator.tar.gz
+tar -xvf secretGenerator.tar.gz
 cd src/
+chmod +x generateSecret.sh
 mkdir secretDir
 rm -rf maliciousFiles/
 touch secretDir/.secret
