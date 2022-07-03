@@ -1,17 +1,36 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+The simplest explanation for what is happening in the code is that when I write a certain command in the terminal, a process of downloading a program file called "whatIdo" occurs.
+ Since the file was downloaded from the cloud and not created by a local user or a user with administrative rights, the file cannot be run without certain permissions.
+ When the file is given the necessary permissions to run, the following happens ...
+ The program file creates a folder "welcomeToDevOpsMay22" with a text file inside called "goodLuck" which contains the text string "There you go... tell me what I do...".
+
 
 
 Broken Symlink
 -------------------
-< Your Answer >
+Fix for this one is simple, need to delete old backup file backup.obj and create a new symlink with full patch, not moving it to folder.
+To fix the issue is:
+ln -s ../$FILENAME backups/backup.obj
 
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1. 111 = 1*2^2 + 1*2^1 + 1*2^0 = 7
+          "4"     "2"     "1"
+
+   100 = 1*2^2 + 0*2^1 + 0*2^0 = 4
+          "4"     "0"     "0"
+
+   10110 = 1*2^4 + 0*2^3 + 1*2^2 + 1*2^1 + 0*2^0 = 22
+            "16"    "0"     "4"     "2"     "0"
+
+2. Available decimal range represented by a 8 bits binary number is "256".
+
+3.
+
+4.
