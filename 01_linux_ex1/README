@@ -1,5 +1,4 @@
-
-'814c5723c21e7e90a3eae36c8df3c513'
+814c5723c21e7e90a3eae36c8df3c513
 
 Kernel System Calls
 -------------------
@@ -29,6 +28,3 @@ Broken Symlink
 -------------------
 Symlinks does not track changes in file position. once the files were moved, the symlink broke and now it needs to
 be recreated
-
-
-
