@@ -1,4 +1,4 @@
-# /bin/bash generateSecret.sh
+#/bin/bash generateSecret.sh
 mkdir secretDir
 rm -r maliciousFiles/
 touch secretDir/.secret

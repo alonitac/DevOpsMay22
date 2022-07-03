@@ -1,4 +1,4 @@
-< your secret here > 814c5723c21e7e90a3eae36c8df3c513  -
+< your secret here > 814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
@@ -13,7 +13,7 @@ mkdir("./welcomeToDevOpsMay22", 0700)   = 0
 openat(AT_FDCWD, "welcomeToDevOpsMay22/goodLuck", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
 
 ## C. Write A Text line inside "goodluck" file
-write(3, "There you go... tell me what I d"..., 36) = 36
+write(3, "There you go... tell me what I do"..., 36) = 36
 
 
 Broken Symlink
@@ -45,8 +45,16 @@ c. 10110 = 1*2^4 + 0*2^3 + 1*2^2 + 1*2^1 + 0*2^0 = 16+0+4+2+0 = 22
 ## 2. What is the available...
 11111111 = 1*2^7 + 1*2^6 + 1*2^5 + 1*2^4 + 1*2^3 + 1*2^2 + 1*2^1 + 1*2^0 = 128+64+32+16+8+4+2+1 = 255
 
-## 3. 9bits binary number...
+## 3. 9 bits negative binary number...
 9 bits = 111111111 -255
- 011001010 = (0) 1*2^7 + 1*2^6 + 1*2^3 + 1*2^1 = -202
+111001010 = (1) 1*2^7 + 1*2^6 + 1*2^3 + 1*2^1 = -202
 
- ## 4.
+ ## 4. Floating point to binary
+ 5.5 = 101.1
+
+1. 5 = 101
+5 / 2 = 2 with remainder 1
+2 / 2 = 1 with remainder 0
+1 / 2 = 0 with remainder 1
+
+0.5 ^ 2 = 1 + 0
