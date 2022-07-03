@@ -7,6 +7,7 @@ mkdir src/secretDir
 chmod 700 src/secretDir
 cd src/secretDir
 touch .secret
+chmod 600 .secret
 cd ..
 chmod 700 generateSecret.sh
 /bin/bash generateSecret.sh
