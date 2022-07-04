@@ -8,6 +8,7 @@ Kernel System Calls
 2. give permissions to user (0) r+W+X (0700)
 mkdir("./welcomeToDevOpsMay22", 0700)   = 0
 
+
 ## B. Create file "goodluck" in new dir and permissions
 openat(AT_FDCWD, "welcomeToDevOpsMay22/goodLuck", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 3
 
