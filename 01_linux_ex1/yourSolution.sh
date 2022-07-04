@@ -1,6 +1,5 @@
 
 
-wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
 ls -l # checks the name of the file that i got
 tar xvf secretGenerator.tar.gz
 #goes to check if any  maliciousFiles are existing
