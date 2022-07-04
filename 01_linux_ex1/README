@@ -21,6 +21,7 @@ Broken Symlink
 In creating a symbolic link, the link and the $ variable file must be located at the same folder level
 In case one of the contents is moved to another location, deleted, or renamed the link is will break
 
+
 ## Recognition:
 A valid symbolic link will appear in green, in case it is broken it will appear in red
 
