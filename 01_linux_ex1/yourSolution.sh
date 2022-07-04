@@ -1,6 +1,5 @@
 #!/bin/bash
-wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
-tar -xvf secertGenerator.tar.gz
+
 mkdir secertDir
 cd secretDir
 touch  .secret
