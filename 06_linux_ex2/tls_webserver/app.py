@@ -1,9 +1,12 @@
+import json
 from json import JSONDecodeError
 from aiohttp import web
 import uuid
 import os
 import random
+import sys
 
+TEST = sys.argv[1] if len(sys.argv) else None
 
 client_secrets = {}
 
@@ -13,6 +16,12 @@ with open('bob-cert.pem') as f:
 
 with open('eve-cert.pem') as f:
     eve_cert = f.read()
+
+
+async def flush_secrets(request):
+    with open('secrets.json', 'w') as f:
+        json.dump(client_secrets, f)
+    return web.Response(text='flushed')
 
 
 async def client_hello(request):
@@ -39,6 +48,9 @@ async def client_hello(request):
         cert = eve_cert
     else:
         cert = bob_cert
+
+    if TEST:
+        cert = eve_cert if TEST == 'eve' else bob_cert
 
     return web.json_response({
         "serverVersion": "3.2",
@@ -69,7 +81,7 @@ async def key_exchange(request):
         return web.Response(text=f"Client sample message is missing\nOriginal request:\n{text}\n", status=400)
 
     stream = os.popen(f'echo "{data.get("masterKey")}" | base64 -d | openssl smime -decrypt -inform DER -inkey key.pem')
-    decrypted_master_key = str(stream.read()[:-1])
+    decrypted_master_key = str(stream.read()[:-1]) if not TEST else '71444da2-4e2d-4a32-8442-393eaaf593f4'
 
     client_secrets[client_id] = decrypted_master_key
 
@@ -86,6 +98,7 @@ def main():
     app = web.Application()
     app.add_routes([web.post('/clienthello', client_hello)])
     app.add_routes([web.post('/keyexchange', key_exchange)])
+    app.add_routes([web.get('/flush', flush_secrets)])
     web.run_app(app, host='0.0.0.0')
 
 

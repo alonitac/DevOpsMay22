@@ -92,7 +92,7 @@ Assuming the server certificate was stored in `cert.pem` file. You can verify th
 ```shell
 openssl verify -CAfile cert-ca-aws.pem cert.pem
 ```
-while `cert-ca-aws.pem` is a file belonging to the Certificate Authority (in our case Amazon Web Services) who issued and signed the server cert. You can safely download it from **https://devops-jan22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem** (wget...)
+while `cert-ca-aws.pem` is a file belonging to the Certificate Authority (in our case Amazon Web Services) who issued and signed the server cert. You can safely download it from **https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem** (wget...)
 
 Upon a valid certificate validation, the following output will be printed to stdout:
 ```text
@@ -109,9 +109,9 @@ if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
 fi
 ```
 
-Given a valid cert, generate a 32 random bytes string `openssl rand` and save it to `masterKey.txt` text file.
+Given a valid cert, generate a 32 random bytes base64 string (use `openssl rand`) and save it to `masterKey.txt` text file.
 
-Got tired? refresh yourself with some [interesting reading](https://www.bleepingcomputer.com/news/security/russia-creates-its-own-tls-certificate-authority-to-bypass-sanctions/amp/) 
+Got tired? refresh yourself with some [interesting reading](https://www.bleepingcomputer.com/news/security/russia-creates-its-own-tls-certificate-authority-to-bypass-sanctions/amp/).  
 
 This line can help you encrypt the generated master-key secret with the server certificate:
 ```shell
