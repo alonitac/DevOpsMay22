@@ -1,8 +1,10 @@
 #!/bin/bash
-mkdir src/secretDir
-touch src/secretDir/.secret
-chmod 600 src/secretDir/.secret
-cd src/ || exit
+
+mkdir secretDir
 rm -r maliciousFiles/
 rm important.link
+cd secretDir/
+touch .secret
+chmod 600 .secret
+cd ..
 /bin/bash generateSecret.sh
