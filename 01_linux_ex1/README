@@ -11,7 +11,7 @@ Inside the folder it creates file named: "goodLuck".
 Broken Symlink
 -------------------
 < Your Answer >
-The thing that gone wrong in the question is that when we moved the softlink into the "backups" folder, the soft link
+The thing that gone wrong in the question is that when we moved the softlink into the "backups"@ folder, the soft link
 has been broken.
 The solution is to do the command "ln" with specific paths.
 for example: ln -s /filepath /symlinkpath
