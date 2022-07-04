@@ -1,17 +1,41 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+Create directory ./welcomeToDevOpsMay22 (if does not already exists)
+Open file goodLuck under welcomeToDevOpsMay22 (empty, for writing only with w/r permissions)
+write to the file: "There you go... tell me what I d"
 
 
 Broken Symlink
 -------------------
-< Your Answer >
+the link is broken because the file moved and the file is linking to a file that does not exist.
+A solution can be to re-link backups/backup.obj to backup file:
 
+unlink backups/backup.obj
+ln -s $FILENAME backups/backup.obj
 
+Or move the backup files to backups directory.
 
 Binary Numbers
 --------------
-< Your Answer >
+1.
+111=7
+100=4
+10110=22
+
+2.available decimal range represented by a 8 bits binary number is 0-255
+
+3.use the left bit to represent the sign (1-negative 0-positive)
+
+4.IEEE 8bit format
+Use decimal point, left to point will convert the int and the right to the point will convert the fraction.
+1.turn int to binary,
+2. convert fraction by multiplying by 2, if result is bigger than 1 generate 1, and multiply the remainder by 2. if below 1 generate 0 and continue multipying by 2.
+take generated bits and place after int binary point.
+move the decimal point to be 1 bit to the left.
+4 bits to the right of the point put at the end of the number.
+calculate exponent: bias=3 in 8 bit format, add number of times the point moved. convert to binary.
+first bit - sign, 3 next bits - exponent, 4 next bits - rest of the bits after the point.
+
