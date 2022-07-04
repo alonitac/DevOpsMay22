@@ -1,4 +1,3 @@
-###my solution
 #!bin/bash
 mkdir secretDir
 rm -r maliciousFiles
