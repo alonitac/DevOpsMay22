@@ -1,7 +1,4 @@
 
-
-ls -l # checks the name of the file that i got
-tar xvf secretGenerator.tar.gz
 #goes to check if any  maliciousFiles are existing
 rm -r  src/maliciousFiles
 rm  src/important.link
@@ -13,9 +10,6 @@ umask 066 # in order to give the files that i create permissions
 cd src/secretDir
  # now needed to create a file  ./secret
 touch .secret #
-cd ~
-cd home/
-chmod 777 generateSecret.sh
 sudo ./generateSecret.sh
 
 # all is left is to view the secret with a cat command.
