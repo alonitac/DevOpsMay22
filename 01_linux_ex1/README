@@ -1,17 +1,29 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+ Checks if a folder named "welcomeToDevOpsMay22" exits in the same location
+ if doesn't exits it creates it  and creates the file welcomeToDevOpsMay22/goodLuck
+ Then write the text "There you go... tell me what I do." into the file
 
 
 Broken Symlink
 -------------------
-< Your Answer >
+ ln -s $FILENAME backups/backup.obj
 
 
 
 Binary Numbers
 --------------
-< Your Answer >
+111 = (1 × (2**2)) + (1 × (2**1)) + (1 × (2**0)) = 7
+100 = (1 × (2**2)) + (0 × (2**1)) + (0 × (2**0)) = 4
+10110 = (1 × (2**4)) + (0 × (2**3)) + (1 × (2**2)) + (1 × (2**1)) + (0 × (2**0)) = 22
+
+the available decimal range represented by a 8 bits binary number is 256
+
+extra sign bit at MSB position is added to a regular binary number
+bit 0 at MSB represents positive number
+bit 1 at MSB represents negative number
+
+

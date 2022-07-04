@@ -1,4 +1,4 @@
-# Linux ex1
+‹# Linux ex1
 Due date: 04/07/22 23:59
 
 ## Preliminaries
@@ -79,9 +79,9 @@ Your assignment is to supply a brief description of what the program does in the
 
 1. Convert the following binary numbers to a decimals: 
 111, 100, 10110
-2. What is the available decimal range represented by a 8 bits binary number?
+2. What is the available decimal range represented by an 8 bits binary number?
 3. Given a 9 bits binary number, suggest a method to represent a negative numbers between 0-255
-4. Suggest a method to represent a floating point numbers (e.g. 12.3,  15.67, 0.231) using a 8 bits binary numbers
+4. Suggest a method to represent a floating point numbers (e.g. 12.3,  15.67, 0.231) using an 8 bits binary numbers
 
 ### Broken Symlink
 (10 Points)
