@@ -1,17 +1,16 @@
-< your secret here >
+814c5723c21e7e90a3eae36c8df3c513
 
 
 Kernel System Calls
 -------------------
-< Your Answer >
+program create directory called welcomeToDevOpsMay22
+permissions giving to the directory 775
+create file inside new directory called goodLuck
+Inside the new created file write the line "There you go... tell me what I d"
+
 
 
 Broken Symlink
 -------------------
-< Your Answer >
-
-
-
-Binary Numbers
---------------
-< Your Answer >
+rm backup.obj
+ln -s $filename backup/backup.obj
