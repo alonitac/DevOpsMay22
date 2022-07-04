@@ -1,6 +1,3 @@
-tar -xf secretGenerator.tar.gz
-
-cd src
 
 rm -fr maliciousFiles/
 
