@@ -1,19 +1,19 @@
 #!/bin/bash
 
-#! mkdir secretDir
+  mkdir secretDir
 
-#! rm -r maliciousFiles/
+  rm -r maliciousFiles/
 
-#!cd secretDir/
+  cd secretDir/
 
-#! touch .secret
+  touch .secret
 
-#!chmod 600 .secret
+  chmod 600 .secret
 
-#! cd ..
+  cd ..
 
-#! find -xtype l -delete
+  find -xtype l -delete
 
-#! /bin/bash generateSecret.sh
+  /bin/bash generateSecret.sh
 
 
