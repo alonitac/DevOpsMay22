@@ -1,17 +1,49 @@
-< your secret here >
-
+814c5723c21e7e90a3eae36c8df3c513
 
 Kernel System Calls
 -------------------
-< Your Answer >
-jkjkjkjkj
+An execve function is running the whatIdo fle.
+A check is done if a folder named  "welcomeToDevOpsMay22" exists, and the output is no.
+The program creates a folder " welcomeToDevOpsMay22"
+A file is created in this folder and the name of the file is "goodLuck" with rw permissions to all(ugo).                                                                                                                                                  The program writes this sentence to the created file:  There you go …tell me what I Do …
+ all(ugo).
+The program writes this sentence to the created file:  There you go …tell me what I Do …
+
 
 Broken Symlink
 -------------------
-< Your Answer >
+The problem is that the path of the  the soft link has changed.
+The fix is to change the command to: ln -s $FILENAME backups/backup.obj
 
 
 
 Binary Numbers
 --------------
-< Your Answer >
+1. 111    binary = 1*2^0 +1*2^1 +1*2^2 =1+2+4=7
+   100    binary = 0*2^0 +0*2^1 +1*2^2 =4
+   10110  binary = 0*2^0 +1*2^1 +1*2^2 +0*2^3 +1*2^4 =0+2+4+0+16=22
+
+2. 8 bit binary range number is 0-255.
+   this is the sum of 11111111 8 bit binary bits in decimal base/
+
+3. given 9 binary number ,the way I choose to represent a negative number is this way:
+   the lefiest bit will represent the +/- sign where
+    0 - represents +
+    1 - represents -
+    other 8 bit will represents the number itself.
+
+4.  representing binary floating number with 8 binary bits:
+    dividing the number to 2 parts of 4 bits each, the left part called mantisa (the number)
+    and the right side called exponent.
+    The left bit in every part represents the sign(+ or -) where
+    0 - represents +
+    1 - represents -
+    if for example the exponent is +2 we will move the floating 2 bits to the right and than
+    calculate the number and put the its sign.
+
+
+
+
+
+
+
