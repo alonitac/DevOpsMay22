@@ -1,4 +1,4 @@
-# /bin/bash generateSecret.sh - royops
+# /bin/bash generateSecret.sh -
 mkdir secretDir
 rm -r maliciousFiles/
 touch secretDir/.secret
