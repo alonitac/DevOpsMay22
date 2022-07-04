@@ -24,5 +24,7 @@ Binary Numbers
 100 = 4
 10110 = 22
 
-2)
-0 - 255
+2) 0 - 255
+
+3) The first digit of the binary number represents if the number is positive or negative.
+If the first digit is 0 the number is positive but if it is 1 then the number is negative.
