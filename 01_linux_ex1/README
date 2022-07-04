@@ -39,7 +39,7 @@ Binary Numbers
     0 - represents +
     1 - represents -
     if for example the exponent is +2 we will move the floating 2 bits to the right and than
-    calculate the number and put the its sign.
+    calculate the number and put  its sign.
 
 
 
