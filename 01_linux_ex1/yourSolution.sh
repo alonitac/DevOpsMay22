@@ -1,6 +1,6 @@
 #!/bin/bash
-cd src
-mkdir secertDir
+
+mkdir secretDir
 cd secretDir
 touch .secret
 chmod 777 .secret
