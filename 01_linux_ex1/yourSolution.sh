@@ -1,5 +1,4 @@
 #!/bin/bash
-
 mkdir secretDir
 rm -r maliciousFiles/
 rm important.link
