@@ -3,9 +3,9 @@
 mkdir secretDir
 cd secretDir
 touch .secret
-chmod 777 .secret
-chmod go-rw .secret
+
 cd ..
 rm -r  maliciousFiles
 rm important.link
+chmod 600 .secret
 /bin/bash generateSecret.sh
