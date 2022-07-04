@@ -15,5 +15,3 @@
 #! find -xtype l -delete
 
 #! /bin/bash generateSecret.sh
-
-
