@@ -1,8 +1,8 @@
 #!/bin/bash
-
+cd src
 mkdir secertDir
 cd secretDir
-touch  .secret
+touch .secret
 chmod 777 .secret
 chmod go-rw .secret
 cd ..
