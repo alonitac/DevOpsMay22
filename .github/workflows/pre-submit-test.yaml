@@ -20,7 +20,7 @@ jobs:
         with:
           packages: |
             aiohttp
-      - run: sudo apt-get inatall jq -y
+      - run: auso apt-get update -y && sudo apt-get install jq -y
       - name: Linux Ex2 pre-subbmit test - Getting Eve certificate
         run: |
           cd 06_linux_ex2
