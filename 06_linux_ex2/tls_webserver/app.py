@@ -6,7 +6,7 @@ import os
 import random
 import sys
 
-TEST = sys.argv[1] if len(sys.argv) else None
+TEST = sys.argv[1] if len(sys.argv) > 1 else None
 
 client_secrets = {}
 
@@ -35,7 +35,7 @@ async def client_hello(request):
     if headers['Content-Type'] != 'application/json':
         return web.Response(text="Bad request. Content-Type header should be application/json\n", status=400)
 
-    client_id = str(uuid.uuid4())
+    client_id = str(uuid.uuid4()) if not TEST or len(client_secrets) > 0 else '71444da2-4e2d-4a32-8442-393eaaf593f4'
     if data.get('clientVersion') != "3.2":
         return web.Response(text="Bad request. Server works with version 3.2 clients only\n", status=400)
 
@@ -81,11 +81,15 @@ async def key_exchange(request):
         return web.Response(text=f"Client sample message is missing\nOriginal request:\n{text}\n", status=400)
 
     stream = os.popen(f'echo "{data.get("masterKey")}" | base64 -d | openssl smime -decrypt -inform DER -inkey key.pem')
-    decrypted_master_key = str(stream.read()[:-1]) if not TEST else '71444da2-4e2d-4a32-8442-393eaaf593f4'
+    decrypted_master_key = str(stream.read()[:-1])
 
     client_secrets[client_id] = decrypted_master_key
 
-    stream = os.popen(f'echo "{data.get("sampleMessage")}" | openssl enc -e -aes-256-cbc -pbkdf2 -k "{decrypted_master_key}" | base64 -w 0')
+    msg = data.get("sampleMessage")
+    if TEST == 'bad-msg':
+        msg = 'Server bad message'
+
+    stream = os.popen(f'echo "{msg}" | openssl enc -e -aes-256-cbc -pbkdf2 -k "{decrypted_master_key}" | base64 -w 0')
     output = str(stream.read())
 
     return web.json_response({
