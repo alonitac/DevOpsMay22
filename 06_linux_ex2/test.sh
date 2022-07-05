@@ -1,6 +1,6 @@
 # run the server locally
 cd tls_webserver
-python app.py $1 &
+python3 app.py $1 &
 cd ..
 
 
