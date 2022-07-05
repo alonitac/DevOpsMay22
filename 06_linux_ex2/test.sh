@@ -14,6 +14,8 @@ sed -i "s/16\.16\.53\.16/127\.0\.0\.1/g" tlsHandshake.sh
 bash -x tlsHandshake.sh > output
 SOL_EXIT=$?
 
+ls
+
 # get results
 curl 127.0.0.1:8080/flush &> /dev/null
 
