@@ -20,7 +20,15 @@ jobs:
         with:
           packages: |
             aiohttp
-      - run: sudo apt-get update -y && sudo apt-get install jq -y
+      - run: |
+          sudo apt-get update -y
+          sudo apt-get install jq -y
+          cd 06_linux_ex2/tls_webserver
+
+          wget https://devops-may22.s3.eu-north-1.amazonaws.com/bob-cert.pem
+          wget https://devops-may22.s3.eu-north-1.amazonaws.com/eve-cert.pem
+          wget https://devops-may22.s3.eu-north-1.amazonaws.com/key.pem
+
       - name: Linux Ex2 pre-subbmit test - Getting Eve certificate
         run: |
           cd 06_linux_ex2
