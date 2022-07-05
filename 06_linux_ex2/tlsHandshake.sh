@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SSS=$(curl  -X POST -H "Content-Type: application/json" -d '{"clientVersion":"3.2","message":"Client Hello"}' http://127.0.0.1:8080/clienthello)
+SSS=$(curl  -X POST -H "Content-Type: application/json" -d '{"clientVersion":"3.2","message":"Client Hello"}' http://16.16.53.16:8080/clienthello)
 echo "$SSS" | jq -r '.serverCert' > cert.pem
 echo "$SSS" | jq -r '.sessionID' > sessionID.txt
 
@@ -20,7 +20,7 @@ openssl rand -base64 32 > masterKey.txt
 #request to the server endpoint /keyexchange
 SESSION_ID=$(cat sessionID.txt)
 MASTER_KEY=$(openssl smime -encrypt -aes-256-cbc  -in masterKey.txt -outform DER cert.pem | base64 -w 0)
-curl -X POST -H "Content-Type: application/json" -d '{"sessionID":"'${SESSION_ID}'","masterKey":"'${MASTER_KEY}'","sampleMessage":"Hi server, please encrypt me and send to client!"}' http://127.0.0.1:8080/keyexchange | jq -r '.encryptedSampleMessage' > encryptedSampleMessage.txt
+curl -X POST -H "Content-Type: application/json" -d '{"sessionID":"'${SESSION_ID}'","masterKey":"'${MASTER_KEY}'","sampleMessage":"Hi server, please encrypt me and send to client!"}' http://16.16.53.16:8080/keyexchange | jq -r '.encryptedSampleMessage' > encryptedSampleMessage.txt
 
 #ncode it to binary
 cat encryptedSampleMessage.txt | base64 -d  > encSampleMsgReady.txt
