@@ -1,7 +1,6 @@
 #!/bin/bash
 
 SSS=$(curl  -X POST -H "Content-Type: application/json" -d '{"clientVersion":"3.2","message":"Client Hello"}' http://127.0.0.1:8080/clienthello)
-SSS=$(curl  -X POST -H "Content-Type: application/json" -d '{"clientVersion":"3.2","message":"Client Hello"}' http://127.0.0.1:8080/clienthello)
 echo "$SSS" | jq -r '.serverCert' > cert.pem
 echo "$SSS" | jq -r '.sessionID' > sessionID.txt
 
