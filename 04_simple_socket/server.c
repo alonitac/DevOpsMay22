@@ -1,4 +1,4 @@
-// compile by gcc -o server server.c
+// compile by `gcc -o server server.c`
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,7 +31,7 @@ int main()
     bind(sockfd, (struct sockaddr*)&self, sizeof(self));
 
     // The listen call specifies the queue size for the number of incoming, unhandled connections
-	listen(sockfd, 20);
+	listen(sockfd, 40);
 
 	/** Server run continuously */
 	while (1)
@@ -44,9 +44,9 @@ int main()
 		printf("%s:%d connected\n", inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
 
 		/** print the received data to the client */
-		int read_bytes = recv(clientfd, buffer, MAX_BUF, 0);
+		int read_bytes = read(clientfd, buffer, MAX_BUF, 0);
 		printf("%s\n", buffer);
-		send(clientfd, buffer, read_bytes, 0);
+		write(clientfd, buffer, read_bytes, 0);
 
 		/** Close data connection */
 		close(clientfd);
