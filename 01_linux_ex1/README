@@ -1,17 +1,34 @@
-< your secret here >
-
+814c5723c21e7e90a3eae36c8df3c513
 
 Kernel System Calls
 -------------------
-< Your Answer >
-
+# whatIdo (strace)
+Creates subdir in the current dir "./welcomeToDevOpsMay22".
+Opens/creates file "goodLuck" in dir "welcomeToDevOpsMay22/goodLuck".
+Writes some text there: "There you go... tell me what I do".
+Then closes connection and exits.
 
 Broken Symlink
 -------------------
-< Your Answer >
+# Original commands
+FILENAME=backup-$(date +"%d-%m-%Y").obj
+touch $FILENAME
+echo "backup data..." >> $FILENAME
+ln -s $FILENAME backup.obj
+mkdir backup
+mv backtest/backup.obj backup
 
-
+Problem: backup.obj will not work after moving to another directory because it relates to the relative path.
+Solution: create an absolute path with command: ln -s /tmp/test/$FILENAME backup.obj
 
 Binary Numbers
 --------------
-< Your Answer >
+1. Convert the following binary numbers to a decimals:
+111, 100, 10110
+7, 4, 22
+2. What is the available decimal range represented by a 8 bits binary number?
+0-255
+3. Given a 9 bits binary number, suggest a method to represent a negative numbers between 0-255
+111111111
+4. Suggest a method to represent a floating point numbers (e.g. 12.3,  15.67, 0.231) using a 8 bits binary numbers
+The 1st bit will represtent the sign of the number (- \ +), then the next 4 bits will represent the exponent + 7 and the last 3 bits will represent the mantissa (the numbers after the decimal point)
