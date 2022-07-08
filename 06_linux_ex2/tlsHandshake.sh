@@ -18,4 +18,10 @@ cat B.txt | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
 cat encSampleMsg.txt | base64 -d > encSampleMsgReady.txt
 ENCRYPTION_PASSWORD='nrB80EZtxJWfyF56bvTncInqFKBLLYkiY/Sd7iglzEg='
 openssl enc -d -aes-256-cbc -pbkdf2 -k "$ENCRYPTION_PASSWORD" -in encSampleMsgReady.txt -out decrypted_secret
+if [ "$DECRYPTED_SAMPLE_MESSAGE" != "Hi server, please encrypt me and send to client!" ]; then
+  echo "Server symmetric encryption using the exchanged master-key has failed."
+  exit 1
+else
+  echo "Client-Server TLS handshake has been completed successfully"
+fi
 
