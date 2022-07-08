@@ -16,4 +16,6 @@ MASTER_KEY=$(!!)
 curl -X POST  http://16.16.53.16:8080/keyexchange -H "Content-Type: application/json" -d '{ "sessionID": "'$SESSION_ID'", "masterKey": "'$MASTER_KEY'", "sampleMessage": "Hi server, please encrypt me and send to client!" }' > B.txt
 cat B.txt | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
 cat encSampleMsg.txt | base64 -d > encSampleMsgReady.txt
+ENCRYPTION_PASSWORD='nrB80EZtxJWfyF56bvTncInqFKBLLYkiY/Sd7iglzEg='
+openssl enc -d -aes-256-cbc -pbkdf2 -k "$ENCRYPTION_PASSWORD" -in encSampleMsgReady.txt -out decrypted_secret
 
