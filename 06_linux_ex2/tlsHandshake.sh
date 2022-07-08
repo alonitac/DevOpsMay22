@@ -4,3 +4,9 @@ SESSION_ID=$(!!)
 echo $SESSION_ID
 cat A | jq -r '.serverCert' > cert.pem
 openssl verify -CAfile cert-ca-aws.pem cert.pem
+VERIFICATION_RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem )
+
+if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
+  echo "Server Certificate is invalid."
+  exit 1
+fi
