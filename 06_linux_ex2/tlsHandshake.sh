@@ -11,13 +11,14 @@ if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
   exit 1
 fi
 openssl rand -base64 32 > masterkey.txt
-openssl smime -encrypt -aes-256-cbc -in masterKey.txt -outform DER cert.pem | base64 -w 0
+openssl smime -encrypt -aes-256-cbc -in masterkey.txt -outform DER cert.pem | base64 -w 0
 MASTER_KEY=$(!!)
 curl -X POST  http://16.16.53.16:8080/keyexchange -H "Content-Type: application/json" -d '{ "sessionID": "'$SESSION_ID'", "masterKey": "'$MASTER_KEY'", "sampleMessage": "Hi server, please encrypt me and send to client!" }' > B.txt
 cat B.txt | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
 cat encSampleMsg.txt | base64 -d > encSampleMsgReady.txt
 ENCRYPTION_PASSWORD='nrB80EZtxJWfyF56bvTncInqFKBLLYkiY/Sd7iglzEg='
 openssl enc -d -aes-256-cbc -pbkdf2 -k "$ENCRYPTION_PASSWORD" -in encSampleMsgReady.txt -out decrypted_secret
+DECRYPTED_SAMPLE_MESSAGE=$(!!)
 if [ "$DECRYPTED_SAMPLE_MESSAGE" != "Hi server, please encrypt me and send to client!" ]; then
   echo "Server symmetric encryption using the exchanged master-key has failed."
   exit 1
