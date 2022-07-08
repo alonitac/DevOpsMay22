@@ -69,10 +69,7 @@ Please work in Ubuntu terminal, not from PyCharm. Below are some helpful instruc
 Use `curl` to send the following _Client Hello_ HTTP request to the server:
 ```
 POST /clienthello
-{
-  "clientVersion": "3.2",
-  "message": "Client Hello"
-}
+{"clientVersion": "3.2", "message": "Client Hello"}
 ```
 _POST_ is the request type, _/clienthello_ is the endpoint, and the json is the body.  
 

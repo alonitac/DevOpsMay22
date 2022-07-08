@@ -9,14 +9,14 @@ In this case we found a ASCII file text ("There you go... tell me what I do").
 
 Broken Symlink
 -------------------
-<FILENAME=backup-$(date +"%d-%m-%Y").obj
+FILENAME=backup-$(date +"%d-%m-%Y").obj
 touch $FILENAME
 echo "backup data..." >> $FILENAME
 ln -s $FILENAME backup.obj
 mkdir backup
 mv backup.obj backup
 
-This issue is that we cannot move the backup.obj hard link to backup directory
+This issue is that we cannot move the backup.obj link to backup directory
 To fix it we need to remove the link and create a new link in a new directory location.
  >
 
@@ -24,7 +24,7 @@ To fix it we need to remove the link and create a new link in a new directory lo
 
 Binary Numbers
 --------------
-< 1.A.111=1*2^2+1*2^1+1*2^0=7
+ 1.A.111=1*2^2+1*2^1+1*2^0=7
   B.100=1*2^2+0*2^1+0*2^0=4
   C.10110=(1*2^4)+(0*2^3)+(1*2^2)+(1*2^1)+(0*2^0)=22
   2.0-255 , 1 2 3 4 5  6   7   8
@@ -32,4 +32,4 @@ Binary Numbers
   3.Negative numbers always start with a 1
   e.g. 1111 is -1, 1110 is -2, 1101 is -3,so 9 bits=111111111
   4.
-    >
+
