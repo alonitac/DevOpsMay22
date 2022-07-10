@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+#Loading func to add cool gui to the script
 loading() {
   echo -ne '#####                     (33%)\r'
   sleep 1
@@ -85,4 +86,3 @@ else
   echo "Client-Server TLS handshake has been completed successfully"
 fi
 sleep 3
-
