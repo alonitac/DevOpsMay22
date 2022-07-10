@@ -1,5 +1,21 @@
 #!/bin/bash
-curl -i -X POST -H "Content-Type: application/json" -d '{"clientVersion": "3.2", "message": "Client Hello"}' --url http://16.16.53.16:8080/c
-lienthello
+echo welcome to Uri bashbash script let's start
+sleep 5
+curl  -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello | jq -r '.serverCert' > cert.pem
+curl  -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello | jq -r '.sessionID' > SESSION_ID.txt
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
+openssl verify -CAfile cert-ca-aws.pem cert.pem
+if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
+  echo "Server Certificate is invalid."
+  else:
+  cert.pem: OK
+
+  exit 1
+
+fi
+
+
+
+
 
 
