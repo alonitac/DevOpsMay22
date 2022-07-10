@@ -9,4 +9,5 @@ Q7 - b (kill 4846)
 Q8 - a (kill -9 4846)
 Q9 - b (kill -17)
 Q10 - d (k)
-q11 -
+q11 - a (The program ignores the SIGINT signal.)
+q

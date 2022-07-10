@@ -86,3 +86,4 @@ else
   echo "Client-Server TLS handshake has been completed successfully"
 fi
 sleep 3
+sleep 3
