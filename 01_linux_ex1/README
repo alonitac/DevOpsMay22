@@ -25,13 +25,15 @@ Binary Numbers
 --------------
 ## Convert the following binary numbers to a decimals: 111, 100, 10110
 
-7422
+7 - 111
+4 - 100
+22 - 10110
 
  ## range represented by a 8 bits binary number
 
- 0.255 ! 256
+ 0-255 ! 256
 
  ##  9 bits binary number, suggest a method to represent a negative numbers between 0-255
 
- 100000001
+ 100000001 - first bit sign the minus and the rest digit numbers sign the overall number.
  4.
