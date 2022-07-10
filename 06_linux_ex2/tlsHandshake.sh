@@ -1,5 +1,5 @@
 #!/bin/bash
-echo welcome to Uri bashbash script let's start
+echo welcome to Uri's bashbash script let's start
 sleep 5
 curl  -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello | jq -r '.serverCert' > cert.pem
 curl  -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello | jq -r '.sessionID' > SESSION_ID.txt
