@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/json" -d '{"clientVersion": "3.2", "message": "Client Hello"}' http://localhost:8080/update-profile
