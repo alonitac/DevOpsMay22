@@ -13,7 +13,7 @@ openssl verify -CAfile cert-ca-aws.pem cert.pem
 touch masterkey.txt
 openssl smime -encrypt -aes-256-cbc -in masterkey.txt -outform DER cert.pem | base64 -w 0 > masterkey.txt
 MASTER_KEY=$(tail  masterkey.txt)
-curl -s --header "Content-Type: application/json" -d '{"sessionID": "'"$SESSION_ID"'", "masterKey": "'"$MASTER_KEY"'", "sampleMessage": "Hi server, please encrypt me and send to client!"}' http://16.    16.53.17:8080/keyexchange | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
+curl -s --header "Content-Type: application/json" -d '{"sessionID": "'"$SESSION_ID"'", "masterKey": "'"$MASTER_KEY"'", "sampleMessage": "Hi server, please encrypt me and send to client!"}' http://16.16.53.17:8080/keyexchange | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
 
 sessionID=SESSION_ID
 masterKey.txt=$MASTER_KEY
