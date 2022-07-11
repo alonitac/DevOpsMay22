@@ -1,62 +1,84 @@
 814c5723c21e7e90a3eae36c8df3c513
 
 
-
 Kernel System Calls
 -------------------
-< Your Answer >
+The system call is the fundamental interface between an application and the Linux kernel.
+we use commands for direct invocation of a system call
+
+
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/whatIdo
+-rw-r--r-- 1 tammit tammit 8648 Jun 13 11:44 whatIdo
+
+1. (1)
+chmod +x whatIdo
+-rwxr-xr-x 1 tammit tammit 8648 Jun 13 11:44 whatIdo*
+1. (2)
+-rw-r--r-- 1 tammit tammit 8648 Jun 13 11:44 whatIdo
+chmod 755 whatIdo
+-rwxr-xr-x 1 tammit tammit 8648 Jun 13 11:44 whatIdo*
+
+3. open file,
+  after reading the file  (with some special instrucction)
+  prints "There you go... tell me what I d"
+  close file
+
+Binary Numbers
+--------------
+1.
+  111 = 7
+  100 = 5
+  10110 =22
+
+2. 8 bits 2^8 = 256 (0-255)
+3. First bit sign (+\-)
+   other 8 bits 0-255
+4. First bit sign (+\-)   +\- 6.12
+  4 bits numerator        6
+  3 bits denominator      12
+
 
 
 Broken Symlink
--------------------
-< set the file name with date suffix
-  create current day backup file
-  append text to the file >
+--------------
 
 FILENAME=backup-$(date +"%d-%m-%Y").obj
 touch $FILENAME
 echo "backup data..." >> $FILENAME
 
-< create short link symlink to the file >
+result
+-rw-r--r-- 1 tammit tammit   15 Jul  7 18:35 backup-07-07-2022.obj
 
 ln -s $FILENAME backup.obj
 
-< create backup directory
-  move short link to backup directory >
-
 mkdir backups
 mv backup.obj backups/
+cd ./backups/
 
-< ERROR the link is not relative
-ll -l
-...
-lrwxrwxrwx 1 tammit tammit   21 Jun 22 16:46 backup.obj -> backup-22-06-2022.obj
-...
->
+lrwxrwxrwx 1 tammit tammit   21 Jul  7 18:36 backup.obj -> backup-07-07-2022.obj
 
+
+***********
+PROBLEM:
+The link is to current directory, and the file does not exists in this directory
+
+Solution
 REPLACE
 ln -s $FILENAME backup.obj
 WITH
 ln -s ~/$FILENAME backup.obj
 
 
+in current directory (not backups)
+tammit@DESKTOP-0MT6ONF:~$ ll backup.obj
+lrwxrwxrwx 1 tammit tammit 34 Jul  7 18:45 backup.obj -> /home/tammit/backup-07-07-2022.obj
 
 
-Binary Numbers
---------------
-1.
-    111 = 7,
-    100 = 4,
-    10110 = 22
-2. 8 bits Binary represents:
-    0 - 255 Decimal
-3. 9 bits Binary to represent positive / negative 0-255 range
-    1 bit sign (0 positive, 1 negative)
-    8 bits 0 - 255
-4. binary represenaion of floating point number
-    4 bits - the integer part
-    4 bits - the fractional part
-    - in case of signed number
-    1 bit sign (0 positive, 1 negative)
-    4 bits - the integer part
-    3 bits - the fractional part
+tammit@DESKTOP-0MT6ONF:~/backups$ ll backup.obj
+lrwxrwxrwx 1 tammit tammit 34 Jul  7 18:45 backup.obj -> /home/tammit/backup-07-07-2022.obj
+
+wget https://devops-may22.s3.eu-north-1.amazonaws.com/secretGenerator.tar.gz
+secretGenerator.tar.gz in directory
+
+tar -xf secretGenerator.tar.gz
+extract the tar.gz file
