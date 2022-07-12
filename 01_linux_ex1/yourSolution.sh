@@ -13,7 +13,6 @@ find -xtype l -delete
 /bin/bash generateSecret.sh
 
 
-
              ##########################Script 2##################################
              ### An alternative script that performs all the required actions ###
              ### automatically, from downloading the TAR file using the WGET  ###
