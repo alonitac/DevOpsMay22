@@ -3,6 +3,7 @@
                      # A Valid script for testing - solution for secret #
                      ####################################################
                             #/bin/bash generateSecret.sh#
+
 mkdir secretDir
 rm -r maliciousFiles/
 touch secretDir/.secret

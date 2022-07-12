@@ -3,7 +3,6 @@
 
 Kernel System Calls
 -------------------
-< Your Answer >
 ## A. Create dir and permissions
 1. mkdir welcometodevopsmay22
 2. give permissions to user (0) r+W+X (0700)
@@ -18,7 +17,6 @@ write(3, "There you go... tell me what I do"..., 36) = 36
 
 Broken Symlink
 -------------------
-< Your Answer >
 ## Symptom:
 In creating a symbolic link, the link and the $ variable file must be located at the same folder level
 In case one of the contents is moved to another location, deleted, or renamed the link is will break
@@ -36,7 +34,6 @@ or
 
 Binary Numbers
 --------------
-< Your Answer >
 ## 1. Binary to Decimals conversion
 a. 111   = 1*2^2 + 1*2^1 + 1*2^0 = 4+2+1 = 7
 b. 100   = 1*2^2 + 0*2^1 + 0*2^0 = 4+0+0 = 4
