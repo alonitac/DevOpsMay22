@@ -1,13 +1,10 @@
-#curl --header "Content-Type: application/json" -d '{"clientVersion": "3.2", "message": "Client Hello"}' http://127.0.0.1:8080/clienthello | jq -r '.sessionID' > sessionID.txt
 curl -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello | jq -r '.serverCert,.sessionID' > clh.txt
-sed -n '1,34 p' clh.txt > cert.pem
-SESSION_ID=$(tail -n 1 clh.txt)
-#SESSION_ID=$(tail sessionID.txt)
 
-#curl --header "Content-Type: application/json" -d '{"clientVersion": "3.2", "message": "Client Hello"}' http://127.0.0.1:8080/clienthello | jq -r '.serverCert' > cert.pem
+sed -n '1,34 p' clh.txt > cert.pem
+
+SESSION_ID=$(tail -n 1 clh.txt)
 
 wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
-
 
 VERIFICATION_RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem )
 
