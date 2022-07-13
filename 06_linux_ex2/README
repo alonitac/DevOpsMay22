@@ -1,2 +1,9 @@
+Processes handling:
 
+(Q1): b nohup
+(Q2): b false
+(Q3): a process -ps
+(Q4): b CTRL+C
+(Q5): a CTRL+Z
+(Q6): d sleep 10
 
