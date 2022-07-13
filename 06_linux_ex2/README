@@ -1,2 +1,11 @@
-
-
+Q1 - bg
+Q2 - no
+Q3 - jobs
+Q4 - CTRL+c
+Q5 - CTRL+z
+Q6 - sleep 10
+Q7 -None of the above
+Q8 - kill -9 4846
+Q9 - kill -CHLD 4828
+Q10 - k
+Q 11 - The program ignores the SIGINT signal
