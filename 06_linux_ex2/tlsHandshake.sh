@@ -9,5 +9,6 @@ if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
   exit 1
 fi
 openssl rand -base64 32 >masterkey.txt
-
+openssl smime -encrypt -aes-256-cbc -in masterkey.txt -outform DER cert.pem | base64 -w 0
 url -# -o 'response_message.json' -H "Content-Type: application/json" -d '{"sessionID": "'$sessionId'","masterKey": "'$masterKey'","sampleMessage": "Hi server, please encrypt me and send to client!"}' -X POST http://16.16.53.16:8080/keyexchange
+jq -r '.sampleMessage' response_message.json | base64 -d > encSampleMsgReady.txt
