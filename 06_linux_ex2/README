@@ -22,5 +22,3 @@
 Then send a SIGINT signal using your keyboard. What best describes how the python process responds to the SIGINT signal?
 (you can exit this process by typing exit() in the python console)
     (A11) The program has implemented a custom signal handler for the SIGINT signal.
-
-
