@@ -3,7 +3,6 @@ cd tls_webserver
 python3 app.py $1 &
 cd ..
 
-
 # let the server up and running
 sleep 5
 

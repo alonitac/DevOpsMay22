@@ -1,2 +1,26 @@
+(Q1) A user started a process and logged out from the terminal. Which command he used if the process still running in the background:
+    (A1) nohup
+(Q2) The kill command always terminates a process.
+    (A2) False
+(Q3) Which command could be used to know how many processes are running in the background terminal session?
+    (A3) jobs
+(Q4) Given a terminal session with long process running in it, how will you ask this process to terminate?
+    (A4) CTRL + c
+(Q5) Given a terminal session with long process running in it, how will you ask this process the stop?
+(A5) Ctrl + z
+(Q6) How would you run the sleep 10 command as a foreground process?
+(A6) sleep 10 &
+(Q7) Which of the following command would deliver a SIGTERM to the xscreensaver process?
+(A7) kill 4846
+(Q8) Which of the following would deliver a SIGKILL to the xscreensaver command?
+(A8) kill -9 4846
+(Q9) Which of the following would send a SIGCHLD (signal number 17) to the ssh-agent process?
+
+(Q10) Which key pressed within the top command allows the user to send a signal to a process?
+
+(Q11) Open a new terminal session and type the command python.
+Then send a SIGINT signal using your keyboard. What best describes how the python process responds to the SIGINT signal?
+(you can exit this process by typing exit() in the python console)
+(A11) The program has implemented a custom signal handler for the SIGINT signal.
 
 
