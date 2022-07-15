@@ -11,7 +11,7 @@ if [ "$verificationResult" != "cert.pem: OK" ]; then
 fi
 openssl rand -base64 32 >masterkey.txt
 openssl smime -encrypt -aes-256-cbc -in masterkey.txt -outform DER cert.pem | base64 -w 0
-curl -# -o 'response_message.json' -H "Content-Type: application/json" -d '{"sessionID": "'$sessionId'","masterKey": "'$masterKey'","sampleMessage": "Hi server, please encrypt me and send to client!"}' -X POST http://16.16.53.16:8080/>
+curl -# -o 'response_message.json' -H "Content-Type: application/json" -d '{"sessionID": "'$sessionId'","masterKey": "'$masterKey'","sampleMessage": "'$correctMessage'"}' -X POST http://16.16.53.16:8080/keyexchange
 jq -r '.encryptedSampleMessage' response_message.json | base64 -d > encSampleMsgReady.txt
 decryptedSampleMessage=$(openssl enc -d -aes-256-cbc -pbkdf2 -kfile masterkey.txt -in encSampleMsgReady.txt)
 if [ "$decryptedSampleMessage" != $correctMessage ]; then
@@ -19,4 +19,3 @@ if [ "$decryptedSampleMessage" != $correctMessage ]; then
   exit 1
 else
   echo "Client-Server TLS handshake has been completed successfully"
-fi
