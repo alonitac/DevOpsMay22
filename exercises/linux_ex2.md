@@ -1,4 +1,4 @@
-# Linux ex-2
+wget # Linux ex-2
 Due date: 25/07/2022 23:59
  
 ## Preliminaries
