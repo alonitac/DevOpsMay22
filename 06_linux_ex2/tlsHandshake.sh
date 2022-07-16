@@ -1,6 +1,7 @@
 #!/bin/bash
 curl -# -o 'response.json' -H "Content-Type: application/json" -d '{"clientVersion": "3.2", "message": "Client Hello"}' -X POST http://16.16.53.16:8080/clienthello
 sessionId=$(jq -r '.sessionID' response.json)
+sampleMessage='Hi server, please encrypt me and send to client!'
 jq -r '.serverCert' response.json>cert.pem
 wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
 verificationResult=$(openssl verify -CAfile cert-ca-aws.pem cert.pem)
@@ -13,10 +14,14 @@ masterKey=$(openssl smime -encrypt -aes-256-cbc -in masterkey.txt -outform DER c
 curl -# -o 'response_message.json' -H "Content-Type: application/json" -d '{"sessionID": "'$sessionId'","masterKey": "'$masterKey'","sampleMessage": "Hi server, please encrypt me and send to client!"}' -X POST http://16.16.53.16:8080/k>
 jq -r '.encryptedSampleMessage' response_message.json | base64 -d > encSampleMsgReady.txt
 decryptedSampleMessage=$(openssl enc -d -aes-256-cbc -pbkdf2 -kfile masterkey.txt -in encSampleMsgReady.txt)
-echo 'Decrypted Message-Start-'
+echo 'Start Encrypted Message-'
+echo $(cat encSampleMsgReady.txt)
+echo 'End Encrypted Message---'
+echo '=============================='
+echo 'Start Decrypted Message-'
 echo $decryptedSampleMessage
-echo 'Decrypted Message-End---'
-if [ "$decryptedSampleMessage" != 'Hi server, please encrypt me and send to client!' ]; then
+echo 'End Decrypted Message---'
+if [ "$decryptedSampleMessage" != "Hi server, please encrypt me and send to client!" ]; then
   echo "Server symmetric encryption using the exchanged master-key has failed."
   exit 1
 else
