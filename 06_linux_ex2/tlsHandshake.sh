@@ -13,7 +13,9 @@ masterKey=$(openssl smime -encrypt -aes-256-cbc -in masterkey.txt -outform DER c
 curl -# -o 'response_message.json' -H "Content-Type: application/json" -d '{"sessionID": "'$sessionId'","masterKey": "'$masterKey'","sampleMessage": "Hi server, please encrypt me and send to client!"}' -X POST http://16.16.53.16:8080/k>
 jq -r '.encryptedSampleMessage' response_message.json | base64 -d > encSampleMsgReady.txt
 decryptedSampleMessage=$(openssl enc -d -aes-256-cbc -pbkdf2 -kfile masterkey.txt -in encSampleMsgReady.txt)
+echo '------------------------'
 echo $decryptedSampleMessage
+echo '------------------------'
 if [ "$decryptedSampleMessage" != 'Hi server, please encrypt me and send to client!' ]; then
   echo "Server symmetric encryption using the exchanged master-key has failed."
   exit 1
