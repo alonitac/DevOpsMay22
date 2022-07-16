@@ -1,4 +1,4 @@
-sudo apt install jq
+#!/bin/bash
 
 curl -X POST -d '{"clientVersion": "3.2", "message": "Client Hello"}' -H 'Content-Type: application/json' http://16.16.53.16:8080/clienthello | jq -r '.serverVersion' > serverVersion
 curl -X POST -d '{"clientVersion": "3.2", "message": "Client Hello"}' -H 'Content-Type: application/json' http://16.16.53.16:8080/clienthello | jq -r '.sessionID' > sessionID
