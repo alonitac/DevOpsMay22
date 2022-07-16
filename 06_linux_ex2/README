@@ -1,2 +1,13 @@
 
+Q1 : nohup
+Q2 : false
+Q3 : ps
+Q4 : CTRL+C
+Q5 : CTRL+Z
+Q6 : sleep 10
+Q7 : kill 4846
+Q8 : kill -9 4846
+Q9 : kill -CHLD 4828
+Q10 : k
+Q11 : The program ignores the SIGINT signal.
 
