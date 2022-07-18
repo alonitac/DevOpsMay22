@@ -1,7 +1,7 @@
+set -e
+
 # run the server locally
-cd tls_webserver
-python3 app.py $1 &
-cd ..
+python tls_webserver/app.py $1 &
 
 # let the server up and running
 sleep 5
@@ -10,50 +10,33 @@ sleep 5
 sed -i "s/16\.16\.53\.16/127\.0\.0\.1/g" tlsHandshake.sh
 
 # run student solution
-bash -x tlsHandshake.sh > output
+OUTPUT=$(bash tlsHandshake.sh)
 SOL_EXIT=$?
 
 # get results
-curl 127.0.0.1:8080/flush &> /dev/null
-
-# kill the server
-kill -9 $! &> /dev/null
-echo
-echo
-
-set -e
+curl 127.0.0.1:8080/flush
+RESPONSE=$(cat secrets.json)
 
 # solution test cases
 if [[ $1 = "eve" ]]
 then
+  grep -q "is invalid" "$OUTPUT"
 
-  if [[ "$SOL_EXIT" -ne 1 ]] || ! grep -q 'is invalid' output
+  if [[ "$SOL_EXIT" -ne 1 || $? -eq 1 ]]
   then
     echo "Expected exit code 1 and 'Server Certificate is invalid.' to be printed to stdout since client has responded with Eve certificate."
     exit 1
   fi
 
-  echo "Well Done! you've passed Eve certificate tests"
-
-elif [[ $1 = "bad-msg" ]]
-then
-
-    if [[ "$SOL_EXIT" -ne 1 ]] || ! grep -q 'symmetric .* has failed' output
-    then
-      echo "Expected exit code 1 and 'Server symmetric encryption using the exchanged master-key has failed.' to be printed to stdout because the server encrypted the wrong client test message."
-      exit 1
-    fi
-
-      echo "Well Done! you've passed bad client message encryption tests"
 
 else
 
-  L=$(jq length tls_webserver/secrets.json)
-  if [ "$L" != 1 ]; then
-      echo "Expected server to get Client Hello message only once, but called $L"
+    if ! grep -q '71444da2-4e2d-4a32-8442-393eaaf593f4' "$RESPONSE"
+    then
+      echo ""
       exit 1
-  fi
-
-  echo "Well Done! you've passed full handshake tests"
+    fi
 
 fi
+
+echo "Well Done! you've passed all tests"
