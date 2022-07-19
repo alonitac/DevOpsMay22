@@ -1,3 +1,4 @@
+#!/bin/bash
 ##Use curl to send the following Client Hello HTTP request to the server:
 curl -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello
 
