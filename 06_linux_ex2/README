@@ -27,7 +27,7 @@ kill -9 4846
 
 (Q9) Which of the following would send a SIGCHLD (signal number 17) to the ssh-agent process?
 
-kill -SIGCHLD 4828
+kill -CHLD 4828
 
 (Q10) Which key pressed within the top command allows the user to send a signal to a process?
 k
