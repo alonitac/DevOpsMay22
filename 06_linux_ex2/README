@@ -9,6 +9,10 @@ Processes handling:
 (Q7): b kill 4846
 (Q8): a kill -9 4846
 (Q9): c kill -CHLD 4828
-(Q9): d k
+(Q10): d k
+(Q11): b The program has implemented a custom signal handler for the SIGINT signal
+
+Process states:
+
 
 
