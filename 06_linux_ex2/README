@@ -12,7 +12,6 @@ Processes handling:
 (Q10): d k
 (Q11): b The program has implemented a custom signal handler for the SIGINT signal
 
-Process states:
 
 
 
