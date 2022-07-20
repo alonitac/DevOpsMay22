@@ -90,9 +90,7 @@ wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
 #cat cert.pem
 #cat cert-ca-aws.pem
 #openssl verify -CAfile cert-ca-aws.pem cert.pem
-ls cert.pem
-ls cert-ca.aws.pem
-ls cert-ca.aws.pem.1
+
 ## insert openssl result to $VERIFICATION_RESULT
 VERIFICATION_RESULT=$(openssl verify -CAfile cert-ca-aws.pem cert.pem)
 echo $VERIFICATION_RESULT
