@@ -16,7 +16,7 @@ if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
 fi
 openssl rand -base64 32 > masterKey.txt
 MASTER_KEY=$(openssl smime -encrypt -aes-256-cbc -in masterKey.txt -outform DER cert.pem | base64 -w 0)
-
+#encryptedSampleMessage
 
 
 
