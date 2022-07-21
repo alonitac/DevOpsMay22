@@ -21,4 +21,5 @@ MASTER_KEY=$(openssl smime -encrypt -aes-256-cbc -in masterKey.txt -outform DER 
 
 curl -X POST -H "Content-Type: application/json" -d '{"sessionID": "'$SESSION_ID'", "masterKey": "'$MASTER_KEY'", "sampleMessage": "Hi server, please encrypt me and send to client!" }' -o keyexchange.json http://16.16.53.16:8080/keyexchange
 
+SESSION_ID=$(cat keyexchange.json | jq -r '.sessionID')
 
