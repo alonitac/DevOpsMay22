@@ -1,2 +1,14 @@
+## Processes handling
 
+q1 nohup
+q2 true
+q3 jobs
+q4 ctrl c
+q5 ctrl z
+q6 sleep 10 &
+q7 kill TERM xscreensaver
+q8 kill -9 4846
+q9 All of the above
+q10 none of the above
+q11 The program has implemented a custom signal handler for the SIGINT signal.
 
