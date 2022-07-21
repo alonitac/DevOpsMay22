@@ -2,9 +2,10 @@
 echo welcome to Uri bashbash script lets start
 
 echo "Connecting to the server"
-curl  -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello | jq -r '.serverCert' > cert.pem
-curl  -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello | jq -r '.sessionID' > ssid.txt
-SESSION_ID=$(cat ssid.txt)
+SERVER=$(curl -s -X POST -H "Content-Type: application/json" -d '{"clientVersion": "3.2","message": "Client Hello"}' http://16.16.53.16:8080/clienthello)
+
+SESSION_ID=$(echo $SERVER | jq -r '.sessionID')
+echo $SERVER | jq -r '.serverCert' > cert.pem
 echo "Downloadning files...."
 sleep 5
 wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
