@@ -13,7 +13,8 @@ wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
 
 ## check certification
 ## insert openssl result to $VERIFICATION_RESULT
-VERIFICATION_RESULT=$(openssl verify -CAfile cert-ca-aws.pem cert.pem)
+#VERIFICATION_RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem)
+ VERIFICATION_RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem )
 echo $VERIFICATION_RESULT
 
 ## check if $VERIFICATION_RESULT result is correct
