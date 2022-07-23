@@ -6,7 +6,7 @@ Q2 - False
 
 Q3 - jobs
 
-Q4 - CTRL + C = graceful termination ask the process to finish everything he need to finish (closing db and other important tasks) and than he will stop.
+Q4 - CTRL + C = graceful termination ask the process to finish everything he need to finish (closing db and other important tasks) and than he will terminate.
 
 Q5 - CTRL + Z = Suspend/Stop the process
 
