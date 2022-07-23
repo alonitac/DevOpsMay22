@@ -1,2 +1,13 @@
+Q1- B (nohup)
+Q2- B (false)
+Q3- B (jobs)
+Q4- B (CTRL+C)
+Q5- A (CTRL+Z)
+Q6- D (sleep 10)
+Q7- B (kill 4846)
+Q8- A (kill -9 4846)
+Q9- C (kill -CHLD 4828)
+Q10- D (k)
+Q11- B (The program has implemented a custom signal handler for the SIGINT signal)
 
 
