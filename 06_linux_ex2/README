@@ -5,3 +5,4 @@ q2) False
 q3) jobs
 q4) CTRL+C
 q5) CTRL+Z
+q6) fg sleep 10
