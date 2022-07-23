@@ -1,2 +1,23 @@
+Processes handling
 
+Q1 - nohup
 
+Q2 - False
+
+Q3 - jobs
+
+Q4 - CTRL + C = graceful termination ask the process to finish everything he need to finish (closing db and other important tasks) and than he will stop.
+
+Q5 - CTRL + Z = Suspend/Stop the process
+
+Q6 - sleep 10
+
+Q7 - None of the above
+
+Q8 - kill -9 4846
+
+Q9 - All of the above
+
+Q10 - K
+
+Q11 - The program has implemented a custom signal handler for the SIGINT signal.

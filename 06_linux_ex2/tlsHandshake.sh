@@ -1,10 +1,10 @@
 #!/bin/bash
 
-response=$(curl -X POST -H "Content-Type: application/json" -d '{"clientVersion": "3.2","message": "Client Hello"}' http://16.16.53.16:8080/clienthello)
+RESPONSE=$(curl -X POST -H "Content-Type: application/json" -d '{"clientVersion": "3.2","message": "Client Hello"}' http://16.16.53.16:8080/clienthello)
 
-SESSION_ID=$(jq -r '.sessionID' <<< "$response")
+SESSION_ID=$(jq -r '.sessionID' <<< "$RESPONSE")
 
-echo $response | jq -r '.serverCert' > cert.pem
+echo $RESPONSE | jq -r '.serverCert' > cert.pem
 
 wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
 
