@@ -1,2 +1,14 @@
+Processes handling
 
+Q1 - a - nohup
+Q2 - b - false
+Q3 - b -jobs
+Q4 - b -Ctrl+C
+Q5 - a- Ctrl+Z
+Q6 - a - sleep 10
+Q7 - b- kill 4846
+Q8 - a - kill -9 4846
+Q9 - c- kill -CHLD 4828
+Q10- d - k
+Q11 The program ignores the SIGINT signal.
 
