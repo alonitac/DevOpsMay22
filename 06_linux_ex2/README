@@ -6,3 +6,5 @@ q3) jobs
 q4) CTRL+C
 q5) CTRL+Z
 q6) fg sleep 10
+q7) kill 4846
+q8)kill -9 4846
