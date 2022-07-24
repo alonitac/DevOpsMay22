@@ -1,2 +1,37 @@
+**(Q1)** A user started a process and logged out from the terminal.
+Which command he used if the process still running in the background:
+* bg
 
+**(Q2)** The 'kill' command always terminates a process.
+* False
+
+**(Q3)** Which command could be used to know how many processes are running in the background terminal session?
+* process or ps
+<Type the ps aux command to see all running process in Ubuntu.
+Alternatively, you can issue the top command to view running process in Ubuntu.>
+
+**(Q4)** Terminate a process
+* CTRL+c
+
+**(Q5)** Stop a process
+* CTRL+z
+
+**(Q6)** Run the 'sleep 10' command as a foreground process
+* sleep 10
+
+**(Q7)** Which of the following commands would deliver a SIGTERM to the `xscreensaver` process?
+* kill xscreensaver
+
+**(Q8)** Which of the following would deliver a SIGKILL to the `xscreensaver` command?
+kill -KILL xscreensaver (kill -9 xscreensaver)
+
+**(Q9)** Which of the following would send a SIGCHLD (signal number 17) to the `ssh-agent` process?
+* All of the above
+
+**(Q10)** Which key pressed within the 'top' command allows the user to send a signal to a process?
+* k
+
+**(Q11 - easy 5 points bonus)** Open a new terminal session and type the command `python`. Then send a SIGINT signal using your keyboard. What best describes how the python process responds to the SIGINT signal? (you can exit this process by typing `exit()` in the python console)
+(kill -2, kill -INT)
+* The program ignores the SIGINT signal.
 

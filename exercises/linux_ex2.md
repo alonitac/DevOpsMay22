@@ -260,9 +260,7 @@ Given the following output
 **20 points** 
 
 Generally speaking, in Linux system, two different processes cannot write to the same file concurrently (exactly at the same moment). Each process needs to obtain an exclusive write lock for the file. That implies that all the other processes who willing to write to this file will have to wait while one process is writing to it. The more I/O intensive processes you have, the longer the wait time. 
-
 In this question we will create processes which are competing on the same resource (same file), and see how some of them are changing their state from Running to Waiting. 
-
 Use `nano` to create the following script, store it as `~/write_to_file_sequentially.sh`, and make it
 executable.
 
