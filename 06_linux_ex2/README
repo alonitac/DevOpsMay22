@@ -5,6 +5,9 @@ q2) False
 q3) jobs
 q4) CTRL+C
 q5) CTRL+Z
-q6) fg sleep 10
+q6) sleep 10
 q7) kill 4846
-q8)kill -9 4846
+q8) kill -9 4846
+q9) kill -CHLD 4828
+q10) k
+q11) The Program ignores the SIGINT signal.
