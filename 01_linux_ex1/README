@@ -1,5 +1,5 @@
 814c5723c21e7e90a3eae36c8df3c513
-
+@FIXME you explained the stace command but did not provide a brief description of what the program does , Broken Symlink you explained the problem but you didn't provide the code to solve it
 Kernel System Calls
 -------------------
 Strace logs all the system calls done by a program when it is run.
