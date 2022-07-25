@@ -2,23 +2,23 @@
 
 Q1-nohup
 
-Q2- True
+Q2- False
 
 Q3-jobs
 
-Q4-CTRL+z
+Q4-CTRL+c
 
-Q5-CTRL+c
+Q5-CTRL+z
 
-Q6-sleep 10 &
+Q6-sleep 10
 
 
-Q7-kill TERM xscreensaver
+Q7-None
 
 
 Q8-kill -9 4846
 
-Q9-All of the above
+Q9-kill -CHLD 4828
 
-Q10- s
+Q10- K
 
