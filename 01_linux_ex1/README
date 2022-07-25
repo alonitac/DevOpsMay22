@@ -1,6 +1,6 @@
 814c5723c21e7e90a3eae36c8df3c513
 
-
+@FIXME Great work missing 2 sub answers
 Kernel System Calls
 -------------------
 The simplest explanation for what is happening in the code is that when I write a certain command in the terminal, a process of downloading a program file called "whatIdo" occurs.
