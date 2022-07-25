@@ -16,7 +16,7 @@ Q7 - None of the above
 
 Q8 - kill -9 4846
 
-Q9 - All of the above
+Q9 - kill -CHLD 4828
 
 Q10 - K
 
