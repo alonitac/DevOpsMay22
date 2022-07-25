@@ -1,6 +1,6 @@
 814c5723c21e7e90a3eae36c8df3c513
 
-
+@FIXME you explained the stace command but you didn't supply a brief description of what the program does
 Kernel System Calls
 -------------------
 The starce command traces all system calls made by the command.
