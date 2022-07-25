@@ -11,11 +11,11 @@ wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
 
 verificationResult=$(openssl verify -CAfile cert-ca-aws.pem cert.pem)
 cert_pem="cert.pem: OK"
-if ![[ ${verificationResult} == ${cert_pem} ]]; then
-  echo "Server Certificate is invalid."
-  exit 1
-fi
 
+if [[ ! ${verificationResult} == '${cert_pem}' ]]; then
+ echo "Server Certificate is invalid.";
+ exit 1;
+fi
 openssl rand -out masterKey.txt -base64 32
 master_Key=$(openssl smime -encrypt -aes-256-cbc -in masterKey.txt -outform DER cert.pem | base64 -w 0)
 
@@ -23,9 +23,9 @@ curl -# -o 'response_message.json' -H 'Content-Type: application/json' -d '{"ses
 
 DECRYPTED_SAMPLE_MESSAGE=$(openssl enc -d -aes-256-cbc -pbkdf2 -k "$master_Key" -in encSampleMsgReady.txt)
 
-if ![[ ${DECRYPTED_SAMPLE_MESSAGE} == ${sampleMassage} ]]; then
-  echo "Server symmetric encryption using the exchanged master-key has failed."
-  exit 1
+if [[ ! ${DECRYPTED_SAMPLE_MESSAGE} == '${sampleMassage}' ]]; then
+  echo "Server symmetric encryption using the exchanged master-key has failed.";
+  exit 1;
 else
   echo "Client-Server TLS handshake has been completed successfully"
 fi
