@@ -1,7 +1,7 @@
 814c5723c21e7e90a3eae36c8df3c513
 
-
-Kernel System Calls
+@FIXME you explained the meaning of the starce command but not provided a description  of what the script did ...
+Kernel System Calls  -15
 -------------------
 The starce command records any syscall made by the command such as :
 open file and directories,create new dir , print directories content, inspection , write command , show errors.
@@ -17,7 +17,7 @@ Broken Symlink
   ls -la
 
 
-Binary Numbers
+Binary Numbers -5
 --------------
 1. 111 = (1*2**2)+(1*2**1)+(1*2**0) = 7
    100 = (1*2**2)+(0*2**1)+(0*2**0) = 4
