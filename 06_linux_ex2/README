@@ -1,4 +1,7 @@
 Q1. nohup
 Q2.True
-Q3.Jobs
+Q3.I guess it "JOBS" but it doesnt work for me.
+Q4.CTRL + C
+Q5.fg sleep 10
+Q6.None of them,the answer is $ kill -SIGTERM "PID"
 
