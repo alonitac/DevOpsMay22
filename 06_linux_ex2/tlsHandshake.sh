@@ -14,17 +14,27 @@ jq -r '.serverCert' result.json > cert.pem
 
 wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
 
-## verify the certificate
+## check certification
 
-openssl verify -CAfile cert-ca-aws.pem cert.pem
+VERIFICATION_RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem )
 
-## create file masterKey.txt
-
-touch masterKey.txt
+if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
+  echo "Server Certificate is invalid."
+  exit 1
+fi
 
 ## generated a 32 random bytes base64 string
 
-openssl smime -encrypt -aes-256-cbc -in masterKey.txt -outform DER cert.pem | base64 -w 0 > masterKey.txt
+openssl rand -out masterKey.txt -base64 32
 
-#
+## saving the master cert to MASTER_KEY
+
+MASTER_KEY=$(openssl smime -encrypt -aes-256-cbc -in masterKey.txt -outform DER cert.pem | base64 -w 0)
+
+##
+
+curl -s --header "Content-Type: application/json" -d '{"sessionID": "'"$SESSION_ID"'","masterKey": "'"$MASTER_KEY"'", "sampleMessage": "Hi server, please encrypt me and send to client!"}' http://16.16.53.16:8080/keyexchange | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
+{
+    "sessionID": "'$SESSION_ID'","masterKey": "'$MASTER_KEY'", "sampleMessage": "Hi server, please encrypt me and send to client!"
+}
 

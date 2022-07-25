@@ -102,7 +102,6 @@ cert.pem: OK
 In your tlsHandshake.sh file, use this snippet to exit the program if the certificate validation failed. Make sure you understand the code.
 ```shell
 VERIFICATION_RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem )
-
 if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
   echo "Server Certificate is invalid."
   exit 1
