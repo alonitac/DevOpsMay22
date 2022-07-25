@@ -44,7 +44,13 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    space=' '
+    return_string = ""
+    for i,word in enumerate(words):
+        if i != (len(words)-1):
+            return_string = return_string + word + space
+        else: return_string += word
+    return return_string
 
 
 def reverse_words_concatenation(words):
@@ -59,7 +65,7 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    return words_concatenation(list(reversed(words)))
 
 
 def is_unique_string(some_str):
