@@ -193,7 +193,7 @@ def bad_average(a, b, c):
 
     :return:
     """
-    return (a + b + c) / 3
+    return int((a + b + c) / 3)
 
 
 def best_student(grades):
@@ -289,7 +289,11 @@ def seven_boom(n):
     :param n: int. The last number for count for a 7-boom play
     :return: list of integers
     """
-    return None
+    booms = []
+    for i in range(1, n):
+        if '7' in str(i) or i % 7 == 0:
+            booms.append(i)
+    return booms
 
 
 def caesar_cipher(str_to_encrypt):
