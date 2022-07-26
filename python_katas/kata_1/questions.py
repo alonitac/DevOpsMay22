@@ -82,7 +82,8 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    return None
+
+    return len(set(some_str)) < len(some_str)
 
 
 def list_diff(elements):
@@ -100,7 +101,13 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
-    return None
+    diff = []
+    for i, element in enumerate(elements):
+        if i == 0:
+            diff.append(None)
+        else:
+            diff.append(element - elements[i - 1])
+    return diff
 
 
 def prime_number(num):
@@ -113,7 +120,14 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    return None
+    prime = False
+    if num == 1: return prime
+    else:
+        for i in range(2,num):
+            if num%i == 0:
+                prime = True
+                break
+    return prime
 
 
 def palindrome_num(num):
@@ -129,7 +143,7 @@ def palindrome_num(num):
     :param num: int
     :return: bool. True is palindrome, else False
     """
-    return None
+    return list(str(num)) == list(reversed(str(num)))
 
 
 def pair_match(men, women):
