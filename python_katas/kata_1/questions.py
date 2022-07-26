@@ -269,7 +269,7 @@ def merge_dicts(dict1, dict2):
     :param dict2:
     :return:
     """
-    return dict1
+    return dict1|dict2
 
 
 def seven_boom(n):
