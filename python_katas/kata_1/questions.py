@@ -44,12 +44,13 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    space=' '
+    space = ' '
     return_string = ""
-    for i,word in enumerate(words):
-        if i != (len(words)-1):
+    for i, word in enumerate(words):
+        if i != (len(words) - 1):
             return_string = return_string + word + space
-        else: return_string += word
+        else:
+            return_string += word
     return return_string
 
 
@@ -121,10 +122,11 @@ def prime_number(num):
     :return: bool. True if prime, else False
     """
     prime = False
-    if num == 1: return prime
+    if num == 1:
+        return prime
     else:
-        for i in range(2,num):
-            if num%i == 0:
+        for i in range(2, num):
+            if num % i == 0:
                 prime = True
                 break
     return prime
@@ -238,7 +240,16 @@ def print_dict_as_table(some_dict):
     :param some_dict:
     :return:
     """
-    return None
+    sign = '-'
+    white_space = ' '
+    number_signs = 13
+    max_number_digits_value = 3
+    out = ('\033[3m' + 'Key ' + white_space * (
+                number_signs - len('Key') - len('Value') - 2) + ' Value\n' + sign * number_signs + '\n')
+
+    for key, value in some_dict.items():
+        out += key.strip() + (white_space * (number_signs - len(key) - max_number_digits_value - 2)) + str(value) + '\n'
+    return out
 
 
 def merge_dicts(dict1, dict2):
@@ -306,11 +317,10 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    return sum(list(map(int,digits_str)))
+    return sum(list(map(int, digits_str)))
 
 
 if __name__ == '__main__':
-
     print('\nsum_of_element:\n--------------------')
     print(sum_of_element([1, 2, 3, 4, 5, 6]))
 
@@ -384,4 +394,3 @@ if __name__ == '__main__':
 
     print('\nsum_of_digits:\n--------------------')
     print(sum_of_digits('1223432'))
-
