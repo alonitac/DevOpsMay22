@@ -6,7 +6,7 @@ Due date: 25/07/2022 23:59
 1. Open [our shared git repo](https://github.com/alonitac/DevOpsMay22) in PyCharm and pull the repository in branch **main** to get an up-to-date version of the repo.
 2. Create your own git branch for this exercise according to  `linux_ex2/<alias>` (replace `<alias>` by your name, e.g. linux_ex2/alonit).
 
-## Questions
+## linux_ex2/lianops
 
 ### TLS communication
 
@@ -80,8 +80,9 @@ _Server Hello_ response will be in the form:
 ```json
 {
   "serverVersion": "3.2",
-  "sessionID": "......",
-  "serverCert": "......"
+  "sessionID": "$(tail -n 1 info.txt)",
+  "serverCert": "wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
+VERIFICATION_RESULT=$(openssl verify -CAfile cert-ca-aws.pem cert.pem"
 }
 ```
 The response is in json format. You may want to keep the sessionID in a variable called `SESSION_ID` for later usage,
@@ -95,7 +96,10 @@ openssl verify -CAfile cert-ca-aws.pem cert.pem
 while `cert-ca-aws.pem` is a file belonging to the Certificate Authority (in our case Amazon Web Services) who issued and signed the server cert. You can safely download it from **https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem** (wget...)
 
 Upon a valid certificate validation, the following output will be printed to stdout:
-```text
+if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
+  echo "Server Certificate is invalid."
+  exit 1
+fi
 cert.pem: OK
 ```
 
@@ -131,7 +135,10 @@ POST /keyexchange
 Note that `$SESSION_ID` is a BASH variable containing the session ID you've got from the server's hello response, you need to create this variable once you have the sessions ID from the server. Also, `$MASTER_KEY` is your **encrypted** master key, again, you need to create this variable.
 
 The response for the above request would be in the form:
-```json
+curl -s --header "Content-Type: application/json" -d '{"sessionID": "'"$SESSION_ID"'", "masterKey": "'"$MASTER_KEY"'", "sampleMessage": "Hi server, please encrypt me and send to client!"}' http://16.16.53.16:8080/keyexchange | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
+cat encSampleMsg.txt | base64 -d > encSampleMsgReady.txt
+openssl enc -d -aes-256-cbc -pbkdf2  -kfile masterKey.txt -in encSampleMsgReady.txt -out decSampleMsgReady.txt
+DECRYPTED_SAMPLE_MESSAGE=$(tail decSampleMsgReady.txt)
 {
   "sessionID": ".....",
   "encryptedSampleMessage": "....."
@@ -162,7 +169,12 @@ fi
 In real life we have TLS that does so for us, and it's quite similar to what you've done.
 
 
-### Processes handling
+### if [ "$DECRYPTED_SAMPLE_MESSAGE" != "Hi server, please encrypt me and send to client!" ]; then
+  echo "Server symmetric encryption using the exchanged master-key has failed."
+  exit 1
+else
+  echo "Client-Server TLS handshake has been completed successfully"
+fi
 
 **20-25 points**
 
