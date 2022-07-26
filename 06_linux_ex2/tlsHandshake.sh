@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #curl -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello >> result.json
-
-curl --header "Content-Type: application/json" -d '{"clientVersion":"3.2","message":"Client Hello"}' http://16.16.53.16:8080/clienthello >> result.json
+curl -X POST -o result.json --header "Content-Type: application/json" -d '{"clientVersion":"3.2","message":"Client Hello"}' http://16.16.53.16:8080/clienthello >> result.json
+#curl --header "Content-Type: application/json" -d '{"clientVersion":"3.2","message":"Client Hello"}' http://16.16.53.16:8080/clienthello >> result.json
 SESSION_ID=$(jq -r '.sessionID' result.json)
 
 jq -r '.serverCert' result.json > cert.pem
