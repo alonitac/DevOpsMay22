@@ -308,7 +308,20 @@ def caesar_cipher(str_to_encrypt):
 
     :return:
     """
-    return None
+    import string
+    set = string.ascii_lowercase
+    set += 'a' + 'b' + 'c'
+    str_to_encrypt = 'Fly Me To The Moon'
+    encrypted = ''
+    for char in str_to_encrypt:
+        if char == ' ':
+            encrypted += char
+            continue
+        if char.isupper():
+            encrypted += set[set.index(char.lower()) + 3].upper()
+        else:
+            encrypted += set[set.index(char.lower()) + 3]
+    return encrypted
 
 
 def sum_of_digits(digits_str):
