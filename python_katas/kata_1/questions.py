@@ -306,7 +306,7 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    return None
+    return sum(list(map(int,digits_str)))
 
 
 if __name__ == '__main__':
