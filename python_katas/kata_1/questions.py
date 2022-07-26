@@ -211,7 +211,7 @@ def best_student(grades):
     :param grades: dict of name -> grade mapping
     :return: str. some key from the dict
     """
-    return None
+    return max(grades, key=grades.get)
 
 
 def print_dict_as_table(some_dict):
