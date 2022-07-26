@@ -1,2 +1,12 @@
-
+Q1 - nohup
+Q2 - true
+Q3 - jobs
+Q4 - Ctrl+c
+Q5 - Ctrl+z
+Q6 - fg sleep 10
+Q7 - kill 4846
+Q8 - kill -9 4846
+Q9 - kill -17 ssh-agent
+Q10- k
+Q11 - The program has implemented a custom signal handler for the SIGINT signal.
 
