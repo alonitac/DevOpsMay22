@@ -9,7 +9,8 @@ Q6 sleep 10 &
 Q7 kill TERM xscreensaver
 Q8 kill -9 4846
 Q9 All of the above
-
+q10 none of the above
+q11 The program ignores the SIGINT signal.
 
 
 
