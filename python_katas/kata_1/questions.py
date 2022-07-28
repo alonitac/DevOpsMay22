@@ -93,7 +93,6 @@ def is_unique_string(some_str):
     return len(set(some_str)) == len(some_str)
 
 
-
 def list_diff(elements):
     """
     1 Kata
@@ -109,14 +108,18 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
-    if len(elements) == 0 or type(elements) != int:
+    if len(elements) == 0:
         return elements
 
-    list = [None]
+    list_to_return = [None]
+    number = elements[1]
     for num in elements:
+        num -= number
+        list_to_return.append(num)
+        # if number < len(elements):
+        number += 1
 
-
-    return None
+    return list_to_return
 
 
 def prime_number(num):
