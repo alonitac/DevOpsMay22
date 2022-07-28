@@ -114,14 +114,17 @@ def list_diff(elements):
     x = []
     last_num = 0
     length = len(elements)
-    if not x:
-        last_num += elements[0]
-        x.append(None)
-        for index in range(1, length):
-            i = elements[index]
-            x.append(i - last_num)
-            last_num = i
-        return x
+    if len(elements) == 0:
+        return []
+    else:
+        if not x:
+            last_num += elements[0]
+            x.append(None)
+            for index in range(1, length):
+                i = elements[index]
+                x.append(i - last_num)
+                last_num = i
+            return x
 
 
 def prime_number(num):
@@ -142,6 +145,8 @@ def prime_number(num):
                 break
         else:
             return f"{num}, is a prime number"
+    else:
+        return f"{num}, is lower from 1 , please enter a higher number"
 
 
 def palindrome_num(num):

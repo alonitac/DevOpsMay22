@@ -82,6 +82,7 @@ class TestIsUniqueString(unittest.TestCase):
         # your code here
         some_str = 12345
         self.assertEqual(questions.is_unique_string(some_str), "Please enter a valid input(strings only)")
+
 class TestListDiff(unittest.TestCase):
     """
     1 Katas
@@ -89,8 +90,18 @@ class TestListDiff(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        pass
+        lst = [1, 2, 3, 4, 7, 11]
+        self.assertEqual(questions.list_diff(lst), [None, 1, 1, 1, 3, 4])
 
+    def test_sample2(self):
+        # your code here
+        lst = [1, 5, 0, 4, 1, 1, 1]
+        self.assertEqual(questions.list_diff(lst), [None, 4, -5, 4, -3, 0, 0])
+
+    def test_sample3(self):
+        # your code here
+        lst = []
+        self.assertEqual(questions.list_diff(lst),[])
 
 class TestPrimeNumber(unittest.TestCase):
     """
@@ -99,7 +110,8 @@ class TestPrimeNumber(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        pass
+        num = 0
+        self.assertEqual(questions.prime_number(num), f"{num}, is lower from 1 , please enter a higher number")
 
 
 class TestPalindromeNum(unittest.TestCase):
