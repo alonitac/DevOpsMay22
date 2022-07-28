@@ -28,7 +28,13 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-    return None
+    if word.endswith("ing"):
+        word += "ly"
+
+    elif len(word) > 3:
+        word += "ing"
+
+    return word
 
 
 def words_concatenation(words):
@@ -43,7 +49,12 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    concatenated_word = ''
+    for word in words:
+        concatenated_word += word
+        concatenated_word += ' '
+
+    return concatenated_word
 
 
 def reverse_words_concatenation(words):
@@ -58,7 +69,11 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    words_reversed = ''
+    for word in reversed(words):
+        words_reversed += word
+        words_reversed += ' '
+    return words_reversed
 
 
 def is_unique_string(some_str):
@@ -75,7 +90,8 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    return None
+    return len(set(some_str)) == len(some_str)
+
 
 
 def list_diff(elements):
@@ -93,6 +109,13 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
+    if len(elements) == 0 or type(elements) != int:
+        return elements
+
+    list = [None]
+    for num in elements:
+
+
     return None
 
 
@@ -289,7 +312,6 @@ def sum_of_digits(digits_str):
 
 
 if __name__ == '__main__':
-
     print('\nsum_of_element:\n--------------------')
     print(sum_of_element([1, 2, 3, 4, 5, 6]))
 
@@ -363,4 +385,3 @@ if __name__ == '__main__':
 
     print('\nsum_of_digits:\n--------------------')
     print(sum_of_digits('1223432'))
-
