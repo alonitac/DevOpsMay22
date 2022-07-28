@@ -32,8 +32,18 @@ class TestWordsConcatenation(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        pass
+        lst =['hey', 'how', 'are', 'you', '?']
+        self.assertEqual(questions.words_concatenation(lst), "hey how are you ?")
 
+    def test_sample2(self):
+        # your code here
+        lst =['im', 'number', '1', 'in', 'devops']
+        self.assertEqual(questions.words_concatenation(lst), "im number 1 in devops")
+
+    def test_sample3(self):
+        # your code here
+        lst =[]
+        self.assertEqual(questions.words_concatenation(lst), "")
 
 class TestReverseWordsConcatenation(unittest.TestCase):
     """
@@ -42,7 +52,17 @@ class TestReverseWordsConcatenation(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        pass
+        lst = ['take', 'me', 'home']
+        self.assertEqual(questions.reverse_words_concatenation(lst), "home me take")
+
+    def test_sample2(self):
+        # your code here
+        lst = []
+        self.assertEqual(questions.reverse_words_concatenation(lst), "")
+    def test_sample3(self):
+        # your code here
+        lst = ['1','2','3','4','5']
+        self.assertEqual(questions.reverse_words_concatenation(lst), '5 4 3 2 1')
 
 
 class TestIsUniqueString(unittest.TestCase):
@@ -52,9 +72,16 @@ class TestIsUniqueString(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        pass
-
-
+        some_str = ''
+        self.assertEqual(questions.is_unique_string(some_str), True)
+    def test_sample2(self):
+        # your code here
+        some_str = '123456'
+        self.assertEqual(questions.is_unique_string(some_str), True)
+    def test_sample3(self):
+        # your code here
+        some_str = 12345
+        self.assertEqual(questions.is_unique_string(some_str), "Please enter a valid input(strings only)")
 class TestListDiff(unittest.TestCase):
     """
     1 Katas

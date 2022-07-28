@@ -84,13 +84,16 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    x = []
-    for i in some_str:
-        if i in x:
-            return False
-        else:
-            x.append(i)
-    return True
+    try:
+        x = []
+        for i in some_str:
+            if i in x:
+                return False
+            else:
+                x.append(i)
+        return True
+    except:
+        return "Please enter a valid input(strings only)"
 
 
 def list_diff(elements):
@@ -394,8 +397,8 @@ if __name__ == '__main__':
     print(words_concatenation(['take', 'me', 'home']))
 
     print('\nreverse_words_concatenation:\n--------------------')
-    print(reverse_words_concatenation(['take', 'me', 'home']))
-
+    print(reverse_words_concatenation(['take','me','home']))
+    print(reverse_words_concatenation(['1','2','3']))
     print('\nis_unique_string:\n--------------------')
     print(is_unique_string('aasdssdsederd'))
     print(is_unique_string('12345tgbnh'))
