@@ -24,6 +24,8 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
+    if word is None:
+        return 'The string is empty'
     if len(word) >= 3:
         if not word.endswith('ing'):
             word += 'ing'
@@ -44,9 +46,14 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
+    if words is None:
+        return 'The string is empty'
     space = ' '
     return_string = ""
     for i, word in enumerate(words):
+        if word is None:
+            word=words[i] = ''
+        elif: word=words[i]=str(word)
         if i != (len(words) - 1):
             return_string = return_string + word + space
         else:
