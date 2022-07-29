@@ -7,9 +7,9 @@ jq -r '.serverCert,.sessionID' > combined.txt
 sed -n '1,34 p' combined.txt > cert.pem
 SESSION_ID=$(tail -n 1 combined.txt)
 wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
-VERIFICATION_RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem )
+RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem )
 
-if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
+if [ "$RESULT" != "cert.pem: OK" ]; then
   echo "Server Certificate is invalid."
   exit 1
 fi
