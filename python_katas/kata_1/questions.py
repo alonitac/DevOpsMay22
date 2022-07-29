@@ -183,11 +183,11 @@ def pair_match(men, women):
     :return: tuple (men_name, women_name) such their age absolute difference is the minimal
     """
     diff = abs(list(women.values())[0] - list(men.values())[0])
-    out = {list(men.keys())[0], list(women.keys())[0]}
+    out = (list(men.keys())[0], list(women.keys())[0])
     for women_key, women_value in women.items():
         for men_key, men_value in men.items():
             if abs(men_value - women_value) < diff:
-                out = {men_key, women_key}
+                out = (men_key, women_key)
     return out
 
 def bad_average(a, b, c):
@@ -397,6 +397,16 @@ if __name__ == '__main__':
             "Kim": 26
         }
     ))
+    print(type(pair_match(
+        {
+            "John": 20,
+            "Abraham": 45
+        },
+        {
+            "July": 18,
+            "Kim": 26
+        }
+    )))
 
     print('\nbad_average:\n--------------------')
     print(bad_average(1, 2, 3))
