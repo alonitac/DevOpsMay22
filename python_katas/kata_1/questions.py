@@ -51,9 +51,10 @@ def words_concatenation(words):
     space = ' '
     return_string = ""
     for i, word in enumerate(words):
-        if word is None:
-            word=words[i] = ''
-        elif: word=words[i]=str(word)
+        try:
+            word = words[i] = str(word)
+        except:
+            word = words[i] = ''
         if i != (len(words) - 1):
             return_string = return_string + word + space
         else:
