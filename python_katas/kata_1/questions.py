@@ -182,14 +182,24 @@ def pair_match(men, women):
     :param women: dict mapping name -> age
     :return: tuple (men_name, women_name) such their age absolute difference is the minimal
     """
+    for value in list(men.values()):
+        try:
+            men[list(men.keys())[list(men.values()).index(value)]] = int(value)
+        except:
+            men[list(men.keys())[list(men.values()).index(value)]] = 0
+    for value in list(women.values()):
+        try:
+            women[list(women.keys())[list(women.values()).index(value)]] = int(value)
+        except:
+            women[list(women.keys())[list(women.values()).index(value)]] = 0
     diff = abs(list(women.values())[0] - list(men.values())[0])
     out = (list(men.keys())[0], list(women.keys())[0])
     for women_key, women_value in women.items():
         for men_key, men_value in men.items():
             if abs(men_value - women_value) < diff:
                 out = (men_key, women_key)
-    return out
 
+    return out
 def bad_average(a, b, c):
     """
     1 Kata
@@ -389,8 +399,8 @@ if __name__ == '__main__':
     print('\npair_match:\n--------------------')
     print(pair_match(
         {
-            "John": 20,
-            "Abraham": 45
+            "John": '20',
+            "Abraham": '100'
         },
         {
             "July": 18,
