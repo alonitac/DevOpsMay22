@@ -200,6 +200,8 @@ def pair_match(men, women):
                 out = (men_key, women_key)
 
     return out
+
+
 def bad_average(a, b, c):
     """
     1 Kata
@@ -332,19 +334,20 @@ def caesar_cipher(str_to_encrypt):
 
     :return:
     """
+    if str_to_encrypt is None:
+        return 'String is empty'
     import string
-    set = string.ascii_lowercase
-    set += 'a' + 'b' + 'c'
-    str_to_encrypt = 'Fly Me To The Moon'
+    set_eng = string.ascii_lowercase
+    set_eng += 'a' + 'b' + 'c'
     encrypted = ''
     for char in str_to_encrypt:
         if char == ' ':
             encrypted += char
             continue
         if char.isupper():
-            encrypted += set[set.index(char.lower()) + 3].upper()
+            encrypted += set_eng[set_eng.index(char.lower()) + 3].upper()
         else:
-            encrypted += set[set.index(char.lower()) + 3]
+            encrypted += set_eng[set_eng.index(char.lower()) + 3]
     return encrypted
 
 
@@ -363,8 +366,10 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    return sum(list(map(int, digits_str)))
-
+    if digits_str is not None:
+        return sum(list(map(int, digits_str)))
+    else:
+        return 0
 
 if __name__ == '__main__':
     print('\nsum_of_element:\n--------------------')
@@ -446,7 +451,7 @@ if __name__ == '__main__':
     print(seven_boom(None))
 
     print('\ncaesar_cipher:\n--------------------')
-    print(caesar_cipher('Fly Me To The Moon'))
+    print(caesar_cipher(None))
 
     print('\nsum_of_digits:\n--------------------')
     print(sum_of_digits('1223432'))
