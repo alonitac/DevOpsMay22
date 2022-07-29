@@ -83,8 +83,10 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-
-    return len(set(some_str)) < len(some_str)
+    if some_str == '' or some_str is None:
+        return True
+    else:
+        return len(set(some_str)) >= len(some_str)
 
 
 def list_diff(elements):
@@ -104,6 +106,8 @@ def list_diff(elements):
     """
     diff = []
     for i, element in enumerate(elements):
+        if element is None:
+            elements[i] = element = 0
         if i == 0:
             diff.append(None)
         else:
@@ -121,6 +125,8 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
+    if num is None:
+        return False
     prime = False
     if num == 1:
         return prime
@@ -216,6 +222,12 @@ def best_student(grades):
     :param grades: dict of name -> grade mapping
     :return: str. some key from the dict
     """
+    for value in list(grades.values()):
+        try:
+            grades[list(grades.keys())[list(grades.values()).index(value)]] = int(value)
+        except:
+            grades[list(grades.keys())[list(grades.values()).index(value)]] = 0
+    print(grades)
     return max(grades, key=grades.get)
 
 
@@ -290,6 +302,8 @@ def seven_boom(n):
     :return: list of integers
     """
     booms = []
+    if n is None:
+        return booms
     for i in range(1, n):
         if '7' in str(i) or i % 7 == 0:
             booms.append(i)
@@ -358,8 +372,8 @@ if __name__ == '__main__':
     print(reverse_words_concatenation(['take', 'me', 'home']))
 
     print('\nis_unique_string:\n--------------------')
-    print(is_unique_string('aasdssdsederd'))
-    print(is_unique_string('12345tgbnh'))
+    print(is_unique_string(''))
+    print(is_unique_string('a'))
 
     print('\nlist_diff:\n--------------------')
     print(list_diff([1, 2, 3, 8, 77, 0]))
@@ -391,7 +405,7 @@ if __name__ == '__main__':
     print(best_student({
         "Ben": 78,
         "Dan": 88,
-        "Nathan": 99,
+        "Nathan": None,
         "Daniel": 65,
         "Tal": 95
     }))
@@ -401,15 +415,15 @@ if __name__ == '__main__':
         "Ben": 78,
         "Dan": 88,
         "Nathan": 99,
-        "Daniel": 65,
+        "Daniel": None,
         "Tal": 95
     }))
 
     print('\nmerge_dicts:\n--------------------')
-    print(merge_dicts({'a': 1}, {'b': 2}))
+    print(merge_dicts({None: None}, {'b': 2}))
 
     print('\nseven_boom:\n--------------------')
-    print(seven_boom(30))
+    print(seven_boom(None))
 
     print('\ncaesar_cipher:\n--------------------')
     print(caesar_cipher('Fly Me To The Moon'))
