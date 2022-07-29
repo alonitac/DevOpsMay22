@@ -52,7 +52,10 @@ def words_concatenation(words):
     return_string = ""
     for i, word in enumerate(words):
         try:
-            word = words[i] = str(word)
+            if word is None:
+                word = words[i] = ''
+            else:
+                word = words[i] = str(word)
         except:
             word = words[i] = ''
         if i != (len(words) - 1):
@@ -389,7 +392,7 @@ if __name__ == '__main__':
     print(verbing('do'))
 
     print('\nwords_concatenation:\n--------------------')
-    print(words_concatenation(['take', 'me', 'home']))
+    print(words_concatenation(['take', None, 99]))
 
     print('\nreverse_words_concatenation:\n--------------------')
     print(reverse_words_concatenation(['take', 'me', 'home']))
