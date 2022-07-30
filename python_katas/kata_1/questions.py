@@ -112,12 +112,14 @@ def list_diff(elements):
         return elements
 
     list_to_return = [None]
-    number = elements[1]
+    number_increment = 1
+
     for num in elements:
-        num -= number
+        number_to_subtract = elements[number_increment]
+        num -= number_to_subtract
         list_to_return.append(num)
-        # if number < len(elements):
-        number += 1
+        if number_increment < len(elements) - 1:
+            number_increment += 1
 
     return list_to_return
 
@@ -132,7 +134,14 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    return None
+    if num < 1:
+        return False
+
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+
+    return True
 
 
 def palindrome_num(num):
@@ -148,7 +157,8 @@ def palindrome_num(num):
     :param num: int
     :return: bool. True is palindrome, else False
     """
-    return None
+    num_as_string = str(num)
+    return num_as_string[:] == num_as_string[::-1]
 
 
 def pair_match(men, women):
