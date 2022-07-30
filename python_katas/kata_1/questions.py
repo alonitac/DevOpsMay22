@@ -243,6 +243,8 @@ def best_student(grades):
     :param grades: dict of name -> grade mapping
     :return: str. some key from the dict
     """
+    if grades == {}:
+        return ''
     for value in list(grades.values()):
         try:
             grades[list(grades.keys())[list(grades.values()).index(value)]] = int(value)
