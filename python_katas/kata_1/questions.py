@@ -25,7 +25,7 @@ def verbing(word):
     :return: Return the resulting string.
     """
     if word is None:
-        return 'The string is empty'
+        return ''
     if len(word) >= 3:
         if not word.endswith('ing'):
             word += 'ing'
