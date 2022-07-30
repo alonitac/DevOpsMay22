@@ -1,7 +1,6 @@
 curl -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello >> result.json
-jq -r '.sessionID' result.json
-SESSION_ID=$(jq -r '.sessionID' result.json)
-jq -r '.serverCert' result.json >> cert.pem
+SESSION_ID=$(cat temp_reg.txt | jq -r '.sessionID')
+cat result.json | jq -r '.serverCert' >cert.pem
 wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
 VERIFICATION_RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem )
 
