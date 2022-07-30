@@ -136,18 +136,16 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    if num is None:
+    if num is None or num < 0 or num == 0 or isinstance(num, float):
         return False
-    prime = False
-    if num == 1:
-        return prime
+    if num != 1:
+        for i in range(2, num+1):
+            if num % i == 0 and i != num:
+                return False
     else:
-        for i in range(2, num):
-            if num % i == 0:
-                prime = True
-                break
-    return prime
+        return False
 
+    return True
 
 def palindrome_num(num):
     """
@@ -416,11 +414,15 @@ if __name__ == '__main__':
     print(is_unique_string('aa'))
 
     print('\nlist_diff:\n--------------------')
-    print(list_diff([1, 2, 3, 8, 77, 0]))
+    print(list_diff([1, 2, 3, 4, 5, 1055, 7, 8, 9, 10]))
 
     print('\nprime_number:\n--------------------')
-    print(prime_number(5))
-    print(prime_number(22))
+    print(prime_number(None))
+    print(prime_number(-1))
+    print(prime_number(55))
+    print(prime_number(44))
+    print(prime_number(47))
+    print(prime_number(3))
 
     print('\npalindrome_num:\n--------------------')
     print(palindrome_num(12221))
