@@ -284,8 +284,22 @@ def print_dict_as_table(some_dict):
     white_space = ' '
     number_signs = 13
     max_number_digits_value = 3
+    keys_to_chage = []
+    for key, value in some_dict.items():
+        if not isinstance(key, str):
+            keys_to_chage.append(key)
+        if not isinstance(value, int):
+            if not isinstance(value, float):
+                if isinstance(value, str) and value.isnumeric():
+                    some_dict[key] = int(some_dict[key])
+                else:
+                    some_dict[str(key)] = 0
+    if len(keys_to_chage) > 0:
+        for i in keys_to_chage:
+            some_dict[str(i)] = some_dict.pop(i)
+    del keys_to_chage
     out = ('\033[3m' + 'Key ' + white_space * (
-                number_signs - len('Key') - len('Value') - 2) + ' Value\n' + sign * number_signs + '\n')
+            number_signs - len('Key') - len('Value') - 2) + ' Value\n' + sign * number_signs + '\n')
 
     for key, value in some_dict.items():
         out += key.strip() + (white_space * (number_signs - len(key) - max_number_digits_value - 2)) + str(value) + '\n'
@@ -392,14 +406,14 @@ if __name__ == '__main__':
     print(verbing('do'))
 
     print('\nwords_concatenation:\n--------------------')
-    print(words_concatenation(['take', None, 99]))
+    print(words_concatenation([]))
 
     print('\nreverse_words_concatenation:\n--------------------')
-    print(reverse_words_concatenation(['take', 'me', 'home']))
+    print(reverse_words_concatenation([]))
 
     print('\nis_unique_string:\n--------------------')
-    print(is_unique_string(''))
-    print(is_unique_string('a'))
+    print(is_unique_string('__'))
+    print(is_unique_string('aa'))
 
     print('\nlist_diff:\n--------------------')
     print(list_diff([1, 2, 3, 8, 77, 0]))
@@ -449,7 +463,7 @@ if __name__ == '__main__':
     print('\nprint_dict_as_table:\n--------------------')
     print(print_dict_as_table({
         "Ben": 78,
-        "Dan": 88,
+        55: 88,
         "Nathan": 99,
         "Daniel": None,
         "Tal": 95
