@@ -46,7 +46,7 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    if words is None:
+    if not words:
         return 'The string is empty'
     space = ' '
     return_string = ""
