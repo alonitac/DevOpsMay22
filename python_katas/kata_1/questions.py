@@ -250,7 +250,6 @@ def best_student(grades):
             grades[list(grades.keys())[list(grades.values()).index(value)]] = int(value)
         except:
             grades[list(grades.keys())[list(grades.values()).index(value)]] = 0
-    print(grades)
     return max(grades, key=grades.get)
 
 
