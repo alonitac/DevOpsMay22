@@ -322,7 +322,10 @@ def merge_dicts(dict1, dict2):
     :param dict2:
     :return:
     """
-    return dict1 | dict2
+    if not isinstance(dict1, dict) or not isinstance(dict2, dict):
+        return {}
+    else:
+        return dict1 | dict2
 
 
 def seven_boom(n):
