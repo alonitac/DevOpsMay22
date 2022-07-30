@@ -18,7 +18,6 @@ U2FsdGVkX1/evEG4HuzfGs+gaaHey+CxTrxP8Uucn69S1zI1/nkmBPJyY9Vi8tiAJdk2QiDX+OkFFaUQ
 curl -s --header "Content-Type: application/json" -d '{"sessionID": "'$SESSION_ID'", "masterKey": "'$MASTER_KEY'","sampleMessage": "Hi server, please encrypt me and send to client!"}' http://16.16.53.16:8080/keyexchange | jq -r '.encryptedSampleMessage' >> encSampleMsg.txt
 cat encSampleMsg.txt | base64 -d > encSampleMsgReady.txt
 DECRYPTED_SAMPLE_MESSAGE=$(openssl enc -d -aes-256-cbc -pbkdf2 -kfile masterKey.txt -in encSampleMsgReady.txt)
-
 if [ "$DECRYPTED_SAMPLE_MESSAGE" != "Hi server, please encrypt me and send to client!" ]; then
   echo "Server symmetric encryption using the exchanged master-key has failed."
   exit 1
