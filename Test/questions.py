@@ -47,7 +47,7 @@ def words_concatenation(words):
     :return: Return the resulting string.
     """
     if not words:
-        return ''
+        return 'The string is empty'
     space = ' '
     return_string = ""
     for i, word in enumerate(words):
@@ -406,7 +406,7 @@ if __name__ == '__main__':
     print(verbing('do'))
 
     print('\nwords_concatenation:\n--------------------')
-    print(words_concatenation([]))
+    print(words_concatenation(['hello',None,'none']))
 
     print('\nreverse_words_concatenation:\n--------------------')
     print(reverse_words_concatenation([]))
