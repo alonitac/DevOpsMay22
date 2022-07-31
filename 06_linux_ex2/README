@@ -1,9 +1,11 @@
-Q1. nohup
-Q2.True
-Q3.I guess it "JOBS" but it doesnt work for me.
-Q4.CTRL + C
-Q5.CTRL + Z
-Q6.fg sleep 10
-Q7.None of them,the answer is $ kill -SIGTERM "PID"
-Q8.kill xscreensaver
-
+(Q1).nohup
+(Q2).False
+(Q3).process
+(Q4).CTRL + C
+(Q5).CTRL + Z
+(Q6).sleep 10
+(Q7).None of the above
+(Q8).kill -9 4846
+(Q9).kill -CHLD 4828
+(Q10).K
+(Q11).The program has implemented a custom signal handler for the SIGINT signal
