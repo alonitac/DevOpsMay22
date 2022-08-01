@@ -10,7 +10,7 @@ def sum_of_element(elements):
         s = s + num
 
     return s
-
+1
 
 def verbing(word):
     """
