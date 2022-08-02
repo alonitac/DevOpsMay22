@@ -32,7 +32,7 @@ class TestWordsConcatenation(unittest.TestCase):
 
     def test_empty_list(self):
         lst = []
-        self.assertEqual(questions.words_concatenation(lst), [])
+        self.assertEqual(questions.words_concatenation(lst), "")
 
     def test_full_list(self):
         lst = ['no', 'place', 'like', 'home']
@@ -180,5 +180,4 @@ class TestSumOfDigits(unittest.TestCase):
 if __name__ == '__main__':
     import inspect
     import sys
-
     unittest_runner(inspect.getmembers(sys.modules[__name__], inspect.isclass))
