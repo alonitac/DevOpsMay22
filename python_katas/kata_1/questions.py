@@ -52,8 +52,10 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
+    if len(words) == 0:
+        return words
 
-    return ' '.join(words)
+    return ' '.join(filter(None, words))
 
 
 def reverse_words_concatenation(words):
@@ -68,8 +70,10 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
+    if len(words) == 0:
+        return words
 
-    return ' '.join(words[::-1])
+    return ' '.join(filter(None, words[::-1]))
 
 
 def is_unique_string(some_str):
