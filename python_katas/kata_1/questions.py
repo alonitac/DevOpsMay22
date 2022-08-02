@@ -108,14 +108,12 @@ def list_diff(elements):
         return elements
 
     list_to_return = [None]
-    number_increment = 1
+    number_increment = 0
 
-    for num in elements:
-        number_to_subtract = elements[number_increment]
-        num -= number_to_subtract
-        list_to_return.append(num)
-        if number_increment < len(elements) - 1:
-            number_increment += 1
+    for num in range(1, len(elements)):
+        var = elements[num] - elements[number_increment]
+        list_to_return.append(var)
+        number_increment += 1
 
     return list_to_return
 
