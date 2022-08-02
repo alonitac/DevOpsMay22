@@ -30,9 +30,21 @@ class TestWordsConcatenation(unittest.TestCase):
     1 Katas
     """
 
-    def test_sample(self):
-        # your code here
-        pass
+    def test_empty_list(self):
+        lst = []
+        self.assertEqual(questions.words_concatenation(lst), "")
+
+    def test_full_list(self):
+        lst = ['no', 'place', 'like', 'home']
+        self.assertEqual(questions.words_concatenation(lst), 'no place like home')
+
+    def test_empty_string_in_list(self):
+        lst = ['no', '', 'place', '', 'like', 'home']
+        self.assertEqual(questions.words_concatenation(lst), 'no place like home')
+
+    def test_list_of_empty_strings(self):
+        lst = ["","","","",""]
+        self.assertEqual(questions.words_concatenation(lst),"")
 
 
 class TestReverseWordsConcatenation(unittest.TestCase):
@@ -169,4 +181,3 @@ if __name__ == '__main__':
     import inspect
     import sys
     unittest_runner(inspect.getmembers(sys.modules[__name__], inspect.isclass))
-
