@@ -53,7 +53,7 @@ def words_concatenation(words):
     :return: Return the resulting string.
     """
     if len(words) == 0:
-        return words
+        return ""
 
     return ' '.join(filter(None, words))
 
@@ -71,7 +71,7 @@ def reverse_words_concatenation(words):
     :return: Return the resulting string.
     """
     if len(words) == 0:
-        return words
+        return ""
 
     return ' '.join(filter(None, words[::-1]))
 
