@@ -1,3 +1,6 @@
+import string
+
+
 def sum_of_element(elements):
     """
     1 Kata
@@ -49,12 +52,8 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    concatenated_word = ''
-    for word in words:
-        concatenated_word += word
-        concatenated_word += ' '
 
-    return concatenated_word
+    return ' '.join(words)
 
 
 def reverse_words_concatenation(words):
@@ -69,11 +68,8 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    words_reversed = ''
-    for word in reversed(words):
-        words_reversed += word
-        words_reversed += ' '
-    return words_reversed
+
+    return ' '.join(words[::-1])
 
 
 def is_unique_string(some_str):
@@ -272,13 +268,13 @@ def print_dict_as_table(some_dict):
     :param some_dict:
     :return:
     """
-    label = "Key     Value\n-------------\n"
+
+    label = "{:<10} {:<10}\n".format('KEY', 'Value')
     data = ''
-    for key,value in some_dict:
-        data += '{} {}'.format(key,value) + '\n'
+    for key, value in some_dict.items():
+        data += '{:<10} {:<10}\n'.format(key, value)
 
-
-    return None
+    return label + data
 
 
 def merge_dicts(dict1, dict2):
@@ -298,6 +294,7 @@ def merge_dicts(dict1, dict2):
     :param dict2:
     :return:
     """
+    dict1.update(dict2)
     return dict1
 
 
@@ -313,7 +310,12 @@ def seven_boom(n):
     :param n: int. The last number for count for a 7-boom play
     :return: list of integers
     """
-    return None
+    boom_list = []
+    for i in range(1, n + 1):
+        if i % 7 == 0:
+            boom_list.append(i)
+
+    return boom_list
 
 
 def caesar_cipher(str_to_encrypt):
@@ -328,7 +330,19 @@ def caesar_cipher(str_to_encrypt):
 
     :return:
     """
-    return None
+    alphabet_list = list(
+        string.ascii_lowercase + string.ascii_lowercase + string.ascii_uppercase + string.ascii_uppercase)
+    text_to_return = ''
+
+    for letter in str_to_encrypt:
+        if letter == " ":
+            text_to_return += " "
+            continue
+        letter_position = alphabet_list.index(letter)
+        new_letter_position = letter_position + 3
+        text_to_return += alphabet_list[new_letter_position]
+
+    return text_to_return
 
 
 def sum_of_digits(digits_str):
@@ -346,7 +360,11 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    return None
+    sum_to_return = 0
+    for num in digits_str:
+        sum_to_return += int(num)
+
+    return sum_to_return
 
 
 if __name__ == '__main__':
