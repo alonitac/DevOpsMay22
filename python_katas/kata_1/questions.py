@@ -282,7 +282,7 @@ def print_dict_as_table(some_dict):
     :param some_dict:
     :return:
     """
-    x= []
+    x = []
     print("\n    Key     Value\n    -------------")
     for key, value in some_dict.items():
         x.append(f"    {key}     {value}   ")
@@ -325,7 +325,7 @@ def seven_boom(n):
     """
     nums = []
     x = '7'
-    for num in range(1,n):
+    for num in range(1, n):
         if num % 7 == 0 or x in str(num):
             nums.append(num)
 
@@ -344,23 +344,14 @@ def caesar_cipher(str_to_encrypt):
 
     :return:
     """
-    chars = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    lst_words = []
-    end_list = []
-    for line in str_to_encrypt:
-        for c in line:
-            lst_words.append(c)
-    pos = ""
-    for n in lst_words:
-        if n == ' ':
-            end_list.append(n)
-            continue
-        pos = chars.index(n)
-        pos +=3
-        end_list.append(chars[pos])
-
-    return "".join(end_list)
-
+    result = ""
+    for i in range(len(str_to_encrypt)):
+        char = str_to_encrypt[i]
+        if char.isupper():
+            result += chr((ord(char) + 3 - 65) % 26 + 65)
+        else:
+            result += chr((ord(char) + 3 - 97) % 26 + 97)
+    return "Cipher: " + result
 
 
 def sum_of_digits(digits_str):
@@ -378,15 +369,12 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    total =0
+    total = 0
     integers = [int(x) for x in digits_str]
     for i in integers:
         total += int(i)
 
     return f"'{digits_str}' -> {total}"
-
-
-
 
 
 if __name__ == '__main__':
@@ -402,8 +390,8 @@ if __name__ == '__main__':
     print(words_concatenation(['take', 'me', 'home']))
 
     print('\nreverse_words_concatenation:\n--------------------')
-    print(reverse_words_concatenation(['take','me','home']))
-    print(reverse_words_concatenation(['1','2','3']))
+    print(reverse_words_concatenation(['take', 'me', 'home']))
+    print(reverse_words_concatenation(['1', '2', '3']))
     print('\nis_unique_string:\n--------------------')
     print(is_unique_string('aasdssdsederd'))
     print(is_unique_string('12345tgbnh'))
