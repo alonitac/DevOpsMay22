@@ -1,2 +1,23 @@
-
-
+(Q1):
+    nohub
+(Q2):
+    false
+(Q3):
+    process
+(Q4):
+    CTRL+C
+(Q5):
+    CTRL+Z
+(Q6):
+    sleep 10
+(Q7):
+    kill 4846
+(Q8):
+    kill -9 4846
+(Q9):
+    kill -CHLD 4828
+(Q10):
+    k
+(Q11):
+    The program has implemented a custom signal handler for the SIGINT signal
+(Q12):

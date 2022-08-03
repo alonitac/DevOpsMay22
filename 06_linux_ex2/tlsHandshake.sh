@@ -24,17 +24,13 @@ if [ -f ./encrypted_secret.txt ]; then
     rm ./encrypted_secret.txt -v
 fi
 
-encSampleMsg.txt
 if [ -f ./encSampleMsg.txt ]; then
     rm ./encSampleMsg.txt -v
 fi
-
 #pre requsits : sudo apt-get install jq
-curl -X POST -d '{"clientVersion": "3.2", "message": "Client Hello"}' -H 'Content-Type: application/json' http://16.16.53.16:8080/clienthello | jq -r '.serverVersion' > serverVersion.txt
-curl -X POST -d '{"clientVersion": "3.2", "message": "Client Hello"}' -H 'Content-Type: application/json' http://16.16.53.16:8080/clienthello | jq -r '.sessionID' > sessionID.txt
-curl -X POST -d '{"clientVersion": "3.2", "message": "Client Hello"}' -H 'Content-Type: application/json' http://16.16.53.16:8080/clienthello | jq -r '.serverCert' > cert.pem
-#SESSION_ID= $(< ./sessionID.txt)
-read SESSION_ID < ./sessionID.txt
+curl -s -d '{"clientVersion": "3.2", "message": "Client Hello"}' -H 'Content-Type: application/json' http://16.16.53.16:8080/clienthello | jq -r '.serverCert,.sessionID' > result.txt
+sed -n '1,34 p' result.txt > cert.pem
+SESSION_ID=$(tail -n 1 result.txt)
 echo "SessioID is :"
 echo $SESSION_ID 
 if [ ! -f cert-ca-aws.pem ]
@@ -43,19 +39,16 @@ then
     wget https://devops-may22.s3.eu-north-1.amazonaws.com/cert-ca-aws.pem
          
 fi
-
 openssl verify -CAfile cert-ca-aws.pem cert.pem
-
 VERIFICATION_RESULT=$( openssl verify -CAfile cert-ca-aws.pem cert.pem )
-
 if [ "$VERIFICATION_RESULT" != "cert.pem: OK" ]; then
   echo "Server Certificate is invalid."
   exit 1
 fi
-
-random="$(dd if=/dev/urandom bs=3 count=1)" 
-echo $random > master.txt
-
+openssl rand -out ./master.txt -base64 32
+read random < master.txt
+echo "RANDOM : "
+echo $random
 openssl smime -encrypt -aes-256-cbc -in ./master.txt -outform DER cert.pem | base64 -w 0 > masterkey.txt
 read MASTER_KEY < masterkey.txt
 echo "SessioID is :"
@@ -63,17 +56,10 @@ echo $SESSION_ID
 echo "MasterKey"
 echo $MASTER_KEY
 echo ""
-#  echo "Getting sessionID:"
-curl -H 'Content-Type: application/json' -X POST -d '{"sessionID": "'$SESSION_ID'","masterKey": "'$MASTER_KEY'","sampleMessage": "Hi server, please encrypt me and send to client!"}' http://16.16.53.16:8080/keyexchange -v | jq -r '.sessionID' > sessionID.txt 
-#  echo ""
-isGetRespond= true
-# while $isGetRespond; 
-# do 
-echo "Getting encryptedSampleMessage:"
-curl -H 'Content-Type: application/json' -X POST -d '{"sessionID": "'$SESSION_ID'","masterKey": "'$MASTER_KEY'","sampleMessage": "Hi server, please encrypt me and send to client!"}' http://16.16.53.16:8080/keyexchange -v | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
+
+curl -H 'Content-Type: application/json' -X POST -d '{"sessionID": "'$SESSION_ID'","masterKey": "'$MASTER_KEY'","sampleMessage": "Hi server, please encrypt me and send to client!"}' http://16.16.53.16:8080/keyexchange  | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
 echo ""
 read encSampleMsg < encSampleMsg.txt
-echo "VARIABLE value is : "$encSampleMsg
  if [ -z $encSampleMsg ]; 
  then 
  echo ""
@@ -84,17 +70,9 @@ echo "VARIABLE value is : "$encSampleMsg
 echo "encryptedSampleMessage is : "
 echo $encSampleMsg
 echo
-read SESSION_ID < ./sessionID.txt
-echo "SessioID is :"
-echo $SESSION_ID
-
 cat encSampleMsg.txt | base64 -d > encSampleMsgReady.txt
-
 read DECRYPTED_SAMPLE_MESSAGE < encSampleMsgReady.txt
-
-# openssl enc -d -aes-256-cbc -pbkdf2 -k "encSampleMsg.txt" -in encSampleMsgReady.txt -out encrypted_secret.txt
-  openssl enc -e -aes-256-cbc -pbkdf2 -k "encSampleMsg.txt" -in encSampleMsgReady.txt -out encrypted_secret.txt
-
+openssl enc -d -aes-256-cbc -pbkdf2 -kfile master.txt -in encSampleMsgReady.txt -out encrypted_secret.txt
 read SAMPLE_MESSAGE < encrypted_secret.txt
 echo ""
 echo "SAMPLE_MESSAGE"
@@ -106,4 +84,3 @@ if [ "$SAMPLE_MESSAGE" != "Hi server, please encrypt me and send to client!" ]; 
 else
   echo "Client-Server TLS handshake has been completed successfully"
 fi
- 
