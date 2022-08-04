@@ -235,11 +235,10 @@ def best_student(grades):
     best_grader = ''
     best_score = 0
 
-    for i in grades:
-        score_higher_than_best_grade = int(grades[i]) > best_score
-        if score_higher_than_best_grade:
-            best_score = grades[i]
-            best_grader = i
+    for key, value in grades.items():
+        if value > best_score:
+            best_score = value
+            best_grader = key
 
     return best_grader
 
