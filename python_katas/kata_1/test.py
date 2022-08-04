@@ -30,20 +30,22 @@ class TestWordsConcatenation(unittest.TestCase):
     1 Katas
     """
 
-    def test_sample(self):
-        # your code here
-        lst =['hey', 'how', 'are', 'you', '?']
-        self.assertEqual(questions.words_concatenation(lst), "hey how are you ?")
-
-    def test_sample2(self):
-        # your code here
-        lst =['im', 'number', '1', 'in', 'devops']
-        self.assertEqual(questions.words_concatenation(lst), "im number 1 in devops")
-
-    def test_sample3(self):
-        # your code here
-        lst =[]
+    def test_empty_list(self):
+        lst = []
         self.assertEqual(questions.words_concatenation(lst), "")
+
+    def test_full_list(self):
+        lst = ['no', 'place', 'like', 'home']
+        self.assertEqual(questions.words_concatenation(lst), 'no place like home')
+
+    def test_empty_string_in_list(self):
+        lst = ['no', '', 'place', '', 'like', 'home']
+        self.assertEqual(questions.words_concatenation(lst), 'no place like home')
+
+    def test_list_of_empty_strings(self):
+        lst = ["","","","",""]
+        self.assertEqual(questions.words_concatenation(lst),"")
+
 
 class TestReverseWordsConcatenation(unittest.TestCase):
     """
@@ -52,17 +54,7 @@ class TestReverseWordsConcatenation(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        lst = ['take', 'me', 'home']
-        self.assertEqual(questions.reverse_words_concatenation(lst), "home me take")
-
-    def test_sample2(self):
-        # your code here
-        lst = []
-        self.assertEqual(questions.reverse_words_concatenation(lst), "")
-    def test_sample3(self):
-        # your code here
-        lst = ['1','2','3','4','5']
-        self.assertEqual(questions.reverse_words_concatenation(lst), '5 4 3 2 1')
+        pass
 
 
 class TestIsUniqueString(unittest.TestCase):
@@ -72,16 +64,8 @@ class TestIsUniqueString(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        some_str = ''
-        self.assertEqual(questions.is_unique_string(some_str), True)
-    def test_sample2(self):
-        # your code here
-        some_str = '123456'
-        self.assertEqual(questions.is_unique_string(some_str), True)
-    def test_sample3(self):
-        # your code here
-        some_str = 12345
-        self.assertEqual(questions.is_unique_string(some_str), "Please enter a valid input(strings only)")
+        pass
+
 
 class TestListDiff(unittest.TestCase):
     """
@@ -90,18 +74,8 @@ class TestListDiff(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        lst = [1, 2, 3, 4, 7, 11]
-        self.assertEqual(questions.list_diff(lst), [None, 1, 1, 1, 3, 4])
+        pass
 
-    def test_sample2(self):
-        # your code here
-        lst = [1, 5, 0, 4, 1, 1, 1]
-        self.assertEqual(questions.list_diff(lst), [None, 4, -5, 4, -3, 0, 0])
-
-    def test_sample3(self):
-        # your code here
-        lst = []
-        self.assertEqual(questions.list_diff(lst),[])
 
 class TestPrimeNumber(unittest.TestCase):
     """
@@ -110,8 +84,7 @@ class TestPrimeNumber(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        num = 0
-        self.assertEqual(questions.prime_number(num), f"{num}, is lower from 1 , please enter a higher number")
+        pass
 
 
 class TestPalindromeNum(unittest.TestCase):
@@ -208,4 +181,3 @@ if __name__ == '__main__':
     import inspect
     import sys
     unittest_runner(inspect.getmembers(sys.modules[__name__], inspect.isclass))
-
