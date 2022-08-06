@@ -401,11 +401,32 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    if digits_str is not None:
-        return sum(list(map(int, digits_str)))
-    else:
-        return 0
-
+    if digits_str is not None or digits_str:
+        list = []
+        if digits_str.endswith('-'):
+            length = len(digits_str)-1
+        else:
+            length = len(digits_str)
+        i = 0
+        while i <= length-1:
+            if digits_str[i] == '-':
+                if digits_str[i+1].isnumeric():
+                     list.append((int(digits_str[i+1])) * -1)
+                     i += 2
+                elif digits_str[i+1] == '-':
+                    list.append(0)
+                    i += 1
+                else:
+                     list.append(0)
+                     i += 2
+            else:
+                if digits_str[i].isnumeric():
+                    list.append(int(digits_str[i]))
+                    i += 1
+                else:
+                    list.append(0)
+                    i += 1
+        return sum(list)
 if __name__ == '__main__':
     print('\nsum_of_element:\n--------------------')
     print(sum_of_element([1, 2, 3, 4, 5, 6]))
