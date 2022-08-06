@@ -353,9 +353,16 @@ class TestSumOfDigits(unittest.TestCase):
     1 Katas
     """
 
-    def test_sample(self):
-        # your code here
-        pass
+    def test_empty_string(self):
+        n = ''
+        self.assertEqual(questions.sum_of_digits(n), 0)
+
+    def test_return_int(self):
+        n = ''
+        self.assertIsInstance(questions.sum_of_digits(n), int)
+
+    def test_none(self):
+        self.assertEqual(questions.sum_of_digits(None), 0)
 
 
 if __name__ == '__main__':
