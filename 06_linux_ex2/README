@@ -1,2 +1,12 @@
-
-
+PROCESS handling
+- nohup
+-  True
+-  jobs
+-  CTRL+c
+-  CTRL+z
+-  sleep 10
+-  kill 4846
+-  kill -9 4846
+-  kill -17 ssh-agent
+-  k
+-  The program ignores the SIGINT signal.
