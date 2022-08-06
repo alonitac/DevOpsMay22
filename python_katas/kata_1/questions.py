@@ -10,7 +10,7 @@ def sum_of_element(elements):
         s = s + num
 
     return s
-1
+
 
 def verbing(word):
     """
@@ -28,10 +28,16 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-    return None
+    if type(word) == str and len(word) >= 3 and not word.endswith('ing'):
+        return word + 'ing'
+    elif type(word) == str and len(word) >= 3 and word.endswith('ing'):
+        return word + 'ly'
+    else:
+        return word
 
 
 def words_concatenation(words):
+
     """
     1 Kata
 
@@ -43,7 +49,14 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+
+    sentence = ' '.join(str(word) for word in words)
+
+    """sentence = ''
+    for word in words:
+        if type(word) == str:
+            sentence = sentence + word + ' '"""
+    return sentence
 
 
 def reverse_words_concatenation(words):
@@ -58,7 +71,13 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    sentence = ' '.join(str(word) for word in words[::-1])
+    """i = -1
+    for word in words:
+        if type(word) == str:
+            sentence = sentence + words[i] + ' '
+            i -= 1"""
+    return sentence
 
 
 def is_unique_string(some_str):
@@ -75,10 +94,17 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    return None
+    list1 = []
+    for char in some_str:
+        if char in list1:
+            return False
+        else:
+            list1.append(char)
+    return True
 
 
 def list_diff(elements):
+
     """
     1 Kata
 
@@ -93,7 +119,15 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
-    return None
+
+    # [1, 2, 3, 8, 77, 0]
+    new_elements = [None]
+    i = 0
+    for x in range(1, len(elements)):
+        new_elements.append(int(elements[x]) - int(elements[i]))
+        x += 1
+        i += 1
+    return new_elements
 
 
 def prime_number(num):
@@ -106,7 +140,11 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    return None
+
+    for i in range(int(2), int(num/2)):
+        if num % i == 0:
+            return False
+    return True
 
 
 def palindrome_num(num):
@@ -122,7 +160,20 @@ def palindrome_num(num):
     :param num: int
     :return: bool. True is palindrome, else False
     """
-    return None
+
+    st = str(num)
+    leng = int(-(-len(st)/2))
+    if len(st) % 2 == 0:
+        st1 = st[:int(leng)]
+        st2 = st[leng:]
+        if st1 == st2[::-1]:
+            return True
+    elif len(st) % 2 != 0:
+        st1 = st[:int(leng+1)]
+        st2 = st[leng:]
+        if st1 == st2[::-1]:
+            return True
+    return False
 
 
 def pair_match(men, women):
@@ -312,12 +363,13 @@ if __name__ == '__main__':
     print(list_diff([1, 2, 3, 8, 77, 0]))
 
     print('\nprime_number:\n--------------------')
-    print(prime_number(5))
-    print(prime_number(22))
+    print(prime_number(77))
+    print(prime_number(7))
 
     print('\npalindrome_num:\n--------------------')
     print(palindrome_num(12221))
     print(palindrome_num(577))
+    print(palindrome_num(2332))
 
     print('\npair_match:\n--------------------')
     print(pair_match(
