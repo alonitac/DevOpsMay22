@@ -364,6 +364,16 @@ class TestSumOfDigits(unittest.TestCase):
     def test_none(self):
         self.assertEqual(questions.sum_of_digits(None), 0)
 
+    def test_positive_value(self):
+        n = '011'
+        self.assertEqual(questions.sum_of_digits(n), 2)
+
+    def test_negative_value(self):
+        n = '0-1-5-6-7'
+        self.assertEqual(questions.sum_of_digits(n), -19)
+    def test_zero_value(self):
+        n = '0'
+        self.assertEqual(questions.sum_of_digits(n), 0)
 
 if __name__ == '__main__':
     import inspect
