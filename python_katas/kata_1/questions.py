@@ -341,9 +341,17 @@ def seven_boom(n):
     :return: list of integers
     """
     booms = []
-    if n is None:
+    try:
+        n = int(n)
+    except ValueError:
         return booms
-    for i in range(1, n):
+    except TypeError:
+        return booms
+    if n < 0:
+        step = -1
+    else:
+        step = 1
+    for i in range(step, n + step, step):
         if '7' in str(i) or i % 7 == 0:
             booms.append(i)
     return booms
