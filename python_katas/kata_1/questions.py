@@ -28,7 +28,13 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-    return None
+    if len(word) >= 3:
+        if word[-3:] == 'ing':
+            word += 'ing'
+        else:
+            word += 'ly'
+
+    return word
 
 
 def words_concatenation(words):
@@ -58,7 +64,14 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    sentence = ''
+    for word in words:
+        if sentence == '':
+            sentence += word
+        else:
+            sentence += ' ' + word
+
+    return sentence
 
 
 def is_unique_string(some_str):
@@ -75,7 +88,13 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    return None
+    result = True
+
+    for _char in some_str:
+        if some_str.count(_char) > 1:
+            result = False
+
+    return result
 
 
 def list_diff(elements):
@@ -93,7 +112,21 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
-    return None
+
+    result_list = []
+
+    cur_elem = 0
+    if len(elements) > 0:
+        cur_elem = elements[0]
+
+    for elem in elements:
+        if elem == cur_elem:
+            result_list += None
+        else:
+            result_list.append(elem - cur_elem)
+            cur_elem = elem
+
+    return result_list
 
 
 def prime_number(num):
@@ -106,7 +139,13 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    return None
+    result = True
+    for n in range(num):
+        if num % n == 0:
+            result = False
+
+    return result
+
 
 
 def palindrome_num(num):
@@ -122,7 +161,13 @@ def palindrome_num(num):
     :param num: int
     :return: bool. True is palindrome, else False
     """
-    return None
+    if len(num) <= 1:
+        return True
+    if num[0] == num[len(num) - 1]:
+        return palindrome_num[1:-1]
+    else:
+        return False
+
 
 
 def pair_match(men, women):
@@ -289,7 +334,6 @@ def sum_of_digits(digits_str):
 
 
 if __name__ == '__main__':
-
     print('\nsum_of_element:\n--------------------')
     print(sum_of_element([1, 2, 3, 4, 5, 6]))
 
@@ -363,4 +407,3 @@ if __name__ == '__main__':
 
     print('\nsum_of_digits:\n--------------------')
     print(sum_of_digits('1223432'))
-
