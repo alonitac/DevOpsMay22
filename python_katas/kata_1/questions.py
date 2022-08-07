@@ -49,7 +49,7 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    return ' '.join(words)
 
 
 def reverse_words_concatenation(words):
@@ -64,14 +64,8 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    sentence = ''
-    for word in words:
-        if sentence == '':
-            sentence += word
-        else:
-            sentence += ' ' + word
 
-    return sentence
+    return ' '.join(words[::-1])
 
 
 def is_unique_string(some_str):
@@ -140,12 +134,12 @@ def prime_number(num):
     :return: bool. True if prime, else False
     """
     result = True
-    for n in range(num):
+    num_half = int(num / 2)
+    for n in range(num_half):
         if num % n == 0:
             result = False
 
     return result
-
 
 
 def palindrome_num(num):
@@ -167,7 +161,6 @@ def palindrome_num(num):
         return palindrome_num[1:-1]
     else:
         return False
-
 
 
 def pair_match(men, women):
