@@ -51,11 +51,6 @@ def words_concatenation(words):
     """
 
     sentence = ' '.join(str(word) for word in words)
-
-    """sentence = ''
-    for word in words:
-        if type(word) == str:
-            sentence = sentence + word + ' '"""
     return sentence
 
 
@@ -72,11 +67,6 @@ def reverse_words_concatenation(words):
     :return: Return the resulting string.
     """
     sentence = ' '.join(str(word) for word in words[::-1])
-    """i = -1
-    for word in words:
-        if type(word) == str:
-            sentence = sentence + words[i] + ' '
-            i -= 1"""
     return sentence
 
 
@@ -204,7 +194,19 @@ def pair_match(men, women):
     :param women: dict mapping name -> age
     :return: tuple (men_name, women_name) such their age absolute difference is the minimal
     """
-    return None
+
+    results = (1, 2)
+    x = 100
+    for man in men:
+        for woman in women:
+            if abs(men[man] - women[woman]) < x:
+                x = abs(men[man] - women[woman])
+                results = (man, woman)
+            else:
+                continue
+    return results
+
+
 
 
 def bad_average(a, b, c):
@@ -216,7 +218,7 @@ def bad_average(a, b, c):
 
     :return:
     """
-    return a + b + c / 3
+    return (a + b + c) / 3
 
 
 def best_student(grades):
@@ -239,7 +241,11 @@ def best_student(grades):
     :param grades: dict of name -> grade mapping
     :return: str. some key from the dict
     """
-    return None
+    x = 0
+    for i in grades:
+        if grades[i] > x:
+            x = grades[i]
+    return x
 
 
 def print_dict_as_table(some_dict):
@@ -268,7 +274,12 @@ def print_dict_as_table(some_dict):
     :param some_dict:
     :return:
     """
-    return None
+
+    print("Key     Value")
+    print("-------------")
+
+    for x in some_dict:
+        print(x, " " * (8-len(x)), some_dict[x])
 
 
 def merge_dicts(dict1, dict2):
@@ -288,6 +299,9 @@ def merge_dicts(dict1, dict2):
     :param dict2:
     :return:
     """
+
+    for x in dict2:
+        dict1[x] = dict2[x]
     return dict1
 
 
@@ -303,7 +317,12 @@ def seven_boom(n):
     :param n: int. The last number for count for a 7-boom play
     :return: list of integers
     """
-    return None
+    list2 = []
+
+    for i in range(1, n):
+        if '7' in str(i) or i % 7 == 0:
+            list2.append(i)
+    return list2
 
 
 def caesar_cipher(str_to_encrypt):
@@ -336,8 +355,10 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    return None
-
+    x = 0
+    for i in digits_str:
+        x += int(i)
+    return x
 
 if __name__ == '__main__':
 
@@ -363,13 +384,12 @@ if __name__ == '__main__':
     print(list_diff([1, 2, 3, 8, 77, 0]))
 
     print('\nprime_number:\n--------------------')
-    print(prime_number(77))
-    print(prime_number(7))
+    print(prime_number(5))
+    print(prime_number(22))
 
     print('\npalindrome_num:\n--------------------')
     print(palindrome_num(12221))
     print(palindrome_num(577))
-    print(palindrome_num(2332))
 
     print('\npair_match:\n--------------------')
     print(pair_match(
