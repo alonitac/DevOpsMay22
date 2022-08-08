@@ -150,19 +150,7 @@ def palindrome_num(num):
     :return: bool. True is palindrome, else False
     """
 
-    st = str(num)
-    leng = int(-(-len(st)/2))
-    if len(st) % 2 == 0:
-        st1 = st[:int(leng)]
-        st2 = st[leng:]
-        if st1 == st2[::-1]:
-            return True
-    elif len(st) % 2 != 0:
-        st1 = st[:int(leng+1)]
-        st2 = st[leng:]
-        if st1 == st2[::-1]:
-            return True
-    return False
+    return list(str(num)) == list(str(num))[::-1]
 
 
 def pair_match(men, women):
