@@ -115,7 +115,6 @@ def list_diff(elements):
     i = 0
     for x in range(1, len(elements)):
         new_elements.append(int(elements[x]) - int(elements[i]))
-        x += 1
         i += 1
     return new_elements
 
@@ -279,7 +278,7 @@ def print_dict_as_table(some_dict):
     print("-------------")
 
     for x in some_dict:
-        print(x, " " * (8-len(x)), some_dict[x])
+        print(x, " " * abs(8-len(x)), some_dict[x])
 
 
 def merge_dicts(dict1, dict2):
