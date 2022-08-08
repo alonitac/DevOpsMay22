@@ -87,7 +87,7 @@ A very common issue for Git beginners is switching branches while there are unco
    4. `git revert HEAD~1`
 3. Explain the notation `HEAD~1` in git reset command.
 
-### working with GitHub 
+### Working with GitHub 
 
 1. In your GitHub account, create a new repository. 
 2. Add this repo as a remote (origin) to the local repo you've worked on along this exercise.
