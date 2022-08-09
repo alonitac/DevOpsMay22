@@ -30,6 +30,11 @@ class TestWordsConcatenation(unittest.TestCase):
     1 Katas
     """
 
+    def test_sample(self):
+        # your code here
+        lst =['hey', 'how', 'are', 'you', '?']
+        self.assertEqual(questions.words_concatenation(lst), 'hey how are you ?')
+
     def test_empty_list(self):
         lst = []
         self.assertEqual(questions.words_concatenation(lst), "")
@@ -54,7 +59,23 @@ class TestReverseWordsConcatenation(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        pass
+        lst = ['take', 'me', 'home']
+        self.assertEqual(questions.reverse_words_concatenation(lst), "home me take")
+
+    def test_empty_list(self):
+        # your code here
+        lst = []
+        self.assertEqual(questions.reverse_words_concatenation(lst), "")
+
+    def test_full_list(self):
+        # your code here
+        lst = ['Hello','','are','you','today','?']
+        self.assertEqual(questions.reverse_words_concatenation(lst), '? today you are Hello')
+
+    def test_sample4(self):
+        # your code here
+        lst = ['1','','2','','3','','4','','5']
+        self.assertEqual(questions.reverse_words_concatenation(lst), '5 4 3 2 1')
 
 
 class TestIsUniqueString(unittest.TestCase):
@@ -64,8 +85,16 @@ class TestIsUniqueString(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        pass
-
+        some_str = ''
+        self.assertEqual(questions.is_unique_string(some_str), True)
+    def test_sample2(self):
+        # your code here
+        some_str = '123456'
+        self.assertEqual(questions.is_unique_string(some_str), True)
+    def test_sample3(self):
+        # your code here
+        some_str = 12345
+        self.assertEqual(questions.is_unique_string(some_str), "Please enter a valid input(strings only)")
 
 class TestListDiff(unittest.TestCase):
     """
@@ -74,8 +103,18 @@ class TestListDiff(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        pass
+        lst = [1, 2, 3, 4, 7, 11]
+        self.assertEqual(questions.list_diff(lst), [None, 1, 1, 1, 3, 4])
 
+    def test_sample2(self):
+        # your code here
+        lst = [1, 5, 0, 4, 1, 1, 1]
+        self.assertEqual(questions.list_diff(lst), [None, 4, -5, 4, -3, 0, 0])
+
+    def test_sample3(self):
+        # your code here
+        lst = []
+        self.assertEqual(questions.list_diff(lst),[])
 
 class TestPrimeNumber(unittest.TestCase):
     """
@@ -84,7 +123,8 @@ class TestPrimeNumber(unittest.TestCase):
 
     def test_sample(self):
         # your code here
-        pass
+        num = 0
+        self.assertEqual(questions.prime_number(num), f"{num}, is lower from 1 , please enter a higher number")
 
 
 class TestPalindromeNum(unittest.TestCase):
