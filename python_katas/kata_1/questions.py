@@ -191,7 +191,16 @@ def pair_match(men, women):
     :param women: dict mapping name -> age
     :return: tuple (men_name, women_name) such their age absolute difference is the minimal
     """
-    return None
+    minimal_gap = 100
+    res = ('', '')
+
+    for cur_men in men:
+        for cur_women in women:
+            if abs(cur_men.value - cur_women.value) < minimal_gap:
+                minimal_gap = abs(cur_men.value - cur_women.value)
+                res = (cur_men.key, cur_women.key)
+
+    return res
 
 
 def bad_average(a, b, c):
@@ -203,7 +212,7 @@ def bad_average(a, b, c):
 
     :return:
     """
-    return a + b + c / 3
+    return (a + b + c) / 3
 
 
 def best_student(grades):
@@ -226,7 +235,14 @@ def best_student(grades):
     :param grades: dict of name -> grade mapping
     :return: str. some key from the dict
     """
-    return None
+    res = ('', 0)
+    max_grade = 0
+    for grade in grades:
+        if grade.value > max_grade:
+            max_grade = grade.value
+            res = grade
+
+    return res
 
 
 def print_dict_as_table(some_dict):
@@ -255,7 +271,16 @@ def print_dict_as_table(some_dict):
     :param some_dict:
     :return:
     """
-    return None
+    res = ''
+    res += 'Key     Value\n'
+    # print('Key     Value')
+    res += '-------------\n'
+    # print('-------------')
+    for key in some_dict:
+        res += '{:7}{:>3}\n'.format(key, str(some_dict[key]))
+        # print('{:7}:{:>5}'.format(key, str(some_dict[key])))
+
+    return res
 
 
 def merge_dicts(dict1, dict2):
@@ -275,6 +300,9 @@ def merge_dicts(dict1, dict2):
     :param dict2:
     :return:
     """
+
+    for k in dict2:
+        dict1[k] = dict2[k]
     return dict1
 
 
@@ -290,8 +318,21 @@ def seven_boom(n):
     :param n: int. The last number for count for a 7-boom play
     :return: list of integers
     """
-    return None
+    res = [];
+    for i in range(n):
+        if i % 7 == 0:
+            res.append(i)
 
+    return res
+
+def next_alpha(s):
+    if s == ' ':
+        res1 = s
+    elif s.isupper():
+        res1 = chr((ord(s) - 65 + 3) % 26 + 65)
+    else:
+        res1 = chr((ord(s) - 97 + 3) % 26 + 97)
+    return res1
 
 def caesar_cipher(str_to_encrypt):
     """
@@ -305,6 +346,9 @@ def caesar_cipher(str_to_encrypt):
 
     :return:
     """
+    res = ''
+    for s in str_to_encrypt:
+        res += next_alpha(s)
     return None
 
 
@@ -323,7 +367,11 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    return None
+    res = 0
+    for s in digits_str:
+        res += int(s)
+
+    return res
 
 
 if __name__ == '__main__':
