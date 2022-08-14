@@ -1,20 +1,20 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1.echo 1 > abc.txt
+2.git status = red
+3.git add abc.txt ### git status = green ### git commit ### git status = nothing to commit
+4.echo 2 >> abc.txt
+5.git status = red = same as step 2 because before git add - the file is in working tree and not in index - red=working tree local green=index
+6.git diff
+7.git diff --staged will only print changes between index tree and main/master tree, In this case the changes to file is still in working tree
+8.The command refers to stage2 as a revision or a path that doesn't really exist, adding '--' is needed to separate paths and revisions
+9.git add abc.txt ### git status = green
+10.git diff will only shows differences between the file in the working tree and the same file in index before committing changes
+11.git diff --staged (here you cand add a specific file or leave empty for total differences)
+12.echo 3 >> abc.txt
+13.not the same output - the reason is git main print differences between main and working tree, git --staged print diff between index and main, in this case the append is not yet committed to main repo
+14.to let you know that the file is different between working tree and index
+15.git reset --hard
 
 # Resolve conflicts
 
