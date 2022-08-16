@@ -1,20 +1,27 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1.echo "1" > abc.txt
+2. git status color is Red
+3. git add command : color is Green | git commit + message
+4.echo "2" >> abc.txt
+5. There are no different in the colors both are Red | The difference is when we created the file the git status alerting that
+the file need to be added -- and after committing the file it is alerting that the file has been modified
+6. git diff
+7. it is not printing anything because the file abc.txt currently in the working tree if the file was committed it would have
+shown.
+8.because stage2 is an unknown file or path
+9. again in order to add the file we need to use the command : Git add :
+can be checked if the file has been added by git status
+10. nothing but @@ -0,0 +1,16 @@  this because  there are no different  between the working tree to the staging
+if the file has been changed it will print  the changes
+11.  the command is : git diff --staged abc.txt:
+12 .echo "3" >> abc.txt
+13.it may appear on the first glance that it is the same output but no
+they both checking different things one is the diff between files to staged
+and one between current main to staged
+14. one to tell you the file needs to be
+ committed and one to tell you if you want to restore to previous type-git restore <file>
+15. git reset --hard
 
 # Resolve conflicts
 
