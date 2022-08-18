@@ -1,16 +1,20 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
+1. touch abc.txt && echo 1 >> abc.txt .
+2. the color is red and the file is in untracked state (hes not part of the git repo yet).
+3. we will use 'git add' to add the file into the index (the color is green) , 'git commit' to commit the changes
+4. echo 2 >> abc.txt
+5. the color is red like in step 2 but the change is the state of the file in step 2 it was in untracked area and now it is in tracked area
+6. git diff
+7. 'git diff --staged' show the difference between the staged (tracked) changed and the ones committed on the repo
+ because we didnt added the changes yet with 'git add' there is no difference between the index and the repo yet.
+8. the error we are getting is fatal: ambitious argument cant find rev or path
+ and we are getting this error because there is no file named staged2 or tag named staged2.
+ git dont know to what he need to compare the changes because the file/tag doesnt exist.
+9. git add abc.txt
+10. git diff shows empty window because we added the changes to the index in section 9 and git diff show changes between working tree and the repository
+ if we want it to compare changes between the index and the repository we need to use 'git diff --staged'.
+11. git diff main (git diff <branch we want to check on> )
 12.
 13.
 14.
