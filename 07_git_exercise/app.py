@@ -19,9 +19,9 @@ def update_profile():
 
 # Try by: curl localhost:8080/get-profile-picture
 @app.route('/get-profile-picture')
-def profile_picture():
+def load_profile_picture():
     return send_file('images/profile-1.jpg', mimetype='image/gif')
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8080, host='0.0.0.0')
+    app.run(debug=True, port=8081, host='0.0.0.0')
