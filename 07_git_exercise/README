@@ -15,10 +15,13 @@
 10. git diff shows empty window because we added the changes to the index in section 9 and git diff show changes between working tree and the repository
  if we want it to compare changes between the index and the repository we need to use 'git diff --staged'.
 11. git diff main (git diff <branch we want to check on> )
-12.
-13.
-14.
-15.
+12. echo 3 >> abc.txt
+13. no 'git diff --staged' shows the difference between the index and the repo and 'git diff main' shoes the difference
+ between the working tree and the HEAD on branch main.
+14. the file appear twice once in the changes to be committed because we didnt committed the changes
+ of appending 2 but we added them to the tracking and the changes of appending 3 was not added yet so appending 2 waiting for
+  commit and appending 3 waiting for add.
+15. git reset
 
 # Resolve conflicts
 
