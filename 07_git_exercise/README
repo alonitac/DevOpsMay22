@@ -6,7 +6,7 @@
 4. to a second line in abc.txt file is "echo 2 >> abc.txt"
 5. yes, the color is changed back to red and show status "modified"
 6. the command to see the changes is "git diff"
-7.
+7. #
 8. because "stage2" is unknown path or file
 9. git add abc.txt / git status
 10. "git diff" prints nothing because there are no new changes between working tree and staging
