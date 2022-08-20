@@ -15,15 +15,27 @@ Instantiate your class, make several deposits and withdrawals, and test to make 
 
 
 class Account:
-    def __init__(self, name, balance):
-        pass
+
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, balance):
+        self.balance += balance
+        print(f'Deposit accepted your current Balance is: {self.balance}$')
+
+    def withdraw(self, subtract):
+        self.balance -= subtract
+        if self.balance >= subtract:
+            print(f"withdraw accepted your current balance is: {self.balance}$")
+
+        elif self.balance <= subtract:
+            print(f" Funds Unavailable you're missing {self.balance}$")
 
 
 if __name__ == '__main__':
-
     # 1. Instantiate the class
     acct1 = Account('Jose', 100)
-
 
     # 2. Print the object
     print(acct1)
@@ -49,5 +61,3 @@ if __name__ == '__main__':
     # 6. Make a withdrawal that exceeds the available balance
     acct1.withdraw(500)
     # Funds Unavailable!
-
-
