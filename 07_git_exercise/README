@@ -6,15 +6,17 @@
 4. echo 2 >> abc.txt
 5. The color is not different from the observed color in step 2.
 6. git diff
-7. Because there is no changes between index and master. #FIXME#
+7. Because the file needs to be committed.
 8. The error is: "unknown revision or path not in the working tree", it prints it because stage2 is unknown path or file.
 9. git add abc.txt
 10. the command 'git diff' prints nothing because there is no difference between the working tree to the index.
-11.
-12.
-13.
-14.
-15.
+11. git diff --staged
+12. echo 3 >> abc.txt
+13. The commands does not give the same output because "git diff --staged" shows the difference between index and main,
+and the command "git diff main" shows the difference between the working tree and main.
+14. It appears once for the first change we made to be committed and the second one for adding another change that hasn't
+been staged.
+15. git reset --hard
 
 # Resolve conflicts
 
