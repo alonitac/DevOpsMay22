@@ -1,15 +1,15 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
+1. echo 1 > abc.txt
+2. The color is red.
+3. After adding to the index, the color is green.
+4. echo 2 >> abc.txt
+5. The color is not different from the observed color in step 2.
+6. git diff
+7. Because there is no changes between index and master. #FIXME#
+8. The error is: "unknown revision or path not in the working tree", it prints it because stage2 is unknown path or file.
+9. git add abc.txt
+10. the command 'git diff' prints nothing because there is no difference between the working tree to the index.
 11.
 12.
 13.
