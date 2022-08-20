@@ -1,20 +1,20 @@
 # Git Basics (commit, diff, branches)
 
-1. echo 1 > abc.txt
+1. "echo 1 > abc.txt"
 2. the color is red
 3. git add abc.txt - the color is changes to green
 4. to a second line in abc.txt file is "echo 2 >> abc.txt"
 5. yes, the color is changed back to red and show status "modified"
 6. the command to see the changes is "git diff"
-7. #
+7. because file abc.txt is in working directory and need to be committed
 8. because "stage2" is unknown path or file
 9. git add abc.txt / git status
 10. "git diff" prints nothing because there are no new changes between working tree and staging
-11.
-12.
-13.
-14.
-15.
+11. "git diff --staged"
+12. "echo 3 >> abc.txt"
+13. "git diff --staged" shows the different between the working area to the staging and "git diff main" shows the different between working tree to the main repository
+14. it shows when the file is added to the staged and didn't commit and the second one shows that working area in modified status
+15. git reset --hard
 
 # Resolve conflicts
 
