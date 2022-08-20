@@ -1,20 +1,21 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1.echo "1" >abc.txt
+2.git status - status is red
+3.git add abc.txt , git status - status is green ..git commit then nano open i write "add abc file "
+4.echo "2" >>abc.txt
+5.yes the color is different : is red , the differences between the two outputs is: now it  modified:   abc.txt
+6.git diff
+7.git diff --staged show different between index tree and master tree and we dont have anny
+8.because stage2 is unknown revision or path in the working tree. the error :unknown revision or path not in the working tree.
+9.git add abc.txt  , git status
+10.git diff print noting because there is no different between index and working tree
+11.git diff --staged
+12.echo 3 >> abc.txt
+13.no because the gitt diff --staged shows the different between the working tree to the staging area
+and git diff master shows the different between working tree to master
+14.because one's is for changes to be committed (adding 2)  and the next time is for changes not staged (adding 3)
+15.git reset --hard
 
 # Resolve conflicts
 
