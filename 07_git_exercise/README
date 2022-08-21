@@ -1,35 +1,33 @@
 # Git Basics (commit, diff, branches)
 
 1. "echo 1 > abc.txt"
-2. the color is red
+2. The color is red
 3. git add abc.txt - the color is changes to green
-4. to a second line in abc.txt file is "echo 2 >> abc.txt"
-5. yes, the color is changed back to red and show status "modified"
-6. the command to see the changes is "git diff"
-7. because file abc.txt is in working directory and need to be committed
-8. because "stage2" is unknown path or file
+4. To a second line in abc.txt file is "echo 2 >> abc.txt"
+5. No, the color is the same as in step 2 "red" and now it's changed status to "modified"
+6. The command to see the changes is "git diff"
+7. Because file abc.txt is in working directory and need to be committed
+8. It's shows fatal error because there is no path or file with name "stage2"
 9. "git add abc.txt / git status"
-10. "git diff" prints nothing because there are no new changes between working tree and staging
+10. "git diff" prints nothing because there was no new changes on working tree and staging
 11. "git diff --staged"
 12. "echo 3 >> abc.txt"
 13. "git diff --staged" shows the different between the working area to the staging and "git diff main" shows the different between working tree to the main repository
-14. it shows when the file is added to the staged and didn't commit and the second one shows that working area in modified status
+14. It shows when the file is added to the staged and didn't commit and the second one shows that working area in modified status
 15. git reset --hard
 
 # Resolve conflicts
 
 1. "git branch"
 2. "git checkout -b feature/lambda_migration" to create a new branch
-3. to merge branch type "git merge feature/version1"
-4.
-5.
-
-1.
-2.
-3.
-4.
-5.
-6.
+3. To merge branch type "git merge feature/version1"
+4. Done, as says in explanation on PyCharm UI
+5. Done, as showed and explained in exercise
+6. The commits:
+    Nayaran's changes for app.py "features/version2"
+    Restrict the extensions that can be disabled "feature/version1"
+    Use correct lock type in reconnect()
+    John's changes for app.py
 
 # Cherry picking
 
