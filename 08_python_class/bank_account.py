@@ -19,6 +19,9 @@ class Account:
     def __init__(self, owner, balance):
         self.owner = owner
         self.balance = balance
+    def __len__(self):
+        return self.balance
+
     def __str__(self):
         return f'Account owner: {self.owner}\nAccount balance: {self.balance}$'
 
@@ -45,7 +48,7 @@ if __name__ == '__main__':
     # acct3 = acct1 + acct2  # acct1.__add__(acct2)
 
     # print(len(acct1))
-    # x = str(acct1)
+    x = str(acct1)
 
     # 2. Print the object
     print(acct1)
