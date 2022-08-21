@@ -20,16 +20,20 @@ class Account:
         self.owner = owner
         self.balance = balance
 
+    def __str__(self):
+        return f'Account owner: {self.owner}\nAccount balance: {self.balance}$'
+
     def deposit(self, balance):
         self.balance += balance
         print(f'Deposit accepted your current Balance is: {self.balance}$')
 
     def withdraw(self, subtract):
-        self.balance -= subtract
         if self.balance >= subtract:
+            self.balance -= subtract
             print(f" Withdrawal Accepted  your current balance is: {self.balance}$")
 
-        elif self.balance <= subtract:
+        elif self.balance < subtract:
+            self.balance -= subtract
             print(f" Funds Unavailable you're missing {self.balance}$")
 
 
@@ -61,7 +65,7 @@ if __name__ == '__main__':
     acct1.deposit(50)
     # >> Deposit Accepted
 
-    acct1.withdraw(120)
+    acct1.withdraw(150)
     # Withdrawal Accepted
     print()
     # 6. Make a withdrawal that exceeds the available balance
