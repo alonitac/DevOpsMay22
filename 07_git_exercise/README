@@ -6,23 +6,23 @@
 4. To a second line in abc.txt file is "echo 2 >> abc.txt"
 5. No, the color is the same as in step 2 "red" and now it's changed status to "modified"
 6. The command to see the changes is "git diff"
-7. Because file abc.txt is in working directory and need to be committed
-8. It's shows fatal error because there is no path or file with name "stage2"
-9. "git add abc.txt / git status"
-10. "git diff" prints nothing because there was no new changes on working tree and staging
-11. "git diff --staged"
-12. "echo 3 >> abc.txt"
-13. "git diff --staged" shows the different between the working area to the staging and "git diff main" shows the different between working tree to the main repository
-14. It shows when the file is added to the staged and didn't commit and the second one shows that working area in modified status
-15. git reset --hard
+7. Because file abc.txt is in working directory and need to be committed.
+8. It's shows fatal error because there is no path or file with name "stage2".
+9. Type "git add abc.txt" to add file to the index and then type "git status" to see the status of the file.
+10. "git diff" prints nothing because there was no new changes on working tree and staging.
+11. Type "git diff --staged" to show changes between the index and branch.
+12. Type "echo 3 >> abc.txt" to add a third line.
+13. "git diff --staged" shows the different between the working area to the staging and "git diff main" shows the different between working tree to the main repository.
+14. It shows when the file is added to the staged and didn't commit and the second one shows that working area in modified status.
+15. Type "git reset --hard" to unstage the changes.
 
 # Resolve conflicts
 
-1. "git branch"
-2. "git checkout -b feature/lambda_migration" to create a new branch
-3. To merge branch type "git merge feature/version1"
-4. Done, as says in explanation on PyCharm UI
-5. Done, as showed and explained in exercise
+1. Type "git branch"
+2. Type "git checkout -b feature/lambda_migration" to create a new branch.
+3. To merge branch type "git merge feature/version1".
+4. Done, as says in explanation on PyCharm UI.
+5. Done, as showed and explained in exercise.
 6. The commits:
     Nayaran's changes for app.py "features/version2"
     Restrict the extensions that can be disabled "feature/version1"
@@ -31,23 +31,23 @@
 
 # Cherry picking
 
-1.
-2.
-3.
-    1.
-    2.
-4.
-5.
+1. Type "git checkout main" to change a branch to "main" and then type "git checkout -b feature/lambda_migration2" to create a new one.
+2. In the bottom left corner go to "Git > Log" then go to filter in the middle and select a needed branch that you need to see a log on it "feature/lambda_migration"
+3. Right click on the selected commit and click "Cherry-Pick"
+    1. Use correct lock type in reconnect()
+    2. Restrict the extensions that can be disabled
+4. There was two files that added: "Use correct lock type in reconnect() > e427990 (.env)" and "Restrict the extensions that can be disabled > 2f4dc8e (config.json)"
+5. Yes, we care about the order because we need to see the last commit that made by user.
 
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. Type "git branch" to checkout on which branch you are.
+2. Type "echo Test text lines for git exercise 07. > take.txt" to create text file and add to it lines, then type "git add take.txt" to add it to the index. And for sure type "git status" to see on which stage it is.
+3. Error that i'm getting: "Please commit your changes or stash them before you switch branches."
+4. Type "git checkout -f / --force dev" there is also option to checkout force on PyCharm UI.
+5. No, the changes are lost when i used force checkout.
+6. The file has been removed and deleted from the branch that i worked on after forced checkout.
 
 # Reset
 
