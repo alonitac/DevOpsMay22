@@ -29,10 +29,13 @@ class Account:
     def withdraw(self, subtract):
         if self.balance >= subtract:
             self.balance -= subtract
-            print(f" Withdrawal Accepted  your current balance is: {self.balance}$")
+            print(f"Withdrawal Accepted  your current balance is: {self.balance}$")
 
         elif self.balance < subtract:
-            print(f" Funds Unavailable you're missing {subtract - self.balance}$")
+
+            print(f"Funds Unavailable\n"
+                  f"your current Balance is: {self.balance}$"
+                  f"\nin order to withdrawal this amount you need {subtract - self.balance}$")
 
 
 if __name__ == '__main__':
