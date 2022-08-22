@@ -13,7 +13,7 @@
 11.git diff --staged
 12.echo 3 >> abc.txt
 13.not the same output because the git diff shows the different between the working area to the staging area.
-14.the file appear twice because one time (add tow) we commented the file color green.and the second time we change the file (add 3) the color is red
+14.the file appear twice because one time (add 2) we commented the file color green.and the second time we change the file (add 3) the color is red
    and it let you know that you need to commit one file.
 15.git reset --hard
 
