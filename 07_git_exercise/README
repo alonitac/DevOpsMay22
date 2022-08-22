@@ -19,8 +19,8 @@
 
 # Resolve conflicts
 
-1.
-2.
+1.git branch
+2.git checkout -b feature/lambda_migration
 3.
 4.
 5.
