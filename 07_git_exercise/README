@@ -1,20 +1,21 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1.touch abc.txt --- echo "1">abc.txt
+2.the color is red - using git status
+3.git add--abc.txt using git status color green commit using git commit -m "add the new file abc.txt"
+4.using echo "2">abc.txt
+5.the color is different red file modified
+6.git diff
+7.using git diff --staged It doesnt show any changes because the file abc.txt is in working tree
+8.diff stage2 return fatal error because stage 2 in unknown path and it is not in the working tree and we sould use the separator -- before.
+9.git add abc.txt git status = green
+10.git diff print nothing because all of the changes as been commented
+11.git diff --staged
+12.echo 3 >> abc.txt
+13.not the same output because the git diff shows the different between the working area to the staging area.
+14.the file appear twice because one time (add tow) we commented the file color green.and the second time we change the file (add 3) the color is red
+   and it let you know that you need to commit one file.
+15.git reset --hard
 
 # Resolve conflicts
 
