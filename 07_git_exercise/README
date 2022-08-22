@@ -37,7 +37,7 @@ The last modification was not added to the staging area so there is a difference
 
 14. There were changes that were not added to the staging area and there are changes that are in the staging area but are not committed
 
-15.
+15. git reset --hard
 
 # Resolve conflicts
 
@@ -84,7 +84,7 @@ The result of git merge is immediately committed (unless there is a conflict)
     1.
     2.
 4. app.py, config.json
-5. Yes, so commits that have changes in the same line, will not be overwritten by the unwanted commit.
+5. Yes, so commits that have changes in the same line, will not be overwritten by the unwanted commit, and last commit should be the latest needed commit.
 
 
 # Changes in working tree and switch branches
