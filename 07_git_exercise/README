@@ -1,44 +1,90 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
+1.echo '1' > abc.txt
+
+git status
+2. Red
+
+3. git add abc.txt
+ new file:   abc.txt
+ Color: Green
+
+4. echo '2' >> abc.txt
+modified:   abc.txt
+
+5.The color is red
+In step 2 - the file was not yet in the staging area
+In this step - the file is in the staging area, but the modification from the working area was not added to the staging area.
+
+6.git diff main
+
+7. There is not difference between the the staging area to the last commit because the changes from the working tree where not added to the staging area yet.
+
+8. fatal: ambiguous argument 'stage2': unknown revision or path not in the working tree.
+
+9.git add abc.txt
+
+10. It prints nothing because there is no difference between the staging area to the working tree after adding the file to the index
+
+11. git diff --staged main
+
+12.echo '3' >> abc.txt
+
+13. No.
+git diff --staged - will show the difference between main to the staging area
+git diff main - will show the difference between the working tree to the staging area
+The last modification was not added to the staging area so there is a difference between the working tree and the staging area (added 3) and from main (2,3 not committed)
+
+14. There were changes that were not added to the staging area and there are changes that are in the staging area but are not committed
+
 15.
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
+1.git branch
+  bugfix/fix_readme_typo
+  bugfix/open_kibana_port
+  dev
+  feature/data_retention_policy
+  feature/elasticsearch_helm_chart
+  feature/upgrade_angular_version
+  feature/version1
+  feature/version2
+
+
+2.git checkout -b feature/lambda_migration
+
+3. git merge feature/version1
+Merge made by the 'recursive' strategy.
+ .env        | 0
+ app.py      | 4 ++--
+ config.json | 0
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+ create mode 100644 .env
+ create mode 100644 config.json
+
+4.click on merge feature/version2 and "merge feature/version2 into feature/lambda_migration"
 5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+   1.conflict in app.py, click merge and review conflicts
+   2.all
+   3. Annotate with Git Blame - to see who made the conflicting changes
+   4.accept, ignore
+   5.accept, ignore
+6.git log to see history of commits:
+1-Merge branch 'feature/version1' into feature/lambda_migration
+2-Merge branch 'feature/version2' into feature/lambda_migration
+The result of git merge is immediately committed (unless there is a conflict)
+
 
 # Cherry picking
 
-1.
+1.click "new branch from main"
 2.
 3.
     1.
     2.
-4.
-5.
+4. app.py, config.json
+5. Yes, so commits that have changes in the same line, will not be overwritten by the unwanted commit.
 
 
 # Changes in working tree and switch branches
