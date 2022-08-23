@@ -25,17 +25,18 @@
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
-5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+1. git branch
+2. git checkout -b feature/lambda_migration
+3. git merge feature/version1
+4. merging throw gui
+5. conflict resolve throw gui
+   1. clicking merge
+   2. pressing all (taking all the changes that are not in conflict)
+   3. checking the commits author with git blame
+   4. accepting port 8081 by johan
+   5. accepting get_profile_picture as function name
+6. yes there ae two new commits the first one is the the merge we did throw the cli and the second one
+ is the merge we did throw the gui.
 
 # Cherry picking
 
