@@ -21,7 +21,7 @@
 14. the file appear twice once in the changes to be committed because we didnt committed the changes
  of appending 2 but we added them to the tracking and the changes of appending 3 was not added yet so appending 2 waiting for
   commit and appending 3 waiting for add.
-15. git reset
+15. git reset --hard
 
 # Resolve conflicts
 
@@ -40,8 +40,8 @@
 
 # Cherry picking
 
-1.
-2.
+1. git checkout main && git checkout -b feature/lambda_migration2
+2. open log and filter feature/lambda_migration throw branch tab in the end pressing ctrl + enter
 3.
     1.
     2.
