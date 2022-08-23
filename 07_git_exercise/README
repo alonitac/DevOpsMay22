@@ -42,10 +42,11 @@
 
 1. git checkout main && git checkout -b feature/lambda_migration2
 2. open log and filter feature/lambda_migration throw branch tab in the end pressing ctrl + enter
-3.
-    1.
-    2.
-4.
+3. go into log and filter branch in the end press ctrl + enter
+    1. pressing on the cherry icon in the gui - use correct lock type in reconnect().
+    2. pressing on the cherry icon in the gui - Restrict the extensions that can be disabled.
+4. in the "use correct lock type in reconnect()" we got .env file
+ and in "Restrict the extensions that can be disabled" we got config.json file.
 5.
 
 
