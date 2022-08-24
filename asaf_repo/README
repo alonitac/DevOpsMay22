@@ -1,0 +1,69 @@
+# Git Basics (commit, diff, branches)
+
+1.Touch abc.txt  then echo 1 > abc.txt
+2.Red, its still in the working tree
+3.After git add abc.txt the file in the git status is green, its in the index now
+4.echo 2 >> abc.txt
+5.the color is not different,  its still red like in step 2, the difference is that we made changes to the abc.txt file so its in the working area whiting to commit
+6.git diff
+7.there was no difference because the change that we made in the file is still in the working tree and was not added to the index.
+8.Git diff stage2 print error because we didn’t add – in order to separate the paths from the revisions, the error we got is “fatal: ambiguous argument ‘stage2’: unknown revision or path not in the working tree”.
+9.git add acb.txt, now file is in the index so color in git status changed to green.
+10.git diff print nothing because there are no differences between working tree and index.
+11.git diff –staged
+12.echo 3 >> acb.txt
+13.no, they will give us different outputs because that git diff –staged show us differences between the working tree  and the staging area  and the git diff main command show us differences between the stage and the main.
+14.The file abc.txt is shown twice because the first one is in  green color and  located in the index area and the second one is in red color and is in the working tree area because we did not use the git add command after the changes we made.
+15.git reset --hard
+
+# Resolve conflicts
+
+1.git branch
+2.git checkout -b ‘feature/lambda_migration’
+3.from branch feature/lambda_migration we run the command git merge feature/version1
+4.
+5.
+   1.
+   2.
+   3.
+   4.
+   5.
+6.
+
+# Cherry picking
+
+1.
+2.
+3.
+    1.
+    2.
+4.
+5.
+
+
+# Changes in working tree and switch branches
+
+1.
+2.
+3.
+4.
+5.
+6.
+
+# Reset
+
+1.
+2.
+   1.
+   2.
+   3.
+   4.
+3.
+
+
+# Working with GitHub
+
+1.
+2.
+3.
+4.
