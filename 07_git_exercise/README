@@ -52,9 +52,10 @@
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
+1. git checkout feature/lambda_migration2
+2. touch take.txt && echo "no place like home" > take.txt - creating the file and writing to the file
+ now we will add the changes with git add take.txt.
+3. git throw error about uncommitted changes and ask us to commit them or stash them.
 4.
 5.
 6.
