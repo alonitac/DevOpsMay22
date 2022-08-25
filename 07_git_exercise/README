@@ -18,9 +18,10 @@ In this step - the file is in the staging area, but the modification from the wo
 
 6.git diff main
 
-7. There is not difference between the the staging area to the last commit because the changes from the working tree where not added to the staging area yet.
+7. There is not difference between the staging area to the last commit because the changes from the working tree where not added to the staging area yet.
 
 8. fatal: ambiguous argument 'stage2': unknown revision or path not in the working tree.
+stage2 does not exist
 
 9.git add abc.txt
 
@@ -79,32 +80,50 @@ The result of git merge is immediately committed (unless there is a conflict)
 # Cherry picking
 
 1.click "new branch from main"
-2.
-3.
-    1.
-    2.
-4. app.py, config.json
+2.log - filter feature/lambda_migration
+3. click cherry-pick
+    1."use correct lock type in reconnect()"
+    2."Restrict the extensions that can be disabled"
+4. .env, config.json
 5. Yes, so commits that have changes in the same line, will not be overwritten by the unwanted commit, and last commit should be the latest needed commit.
 
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. checkout feature/lambda_migration2
+
+2. vi take.txt, git add take.txt
+
+3.git checkout dev
+error: Your local changes to the following files would be overwritten by checkout:
+        take.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+approach 1 - commit the changes before checking out
+approach 2 - use git stash to record the current working tree and index away and be able to retrieve the record later, without committing
+
+
+4.Force Checkout.
+
+5.No
+
+6.Force Checkout overwrites and reverts local uncommitted changes
 
 # Reset
 
-1.
+1.checkout reset_question
 2.
-   1.
-   2.
-   3.
-   4.
-3.
+   1.9.txt and 10.txt
+   reset --soft remove the last commit from the current branch but the file changes will stay in working tree
+   2.8.txt, 9.txt and 10.txt were untracked
+   reset --mixed resets the staging area
+   3.7.txt deleted
+   reset --hard resets the staging area and the working tree
+   4. Removing 5.txt
+   revert - reverting to the last commit
+
+3.HEAD~1 stands for the previous commit to the current last commit.
 
 
 # Working with GitHub
