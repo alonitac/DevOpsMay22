@@ -1,26 +1,27 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1. touch abcd.txt --- echo "1">abcd.txt
+2. Red
+3. Red
+4. not appear in git status
+5. No , appear as Red
+6. git diff
+7. There is no files in stage mode .
+8. We do not have branch named "stage2".  Error is "fatal: ambiguous argument 'staged2': unknown revision or path not in the working tree."
+9. git add .\abcd.txt
+10. Nothing to print. Missing branch to compare 
+11. git diff-index main
+12. Done
+13. No. File not added to stage yet. Just changed locally , so we can not see laste edit on file at "git diff --stage" command , but compare beween remote main and local show us last change we do on file . 
+14. File appear twice once as staged , pending commit , and second time as modified but not added to stage .
+15. git reset .\abcd.txt
 
 # Resolve conflicts
 
 1.
 2.
 3.
+
 4.
 5.
    1.
