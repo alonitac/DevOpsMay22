@@ -6,11 +6,11 @@
 4.echo 2 > abc.txt
 5.now the color is red.
 6.git diff main
-7.g
-8.
+7.There is not difference
+8.stage 2 no exist
 9.git add abc.txt
-10.
-11.
+10.print nothing
+11.git diff --staged main
 12.#nano abc.txt and add 3 to to end of the file txt
 13.No,
 14.
