@@ -1,25 +1,25 @@
 # Git Basics (commit, diff, branches)
 
 1. touch abc.txt && echo 1 >> abc.txt .
-2. the color is red and the file is in untracked state (hes not part of the git repo yet).
-3. we will use 'git add' to add the file into the index (the color is green) , 'git commit' to commit the changes
+2. the color is red and the file is untracked (he's not part of the git repo yet).
+3. we will use 'git add' to add the file into the index (the color is green) , and 'git commit' to commit the changes
 4. echo 2 >> abc.txt
-5. the color is red like in step 2 but the change is the state of the file in step 2 it was in untracked area and now it is in tracked area
+5. the color is red like in step 2 but the change is the state of the file in step 2 it was in the untracked area and now it is in tracked area
 6. git diff
-7. 'git diff --staged' show the difference between the staged (tracked) changed and the ones committed on the repo
- because we didnt added the changes yet with 'git add' there is no difference between the index and the repo yet.
+7. 'git diff --staged' shows the difference between the staged (tracked) changed and the ones committed on the repo
+ because we didn't add the changes yet with 'git add' there is no difference between the index and the repo yet.
 8. the error we are getting is fatal: ambitious argument cant find rev or path
  and we are getting this error because there is no file named staged2 or tag named staged2.
- git dont know to what he need to compare the changes because the file/tag doesnt exist.
+ git doesn't know to what he needs to compare the changes because the file/tag doesn't exist.
 9. git add abc.txt
-10. git diff shows empty window because we added the changes to the index in section 9 and git diff show changes between working tree and the repository
+10. git diff shows an empty window because we added the changes to the index in section 9 and git diff shows changes between the working tree and the repository
  if we want it to compare changes between the index and the repository we need to use 'git diff --staged'.
 11. git diff main (git diff <branch we want to check on> )
 12. echo 3 >> abc.txt
-13. no 'git diff --staged' shows the difference between the index and the repo and 'git diff main' shoes the difference
+13. no 'git diff --staged' shows the difference between the index and the repo and 'git diff main' shows the difference
  between the working tree and the HEAD on branch main.
-14. the file appear twice once in the changes to be committed because we didnt committed the changes
- of appending 2 but we added them to the tracking and the changes of appending 3 was not added yet so appending 2 waiting for
+14. the file appears twice once in the changes to be committed because we didn't commit the changes
+ of appending 2 but we added them to the tracking and the changes of appending 3 were not added yet so appending 2 waiting for
   commit and appending 3 waiting for add.
 15. git reset --hard
 
@@ -28,25 +28,25 @@
 1. git branch
 2. git checkout -b feature/lambda_migration
 3. git merge feature/version1
-4. merging throw gui
-5. conflict resolve throw gui
+4. merging throw GUI
+5. conflict resolved throw GUI
    1. clicking merge
    2. pressing all (taking all the changes that are not in conflict)
-   3. checking the commits author with git blame
-   4. accepting port 8081 by johan
-   5. accepting get_profile_picture as function name
-6. yes there ae two new commits the first one is the the merge we did throw the cli and the second one
+   3. checking the author of the commit with git blame
+   4. accepting port 8081 by Johan
+   5. accepting get_profile_picture as the function name
+6. yes there are two new commits the first one is the merge we did throw the cli and the second one
  is the merge we did throw the gui.
 
 # Cherry picking
 
 1. git checkout main && git checkout -b feature/lambda_migration2
-2. open log and filter feature/lambda_migration throw branch tab in the end pressing ctrl + enter
+2. open log and filter feature/lambda_migration throw branch tab, in the end, pressing ctrl + enter
 3. go into log and filter branch in the end press ctrl + enter
-    1. pressing on the cherry icon in the gui - use correct lock type in reconnect().
-    2. pressing on the cherry icon in the gui - Restrict the extensions that can be disabled.
-4. in the "use correct lock type in reconnect()" we got .env file
- and in "Restrict the extensions that can be disabled" we got config.json file.
+    1. pressing on the cherry icon in the GUI - use the correct lock type in reconnect().
+    2. pressing on the cherry icon in the GUI - Restrict the extensions that can be disabled.
+4. in the "use correct lock type in reconnect()" we got the .env file
+ and in "Restrict the extensions that can be disabled" we got the config.json file.
 5.
 
 
@@ -56,24 +56,27 @@
 2. touch take.txt && echo "no place like home" > take.txt - creating the file and writing to the file
  now we will add the changes with git add take.txt.
 3. git throw error about uncommitted changes and ask us to commit them or stash them.
-4.
-5.
-6.
+4. a pop up jump with an error git checkout problem and we need to choose smart checkout or force checkout.
+5. no the text is different from what we inserted at the start.
+6. no the file is not there, the force checkout throws away local changes and any untracked files or directories that are in the way.
 
 # Reset
 
-1.
+1. git checkout reset_question
 2.
-   1.
-   2.
-   3.
-   4.
-3.
+   1. we reset the head to be one commit before what it was so we took head~1 is on commit before the current head,
+    file number 10 is back in the index and nothing changed in the file.
+   2. we reset the head one commit back from the head but this time we reset the file of the commit and the index back to the working tree.
+   3. we reset one commit before the head the changes of this commit were deleted in our case the commit was file number 8 so now file number 8 doesn't exist anymore
+    and the state of the files that were in the working tree changed to untracked.
+   4. we did git revert on head -1 so file number 6 got deleted and in the log tree a new commit was created that shows the changes we deleted from commit number 6
+ the original commit still exists but we have a new commit that shows the deletion of commit number 6.
+3. HEAD~1 means one commit before the last head -1 if head is commit number 1- we work on number 9.
 
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1. created repo named course-repo
+2. git remote add origin https://github.com/lidoror/course-repo.git
+3. git push origin main , git push origin dev
+4. https://github.com/lidoror/course-repo/tree/main
