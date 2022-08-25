@@ -35,6 +35,34 @@ class Account:
         other.balance = 0
         return new
 
+    @staticmethod
+    def is_valid_amount(amount):
+        if type(amount) != int:
+            print("Amount isn't integer")
+        elif amount < 0:
+            print("Amount isn't positive")
+        else:
+            return True
+
+        return False
+
+    def deposit(self, amount):
+        if self.is_valid_amount(amount):
+            self.balance += amount
+            print("Deposit Accepted")
+
+    def withdraw(self, amount):
+        if self.is_valid_amount(amount):
+            if self.balance >= amount:
+                self.balance -= amount
+                print("Withdrawal Accepted")
+            else:  # self.balance < amount
+                print("Funds Unavailable!")
+
+
+class StudentAccount(Account):
+
+
 
 if __name__ == '__main__':
 
