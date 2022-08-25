@@ -23,7 +23,7 @@ class Account:
         return self.balance
 
     def __str__(self):
-        return f'Account owner:   {self.owner}\nAccount balance: ${self.balance}'
+        return f'Account owner:   {self.owner}\nAccount balance: {self.balance}$'
 
     def __add__(self, other):
         """
@@ -42,16 +42,15 @@ if __name__ == '__main__':
     acct1 = Account('Jose', 100)
     acct2 = Account('Jane', 1000)
 
-    acct3 = acct1 + acct2  # acct1.__add__(acct2)
+    # acct3 = acct1 + acct2  # acct1.__add__(acct2)
 
     # print(len(acct1))
-    x = str(acct1)
 
     # 2. Print the object
     print(acct1)
     # output:
     # >> Account owner:   Jose
-    # >> Account balance: $100
+    # >> Account balance: 100$
 
     # 3. Show the account owner attribute
     print(acct1.owner)
