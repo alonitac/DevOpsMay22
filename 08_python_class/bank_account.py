@@ -10,7 +10,7 @@ and two methods:
 * withdraw
 
 As an added requirement, withdrawals may not exceed the available balance.
-Instantiate your class, make several deposits and withdrawals, and test to make sure the account can't be overdrawn.
+Instantiate your class, mak e several deposits and withdrawals, and test to make sure the account can't be overdrawn.
 """
 
 

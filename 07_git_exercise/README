@@ -21,8 +21,8 @@ and git diff master shows the different between working tree to master
 
 1.git branch
 2.git checkout -b feature/lambda_migration
-3.
-4.
+3.done
+4.done
 5.
    1.
    2.
@@ -33,38 +33,40 @@ and git diff master shows the different between working tree to master
 
 # Cherry picking
 
-1.
-2.
-3.
-    1.
-    2.
-4.
-5.
+1.git checkout main , git checkout -b feature/lambda_migration2
+2.go to feature in the local repo and change filter to the feature/lambda_migration
+3.click on chery pick  button and choose the requested commits:
+    1."use correct lock type in reconnect()"
+    2."Restrict the extensions that can be disabled"
+4.config.json from: "Restrict the extensions that can be disabled" and env from: "use correct lock type in reconnect()"
+5.yes because we want to get the last commit made from the user
 
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1.git branch
+2.echo "hi ligat alofot" >take.txt , git add take.txt , git status
+3.error: Your local changes to the following files would be overwritten by checkout:
+        take.txt
+the two approaches are:commit your changes or stash them before you switch branches
+4.on ui choose dev checkout and choose force checkout
+5.yes  now the are a,b,c in the file
+6.the file is not in the branch anymore , forse checkout will delete the file
 
 # Reset
 
-1.
+1.git checkout reset_question
 2.
-   1.
-   2.
-   3.
+   1.git reset --soft HEAD~1 > get the commit before the HEAD but the changes in working tree and in the index will stay
+   2.git reset --mixed HEAD~1 > get the commit before the HEAD keeps files the same and unstages the changes in the index
+   3.git reset --hard HEAD~1 - going back to the commit before HEAD and reset the files of the index and the working directory.
    4.
-3.
+3.HEAD~1 is the commit before the HEAD
 
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1.create new repo and name it myrepo,  generate ssh keygen and add it to the ssh keygen agent in the github
+2.git remote add origin git@github.com:idoli88/myrepo.git
+3.git push -u origin main , git push -u origin dev
+4.https://github.com/idoli88/myrepo
