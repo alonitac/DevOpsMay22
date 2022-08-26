@@ -1,34 +1,45 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1. echo "1" > abc.txt
+2. RED
+3. git add abc.txt; GREEN
+4. echo "2" >> abc.txt
+5. The second part is not different from the step 2. The difference is between GREEN and RED.
+6. git diff (git diff main - eq last commit; git diff HEAD - eq last commit of the current branch)
+7. It is not nothing:
+diff --git a/abc.txt b/abc.txt new file mode 100644 index 0000000..d00491f --- /dev/null +++ b/abc.txt @@ -0,0 +1 @@ +1
+8. There is no such branch.
+The error: "ambiguous argument 'stage2': unknown revision or path not in the working tree."
+9. git add abc.txt
+10. git diff print nothing, because all the changes are staged.
+11. git diff --staged (staged == indexed)
+12. echo "3" >> abc.txt
+13. No. git diff --staged - shows staged changes (after git add command). git diff main - shows difference between main and working tree.
+14. Changes to be committed and changes not staged for commit.
+15. git reset -- <filePath> (older command)
+git restore --staged <filePath> (newer command)
+git reset HEAD -- <filePath> (unstages any modifications made to the file since the last commit (but doesn't revert them in the filesystem); it replaces the index version of the file with the one from repo (HEAD), effectively unstaging the modifications to it.)
+git rm --cached <filePath> (makes git stop tracking the file completely (leaving it in the filesystem), remove a file from the index, leaving it in the working directorym and a commit will now remove it from the repo as well)
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
+1. git branch
+2. git checkout -b feature/lambda_migration
+3. git checkout feature/lambda_migration (checkout to the destination branch, if you still not there)
+git merge feature/version1 (merge the branch to the current branch)
+4. 'Merge selected into current' gives an error:
+Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm '
+hint: as appropriate to mark resolution and make a commit. fatal: Exiting because of an unresolved conflict.
+
 5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+   1. Merge
+   2. All
+   3. Annotate with Git Blame
+   4. Accept John Doe's port number (8081), deny Narayan's port (8082)
+   5. Accept the function name of Narayan Nadella (get_profile_picture), Block John's name.
+6. Are there any added commits for feature/lambda_migration? what are those commits?
+07_git_exercise/app.py - need to be committed
 
 # Cherry picking
 
