@@ -35,13 +35,13 @@ The commits are the merge of branches 'feature/version1' & 'feature/version2' in
 
 # Cherry picking
 
-1.
-2.
+1. New branch from main -> name it 'feature/lambda_migration2'.
+2. Pycharm Git tab -> Log -> Branch -> 'feature/lambda_migration'.
 3.
-    1.
-    2.
-4.
-5.
+    1. Cherry picked "use correct lock type in reconnect()".
+    2. Cherry picked "Restrict the extensions that can be disabled".
+4. At the first cherry-pick the file '.env' has been added and at the second time the file 'config.json' has been added.
+5. Yes, because we need to know that the file won't be overwritten.
 
 
 # Changes in working tree and switch branches
