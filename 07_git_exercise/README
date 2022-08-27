@@ -1,20 +1,20 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1.echo 1 >> abc.txt
+2.red
+3.green
+4.echo 2 >> abc.txt
+5.the color is the same, red
+6.git diff
+7.no change was staged
+8.there is no revision or path 'stage2' in the working tree
+9.git add -A
+10.it prints the differences that were done since the last commit
+11.git diff main
+12.echo 3 >> abc.txt
+13.yes, because there were no commits to main
+14.one is green with the staged changes and one is without
+15.git restore abc.txt
 
 # Resolve conflicts
 
