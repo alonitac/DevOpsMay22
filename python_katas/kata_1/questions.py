@@ -28,8 +28,15 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-    return None
+    
+    if len(word) >= 3 and word[-3:] == "ing":
+        word = word +'ly'
+    elif len(word) >= 3 and word[-3:] != "ing":
+        word = word +'ing'
+    else:
+        return word
 
+    return word
 
 def words_concatenation(words):
     """
@@ -43,7 +50,11 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    sentence = ''
+    for word in words:
+        sentence += word +' '
+
+    return sentence
 
 
 def reverse_words_concatenation(words):
@@ -58,7 +69,13 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    words.reverse()
+    sentence = ''
+
+    for word in words:
+        sentence += word +' '
+
+    return sentence
 
 
 def is_unique_string(some_str):
@@ -75,7 +92,22 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    return None
+    unique = 'true'
+    list_arr = []
+    if len(some_str) != 0:   
+        list_arr.append(some_str[0])
+    else:
+        return unique
+
+    for letter in some_str[1:]:
+        
+        if letter not in list_arr:
+            list_arr.append(letter)
+        else:
+            unique = 'false'
+            break
+
+    return unique
 
 
 def list_diff(elements):
@@ -93,7 +125,19 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
-    return None
+    if len(elements) == 0 :
+        return elements
+
+    diffs = []
+    diffs.append('None')
+    counter = 1
+
+    while counter < len(elements):
+        diff = elements[counter] - elements[counter -1]
+        diffs.append(diff)
+        counter +=1
+
+    return diffs
 
 
 def prime_number(num):
@@ -106,7 +150,10 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    return None
+    for n in range(2,int(num**0.5)+1):
+        if num%n==0:
+            return False
+    return True
 
 
 def palindrome_num(num):
@@ -122,7 +169,23 @@ def palindrome_num(num):
     :param num: int
     :return: bool. True is palindrome, else False
     """
-    return None
+    
+    str_num = str(num)
+    str_lst = []
+
+    for let in str_num:
+        str_lst.append(let)
+
+    str_lst.reverse()
+
+    str_num_rev = ''
+    for n in str_lst:
+        str_num_rev += n
+
+    if str_num_rev == str_num:
+        return 'true'
+    else:
+        return 'false'
 
 
 def pair_match(men, women):
@@ -153,7 +216,19 @@ def pair_match(men, women):
     :param women: dict mapping name -> age
     :return: tuple (men_name, women_name) such their age absolute difference is the minimal
     """
-    return None
+    current_diff = 0
+    lowest_diff = 150
+
+    names = ()
+
+    for ke,va in men.items():
+        for k,v in women.items():
+            current_diff = abs(va - v)
+            if (current_diff < lowest_diff):
+                lowest_diff = current_diff
+                names = (ke,k)
+    
+    return names
 
 
 def bad_average(a, b, c):
@@ -165,7 +240,7 @@ def bad_average(a, b, c):
 
     :return:
     """
-    return a + b + c / 3
+    return (a + b + c) / 3
 
 
 def best_student(grades):
@@ -188,7 +263,16 @@ def best_student(grades):
     :param grades: dict of name -> grade mapping
     :return: str. some key from the dict
     """
-    return None
+    highest_grade = 0
+    current_grade = 0
+    best_student = ''
+
+    for k,v in grades.items():
+        current_grade = v
+        if current_grade > highest_grade:
+            highest_grade = v
+            best_student = k
+    return best_student
 
 
 def print_dict_as_table(some_dict):
@@ -217,7 +301,17 @@ def print_dict_as_table(some_dict):
     :param some_dict:
     :return:
     """
-    return None
+    print ('key'+ '     '+ "value")
+    print ('-----------------')
+    for k,v in some_dict.items():
+        str_v = str(v)
+        spc = len(k)
+        if spc < 5:
+            spc = 5
+        else:
+            spc = 8 - spc 
+        print(k + ' ' * spc +str_v )
+    return
 
 
 def merge_dicts(dict1, dict2):
@@ -237,7 +331,11 @@ def merge_dicts(dict1, dict2):
     :param dict2:
     :return:
     """
+    for k,v in dict2.items():
+        dict1[k] = v
+    
     return dict1
+
 
 
 def seven_boom(n):
@@ -252,7 +350,18 @@ def seven_boom(n):
     :param n: int. The last number for count for a 7-boom play
     :return: list of integers
     """
-    return None
+    x  = range(7, n, 7)
+    y = range(17, n, 10)
+    lst = []
+
+    for n in x:
+        lst.append(n)
+    for n in y:
+          lst.append(n)
+    lst.sort()
+
+    return lst
+
 
 
 def caesar_cipher(str_to_encrypt):
@@ -267,7 +376,26 @@ def caesar_cipher(str_to_encrypt):
 
     :return:
     """
-    return None
+    lst = [' ','a','b',' ','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a','b','c']
+    lst_u = [' ','A','B',' ','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A','B','C']
+    enc_lst = []
+
+    for let in str_to_encrypt:
+        if let.islower():
+            letter_index = lst.index(let)
+            repl_letter = lst[letter_index + 3]
+            enc_lst.append(repl_letter)
+
+        else:
+            letter_index = lst_u.index(let)
+            repl_letter = lst_u[letter_index + 3]
+            enc_lst.append(repl_letter)
+ 
+    cypher = ''
+    for i in enc_lst:
+        cypher += i 
+
+    return cypher
 
 
 def sum_of_digits(digits_str):
@@ -285,7 +413,17 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    return None
+    num_lst = []
+
+    for n in digits_str:
+        num_n = int(n)
+        num_lst.append(num_n)
+    
+    sum = 0
+    for n in num_lst:
+        sum += n
+
+    return sum
 
 
 if __name__ == '__main__':
