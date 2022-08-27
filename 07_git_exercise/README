@@ -52,12 +52,12 @@ for lambada_migration Restrict the extensions that can be disabled
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1 checked to ensure im in feature/lambda_migration2
+2.echo >> take.txt 123 123 123 / git add take.txt
+3.git checkout problem  need to commit before changing branches
+4.clicked on dev and checked out then forced checked out
+5.No. it was encoded with gibberish
+6.No. i dont have it there it takes it with you and leave it in the branch you forced checkout
 
 # Reset
 
