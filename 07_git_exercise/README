@@ -25,17 +25,19 @@ and one between current main to staged
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
+1.git branch
+2.git checkout -b feature/lambda_migration
+3.first commit all working files in order to use the git merge command
+4.did the following commands in git ui
 5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+   1.i clicked on merge
+   2.then the button all
+   3. then i did on both side annotate with git blame
+   4. accepted doe port number denied Narayan port number
+   5. accepted Narayan function Denied function
+6.Yes there are a new commits from Doe and Narayan
+for version2 branch -Narayan's changes for app.py
+for lambada_migration Restrict the extensions that can be disabled
 
 # Cherry picking
 
