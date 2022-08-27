@@ -41,13 +41,13 @@ for lambada_migration Restrict the extensions that can be disabled
 
 # Cherry picking
 
-1.
-2.
-3.
-    1.
-    2.
-4.
-5.
+1.git checkout -b feature/lambda_migration2
+2.change filter in the log
+3.choose with cherry pick the following ones ir order by description
+    1.use correct lock type in reconnect()
+    2.Restrict the extensions that can be disabled
+4. .env/ config.json
+5.yes . to have orders in the commits
 
 
 # Changes in working tree and switch branches
