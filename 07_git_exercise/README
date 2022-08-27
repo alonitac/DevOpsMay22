@@ -23,6 +23,12 @@
 3. To merge branch type "git merge feature/version1".
 4. Done, as says in explanation on PyCharm UI.
 5. Done, as showed and explained in exercise.
+    1. Choosed the conflicted file and clicked "Merge".
+    2. Clicked "All" to merge all changes.
+    3. Choosed "Annotate with Git Blame".
+    4. Acceptd John Doe's port number (8081) and Denyed Narayan's port (8082).
+    5. Acceptd the function name of Narayan Nadella (get_profile_picture), Block John's name.
+
 6. The commits:
     Nayaran's changes for app.py "features/version2"
     Restrict the extensions that can be disabled "feature/version1"
@@ -51,18 +57,18 @@
 
 # Reset
 
-1.
-2.
-   1.
-   2.
-   3.
-   4.
+1. Type "git checkout reset_question"
+2. Explanation of each commands:
+   1. git reset --soft HEAD~1 "Remove the last commit from the current branch, but the file changes will stay in your working tree".
+   2. git reset --mixed HEAD~1 "Still keep the changes in your working tree but not on the index, so if you want to commit, you will have to add the changes before commiting."
+   3. git reset --hard HEAD~1 "Lose all uncommited changes and all untracked files in addition to the changes introduced in the last commit"
+   4. git revert HEAD~1 "Undo the last Git commit"
 3.
 
 
 # Working with GitHub
 
-1.
-2.
+1. Created a new repository "Exercise_Repository".
+2. Type: "git remote add origin git@github.com:aleksei1988/Exercise_Repository.git"
 3.
 4.
