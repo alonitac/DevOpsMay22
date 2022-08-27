@@ -71,7 +71,7 @@ for lambada_migration Restrict the extensions that can be disabled
 
 
 # Working with GitHub
-1.
-2.
-3.
-4.
+1. goes to the github website and from account to my repository .. new repo
+2. does the commands that it write with Http
+3.push origin main first it is must | then push branch dev
+4.https://github.com/NaorBenAroya/myrepo
