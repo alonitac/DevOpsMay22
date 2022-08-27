@@ -136,7 +136,15 @@ def monotonic_array(lst):
     :param lst: list of numbers (int, floats)
     :return: bool: indicating for monotonicity
     """
-    return None
+    if len(lst) == 0:
+        return False
+    elif len(lst) == 1:
+        return True
+    else:
+        if sorted(lst) == lst or sorted(lst, reverse=True) == lst:
+            return True
+        else:
+            return False
 
 
 def matrix_avg(mat, rows=None):
