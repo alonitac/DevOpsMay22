@@ -20,17 +20,18 @@ been staged.
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
-5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+1. git branch
+2. git checkout -b feature/lambda_migration
+3. git merge feature/version1
+4. Merged through Pycharm UI.
+5. The conflict resolved through Pycharm UI.
+   1. In the conflict tool I clicked on merge.
+   2. Clicked on 'All'.
+   3. I clicked on 'Annotate with Git Blame' in the right and the left panels.
+   4. I Accepted John Doe's port number (8081), and denied Narayan's port (8082).
+   5. I Accepted the function name of Narayan Nadella (get_profile_picture), and blocked John's name.
+6.Yes, after all merges were completed, there are added commits for feature/lambda_migration.
+The commits are the merge of branches 'feature/version1' & 'feature/version2' into 'feature/lambda_migration'.
 
 # Cherry picking
 
