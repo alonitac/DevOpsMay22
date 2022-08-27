@@ -61,17 +61,16 @@ for lambada_migration Restrict the extensions that can be disabled
 
 # Reset
 
-1.
-2.
-   1.
-   2.
-   3.
-   4.
-3.
+1.checkout reset_question
+2.git log
+   1. 1.git reset --soft HEAD~1 | takes the commit right before the HEAD but the changes in working tree and in the index will remain
+   2.git reset --mixed HEAD~1  | takes  the commit right before the HEAD and keeps all files the same but unstages the changes.
+   3.git reset --hard HEAD~1 -|going back to the commit before HEAD and reset the files of the index and the working directory.
+   4.git revert HEAD~1  | Undo the last commit you did
+3. goes back 1 commit before HEAD
 
 
 # Working with GitHub
-
 1.
 2.
 3.
