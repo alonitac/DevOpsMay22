@@ -269,6 +269,27 @@ def pascal_triangle(lines):
     :param lines: int
     :return: None
     """
+    triangle_array = [[1]]
+    if lines == 1:
+        for i in triangle_array:
+            print(' '.join(map(str, i)).center(len(' '.join(map(str, triangle_array[-1])))), end='\n')
+        return None
+    if lines == 0:
+        print(' ')
+        return None
+    for row in range(1, lines):
+        sub_array = [0] * (row + 1)
+        for column in range(0, row):
+            if column == 0:
+                sub_array[column] = sub_array[column - 1] = 1
+                continue
+            if column >= 1 and row >= 1:
+                sub_array[column] = triangle_array[row - 1][column - 1] + \
+                                    triangle_array[row - 1][column]
+        triangle_array.append(sub_array)
+    for i in triangle_array:
+        print(' '.join(map(str, i)).center(len(' '.join(map(str,
+                                                            triangle_array[-1])))), end='\n')
     return None
 
 
