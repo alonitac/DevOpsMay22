@@ -22,10 +22,10 @@
 1.git branch
 2.git checkout -b feature/lambda_migration
 3.git merge feature/version1
-4.Merged using Pycharm UI.
-5. conflict resolved throw GUI
+4.using Pycharm UI.
+5. conflict resolved using GUI
    1. click merge.
-   2. using all to resolve oll conflict
+   2. i use all to resolve oll conflict
    3. checking the author of the commit with git blame
    4. i accepted port 8081 by John,and denied Narayan's port 8082
    5. i accepted get_profile_picture as the function name and blocked John's name.
@@ -34,38 +34,41 @@
 
 # Cherry picking
 
-1.git checkout main ,git checkout -b feature/lambda_migration2
-2.
-3.
-    1.
-    2.
-4.
-5.
+1.git checkout main , git checkout -b feature/lambda_migration2
+2.go to feature in the local repo and change filter to the feature/lambda_migration
+3.click on chery pick  button and choose the requested commits:
+    1."use correct lock type in reconnect()"
+    2."Restrict the extensions that can be disabled"
+4.config.json from: "Restrict the extensions that can be disabled" and env from: "use correct lock type in reconnect()"
+5.yes because we want to get the last commit made from the user
 
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1.git branch
+2. using echo "hello eli" > take.txt && git add take.txt
+3.git checkout dev , error status: Please commit your changes or stash them before you switch branches.we need to commit
+before checkout.
+4.on ui choose dev checkout and choose force checkout
+5.yes  now the are a,b,c in the file
+6.the file is not in the branch anymore , force checkout will delete the file
 
 # Reset
 
-1.
-2.
-   1.
-   2.
-   3.
-   4.
-3.
+1.git checkout reset_question
+2.git log
+   1. we reset the head to be one commit before what it was so we took head~1 is on commit before the current head,
+       file number 10 is back in the index and nothing changed in the file.
+   2. git reset --mixed HEAD~1- targets the commit right before the HEAD and keeps all files the same but unstages the changes
+   3. we reset one commit before the head the changes of this commit were deleted in our case the commit was file number 8 so now file number 8 doesn't exist anymore
+       and the state of the files that were in the working tree changed to untracked.
+   4. git revert HEAD~1  - Create a new commit, reverting changes from the specified commit
+3. HEAD~1 means one commit before the last head -1 if head is commit number 1- we work on number 9.
 
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1.create new repo and name it myrepo,  generate ssh keygen and add it to the ssh keygen agent in the github
+2.git remote add origin Eli-abukrat/myrepo.git
+3.git push -u origin main , git push -u origin dev
+4.https://github.com/Eli-abukrat/myrepo
