@@ -70,5 +70,5 @@ before checkout.
 
 1.create new repo and name it myrepo,  generate ssh keygen and add it to the ssh keygen agent in the github
 2.git remote add origin Eli-abukrat/myrepo.git
-3.git push -u origin main , git push -u origin dev
+3.git push -u origin main , git push -u origin dev-not done yet
 4.https://github.com/Eli-abukrat/myrepo
