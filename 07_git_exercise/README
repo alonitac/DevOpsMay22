@@ -21,19 +21,20 @@
 
 1.git branch
 2.git checkout -b feature/lambda_migration
-3.
-4.
-5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+3.git merge feature/version1
+4.Merged using Pycharm UI.
+5. conflict resolved throw GUI
+   1. click merge.
+   2. using all to resolve oll conflict
+   3. checking the author of the commit with git blame
+   4. i accepted port 8081 by John,and denied Narayan's port 8082
+   5. i accepted get_profile_picture as the function name and blocked John's name.
+6.yes, there was two new commits the first one is the merge we did throw the cli and the second one
+ is the merge we did throw the gui.
 
 # Cherry picking
 
-1.
+1.git checkout main ,git checkout -b feature/lambda_migration2
 2.
 3.
     1.
