@@ -1,3 +1,6 @@
+import socket
+
+
 def valid_parentheses(s):
     """
     3 Kata
@@ -13,21 +16,28 @@ def valid_parentheses(s):
     s = '[[{()}](){}]'  -> True
     s = '[{]}'          -> False
     """
-    parenthesis_dict = {'(': 0, ')': 0, '[': 0, ']': 0, '{': 0, '}': 0}
-    for i in s:
-        if i in parenthesis_dict:
-            parenthesis_dict[i] += 1
+    if not s:
+        return False
 
-    if parenthesis_dict.get('(') != parenthesis_dict.get(')'):
-        return False
-    elif parenthesis_dict.get('[') != parenthesis_dict.get(']'):
-        return False
-    elif parenthesis_dict.get('{') != parenthesis_dict.get('}'):
+    lst = []
+    for i in s:
+        if i == '(' or i == ')' or i == '[' or i == ']' or i == '{' or i == '}':
+            lst.append(i)
+
+    str_lst = ''.join(lst)
+
+    while '{}' in str_lst or '()' in str_lst or '[]' in str_lst:
+        str_lst = str_lst.replace('{}', '')
+        str_lst = str_lst.replace('()', '')
+        str_lst = str_lst.replace('[]', '')
+
+    if str_lst:
         return False
 
     return True
 
 
+# TODO need to fix this fibonacci
 def fibonacci_fixme(n):
     """
     2 Kata
@@ -88,6 +98,7 @@ def most_frequent_name(file_path):
     return name_to_return
 
 
+# TODO need to check with alon about this func (tarfile)
 def files_backup(dir_path):
     """
     3 Kata
@@ -105,9 +116,11 @@ def files_backup(dir_path):
     :param dir_path: string - path to a directory
     :return: str - the backup file name
     """
-    return None
+
+    return False
 
 
+# TODO check with alon if i can use module os
 def replace_in_file(file_path, text, replace_text):
     """
     2 Kata
@@ -122,6 +135,7 @@ def replace_in_file(file_path, text, replace_text):
     :param replace_text: text to replace with
     :return: None
     """
+
     return None
 
 
@@ -353,6 +367,8 @@ def strong_pass(password):
     """
     return None
 
+
+א
 
 if __name__ == '__main__':
     print('\nvalid_parentheses:\n--------------------')
