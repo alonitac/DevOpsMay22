@@ -1,69 +1,71 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1.echo "1" >abc.txt
+2.Red
+3.git add abc.txt , git status - status is green ..git commit then nano open i write "add abc file "
+4.echo "2" >>abc.txt
+5.The color is different : Red , the differences between the two outputs is: now it  modified:   abc.txt
+6.git diff
+7.git diff --staged show different between index tree and master tree and we dont have anny
+8.because stage2 is unknown revision or path in the working tree. the error :unknown revision or path not in the working tree.
+9.git add abc.txt  , git status
+10.git diff print noting because there is no different between index and working tree
+11.git diff --staged
+12.echo 3 >> abc.txt
+13.no because the gitt diff --staged shows the different between the working tree to the staging area
+and git diff master shows the different between working tree to master
+14.because one's is for changes to be committed (adding 2)  and the next time is for changes not staged (adding 3)
+15.git reset --hard
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
+1.git branch
+2.sudo git checkout -b feature/lambda_migration
+3.git merge feature/version1 and accept the file changes.
+4.done throw the gui following the images examples
 5.
-   1.
-   2.
-   3.
-   4.
-   5.
+   1.Merge
+   2.Click all
+   3.Annotate with Git Blame
+   4.Accept port 8081, port 8082
+   5.click on x symbol
 6.
 
 # Cherry picking
 
-1.
-2.
-3.
-    1.
-    2.
-4.
-5.
+1.git checkout main ,git checkout -b feature/lambda_migration2
+2.go to feature in the local repo and change filter to the feature/lambda_migration
+3.click on chery pick  button and choose the requested commits:
+    1."use correct lock type in reconnect()"
+    2."Restrict the extensions that can be disabled"
+4.config.json added to the branch
+5.YES , We want to order the last commit made by user.
 
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1.git branch
+2.echo "Hello ALL" > take.txt && git add take.txt
+git status
+3.git checkout dev , error status: Please commit your changes or stash them before you switch branches.
+4.on ui choose dev checkout and choose force checkout
+5.No changes are lost
+6.No the file is lost , force chekcout will remove your last changes your made on the branch.6.
 
 # Reset
 
-1.
-2.
-   1.
-   2.
-   3.
-   4.
-3.
+1.checkout reset_question
+2.git log
+   1.git reset --soft HEAD~1 - targets the commit right before the HEAD but the changes in working tree and in the index will stay
+   2.git reset --mixed HEAD~1  - targets the commit right before the HEAD and keeps all files the same but unstages the changes.
+   3.git reset --hard HEAD~1 - going back to the commit before HEAD and reset the files of the index and the working directory.
+   4.git revert HEAD~1  - Create a new commit, reverting changes from the specified commit
 
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1.Created new : CourseRepo
+2.git remote add origin https://github.com/sapirsanjabi/CourseRepo.git
+git branch -M main
+3.git push -u origin main, git push -u origin dev
+4.https://github.com/sapirsanjabi/CourseRepo.git
