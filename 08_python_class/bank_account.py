@@ -15,19 +15,9 @@ Instantiate your class, make several deposits and withdrawals, and test to make 
 
 
 class Account:
-    def __init__(self, name, balance=0):
-        self.owner = name
-        self.balance = balance
-    def deposit(self,money):
-        self.balance += money
-        print("Deposit Accepted")
+    def __init__(self, name, balance):
+        pass  # your implementation here!
 
-    def withdraw(self,money):
-        if money > self.balance:
-            print("Withdrawals may not exceed the available balance")
-        else:
-            self.balance -= money
-            print("Withdrawal Accepted")
 
 if __name__ == '__main__':
 
@@ -36,7 +26,7 @@ if __name__ == '__main__':
 
 
     # 2. Print the object
-    print(f"Account owner: {acct1.owner}\nAccount balance: {acct1.balance}")
+    print(acct1)
     # output:
     # >> Account owner:   Jose
     # >> Account balance: $100

@@ -1,0 +1,16 @@
+{
+  "in_cluster": false,
+  "job-scheduler": {
+    "jobs_collection": "scheduler_jobs_local"
+  },
+  "kafka": {
+    "bootstrap_server": "localhost:9092"
+  },
+  "mongodb": {
+    "host": "mongodb-svc",
+    "port": 27017
+  },
+  "elasticsearch": {
+    "host": "http://elasticsearch-svc:9200"
+  }
+}
