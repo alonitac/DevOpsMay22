@@ -1,0 +1,44 @@
+{
+  "in_cluster": true,
+  "cloud_client": "gcloud",
+  "data-collector": {
+    "filename_datetime_fmt": "%Y-%m-%dT%H-%M-%SZ",
+    "batch_duration_sec": 3600,
+    "batch_safety_margin_before_close_sec": 600,
+    "kafka": {
+      "consumers_group": "data-collector-3",
+      "data_topics": ["^.*_data$"]
+    }
+  },
+  "job-scheduler": {
+    "jobs_collection": "scheduler_jobs",
+    "kafka": {
+      "jobs_status_topic": "jobs-status-topic",
+      "consumers_group": "job-scheduler"
+    }
+  },
+  "data": {
+    "local_data_path": "/var/lib/data",
+    "uploader_dir": "uploader-data",
+    "collector_dir": "collector-data"
+  },
+  "kafka": {
+    "bootstrap_server": "kafka-cp-kafka-headless.default.svc.cluster.local:9092"
+  },
+  "mongodb": {
+    "host": "mongodb-svc.default.svc.cluster.local",
+    "port": 27017
+  },
+  "elasticsearch": {
+    "host": "http://elasticsearch-svc.default.svc.cluster.local:9200"
+  },
+  "grafana": {
+    "host": "grafana-svc:3000"
+  },
+  "fluentbit": {
+    "input_host": "fluent-bit-svc:8888"
+  },
+  "git-server": {
+    "host": "http://git-svc.default.svc.cluster.local:8083"
+  }
+}
