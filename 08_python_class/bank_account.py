@@ -15,8 +15,17 @@ Instantiate your class, make several deposits and withdrawals, and test to make 
 
 
 class Account:
+
     def __init__(self, name, balance):
+        self.owner = name
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
         pass
+
 
 
 if __name__ == '__main__':
