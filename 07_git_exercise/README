@@ -18,47 +18,48 @@
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
+1.git branch
+2.sudo git checkout -b feature/lambda_migration
+3.git merge feature/version1 and accept the file changes.
+4.done throw the gui following the images examples
 5.
-   1.
-   2.
-   3.
-   4.
-   5.
+   1.Merge
+   2.Click all
+   3.Annotate with Git Blame
+   4.Accept port 8081, port 8082
+   5.click on x symbol
 6.
 
 # Cherry picking
 
-1.
-2.
-3.
-    1.
-    2.
-4.
-5.
+1.git checkout main ,git checkout -b feature/lambda_migration2
+2.go to feature in the local repo and change filter to the feature/lambda_migration
+3.click on chery pick  button and choose the requested commits:
+    1."use correct lock type in reconnect()"
+    2."Restrict the extensions that can be disabled"
+4.config.json added to the branch
+5.Yes , because we want to order the last commit made by the user
 
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1.git branch
+2.echo "Hello World From Devops may 2022 class" > take.txt && git add take.txt
+git status
+3.git checkout dev , error status: Please commit your changes or stash them before you switch branches.
+4.on ui choose dev checkout and choose force checkout
+5.No changes are lost
+6.No the file is lost , force chekcout will remove your last changes your made on the branch.
 
 # Reset
 
-1.
-2.
-   1.
-   2.
-   3.
-   4.
-3.
+1.checkout reset_question
+2.git log
+   1.git reset --soft HEAD~1 - targets the commit right before the HEAD but the changes in working tree and in the index will stay
+   2.git reset --mixed HEAD~1  - targets the commit right before the HEAD and keeps all files the same but unstages the changes.
+   3.git reset --hard HEAD~1 - going back to the commit before HEAD and reset the files of the index and the working directory.
+   4.git revert HEAD~1  - Create a new commit, reverting changes from the specified commit
+3.Go back one commit from HEAD
 
 
 # Working with GitHub
