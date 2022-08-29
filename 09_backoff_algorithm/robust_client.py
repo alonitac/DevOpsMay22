@@ -14,7 +14,7 @@ def exponential_backoff_retry(count, max_sec=20):
     :param max_sec: the maximum seconds to wait independently the retry count
     :return: seconds to sleep before next retry
     """
-    return min(max_sec, (2 ** (count - 1) - 1) * random())
+    return min(max_sec + random(), (2 ** (count - 1) - 1) * random())
 
 
 def exponential_retry(count, max_sec=20):
@@ -24,9 +24,8 @@ def exponential_retry(count, max_sec=20):
     :param count: number of failures, starting with 1
     :param max_sec: the maximum seconds to wait independently the retry count
     :return: seconds to sleep before next retry
-
     """
-    return min(max_sec, (2 ** (count - 1) - 1) + random())
+    return min(max_sec, 2 ** (count - 1)) + random()
 
 
 def linear_retry(count):
@@ -39,7 +38,7 @@ def linear_retry(count):
     return 2 * count
 
 
-def constant_retry():
+def constant_retry(retry):
     """
     Retry in constant value of seconds
 
@@ -55,6 +54,7 @@ def get_data_from_server():
         try:
             logger.info(f'Getting user data from external server ({retry})')
             data = requests.get(server_url)
+            logger.info(f'response from server {data.text}')
             break
         except requests.exceptions.ConnectionError as err:
             retry += 1
@@ -62,7 +62,6 @@ def get_data_from_server():
             logger.error(f'Failed due to ..., sleeping {time_to_sleep}sec')
 
         time.sleep(time_to_sleep)
-
 
 
 if __name__ == '__main__':
