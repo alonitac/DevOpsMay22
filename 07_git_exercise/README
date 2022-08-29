@@ -19,16 +19,21 @@
 # Resolve conflicts
 
 1.git branch --list
-2.feature/lambda_migration
-3.
-4.
+2.git -b feature/lambda_migration
+3.Merge branch feature/version1 into feature/lambda_migration
+4.merge branch feature/version2 into feature/lambda_migration
 5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+   1.merge
+   2.all
+   3.annotate with Git Blame
+   4.accept number (8081), ignore Narayan's port (8082).
+   5.Accept Narayan Nadella's name | ignore Block John's name
+6.git log.
+(commit 03fd737dc0a09ffc91baeb796a2a6485c1985949
+Merge: fbdf689 4073ae5
+Author: urits91 <urits91@gmai.com>
+Date:   Mon Aug 29 21:03:45 2022 +0300)
+
 
 # Cherry picking
 
