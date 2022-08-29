@@ -1,9 +1,9 @@
 # Git Basics (commit, diff, branches)
 
-1.touch abc.txt && echo 1 > abc.txt
+1.touch abc.txt && echo "1" > abc.txt
 2.red color
-3.#git add abc.txt and then the color changed to green
-4.echo 2 > abc.txt
+3.git add abc.txt and then the color changed to green
+4.echo "2" >> abc.txt
 5.now the color is red.
 6.git diff main
 7.There is not difference
@@ -11,15 +11,15 @@
 9.git add abc.txt
 10.print nothing
 11.git diff --staged main
-12.#nano abc.txt and add 3 to to end of the file txt
-13.No,
+12.echo "3" >> abc.txt
+13."did commit to this branch by mistake"
 14.
 15.
 
 # Resolve conflicts
 
-1.
-2.
+1.git branch --list
+2.feature/lambda_migration
 3.
 4.
 5.
