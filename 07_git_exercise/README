@@ -1,20 +1,20 @@
 # Git Basics (commit, diff, branches)
 
-1. nano abc.txt --> 1 --> ctr + x --> save changes
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1.nano abc.txt --> 1 --> ctr + x --> save changes
+2.git status --> red
+3.git add abc.txt ,git status, color now is: green(staged) ,git commit -m "add file abc.txt"
+4.echo "2" --> abc.txt
+5.color is : red , yes the git status is different showing : "modified" status
+6.git diff
+7.using git diff --staged It doesnt show any changes because the file abc.txt is in working tree
+8.diff stage2 return fatal error because stage 2 in unknown path and it is not in the working tree and we sould use the separator -- before.
+9.git add abc.txt  using git status = green
+10.git diff print nothing  all of the changes  been commented
+11.git diff --> staged
+12.using echo 3 --> abc.txt
+13.not the same output because the git diff shows the different between the working area to the staging area.
+14.Because not all changes were commited commited
+15.git reset
 
 # Resolve conflicts
 
