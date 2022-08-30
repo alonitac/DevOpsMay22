@@ -164,7 +164,7 @@ def prime_number(num):
 def palindrome_num(num):
     """
     Ex 8
-    1 Kata
+    1 Kata - Done
 
     Check whether a number is palindrome or not
 
@@ -175,13 +175,21 @@ def palindrome_num(num):
     :param num: int
     :return: bool. True is palindrome, else False
     """
-    return None
-
+    temp = num
+    rev = 0
+    while (num > 0):
+        dig = num % 10
+        rev = rev * 10 + dig
+        num = num // 10
+    if (temp == rev):
+        return True
+    else:
+        return False
 
 def pair_match(men, women):
     """
     Ex 9
-    3 Kata
+    3 Kata - Done
 
     This function gets two dictionaries of the type:
     {
@@ -207,24 +215,36 @@ def pair_match(men, women):
     :param women: dict mapping name -> age
     :return: tuple (men_name, women_name) such their age absolute difference is the minimal
     """
-    return None
-
+    mindif = 1000
+    for x, y in men.items ():
+        for z, t in women.items ():
+            dif = abs(y - t)
+            if (dif < mindif):
+                mindif = dif
+                mywoman = z
+                myman = x
+                tuple = (myman, mywoman)
+    return tuple
 
 def bad_average(a, b, c):
     """
-    1 Kata
+    Ex. 10
+    1 Kata - Done
 
     This function gets 3 numbers and calculates the average.
     There is a mistake in the following implementation, you are required to fix it
 
     :return:
     """
-    return a + b + c / 3
+    sum = a + b + c
+    avg = sum//3
+    return avg
 
 
 def best_student(grades):
     """
-    1 Kata
+    Ex. 11
+    1 Kata - Done
 
     This function gets a dict of students -> grades mapping, and returns the student with the highest grade
 
@@ -424,4 +444,3 @@ if __name__ == '__main__':
 
     print('\nsum_of_digits:\n--------------------')
     print(sum_of_digits('1223432'))
-
