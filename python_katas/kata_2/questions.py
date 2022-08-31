@@ -1,4 +1,7 @@
+import os
 import socket
+import tarfile
+from datetime import date
 
 
 def valid_parentheses(s):
@@ -117,7 +120,17 @@ def files_backup(dir_path):
     :return: str - the backup file name
     """
 
-    return False
+    files_in_dir = os.listdir(dir_path)
+    path = os.path.join('./', dir_path)
+
+    backup_name = f'backup_{dir_path}_{date.today()}.tar.gz'
+
+    with tarfile.open(backup_name, mode='w:gz') as tar:
+        for file in files_in_dir:
+            file_to_add = os.path.join(path, file)
+            tar.add(file_to_add)
+
+    return backup_name
 
 
 # TODO check with alon if i can use module os
@@ -367,8 +380,6 @@ def strong_pass(password):
     """
     return None
 
-
-א
 
 if __name__ == '__main__':
     print('\nvalid_parentheses:\n--------------------')
