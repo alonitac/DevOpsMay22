@@ -5,11 +5,16 @@ def sum_of_element(elements):
     :param elements: list of integers
     :return: Return int - the sum of all elements.
     """
-    s = 0
-    for num in elements:
-        s = s + num
 
-    return s
+    x = [11, 22, 33, 44, 55, 66]
+    sum = 0
+    for elements in x:
+        sum += elements
+    return sum
+                                    
+print(sum_of_element(sum))
+
+
 
 
 def verbing(word):
@@ -27,15 +32,21 @@ def verbing(word):
 
     :param word: str
     :return: Return the resulting string.
-    """
-    return None
+
+
+
+
+
+
+
+
 
 
 def words_concatenation(words):
     """
-    1 Kata
+        return word1 Kata
 
-    Given a list of words, write a program that concatenates the words.
+    print(verbing(x))Given a list of words, write a program that concatenates the words.
 
     For example:
     words_concatenation(['take', 'me', 'home']) returns 'take me home'
@@ -287,7 +298,7 @@ def sum_of_digits(digits_str):
     """
     return None
 
-
+'''
 if __name__ == '__main__':
 
     print('\nsum_of_element:\n--------------------')
@@ -342,7 +353,6 @@ if __name__ == '__main__':
         "Daniel": 65,
         "Tal": 95
     }))
-
     print('\nprint_dict_as_table:\n--------------------')
     print(print_dict_as_table({
         "Ben": 78,
@@ -364,3 +374,4 @@ if __name__ == '__main__':
     print('\nsum_of_digits:\n--------------------')
     print(sum_of_digits('1223432'))
 
+'''
