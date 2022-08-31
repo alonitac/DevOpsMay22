@@ -6,7 +6,11 @@ jobs:
     if: ${{ startsWith(github.ref, 'refs/heads/linux_ex1/')  }}
     steps:
       - uses: actions/checkout@v2
+<<<<<<< HEAD
       - name: Linux Ex1 pre-subbmit test
+=======
+      - name: Linux Ex1 pre-submit test
+>>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
         run: |
           cd 01_linux_ex1
           bash test.sh

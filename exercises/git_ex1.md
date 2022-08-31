@@ -1,20 +1,42 @@
 # Git Exercise
 Due date: 29/08/2022 23:59
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
 ## Preliminaries
 
 1. Open [our shared git repo](https://github.com/alonitac/DevOpsMay22) in PyCharm and pull the repository in branch **main** to get an up-to-date version.
 2. Checkout **new** branch `git_ex1/<alias>` where `<alias>` is replaced by your name.
 3. In your local machine, initialize a new local Git repository (`git init...`). 
+<<<<<<< HEAD
 4. Copy `07_git_exercise/init.sh` into your empty Git repo. This file will automatically create branches and commit changes in your repo, so you can be ready for the exercise.  
 5. Execute `init.sh` by `bash init.sh` or if you use Pycharm terminal, you can run `sh init.sh`. Make sure it's finished without errors. If in any step you want to initialize the repo again in order to get a clean version, don't run `init.sh` again, but delete the old repo and create a new one by `git init`.
 
 From now on, unless otherwise specified, **execute all commands from the Terminal (either Ubuntu or Pycharm terminal)**. Answer the questions below in the `README` file. Include the commands you executed in each step, as well as a free text explanation if needed.
+=======
+4. Copy `07_git_exercise/init.sh` into your empty Git repo. This file will automatically create branches 
+and commit changes in ycd our repo, so you can be ready for the exercise.  
+5. Execute `init.sh` by `bash init.sh` or if you use Pycharm terminal, you can run `sh init.sh`. Make sure it's finished without errors. 
+If in any step you want to initialize the repo again in order to get a clean version, don't run `init.sh` again, 
+but delete the old repo and create a new one by `git init`.
+```
+# A1. Re-creating git directory: 
+rm -rf .git
+git init
+./init.sh (or `sh init.sh`)
+```
+
+From now on, unless otherwise specified, **execute all commands from the Terminal (either Ubuntu or Pycharm terminal)**. 
+Answer the questions below in the `README` file. 
+Include the commands you executed in each step, as well as a free text explanation if needed.
+>>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
 
 ### Git Basics (commit, diff, branches)
 
 1. In branch `main`, create a file called `abc.txt` containing the text `1` in it.
+<<<<<<< HEAD
 2. What is the color of file `abc.txt` in Git status view?
 3. Add the file to the index. What is the color now? commit the changes (it's recommended to use `git status` in between steps).
 4. Append the line `2` to the end of `abc.txt` to change the state of this file in the working tree.
@@ -28,6 +50,60 @@ From now on, unless otherwise specified, **execute all commands from the Termina
 12. Append the line `3` to the end of `abc.txt` to change the state of this file in the working tree.
 13. Would `git diff --staged` and `git diff main` commands print the same output? why?
 14. Why does `abc.txt` appear twice in the output of `git status`?
+=======
+**echo "1" > abc.txt**
+
+2. What is the color of file `abc.txt` in Git status view? 'RED'
+
+3. Add the file to the index. What is the color now? 
+commit the changes (it's recommended to use `git status` in between steps). - GREEN
+**git add abc.txt** 
+
+4. Append the line `2` to the end of `abc.txt` to change the state of this file in the working tree.
+**echo "2" >> abc.txt**
+
+5. Is the color of `abc.txt` different from the observed color in step 2? 
+What are the differences between the two outputs of `git status` command?
+**The second part is not different from the step 2.**
+**The difference is between GREEN and RED.**
+
+6. What is the command to show changes between the working tree to branch `main`?
+**git diff** (git diff main - eq last commit; HEAD - last commit of the current branch)
+
+7. Why does `git diff --staged` print nothing? ??? ??
+diff --git a/abc.txt b/abc.txt
+new file mode 100644
+index 0000000..d00491f
+--- /dev/null
++++ b/abc.txt
+@@ -0,0 +1 @@
++1
+
+8. Why does `git diff stage2` prints fatal error? 
+What is the error?
+**There is no such branch.**  
+The error: "ambiguous argument 'stage2': unknown revision or path not in the working tree."
+
+9. Add `abc.txt` to the index.
+**git add abc.txt**
+
+10. What does `git diff` print? why?
+**Nothing. All the changes are staged.**  
+
+11. What is the command to show changes between the index and branch `main`?
+**git diff --staged**
+(index == stage)
+
+12. Append the line `3` to the end of `abc.txt` to change the state of this file in the working tree.
+**echo "3" >> abc.txt** 
+
+13. Would `git diff --staged` and `git diff main` commands print the same output? why?
+**No. 1st - shows staged changes (after git add command). 2nd - shows difference between main and working tree.** 
+
+14. Why does `abc.txt` appear twice in the output of `git status`?
+**Changes to be committed and Changes not staged for commit.**
+
+>>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
 15. **Unstage** the changes in your index and working tree (don't commit the changes)
 
 ### Resolve conflicts
@@ -37,11 +113,35 @@ You are told that John Doe and Narayan Nadella, your team colleagues, have alrea
 You decide to create a new branch called `feature/lambda_migration` and merge the previous work of John and Narayan to your branch.
 
 1. List all existed branches of this repo (print them).
+<<<<<<< HEAD
 2. Create a new branch called `feature/lambda_migration` and switch (checkout) to this branch.
 3. Merge branch `feature/version1` into `feature/lambda_migration`, observe the merged changes.
 4. **Using PyCharm UI** - merge branch `feature/version2` into `feature/lambda_migration`.
    ![MergePyCharm](img/merge.png)
 5. Resolve the conflict as following:
+=======
+**git branch**
+
+2. Create a new branch called `feature/lambda_migration` and switch (checkout) to this branch.
+**git checkout -b feature/lambda_migration**
+or with two commands
+**git branch feature/lambda_migration**
+**git checkout feature/lambda_migration**
+
+3. Merge branch `feature/version1` into `feature/lambda_migration`, observe the merged changes.
+**git checkout feature/lambda_migration** (checkout to the destination branch, if you still not there)
+**git merge feature/version1** (merge the branch to the current branch)
+
+4. **Using PyCharm UI** - merge branch `feature/version2` into `feature/lambda_migration`.
+   ![MergePyCharm](img/merge.png)
+
+error: Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+
+6. Resolve the conflict as following:
+>>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
    1. On the opened conflict tool, choose the conflicted file and click **Merge**.  
       ![Conflict](img/conflict.png)
    2. First click **All** to merge all changes for which there is no conflicts.  
@@ -49,7 +149,14 @@ You decide to create a new branch called `feature/lambda_migration` and merge th
    3. Right click on right and left pages and choose **Annotate with Git Blame**.
    4. Accept John Doe's port number (8081), deny Narayan's port (8082).
    5. Accept the function name of Narayan Nadella (get_profile_picture), Block John's name.
+<<<<<<< HEAD
 6. After all merges were completed, are there any added commits for `feature/lambda_migration`? what are those commits?
+=======
+
+7. After all merges were completed, are there any added commits for `feature/lambda_migration`? 
+what are those commits?
+**07_git_exercise/app.py - need to be committed**
+>>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
 
 ### Cherry picking
 

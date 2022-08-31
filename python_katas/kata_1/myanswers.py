@@ -1,33 +1,22 @@
 def sum_of_element(elements):
     """
-    1 Kata
+    Ex 1
+    1 Kata - DONE
 
     :param elements: list of integers
     :return: Return int - the sum of all elements.
     """
-<<<<<<< HEAD
-
-    x = [11, 22, 33, 44, 55, 66]
-    sum = 0
-    for elements in x:
-        sum += elements
-    return sum
-                                    
-print(sum_of_element(sum))
-
-
-=======
     s = 0
     for num in elements:
         s = s + num
 
     return s
->>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
 
 
 def verbing(word):
     """
-    1 Kata
+    Ex 2
+    1 Kata - DONE
 
     Given a string 'word', if its length is at least 3, add 'ing' to its end.
     Unless it already ends in 'ing', in which case add 'ly' instead.
@@ -40,32 +29,22 @@ def verbing(word):
 
     :param word: str
     :return: Return the resulting string.
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-=======
     """
-    return None
->>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
+    if len(word) < 3:
+        return word
+
+    if word[-3:] == 'ing':
+        return word + 'ly'
+
+    return word + 'ing'
 
 
 def words_concatenation(words):
     """
-<<<<<<< HEAD
-        return word1 Kata
-
-    print(verbing(x))Given a list of words, write a program that concatenates the words.
-=======
-    1 Kata
+    Ex 3
+    1 Kata - DONE
 
     Given a list of words, write a program that concatenates the words.
->>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
 
     For example:
     words_concatenation(['take', 'me', 'home']) returns 'take me home'
@@ -73,12 +52,21 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    concat_words = ''
 
+    for word in words:
+        if len(word) > 0:
+            concat_words += (word + ' ')
+
+    if len(concat_words) > 0:
+        concat_words = concat_words.rstrip()
+
+    return concat_words
 
 def reverse_words_concatenation(words):
     """
-    1 Kata
+    Ex 4
+    1 Kata - DONE
 
     Given a list of words, write a program that concatenates the words in a reverse way
 
@@ -88,12 +76,20 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    concat_words = ''
+
+    for word in words[::-1]:
+        concat_words += word + ' '
+
+    concat_words = concat_words.rstrip()
+
+    return concat_words
 
 
 def is_unique_string(some_str):
     """
-    2 Kata
+    Ex 5
+    2 Kata - DONE
 
     Given a string, the function returns True if all characters in the string are unique, False otherwise
 
@@ -105,12 +101,21 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    return None
+    char_list = []
+
+    for char in some_str:
+        if char in char_list:
+            return False
+
+        char_list.append(char)
+
+    return True
 
 
 def list_diff(elements):
     """
-    1 Kata
+    Ex 6
+    1 Kata - DONE
 
     Given a list of integers as an input, return the "diff" list - each element is
     reduces by its previous one. The first element should be None
@@ -123,12 +128,22 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
-    return None
+    diff = []
+    if len(elements) == 0:
+        return diff
+
+    diff.append(None)
+
+    for i in range(1, len(elements)):
+        diff.append(elements[i] - elements[i - 1])
+
+    return diff
 
 
 def prime_number(num):
     """
-    1 Kata
+    Ex 7
+    1 Kata - DONE
 
     Check if the given number is prime or not.
 
@@ -136,11 +151,19 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    return None
+    if num < 2:
+        return False
+
+    for i in range(2, num):
+        if (num % i) == 0:
+            return False
+
+    return True
 
 
 def palindrome_num(num):
     """
+    Ex 8
     1 Kata
 
     Check whether a number is palindrome or not
@@ -157,6 +180,7 @@ def palindrome_num(num):
 
 def pair_match(men, women):
     """
+    Ex 9
     3 Kata
 
     This function gets two dictionaries of the type:
@@ -218,7 +242,14 @@ def best_student(grades):
     :param grades: dict of name -> grade mapping
     :return: str. some key from the dict
     """
-    return None
+    highestGrade = -1
+
+    for student in grades.keys():
+        if grades[student] > highestGrade:
+            highestGrade = grades[student]
+            bestStudent = student
+
+    return bestStudent
 
 
 def print_dict_as_table(some_dict):
@@ -317,11 +348,7 @@ def sum_of_digits(digits_str):
     """
     return None
 
-<<<<<<< HEAD
-'''
-=======
 
->>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
 if __name__ == '__main__':
 
     print('\nsum_of_element:\n--------------------')
@@ -376,10 +403,7 @@ if __name__ == '__main__':
         "Daniel": 65,
         "Tal": 95
     }))
-<<<<<<< HEAD
-=======
 
->>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
     print('\nprint_dict_as_table:\n--------------------')
     print(print_dict_as_table({
         "Ben": 78,
@@ -401,7 +425,3 @@ if __name__ == '__main__':
     print('\nsum_of_digits:\n--------------------')
     print(sum_of_digits('1223432'))
 
-<<<<<<< HEAD
-'''
-=======
->>>>>>> dfabc6a0d808d9427e201264c19e0f500b7d409d
