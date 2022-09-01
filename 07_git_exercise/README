@@ -63,7 +63,7 @@
    2. git reset --mixed HEAD~1 "Still keep the changes in your working tree but not on the index, so if you want to commit, you will have to add the changes before commiting."
    3. git reset --hard HEAD~1 "Lose all uncommited changes and all untracked files in addition to the changes introduced in the last commit"
    4. git revert HEAD~1 "Undo the last Git commit"
-3.
+3. HEAD~1 is a special commit identifier in git. It stands for the previous commit.
 
 
 # Working with GitHub
