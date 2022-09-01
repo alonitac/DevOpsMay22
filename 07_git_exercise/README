@@ -46,12 +46,13 @@ The commits are the merge of branches 'feature/version1' & 'feature/version2' in
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. I was in 'feature/lambda_migration2' branch.
+2. echo some lines in it > take.txt
+3. The error that I get is: "Untracked Files Prevent Checkout: Move or commit them before checkout".
+The two approaches that suggested by git are to commit the changes or to stash them.
+4. The prompted dialog didn't popped up, I used that command "git checkout -f dev".
+5. No, that text in the file has been changed.
+6. The file isn't there anymore, the force checkout throwing away local changes.
 
 # Reset
 
