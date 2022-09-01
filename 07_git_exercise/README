@@ -56,18 +56,19 @@ The two approaches that suggested by git are to commit the changes or to stash t
 
 # Reset
 
-1.
-2.
-   1.
-   2.
-   3.
-   4.
-3.
+1. git checkout reset_question
+2. Explanation:
+   1. uncommit changes, changes are left staged (index).
+   2. uncommit + unstage changes, changes are left in working tree.
+   3. uncommit + unstage + delete changes, nothing left.
+   4. undoing changes to a repository's commit history.
+3. HEAD~1 means: go back 1 commit from HEAD, using the first parent.
 
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1. I created new repository named: "WorkingWithGithub" through GitHub.
+2. git remote add origin github.com/of1r/WorkingWithGithub.git
+3. git push -u origin main
+git push -u origin dev
+4. https://github.com/of1r/WorkingWithGithub
