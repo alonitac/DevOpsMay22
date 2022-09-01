@@ -1,5 +1,4 @@
 import os
-import socket
 import tarfile
 from datetime import date
 
@@ -22,12 +21,10 @@ def valid_parentheses(s):
     if not s:
         return False
 
-    lst = []
+    str_lst = ''
     for i in s:
         if i == '(' or i == ')' or i == '[' or i == ']' or i == '{' or i == '}':
-            lst.append(i)
-
-    str_lst = ''.join(lst)
+            str_lst += i
 
     while '{}' in str_lst or '()' in str_lst or '[]' in str_lst:
         str_lst = str_lst.replace('{}', '')
@@ -101,7 +98,6 @@ def most_frequent_name(file_path):
     return name_to_return
 
 
-# TODO need to check with alon about this func (tarfile)
 def files_backup(dir_path):
     """
     3 Kata
@@ -133,7 +129,6 @@ def files_backup(dir_path):
     return backup_name
 
 
-# TODO check with alon if i can use module os
 def replace_in_file(file_path, text, replace_text):
     """
     2 Kata
@@ -148,6 +143,11 @@ def replace_in_file(file_path, text, replace_text):
     :param replace_text: text to replace with
     :return: None
     """
+    text_in_file = str(open(file_path).read())
+    text_in_file = text_in_file.replace(text, replace_text)
+
+    with open(file_path, 'w') as file_to_write:
+        file_to_write.write(text_in_file)
 
     return None
 
