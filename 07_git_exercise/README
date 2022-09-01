@@ -68,7 +68,7 @@ The two approaches that suggested by git are to commit the changes or to stash t
 # Working with GitHub
 
 1. I created new repository named: "WorkingWithGithub" through GitHub.
-2. git remote add origin github.com/of1r/WorkingWithGithub.git
+2. git remote add origin https://github.com/of1r/WorkingWithGithub.git
 3. git push -u origin main
 git push -u origin dev
 4. https://github.com/of1r/WorkingWithGithub
