@@ -4,7 +4,7 @@
 2.red color
 3.git add abc.txt and then the color changed to green
 4.echo "2" >> abc.txt
-5.now the color is red.
+5.red again.
 6.git diff main
 7.There is not difference
 8.stage 2 no exist
@@ -37,13 +37,13 @@ Date:   Mon Aug 29 21:03:45 2022 +0300)
 
 # Cherry picking
 
-1.
-2.
+1.check out "main" , created new branch from "main"
+2.git log
 3.
-    1.
-    2.
-4.
-5.
+    1.()
+    2.cherry-picked
+4. .env and config.json
+5.yes, bc we want the last commit of the branch
 
 
 # Changes in working tree and switch branches
