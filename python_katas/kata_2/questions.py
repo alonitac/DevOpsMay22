@@ -1,4 +1,6 @@
+import json
 import os
+import string
 import tarfile
 from datetime import date
 
@@ -163,9 +165,16 @@ def json_configs_merge(*json_paths):
     :param json_paths:
     :return: dict - the merges json files
     """
-    return None
+    json_dict = {}
+
+    for file in json_paths:
+        with open(file) as reader:
+            json_dict[file] = json.load(reader)
+
+    return json_dict
 
 
+# TODO need to check what is monotonically increased
 def monotonic_array(lst):
     """
     1 Kata
@@ -175,6 +184,7 @@ def monotonic_array(lst):
     :param lst: list of numbers (int, floats)
     :return: bool: indicating for monotonicity
     """
+
     return None
 
 
@@ -328,6 +338,7 @@ def pascal_triangle(lines):
     return None
 
 
+# TODO need to find improvement
 def list_flatten(lst):
     """
     2 Kata
@@ -342,7 +353,20 @@ def list_flatten(lst):
     :param lst: list of integers of another list
     :return: flatten list
     """
-    return None
+    flat_list = []
+
+    for sublist in lst:
+        if type(sublist) == list:
+            for item in sublist:
+                if type(item) == list:
+                    for sub_item in item:
+                        flat_list.append(sub_item)
+                else:
+                    flat_list.append(item)
+        else:
+            flat_list.append(sublist)
+
+    return flat_list
 
 
 def str_compression(text):
@@ -362,7 +386,23 @@ def str_compression(text):
     :param text: str
     :return: list representing the compressed form of the string
     """
-    return None
+    if not text:
+        return []
+
+    char_dict = {}
+    char_list = []
+    for char in text:
+        if char not in char_dict:
+            char_dict[char] = 1
+
+        if char in char_dict:
+            char_dict[char] += 1
+
+    for val in char_dict:
+        char_list.append(val)
+        char_list.append(char_dict[val])
+
+    return char_list
 
 
 def strong_pass(password):
@@ -378,7 +418,39 @@ def strong_pass(password):
 
     This function returns True if the given password is strong enough
     """
-    return None
+    if not password:
+        return False
+
+    is_strong = 0
+    pass_is_strong = 5
+    digits = [num for num in range(0, 10)]
+    lower_letters = list(string.ascii_lowercase)
+    upper_letters = list(string.ascii_uppercase)
+    special_chars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+']
+
+    if len(password) >= 6:
+        is_strong += 1
+    for num in digits:
+        if str(num) in password:
+            is_strong += 1
+            break
+
+    for l_letter in lower_letters:
+        if l_letter in password:
+            is_strong += 1
+            break
+
+    for u_letter in upper_letters:
+        if u_letter in password:
+            is_strong += 1
+            break
+
+    for s_char in special_chars:
+        if s_char in password:
+            is_strong += 1
+            break
+
+    return is_strong == pass_is_strong
 
 
 if __name__ == '__main__':
