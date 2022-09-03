@@ -32,17 +32,20 @@ def verbing(word):
 
 
 def words_concatenation(words):
-    """
-    1 Kata
-
-    Given a list of words, write a program that concatenates the words.
-
-    For example:
-    words_concatenation(['take', 'me', 'home']) returns 'take me home'
-
-    :param words: list of str
-    :return: Return the resulting string.
-    """
+    word = 'teach'
+    word_2 = '   '
+    A = 'ing'
+    B = 'ly'
+    form1 = ''
+    form2 = ''
+    if len(word) < len(word_2):
+        print(word)
+    elif word[-1] == 'g' and word[-2] == 'n' and word[-3] == 'i':
+        form1 = word + B
+        print(form1)
+    else:
+        form2 = word + A
+        print(form2)
     return None
 
 
@@ -219,6 +222,14 @@ def print_dict_as_table(some_dict):
     """
     return None
 
+best_student=None
+best_grede=0
+
+for name, grade in x.items () :
+   if grade>best_grede:
+     best_grede=grade
+     best_student=name
+print(best_student)
 
 def merge_dicts(dict1, dict2):
     """
@@ -253,7 +264,13 @@ def seven_boom(n):
     :return: list of integers
     """
     return None
-
+n=100
+my_list=[]
+for x in range (n) :
+ if x % 7 ==0 and x>0 :
+  my_list=my_list+[x]
+  x+=1
+print(my_list)
 
 def caesar_cipher(str_to_encrypt):
     """
