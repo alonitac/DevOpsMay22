@@ -1,5 +1,7 @@
 import json
 import os
+import re
+import socket
 import string
 import tarfile
 from datetime import date
@@ -299,7 +301,27 @@ def is_valid_email(mail_str):
     :param mail_str: mail to check
     :return: bool: True if it's a valid mail (otherwise either False is returned or the program can crash)
     """
-    return None
+    try:
+        is_valid = False
+
+        ip_pattern = r'(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}'
+        username_pattern = r'[a-zA-Z0-9]+[a-zA-Z0-9_.]'
+        user_name = mail_str.split('@')[0]
+        domain_name = mail_str.split('@')[1]
+
+        domain_ip = socket.gethostbyname(domain_name)
+        if re.match(ip_pattern, domain_ip):
+            is_valid = True
+
+        if re.match(username_pattern, user_name):
+            is_valid = True
+        else:
+            is_valid = False
+
+    except socket.gaierror:
+        return False
+
+    return is_valid
 
 
 def pascal_triangle(lines):
