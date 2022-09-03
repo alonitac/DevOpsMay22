@@ -1,10 +1,8 @@
 '''
-asci
-
+ascii
 stack (lifo) - order
 fifo
 '''
-
 
 def valid_parentheses(s):
     """
