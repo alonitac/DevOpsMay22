@@ -48,22 +48,26 @@ Date:   Mon Aug 29 21:03:45 2022 +0300)
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1.feature/lambda_migration2
+2.touch take.txt && git add take.txt
+3.git checkout dev
+git checkout problem
+(a)commit the changes before checking out
+(b)Use git stash when you want to record the current state of the working directory and the index, but want to go back to a clean working directory. The command saves your local modifications away and reverts the working directory to match the HEAD commit.
+4.check out dev
+5.no,nothing to commit
+6.throwing away the local changes
 
 # Reset
 
-1.
+1.Checkout reset_question
 2.
-   1.
-   2.
-   3.
-   4.
-3.
+   1.git reset --soft HEAD~1, new file 10.txt to commit
+   reset --soft remove the last commit from the  branc.
+   2.untracked files 9.txt and 10.txt
+   3.3.7.txt deleted
+   4.txt file 5 deleted
+3.the previous commit of the last commit
 
 
 # Working with GitHub
