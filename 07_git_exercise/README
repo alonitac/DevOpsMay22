@@ -73,6 +73,6 @@ git checkout problem
 # Working with GitHub
 
 1.
-2.
-3.
+2.git remote add origin https://github.com/url91/myrepo.git
+3.git push -u origin main
 4.
