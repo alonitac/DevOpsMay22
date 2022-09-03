@@ -28,7 +28,7 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-    if len(word) < 3:
+    if len ( word ) < 3:
         return word
 
     if word[-3:] == 'ing':
@@ -50,7 +50,7 @@ def words_concatenation(words):
     :return: Return the resulting string.
     """
     sentence = ''
-    for i in range(len(words)):
+    for i in range ( len ( words ) ):
         if i != 0:
             sentence += ' '
         sentence += words[i]
@@ -71,8 +71,8 @@ def reverse_words_concatenation(words):
     :return: Return the resulting string.
     """
     reverse_sentence = ''
-    for i in range(len(words) - 1, -1, -1):
-        if i != len(words) - 1:
+    for i in range ( len ( words ) - 1, -1, -1 ):
+        if i != len ( words ) - 1:
             reverse_sentence += ' '
         reverse_sentence += words[i]
 
@@ -93,8 +93,8 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    for i in range(len(some_str)):
-        if some_str[i] in some_str[i+1:]:
+    for i in range ( len ( some_str ) ):
+        if some_str[i] in some_str[i + 1:]:
             return False
 
     return True
@@ -115,10 +115,11 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
-    int_list = ''
-    for i in int_list:
+    int_list = [None]
+    for i in range ( 1, len ( elements ) ):
+        int_list.append ( elements[i] - elements[i - 1] )
 
-    return None
+    return int_list
 
 
 def prime_number(num):
@@ -131,7 +132,14 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    return None
+    if num <= 1:
+        return False
+
+    for i in range ( 2, num ):
+        if (num % i) == 0:
+            return False
+
+    return True
 
 
 def palindrome_num(num):
@@ -147,7 +155,17 @@ def palindrome_num(num):
     :param num: int
     :return: bool. True is palindrome, else False
     """
-    return None
+    temp = num
+    rev = 0
+    while num > 0:
+        dig = num % 10
+        rev = rev * 10 + dig
+        num = num // 10
+
+    if temp == rev:
+        return True
+
+    return False
 
 
 def pair_match(men, women):
