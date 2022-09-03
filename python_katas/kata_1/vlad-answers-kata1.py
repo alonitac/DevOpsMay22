@@ -28,7 +28,7 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-    if len ( word ) < 3:
+    if len(word) < 3:
         return word
 
     if word[-3:] == 'ing':
@@ -50,7 +50,7 @@ def words_concatenation(words):
     :return: Return the resulting string.
     """
     sentence = ''
-    for i in range ( len ( words ) ):
+    for i in range(len(words)):
         if i != 0:
             sentence += ' '
         sentence += words[i]
@@ -71,8 +71,8 @@ def reverse_words_concatenation(words):
     :return: Return the resulting string.
     """
     reverse_sentence = ''
-    for i in range ( len ( words ) - 1, -1, -1 ):
-        if i != len ( words ) - 1:
+    for i in range(len(words) - 1, -1, -1):
+        if i != len(words) - 1:
             reverse_sentence += ' '
         reverse_sentence += words[i]
 
@@ -93,10 +93,9 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    for i in range ( len ( some_str ) ):
+    for i in range(len(some_str)):
         if some_str[i] in some_str[i + 1:]:
             return False
-
     return True
 
 
@@ -116,8 +115,8 @@ def list_diff(elements):
     :return: the diff list
     """
     int_list = [None]
-    for i in range ( 1, len ( elements ) ):
-        int_list.append ( elements[i] - elements[i - 1] )
+    for i in range(1, len(elements)):
+        int_list.append(elements[i] - elements[i - 1])
 
     return int_list
 
@@ -132,10 +131,10 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    if num <= 1:
+    if num < 2:
         return False
 
-    for i in range ( 2, num ):
+    for i in range(2, num):
         if (num % i) == 0:
             return False
 
@@ -161,7 +160,6 @@ def palindrome_num(num):
         dig = num % 10
         rev = rev * 10 + dig
         num = num // 10
-
     if temp == rev:
         return True
 

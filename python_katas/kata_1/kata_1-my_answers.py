@@ -6,6 +6,9 @@ def sum_of_element(elements):
     :param elements: list of integers
     :return: Return int - the sum of all elements.
     """
+    if elements == []:
+        return "List is Blank"
+
     s = 0
     for num in elements:
         s = s + num
@@ -30,6 +33,9 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
+    if word == "" or word == " ":
+        return "The word is Blank"
+
     if len ( word ) < 3:
         return word
 
@@ -52,6 +58,9 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
+    if words == []:
+        return "List is Blank"
+
     concat_words = ''
 
     for word in words:
@@ -152,8 +161,12 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    if num < 2:
+
+    if num < 1:
         return False
+
+    if num == 1:
+        return True
 
     for i in range ( 2, num ):
         if (num % i) == 0:
@@ -398,16 +411,19 @@ def caesar_cipher(cstr_to_encrypt):
 
     # traverse text
     for char in cstr_to_encrypt:
-
+        asc_char = ord(char)
+        if not char.isspace():
+            if (asc_char not in range(65, 91)) and (asc_char not in range(97, 123)):
+                return "You wrote illegal symbol in string"
         # Encrypt uppercase characters
         if char.isupper():
-            result += chr((ord(char) + shift - 65) % 26 + 65)
+            result += chr((asc_char + shift - 65) % 26 + 65)
         # Do not encrypt spaces
         elif char.isspace():
             result += ' '
         # Encrypt lowercase characters
         else:
-            result += chr((ord(char) + shift - 97) % 26 + 97)
+            result += chr((asc_char + shift - 97) % 26 + 97)
 
     return result
 
@@ -441,6 +457,7 @@ if __name__ == '__main__':
     print ( verbing ( 'walk' ) )
     print ( verbing ( 'swimming' ) )
     print ( verbing ( 'do' ) )
+    print ( verbing ( '' ) )
 
     print ( '\nwords_concatenation:\n--------------------' )
     print ( words_concatenation ( ['take', 'me', 'home'] ) )
