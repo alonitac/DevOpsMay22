@@ -102,7 +102,6 @@ that let you bring up these changes when you will be back to the branch.
 2.4)  git revert HEAD~1 delete the files from the last commit and create new commit. (HEAD is now the new commit)
 
 3) HEAD~1 goes to the previous commit.
-
 # Working with GitHub
 1.
 2.
