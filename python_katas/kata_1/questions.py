@@ -5,11 +5,7 @@ def sum_of_element(elements):
     :param elements: list of integers
     :return: Return int - the sum of all elements.
     """
-    s = 0
-    for num in elements:
-        s = s + num
-
-    return s
+    v
 
 
 def verbing(word):
