@@ -3,9 +3,14 @@ ascii
 stack (lifo) - order
 fifo
 '''
-
+from datetime import datetime
+import os
+import tarfile
+import json
+# ex 1
 def valid_parentheses(s):
     """
+    Ex 1 - Done
     3 Kata
 
     This function gets a string containing just the characters '(', ')', '{', '}', '[' and ']',
@@ -23,22 +28,23 @@ def valid_parentheses(s):
     s = '[{()}](){}'
     par = {"]": "[", "}": "{", ")": "("}
     for i in s:
-        if i in par.keys():
-            if stack == []:
+        if i in par.keys ():
+            if not stack:
                 return False
-            last = stack.pop()
+            last = stack.pop ()
             if last != par[i]:
                 return False
         else:
-            stack.append(i)
-    if stack == []:
+            stack.append ( i )
+    if not stack:
         return True
     return False
     # return stack == [] # instead of If
 
-
+# ex 2
 def fibonacci_fixme(n):
     """
+    Ex 2 - Done
     2 Kata
 
     A Fibonacci sequence is the integer sequence of 1, 1, 2, 3, 5, 8, 13....
@@ -57,18 +63,21 @@ def fibonacci_fixme(n):
     (1) correct the for statement and
     (2) swap two lines, so that the correct fibonacci element will be returned
     """
+    if n == 1 or n == 2:
+        return 1
     a = 1
     b = 1
-    for i in range(1, n):
+    for i in range ( 1, n ):
         tmp = a + b
         a = b
         b = tmp
-#
+    #
     return a
 
-
+# ex 3
 def most_frequent_name(file_path):
     """
+    Ex 3
     2 Kata
 
     This function gets a path to a file containing names (name in each line)
@@ -77,11 +86,27 @@ def most_frequent_name(file_path):
     You can assume file_path exists in the file system
 
     :param file_path: str - absolute or relative file to read names from
-    :return: str - the mose frequent name. If there are many, return one of them
+    :return: str - the most frequent name. If there are many, return one of them
     """
-    return None
+    most_freq_name = ''
+    most_freq_num = 0
+    names = {}
+    with open ( file_path, 'r' ) as f:
+        for line in f:
+            line = line[:-1]
+            if line not in names.keys ():
+                names[line] = 1
+            else:
+                names[line] += 1
 
+    for name in names:
+        if names[name] > most_freq_num:
+            most_freq_name = name
+            most_freq_num = names[name]
 
+    return most_freq_name
+
+# ex 4
 def files_backup(dir_path):
     """
     3 Kata
@@ -99,9 +124,22 @@ def files_backup(dir_path):
     :param dir_path: string - path to a directory
     :return: str - the backup file name
     """
-    return None
+    directory = dir_path.split ( '\\' )
+    directory = directory[-1]
+    date = datetime.now ()
+    date = date.strftime ( '%Y-%m-%d' )
 
+    file_name = f'backup_{directory}_{date}.tar.gz'
 
+    with tarfile.open ( file_name, 'w:gz' ) as tar_file:
+        for file in os.listdir ( dir_path ):
+            with open ( dir_path + f'\\{file}', 'rb' ) as f_in:
+                file_to_add = tar_file.gettarinfo ( fileobj=f_in )
+                tar_file.addfile ( file_to_add )
+
+    return file_name
+
+# ex 5
 def replace_in_file(file_path, text, replace_text):
     """
     2 Kata
@@ -116,9 +154,16 @@ def replace_in_file(file_path, text, replace_text):
     :param replace_text: text to replace with
     :return: None
     """
-    return None
+    if not os.path.exists ( file_path ):
+        return
 
+    with open ( file_path, 'r' ) as read_file:
+        data = read_file.read().replace ( text, replace_text )
 
+    with open ( file_path, 'w' ) as write_file:
+        write_file.write ( data )
+
+# ex 6
 def json_configs_merge(*json_paths):
     """
     2 Kata
@@ -130,9 +175,15 @@ def json_configs_merge(*json_paths):
     :param json_paths:
     :return: dict - the merges json files
     """
-    return None
+    all_dicts = {}
 
+    for path in json_paths:
+        with open(path, 'r') as json_file:
+            all_dicts.update(json.loads(json_file.read()))
 
+    return all_dicts
+
+# ex 7
 def monotonic_array(lst):
     """
     1 Kata
@@ -144,7 +195,7 @@ def monotonic_array(lst):
     """
     return None
 
-
+# ex 8
 def matrix_avg(mat, rows=None):
     """
     2 Kata
@@ -158,7 +209,7 @@ def matrix_avg(mat, rows=None):
     """
     return None
 
-
+# ex 9
 def merge_sorted_lists(l1, l2):
     """
     1 Kata
@@ -174,7 +225,7 @@ def merge_sorted_lists(l1, l2):
     """
     return None
 
-
+# ex 10
 def longest_common_substring(str1, str2):
     """
     4 Kata
@@ -194,7 +245,7 @@ def longest_common_substring(str1, str2):
     """
     return None
 
-
+# ex 11
 def longest_common_prefix(str1, str2):
     """
     1 Kata
@@ -213,7 +264,7 @@ def longest_common_prefix(str1, str2):
     """
     return None
 
-
+# ex 12
 def rotate_matrix(mat):
     """
     2 Kata
@@ -239,7 +290,7 @@ def rotate_matrix(mat):
     """
     return None
 
-
+# ex 13
 def is_valid_email(mail_str):
     """
     3 Kata
@@ -258,7 +309,7 @@ def is_valid_email(mail_str):
     """
     return None
 
-
+# ex 14
 def pascal_triangle(lines):
     """
     3 Kata
@@ -294,7 +345,7 @@ def pascal_triangle(lines):
     """
     return None
 
-
+# ex 15
 def list_flatten(lst):
     """
     2 Kata
@@ -311,7 +362,7 @@ def list_flatten(lst):
     """
     return None
 
-
+# ex 16
 def str_compression(text):
     """
     2 Kata
@@ -331,7 +382,7 @@ def str_compression(text):
     """
     return None
 
-
+# ex 17
 def strong_pass(password):
     """
     1 Kata
@@ -349,54 +400,54 @@ def strong_pass(password):
 
 
 if __name__ == '__main__':
-    print('\nvalid_parentheses:\n--------------------')
-    print(valid_parentheses('[[{()}](){}]'))
+    print ( '\nvalid_parentheses:\n--------------------' )
+    print ( valid_parentheses ( '[[{()}](){}]' ) )
 
-    print('\nfibonacci_fixme:\n--------------------')
-    print(fibonacci_fixme(6))
+    print ( '\nfibonacci_fixme:\n--------------------' )
+    print ( fibonacci_fixme ( 6 ) )
 
-    print('\nmost_frequent_name:\n--------------------')
-    print(most_frequent_name('names.txt'))
+    print ( '\nmost_frequent_name:\n--------------------' )
+    print ( most_frequent_name ( 'names.txt' ) )
 
-    print('\nfiles_backup:\n--------------------')
-    print(files_backup('files_to_backup'))
+    print ( '\nfiles_backup:\n--------------------' )
+    print ( files_backup ( 'files_to_backup' ) )
 
-    print('\nreplace_in_file:\n--------------------')
-    print(replace_in_file('mnist-predictor.yaml', '{{IMG_NAME}}', 'mnist-pred:0.0.1'))
+    print ( '\nreplace_in_file:\n--------------------' )
+    print ( replace_in_file ( 'mnist-predictor.yaml', '{{IMG_NAME}}', 'mnist-pred:0.0.1' ) )
 
-    print('\njson_configs_merge:\n--------------------')
-    print(json_configs_merge('default.json', 'local.json'))
+    print ( '\njson_configs_merge:\n--------------------' )
+    print ( json_configs_merge ( 'default.json', 'local.json' ) )
 
-    print('\nmonotonic_array:\n--------------------')
-    print(monotonic_array([1, 2, 3, 6, 8, 9, 0]))
+    print ( '\nmonotonic_array:\n--------------------' )
+    print ( monotonic_array ( [1, 2, 3, 6, 8, 9, 0] ) )
 
-    print('\nmatrix_avg:\n--------------------')
-    print(matrix_avg([[1, 2, 3], [4, 5, 6], [7, 8, 9]], rows=[0, 2]))
-    print(matrix_avg([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+    print ( '\nmatrix_avg:\n--------------------' )
+    print ( matrix_avg ( [[1, 2, 3], [4, 5, 6], [7, 8, 9]], rows=[0, 2] ) )
+    print ( matrix_avg ( [[1, 2, 3], [4, 5, 6], [7, 8, 9]] ) )
 
-    print('\nmerge_sorted_lists:\n--------------------')
-    print(merge_sorted_lists([1, 4, 9, 77, 13343], [-7, 0, 7, 23]))
+    print ( '\nmerge_sorted_lists:\n--------------------' )
+    print ( merge_sorted_lists ( [1, 4, 9, 77, 13343], [-7, 0, 7, 23] ) )
 
-    print('\nlongest_common_substring:\n--------------------')
-    print(longest_common_substring('abcdefg', 'bgtcdesd'))
+    print ( '\nlongest_common_substring:\n--------------------' )
+    print ( longest_common_substring ( 'abcdefg', 'bgtcdesd' ) )
 
-    print('\nlongest_common_prefix:\n--------------------')
-    print(longest_common_prefix('abcd', 'ttty'))
+    print ( '\nlongest_common_prefix:\n--------------------' )
+    print ( longest_common_prefix ( 'abcd', 'ttty' ) )
 
-    print('\nrotate_matrix:\n--------------------')
-    print(rotate_matrix([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]))
+    print ( '\nrotate_matrix:\n--------------------' )
+    print ( rotate_matrix ( [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]] ) )
 
-    print('\nis_valid_email:\n--------------------')
-    print(is_valid_email('israel.israeli@gmail.com'))
+    print ( '\nis_valid_email:\n--------------------' )
+    print ( is_valid_email ( 'israel.israeli@gmail.com' ) )
 
-    print('\npascal_triangle:\n--------------------')
-    print(pascal_triangle(4))
+    print ( '\npascal_triangle:\n--------------------' )
+    print ( pascal_triangle ( 4 ) )
 
-    print('\nlist_flatten:\n--------------------')
-    print(list_flatten([1, 2, [3, 4, [4, 5], 7], 8]))
+    print ( '\nlist_flatten:\n--------------------' )
+    print ( list_flatten ( [1, 2, [3, 4, [4, 5], 7], 8] ) )
 
-    print('\nstr_compression:\n--------------------')
-    print(str_compression('aaaabdddddhgf'))
+    print ( '\nstr_compression:\n--------------------' )
+    print ( str_compression ( 'aaaabdddddhgf' ) )
 
-    print('\nstrong_pass:\n--------------------')
-    print(strong_pass('##$FgC7^^5a'))
+    print ( '\nstrong_pass:\n--------------------' )
+    print ( strong_pass ( '##$FgC7^^5a' ) )
