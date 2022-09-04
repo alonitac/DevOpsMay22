@@ -28,7 +28,21 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-    return None
+    if(len(word) >= 3) :
+        last3char = word [-3]
+        if (last3char == "ing") :
+           new_word = word+"ly"
+        if(len(word) >= 3) :
+            new_word = word+"ing"
+    if(len(word)  <= 3) :
+        new_word = word
+    return new_word
+result1 = verbing("swim")
+result2 = verbing("tea")
+result3 = verbing("smoothly")
+print ("result1:" , result1)
+print ("result2:" , result2)
+print ("result3:" , result3)
 
 
 def words_concatenation(words):
@@ -43,8 +57,11 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
-
+    phrase=[]
+    phrase=" ".join(words)
+    return phrase
+result4 = words_concatenation(['take', 'me', 'home','now'])
+print ("result4:" , result4)
 
 def reverse_words_concatenation(words):
     """
@@ -57,9 +74,13 @@ def reverse_words_concatenation(words):
 
     :param words: list of str
     :return: Return the resulting string.
+    
     """
-    return None
-
+    new_words = list(reversed(words))
+    result_words = " ".join(new_words)
+    return result_words
+result5 = reverse_words_concatenation(['take', 'me', 'home','now','please'])
+print ("result5:" , result5)
 
 def is_unique_string(some_str):
     """
@@ -75,7 +96,24 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    return None
+    char_dict = {}
+    
+    if len(some_str)==0: 
+        return False
+    else : 
+        some_str_list = [*some_str]
+    for char in some_str_list:
+        if char in char_dict.keys():
+            return False
+        else:
+            char_dict[char]=1
+    return True
+is_unique_string1 = is_unique_string("")
+is_unique_string2 = is_unique_string("abcd")
+is_unique_string3 = is_unique_string("abcccd")
+print ("is_unique_string1", is_unique_string1)
+print ("is_unique_string2", is_unique_string2)
+print ("is_unique_string3", is_unique_string3)
 
 
 def list_diff(elements):
@@ -93,7 +131,24 @@ def list_diff(elements):
     :param elements: list of integers
     :return: the diff list
     """
-    return None
+    i = 0
+    if len(elements) == 0 :
+        diff_list = []
+        return diff_list
+    else :
+        diff_list = ['None']
+        while i < len(elements) -1 : 
+            num = elements[i+1] - elements[i]
+            diff_list .append(num)
+            i += 1
+            
+    return diff_list
+list_diff1 = list_diff([])
+print ("list_diff1", list_diff1)
+list_diff2 = list_diff([1, 5, 0, 4, 1, 1, 1])
+print ("list_diff2", list_diff2)
+list_diff3 = list_diff([1, 2, 3, 4, 7, 11])
+print ("list_diff3", list_diff3)
 
 
 def prime_number(num):
@@ -105,9 +160,20 @@ def prime_number(num):
     hint: use the built-in function "range"
     :param num: the number to check
     :return: bool. True if prime, else False
+    3/3
+    3/1
+    
     """
-    return None
-
+    for i in range(2,num):
+        if (num%i) == 0:
+            return False
+    return True
+prime_number1 = prime_number(59)       
+print (" Is prime num : 59" , prime_number1)
+prime_number2 = prime_number(97)
+print (" Is prime num : 97" , prime_number2)
+prime_number3 = prime_number(100)
+print (" Is prime num : 100" , prime_number3)
 
 def palindrome_num(num):
     """
@@ -122,10 +188,20 @@ def palindrome_num(num):
     :param num: int
     :return: bool. True is palindrome, else False
     """
-    return None
+    
+    num_reversed = int(str(num)[::-1])
+    if num== num_reversed :
+        return True
+    return False
 
+palindrome_num1=palindrome_num(1441)
+print("1441 is Palindrome : ",palindrome_num1)
+palindrome_num2=palindrome_num(123)
+print("123 is Palindrome : ",palindrome_num2)
+palindrome_num3=palindrome_num(8765115678)
+print("8765115678 is Palindrome : ",palindrome_num3)
 
-def pair_match(men, women):
+def pair_match(mens, womens):
     """
     3 Kata
 
@@ -153,8 +229,27 @@ def pair_match(men, women):
     :param women: dict mapping name -> age
     :return: tuple (men_name, women_name) such their age absolute difference is the minimal
     """
-    return None
+    result_tuple = []
+    for men in mens : 
+       men_name = men 
+       men_age = mens[men]
+       for woman in womens :
+           woman_name = woman
+           woman_age = womens[woman]
+           age_diff = int(men_age) - int(woman_age)
+           if age_diff < 0 :
+                diff_age = age_diff * -1
+           else: 
+                diff_age = age_diff
+           string4add = f'abs({men_name} - {woman_name}) = abs ({men_age} - {woman_age}) = abs({age_diff}) ={diff_age}'
+           result_tuple.append(string4add)
+           
+    return result_tuple
 
+mens = {"John": 20, "Abraham": 45}
+womens = {"July": 18, "Kim": 26}
+pair_match1= pair_match(mens, womens)
+print ("pair_match result is : " ,pair_match1)
 
 def bad_average(a, b, c):
     """
@@ -164,8 +259,12 @@ def bad_average(a, b, c):
     There is a mistake in the following implementation, you are required to fix it
 
     :return:
+    
     """
-    return a + b + c / 3
+    return (a + b + c) / 3
+
+bad_average1= bad_average(1,2,3)
+print ("bad_average1",bad_average1)
 
 
 def best_student(grades):
@@ -188,8 +287,23 @@ def best_student(grades):
     :param grades: dict of name -> grade mapping
     :return: str. some key from the dict
     """
-    return None
-
+    best_student_Name = list(grades.keys())[0]
+    best_student_Grade = list(grades.values())[0]
+    for student_name ,student_grade  in grades.items() : 
+        if int(student_grade) > int(best_student_Grade) : 
+            best_student_Name = student_name 
+            best_student_Grade = student_grade
+    print(f'Best stuendt name is : {best_student_Name} with a grade : {best_student_Grade}')
+    return best_student_Name
+grades = {
+        "Ben": 78,
+        "Hen": 88,
+        "Natan": 99,
+        "Efraim": 65,
+        "Rachel": 95
+    }
+best_student1 = best_student(grades)
+print("best_student1 : " , best_student1)
 
 def print_dict_as_table(some_dict):
     """
@@ -217,7 +331,25 @@ def print_dict_as_table(some_dict):
     :param some_dict:
     :return:
     """
+    
+    print("{:<10} {:<10}".format('Key','Value'))
+    print("-------------")
+    for k,v in some_dict.items() :
+        Key= k
+        Value = v
+        print("{:<10} {:<10}".format(Key,Value))
+    
     return None
+
+some_dict= {
+        "Ben": 78,
+        "Hen": 88,
+        "Natan": 99,
+        "Efraim": 65,
+        "Rachel": 95
+    }
+print_dict_as_table(some_dict)
+
 
 
 def merge_dicts(dict1, dict2):
@@ -237,8 +369,15 @@ def merge_dicts(dict1, dict2):
     :param dict2:
     :return:
     """
-    return dict1
+    temp_dict = dict1.copy()
+    temp_dict.update(dict2)
+    
+    return temp_dict
 
+dict1 = {'a': 1}
+dict2 = {'b': 2} 
+merge_dicts1 = merge_dicts(dict1, dict2)
+print("merge_dicts1 is :" , merge_dicts1)
 
 def seven_boom(n):
     """
@@ -252,10 +391,32 @@ def seven_boom(n):
     :param n: int. The last number for count for a 7-boom play
     :return: list of integers
     """
-    return None
+    Booms=[]
+    BoomNum = 7
+    for i in range (1,n,1):
+         if (i/BoomNum).is_integer() or i/BoomNum==0  : 
+            Booms.append(i)
+         else:
+            number= [int(d) for d in str(i)]
+            for dig in number : 
+                if str(dig) == str(BoomNum) :
+                    Booms.append(i)
+                
+    
+        
+    
+    return Booms
 
+n = 30
+seven_boom1= seven_boom(n)
+print ("Seven_boom result is : ",seven_boom1)
 
 def caesar_cipher(str_to_encrypt):
+    import string
+    a_z_lower = list(string.ascii_lowercase)
+    A_Z_Upper= list(string.ascii_uppercase)
+    encryption_offset = 3
+    encrypted_string = []
     """
     2 Kata
 
@@ -267,8 +428,31 @@ def caesar_cipher(str_to_encrypt):
 
     :return:
     """
-    return None
+    for char_str in str_to_encrypt:
+        if char_str.isspace() :
+            char4add = char_str
+        if char_str.isupper() :
+            char_index= A_Z_Upper.index(char_str)
+            if (char_index + encryption_offset) > len(A_Z_Upper) :
+                char_index = (char_index + encryption_offset) - len(A_Z_Upper)
+            else : 
+                char_index = char_index + encryption_offset
+            char4add= A_Z_Upper[char_index]
+        if char_str.islower() :
+            char_index= a_z_lower.index(char_str)
+            if (char_index + encryption_offset) > len(a_z_lower) : 
+                char_index = (char_index + encryption_offset) - len(a_z_lower)
+            else : 
+                char_index = char_index + encryption_offset            
+            char4add = a_z_lower[char_index]
+            
+        encrypted_string.append(char4add)
+    encrypted_string= ''.join(encrypted_string)
+    return encrypted_string
 
+str_to_encrypt="Fly Me To The Moon"
+caesar_cipher1= caesar_cipher(str_to_encrypt)
+print("caesar_cipher1 resiult : ",caesar_cipher1)
 
 def sum_of_digits(digits_str):
     """
@@ -285,8 +469,24 @@ def sum_of_digits(digits_str):
     :param digits_str: str of numerical digits only
     :return: int representing the sum of digits
     """
-    return None
+    summ = 0
+    if digits_str == "":
+        return summ
+    else: 
+        for i in digits_str:
+            summ+=int(i)
+        
+    return summ
+digits_str1 = '2524'
+digits_str2 = ''
+digits_str3 = '00232'
 
+sum_of_digits1 = sum_of_digits(digits_str1)
+sum_of_digits2 = sum_of_digits(digits_str2)
+sum_of_digits3 = sum_of_digits(digits_str3)
+print ("sum_of_digits1", sum_of_digits1)
+print ("sum_of_digits2", sum_of_digits2)
+print ("sum_of_digits3", sum_of_digits3)
 
 if __name__ == '__main__':
 
