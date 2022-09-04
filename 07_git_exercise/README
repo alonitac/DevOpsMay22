@@ -18,53 +18,73 @@
 
 # Resolve conflicts
 
-1.
-2.
-3.
+1. Command:  git branch   
+      OUTPUT:                         
+      bugfix/fix_readme_typo
+      bugfix/open_kibana_port
+      dev
+      feature/data_retention_policy
+      feature/elasticsearch_helm_chart
+      feature/upgrade_angular_version
+      feature/version1
+      feature/version2
+      * main
+      reset_question
+2. Command: git checked -b feature/lambda_migration
+3. git add *; git commit -m "Commit all files"; git push origin feature/lambda_migration; git merge feature/version1 
+4. Complete - as explained on PyCharm UI.
+5. Complete - as explained in exercise. 
+   I. 
+   . 
+   (all sub stepa are done regarding the exercise)
+   .
+   V. 
 
-4.
-5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+6. The commits that have been added after the merge are:
+   'Merge branch 'feature/version1' into feature/lambda_migration'
+   'Merge branch 'feature/version2' into feature/lambda_migration'
 
 # Cherry picking
 
-1.
-2.
-3.
-    1.
-    2.
-4.
-5.
-
+1. git checkout main; git checkout -b feature/lambda_migration2
+2. Complete - as explained on PyCharm UI.
+3. Right click on the commit and select "Cherry-Pick"
+    1. Use correct lock type in reconnect() - done.
+    2. Restrict the extensions that can be disabled - done.
+4. Two files was added as a result of cherry pick commits are :
+    1 -  config.json  
+    2 - .env
+5. Sure it is important , we want to pick the latest branch state , that mean we have to take a latest commits .
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. Done
+2. New file was created and 'git add take.txt' - done.
+3. command : git checkout dev
+   Error message:  
+      error: Your local changes to the following files would be overwritten by checkout:
+      take.txt
+      Please commit your changes or stash them before you switch branches.
+      Aborting
+4. git checkout -f dev
+5. No all lost , reason force checkout.
+6.  There is no take.txt file - reaseon is forece checkout always drop all not commited changes. 
 
 # Reset
 
-1.
-2.
-   1.
-   2.
-   3.
-   4.
-3.
+1. git checkout reset_question
+2. Commands:
+      1. git reset --soft HEAD~1 "Change index for last commit (10 marked in green) and remove the commit."
+      2. git reset --mixed HEAD~1 "Change index for last commit but keep all commits ."
+      3. git reset --hard HEAD~1 "Delete all committed files from the last commit , good way for clean local branch"
+      4. git revert HEAD~1 "Revert the last commit"
+3. HEAD~1 is a special commit index pointer in git. It is point to the previous commit.
+
 
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1. Done , manual. Repo name "git_exercise"
+2. git remote add origin https://github.com/DeniZaychenko/git_exercise.git
+3. git push -u origin main;git push -u origin dev
+4. https://github.com/DeniZaychenko/git_exercise/
