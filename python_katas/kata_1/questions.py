@@ -112,10 +112,12 @@ def list_diff(elements):
     cur_elem = 0
     if len(elements) > 0:
         cur_elem = elements[0]
+    first = True
 
     for elem in elements:
-        if elem == cur_elem:
-            result_list += None
+        if first:
+            result_list.append(None)
+            first = False
         else:
             result_list.append(elem - cur_elem)
             cur_elem = elem
@@ -134,10 +136,11 @@ def prime_number(num):
     :return: bool. True if prime, else False
     """
     result = True
-    num_half = int(num / 2)
-    for n in range(num_half):
+
+    for n in range(2, num):
         if num % n == 0:
             result = False
+            break
 
     return result
 
@@ -158,7 +161,7 @@ def palindrome_num(num):
     if len(num) <= 1:
         return True
     if num[0] == num[len(num) - 1]:
-        return palindrome_num[1:-1]
+        return palindrome_num(num[1:-1])
     else:
         return False
 
@@ -195,10 +198,11 @@ def pair_match(men, women):
     res = ('', '')
 
     for cur_men in men:
+        print(men[cur_men])
         for cur_women in women:
-            if abs(cur_men.value - cur_women.value) < minimal_gap:
-                minimal_gap = abs(cur_men.value - cur_women.value)
-                res = (cur_men.key, cur_women.key)
+            if abs(men[cur_men] - women[cur_women]) < minimal_gap:
+                minimal_gap = abs(men[cur_men] - int(women[cur_women]))
+                res = (cur_men, cur_women)
 
     return res
 
@@ -212,7 +216,7 @@ def bad_average(a, b, c):
 
     :return:
     """
-    return (a + b + c) / 3
+    return (a + b + c) / 3.0
 
 
 def best_student(grades):
@@ -238,8 +242,8 @@ def best_student(grades):
     res = ('', 0)
     max_grade = 0
     for grade in grades:
-        if grade.value > max_grade:
-            max_grade = grade.value
+        if grades[grade] > max_grade:
+            max_grade = grades[grade]
             res = grade
 
     return res
