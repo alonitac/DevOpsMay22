@@ -5,12 +5,12 @@
 3.git add abc.txt ,git status, color now is: green(staged) ,git commit -m "add file abc.txt"
 4.echo "2" --> abc.txt
 5.color is : red , yes the git status is different showing : "modified" status
-6.git diff
+6.git diff main
 7.using git diff --staged It doesnt show any changes because the file abc.txt is in working tree
 8.diff stage2 return fatal error because stage 2 in unknown path and it is not in the working tree and we sould use the separator -- before.
 9.git add abc.txt  using git status = green
-10.git diff print nothing  all of the changes  been commented
-11.git diff --> staged
+10.Because  all of the changes  been staged
+11.git diff-index main
 12.using echo 3 --> abc.txt
 13.not the same output because the git diff shows the different between the working area to the staging area.
 14.Because not all changes were commited commited
@@ -19,9 +19,9 @@
 # Resolve conflicts
 
 1.git branch
-2.sudo git checkout -b feature/lambda_migration
-3.git merge feature/version1 and accept the file changes.
-4.done throw the gui following the images examples
+2.git checkout -b feature/lambda_migration
+3.git merge feature/version1
+4.Done
 5.
    1.Merge
    2.Click all
@@ -32,7 +32,7 @@
 
 # Cherry picking
 
-1.git checkout main ,git checkout -b feature/lambda_migration2
+1.git checkout -b feature/lambda_migration2 main
 2.go to feature in the local repo and change filter to the feature/lambda_migration
 3.click on chery pick  button and choose the requested commits:
     1."use correct lock type in reconnect()"
@@ -44,10 +44,9 @@
 # Changes in working tree and switch branches
 
 1.git branch
-2.echo "Hello World From Devops may 2022 class" > take.txt && git add take.txt
-git status
+2.echo "blah blah blah" > take.txt && git add take.txt
 3.git checkout dev , error status: Please commit your changes or stash them before you switch branches.
-4.on ui choose dev checkout and choose force checkout
+4.In ui choose dev checkout and choose force checkout
 5.No changes are lost
 6.No the file is lost , force chekcout will remove your last changes your made on the branch.
 
@@ -64,7 +63,8 @@ git status
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1.In GitHub create a new repository and generate ssh keygen and add it to the ssh keygen agent in the github
+2.git remote add origin https://github.com/saaremez/saar_repo.git
+3.git push origin main
+  git push origin dev
+4.https://github.com/saaremez/saar_repo
