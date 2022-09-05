@@ -1,69 +1,109 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1. echo 1 > abc.txt
+2. color of abc.txt is red. cmd: git status.
+3. after: git add abc.txt , now color of abc.txt is green.
+4. 2nd line added with digit 2 (using vim).
+5. color now is red same as section 2, but with modified indication.
+6. git diff
+7. actually when I run git diff --staged there was output:
+iff --git a/abc.txt b/abc.txt
+new file mode 100644
+index 0000000..d00491f
+--- /dev/null
++++ b/abc.txt
+@@ -0,0 +1 @@
++1
+8. There is no revision named stage2
+9. git add abc.txt
+10. git diff shows nothing. there is no difference between index to working folder.
+11. git diff --staged
+12. done with vim
+13. no, in git diff main also the 3rd line isn't in index nor in main.
+14. once in the index to be commited (green), 2nd with 3rd line update to be added to index (red)
+15. git reset --hard
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
-5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+1. git branch -a
+  bugfix/fix_readme_typo
+  bugfix/open_kibana_port
+  dev
+  feature/data_retention_policy
+  feature/elasticsearch_helm_chart
+  feature/upgrade_angular_version
+  feature/version1
+  feature/version2
+* main
+  reset_question
+
+2. git checkout -b feature/lambda_migration
+
+3. $ git merge feature/version1
+Updating 4dd9124..1641f18
+Fast-forward
+ .env        | 0
+ app.py      | 4 ++--
+ config.json | 0
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+ create mode 100644 .env
+ create mode 100644 config.json
+
+4. Done.
+5. Done.
+   1. Done.
+   2. Done.
+   3. Done.
+   4. Done.
+   5.Done.
+6. Don't see anything to commite, myabe just if I add app.py
 
 # Cherry picking
 
-1.
-2.
-3.
-    1.
-    2.
-4.
-5.
+1. Done.
+2. Done.
+3. Done.
+    1. Done.
+    2. Done.
+4. I'm not sure, seems as config.json and .env files were added.
+5. Seems important if same files & lines added/changed.
 
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. Done.
+2. git add take.txt
+3. git checkout dev
+error: Your local changes to the following files would be overwritten by checkout:
+        take.txt
+Please commit your changes or stash them before you switch branches.
+
+4. Done.
+5. No, the changes doesn't exist in branch dev.
+6. take.txt doesn't exist, so forced checkout delete the changes and ignore them.
 
 # Reset
 
-1.
-2.
-   1.
-   2.
-   3.
-   4.
-3.
+1. git checkout reset_question
+2. 
+   1. New file added to index: 10.txt
+   The lst commit was remove, files stays in index and in the working tree.
+   
+   2. Status says 2 none commited files: 9.txt, 10.txt are in the wroking folder.
+   The last commit was removed, files stays only in working folder.
+   
+   3. Status says 2 none commited files: 9.txt, 10.txt are in the wroking folder.
+   All changes from last commit are lost, also from index and from working folder.
+   
+   4. This revert the last commit, but also records the changes as a new commit.
+3. The ~1 notation means the 1 change from the end.
 
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1. Done.
+2. git remote set-url origin git@github.com:ofeky-hisky/ofek-git-excercise.git
+3. git push --set-upstream origin dev
+   git push --set-upstream origin main
+4. https://github.com/ofeky-hisky/ofek-git-excercise
+
