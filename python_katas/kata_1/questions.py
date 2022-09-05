@@ -1,3 +1,5 @@
+import string
+
 def sum_of_element(elements):
     """
     1 Kata
@@ -270,7 +272,7 @@ def caesar_cipher(str_to_encrypt):
     return None
 
 
-def sum_of_digits(digits_str):
+def sum_of_digits(digstr):
     """
     1 Kata
 
@@ -282,10 +284,19 @@ def sum_of_digits(digits_str):
     '00232' -> 7
 
 
-    :param digits_str: str of numerical digits only
+    :param digstr: str of numerical digits only
     :return: int representing the sum of digits
     """
-    return None
+    if len(digstr) < 1:
+        return (0)
+    if not digstr.isdigit():
+        return (-1)
+
+    digitSum = 0
+    for x in digstr:
+        digitSum += int(x)
+
+    return (digitSum)
 
 
 if __name__ == '__main__':
@@ -362,5 +373,5 @@ if __name__ == '__main__':
     print(caesar_cipher('Fly Me To The Moon'))
 
     print('\nsum_of_digits:\n--------------------')
-    print(sum_of_digits('1223432'))
+    print(sum_of_digits('007-2'))
 
