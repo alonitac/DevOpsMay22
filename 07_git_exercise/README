@@ -118,4 +118,4 @@
 1. created new repo in my github account and call it final_gitex1.
 2. git remote add origin git@github.com:ehershber/final_gitex1.git
 3. git push origin main , git push origin dev
-4. git@github.com:ehershber/final_gitex1.git
+4. https://github.com/ehershber/final_gitex1.git
