@@ -1,69 +1,121 @@
 # Git Basics (commit, diff, branches)
 
-1.111
-2.4444
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1. echo 1 > abc.txt
+2. the file color is red
+3. git add abc.txt . the color is green; commiting -  git commit -m "added the file abc.txt"
+4. echo 2 >> abc.txt
+5. No, the file color is red.
+   differece between the outputs are:
+   First output notes that there are "Untracked files" and that nothing added to commit.
+   The second output notes that "Changes not staged for commit " and also sign "modified:   abc.txt"   and at the end notes that no changes added to commit.
+6. git diff HEAD
+7. Because we commited only one change  of file abc.txt , so its in both main and index. The second change was not staged and so is not also in both main or index
+8. because  this is an unknown argument or command.
+    The error is "unknown revision or path not in the working tree."
+    It means that there is no branch or path with this name.
+9. git add abc.txt
+10. git diff prints nothing, thats because there are no differences between the working tree and the index - the changes that made in the working directory are now also staged.
+11. git diff --staged
+12. echo 3 >> abc.txt
+13. No.  there were only one commit and two adding to index. git diff --staged that shows the difference between the index and main branch display "2" as the difference.
+    git diff main  shows differences between working tree and main branch, and there the difference adds also "3" that was not staged or commited.
+14. The first one is for line '2' that was staged but not committed and the second is for line "3"
+    that was not staged.
+15. git reset --hard
+
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
+1. git branch
+    main
+    bugfix/fix_readme_typo
+    bugfix/open_kibana_port
+    dev
+    feature/data_retention_policy
+    feature/elasticsearch_helm_chart
+    feature/upgrade_angular_version
+    feature/version1
+    feature/version2
+    reset_question
+
+2. git checkout -b feature/lambda_migration
+3. git merge feature/version1.
+   Merge made by the 'ort' strategy.
+   .env        | 0
+   app.py      | 4 ++--
+   config.json | 0
+   3 files changed, 2 insertions(+), 2 deletions(-)
+   create mode 100644 .env
+   create mode 100644 config.json
+
+
+
+4.  Using PyCharm UI - merge branch feature/version2 into feature/lambda_migration
 5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+   1. Merge
+   2. All
+   3. Annotate with Git Blame
+   4. accept
+   5. accept
+6. NO,there are no more commits for feature/lambda_migration, results of merge are immediately commited(axcept conflicts)
+    git status result:
+    On branch feature/lambda_migration
+    nothing to commit, working tree clean
+
 
 # Cherry picking
 
-1.
-2.
-3.
-    1.
-    2.
-4.
-5.
+1. git checkout main,and then -> git checkout -b feature/lambda_migration2
+2. in pycharm go to Log and filter to see only commits of feature/lambda_migration
+3. In PyCharm UI, use the cherry-pick icon to pick those commits in the following order:
+   i. "use correct lock type in reconnect()"
+   ii. "Restrict the extensions that can be disabled"
+4. 2 files has been added:
+     .env
+     config.json
+5. Yes, because every commit is made in specific time stamp and commit that are made after are based on last commit
+    so if for example you change line or lines in file it has to be the last change that was made to that lines.
 
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. make sure you are in branch different from dev
+2.  touch take.txt
+    echo Hello world >> take.txt
+    echo Good morning >> take.txt      -> git add take.txt
+3.  git checkout dev.
+     I get this error:
+           Your local changes to the following files would be overwritten by checkout:
+           take.txt
+           Please commit your changes or stash them before you switch branches.
+           Aborting
+    The 2 ways git suggests are:
+      1. commit the changes before switching to another branch
+      2. stash changes with git stash   before switching branches. meaning- save the current state of the working directory and index and switch to clean working directory.
+
+4. Force Checkout
+5. No
+6. No, there is no file. The force checkout overwrites what was not commited.
+
 
 # Reset
 
-1.
+1. git checkout reset_question
 2.
-   1.
-   2.
-   3.
-   4.
-3.
+     1. git reset --soft HEAD~1 - points to one commit before HEAD~1,but the changes in index and working directory will stay.
+        10.txt in green
+     2. git reset --mixed HEAD~1  - HEAD~1 and index matches now, but we still have the changes in working directory.
+        9.txt,10.txt -in red and untracked
+     3. git reset --hard HEAD~1  -  HEAD~1,resets index and working directory to  be the same.
+        8.txt deleted, 9.txt and 10.txt untracked.
+     4. git revert HEAD~1  - reverted to the last commit.
+         6.txt deleted.
+3. HEAD~1 means the previous commit before the HEAD.
 
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1. created new repo in my github account and call it final_gitex1.
+2. git remote add origin git@github.com:ehershber/final_gitex1.git
+3. git push origin main , git push origin dev
+4. git@github.com:ehershber/final_gitex1.git
