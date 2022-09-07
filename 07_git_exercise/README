@@ -34,9 +34,9 @@
 
 # Cherry picking
 
-1.
-2.
-3.
+1.git checkout -b feature/lambda_migration2
+2.i changed filter in the log using pycharm ui.
+3. i used cherry pick by the following the  order by description
     1.
     2.
 4.
