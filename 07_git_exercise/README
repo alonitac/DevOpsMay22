@@ -1,20 +1,20 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1. echo '1' > abc.txt
+2.Red
+3.git add abc.txt, git status abc.txt <Color Green>,git commit -m "adding abc.txt file with content '1'"
+4.echo 'line 2' >> abc.txt,
+5.Color Red, state modified:   abc.txt, the difference is in state, previous was new file
+6.git diff
+7. because nothing staged
+8.fatal: ambiguous argument 'stage2': unknown revision or path not in the working tree. The reason for that is that stage2 doesnt exist
+9. git add abc.txt
+10.Nothing. The reason is that there are no diff between the working tree and the branch after adding abc.txt it appears to be green and modified
+11.git diff --staged
+12.echo 'line 3' >> abc.txt,
+13.Not, the line 3 wasn't staged yet and will not appear in diff --staged.
+14.The appereance in green is a committed one and in red not committed one
+15.git reset --hard
 
 # Resolve conflicts
 
