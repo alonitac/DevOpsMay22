@@ -116,7 +116,7 @@ Stash is basicaly sort of an snapshot of the working dir and allows to pull that
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1.https://github.com/polonskyilya/git10092022
+2.$ git remote add origin https://github.com/polonskyilya/git10092022.git
+3.$ git push -u origin dev   $ git push -u origin main
+4.https://github.com/polonskyilya/git10092022
