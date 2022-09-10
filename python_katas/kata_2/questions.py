@@ -13,7 +13,24 @@ def valid_parentheses(s):
     s = '[[{()}](){}]'  -> True
     s = '[{]}'          -> False
     """
-    return None
+    import re
+    s_list = re.findall(r"[\(,\{,\[,\],\},\)]", s)
+    dict_paren = {'(': ')', '{': '}', '[': ']'}
+    if len(s) == 0 or len(s_list) == 0:
+        return True
+    if len(s_list) % 2 != 0:
+        return False
+    else:
+        closing_stack = []
+        for i in s_list:
+            if i in dict_paren.keys():
+                closing_stack.append(i)
+            else:
+                if len(closing_stack) == 0:
+                    return False
+                elif i != dict_paren[closing_stack.pop()]:
+                    return False
+    return True
 
 
 def fibonacci_fixme(n):
