@@ -218,22 +218,36 @@ def rotate_matrix(mat):
 
 
 def is_valid_email(mail_str):
-    """
-    3 Kata
+        import socket, re
+        """
+        3 Kata
+        This function returns True if the given mail is in the form:
+        (username)@(domainname)
+        Where
+        * (username) must start with digit or an English character, and can contains only 0-9 a-z A-Z . or _
+        * (domainname) is a real, existed domain - one that resolves to an actual ip address
+        Hint: use socket.gethostbyname() to resolve a DNS in Python code
+        :param mail_str: mail to check
+        :return: bool: True if it's a valid mail (otherwise either False is returned or the program can crash)
+        """
+        ipAddress = None
+        regex_expression = re.compile(r'^[a-zA-Z0-9]{1}[a-zA-Z0-9\.\_]*@{1}([a-zA-Z0-9\.\_]+)')
+        if len(mail_str) > 320 or regex_expression == None:
+            return False
+        try:
+            hostName = regex_expression.fullmatch(mail_str).groups(1)[0]
+        except AttributeError:
+            return False
+        try:
+            ipAddress = socket.gethostbyname(hostName)
+        except:
+                try:
+                    ipAddress = socket.gethostbyname('www.'+hostName)
+                except:
+                     return False
 
-    This function returns True if the given mail is in the form:
-    (username)@(domainname)
-
-    Where
-    * (username) must start with digit or an English character, and can contains only 0-9 a-z A-Z . or _
-    * (domainname) is a real, existed domain - one that resolves to an actual ip address
-
-    Hint: use socket.gethostbyname() to resolve a DNS in Python code
-
-    :param mail_str: mail to check
-    :return: bool: True if it's a valid mail (otherwise either False is returned or the program can crash)
-    """
-    return None
+        if ipAddress is not None:
+            return True
 
 
 def pascal_triangle(lines):
@@ -269,6 +283,27 @@ def pascal_triangle(lines):
     :param lines: int
     :return: None
     """
+    triangle_array = [[1]]
+    if lines == 1:
+        for i in triangle_array:
+            print(' '.join(map(str, i)).center(len(' '.join(map(str, triangle_array[-1])))), end='\n')
+        return None
+    if lines == 0:
+        print(' ')
+        return None
+    for row in range(1, lines):
+        sub_array = [0] * (row + 1)
+        for column in range(0, row):
+            if column == 0:
+                sub_array[column] = sub_array[column - 1] = 1
+                continue
+            if column >= 1 and row >= 1:
+                sub_array[column] = triangle_array[row - 1][column - 1] + \
+                                    triangle_array[row - 1][column]
+        triangle_array.append(sub_array)
+    for i in triangle_array:
+        print(' '.join(map(str, i)).center(len(' '.join(map(str,
+                                                            triangle_array[-1])))), end='\n')
     return None
 
 
