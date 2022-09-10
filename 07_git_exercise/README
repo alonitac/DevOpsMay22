@@ -37,30 +37,30 @@
 1.git checkout -b feature/lambda_migration2
 2.i changed filter in the log using pycharm ui.
 3. i used cherry pick by the following the  order by description
-    1.
-    2.
-4.
-5.
+    1.use correct lock type in reconnect()
+    2.Restrict the extensions that can be disabled
+4.env and config.json
+5.yes the order is important you need to pick the right files in the right order of code for the changes to work correctly.
 
 
 # Changes in working tree and switch branches
 
-1.git branch
-2. 
-3.
-4.
-5.
-6.
+1.git branch- we on the right one!
+2.touch take.txt nano hello world hi devopes
+3.using git checkout dev
+4.git checkout --force dev i tried it
+5.take.txt has no changes
+6.no changes.
 
 # Reset
 
 1.git checkout reset_question
 2.git log
-   1.        
-   2. 
-   3.      
-   4. 
-3. 
+   1. git reset --soft HEAD~1 Remove the last commit from the current branch,the file changes will remain in the working tree.
+   2. git reset --mixed HEAD~1 "keep the changes in your working tree but not on the index, if you want to commit, you have to add the changes before commit."
+   3. git reset --hard HEAD~1 "this action delete all committed files from the last commit.
+   4. git revert HEAD~1 Undo the last Git commit
+3. HEAD~1 delete the files from the last commit and create new commit
 
 
 # Working with GitHub
