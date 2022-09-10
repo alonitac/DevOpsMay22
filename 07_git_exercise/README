@@ -18,47 +18,100 @@
 
 # Resolve conflicts
 
-1.
-2.
-3.
-4.
-5.
-   1.
-   2.
-   3.
-   4.
-   5.
-6.
+1.$ git branch -a
+                  bugfix/fix_readme_typo
+                  bugfix/open_kibana_port
+                  dev
+                  feature/data_retention_policy
+                  feature/elasticsearch_helm_chart
+                  feature/upgrade_angular_version
+                  feature/version1
+                  feature/version2
+                * main
+                  reset_question
+2.$ git branch feature/lambda_migration
+  $ git branch --list
+                  bugfix/fix_readme_typo
+                  bugfix/open_kibana_port
+                  dev
+                  feature/data_retention_policy
+                  feature/elasticsearch_helm_chart
+                  feature/lambda_migration
+                  feature/upgrade_angular_version
+                  feature/version1
+                  feature/version2
+                * main
+3.$ git checkout feature/lambda_migration
+                  Switched to branch 'feature/lambda_migration'
+  $ git merge feature/version1
+                    Merge made by the 'recursive' strategy.
+                     .env        | 0
+                     app.py      | 4 ++--
+                     config.json | 0
+                     3 files changed, 2 insertions(+), 2 deletions(-)
+                     create mode 100644 .env
+                     create mode 100644 config.json
+
+4.Done as instructed
+5.Done as instructed
+   1.Done as instructed
+   2.Done as instructed
+   3.Done as instructed
+   4.Done as instructed
+   5.Done as instructed
+6.Commits made by John and Nodella from both version1 and version 2 of feature/
+    commit f1ea109a17d506f42c506dcd4e83c914b544cd2f
+    commit 9eba3e1e4cd21c570bd660a88ce7fafc4e863115
+    commit c208b5d696d9dced3cd4aa89d91403bdb2d0e479
+    commit 006d1a6ac8cc6f5055a1b73828f00f7c7e7b731d
+    commit f1ea109a17d506f42c506dcd4e83c914b544cd2f
+    commit 9eba3e1e4cd21c570bd660a88ce7fafc4e863115
 
 # Cherry picking
 
-1.
+1.  git checkout main
+    Switched to branch 'main'
+    git branch feature/lambda_migration2
+
 2.
 3.
     1.
     2.
-4.
-5.
+4.config.json,.env
+5.we want to order the last commit
 
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1.$ git branch --show-current
+feature/lambda_migration2
+
+2.echo 'some lines' >> take.txt,git add take.txt
+$ git status
+On branch feature/lambda_migration2
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   take.txt
+3.$ git checkout dev
+error: Your local changes to the following files would be overwritten by checkout:
+        take.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+Approaches suggested: commit or stash
+Stash is basicaly sort of an snapshot of the working dir and allows to pull that stash over future comitts.
+4.Done
+5.Not my changes arent in take.txt
+6.No, the file take.txt is not there. Force drops all the local changes.
 
 # Reset
 
-1.
+1.git checkout reset_question
 2.
-   1.
-   2.
-   3.
-   4.
-3.
+   1. keep the changes in file 10.txt and 9.txt and stages these changes
+   2. unstages the changes in files 10,8,9
+   3. changes the HEAD to 85ebced 6
+   4. Records anew commit to reverse the 1 generation commit from HEAD
+3. to go back a number of generations, in this case 1 generation back
 
 
 # Working with GitHub
