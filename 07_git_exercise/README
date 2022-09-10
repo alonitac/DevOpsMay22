@@ -66,6 +66,9 @@
 # Working with GitHub
 
 1.create new repo and name it myrepo,  generate ssh keygen and add it to the ssh keygen agent in the github
-2.
-3.TEST
-4.
+2.Add this repo as a remote (origin) to the local repo you've worked on along this exercise
+3.git push origin dev , git push origin main
+4.Copy and paste the link to your GitHub repo in the README answers file
+
+
+https://github.com/Eli-abukrat/myrepo.git
