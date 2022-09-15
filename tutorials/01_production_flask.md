@@ -3,7 +3,7 @@
 The following steps should be performed as the `root` user. It is highly recommended connecting to the `root` shell by:
 
 ```shell
-sudo du -l root
+sudo su -l root
 ```
 
 ## Create a Python virtual env
@@ -12,9 +12,11 @@ Let's create first a Python virtual environment
 
 1. **As a `root` user**, go to `/var/www`
 2. Create a venv called `myapp` by: 
+
 ```shell
 python3 -m venv myapp
 ```
+
 3. Activate the venv by:
 ```shell
 . myapp/bin/activate
