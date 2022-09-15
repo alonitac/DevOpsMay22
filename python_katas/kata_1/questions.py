@@ -97,10 +97,11 @@ def is_unique_string(some_str):
     :return: bool
     """
     char_dict = {}
-    
-    if len(some_str)==0: 
-        return False
-    else : 
+    if some_str == None :
+        return True
+    elif len(some_str)==0:
+        return True
+    else :
         some_str_list = [*some_str]
     for char in some_str_list:
         if char in char_dict.keys():
@@ -108,12 +109,16 @@ def is_unique_string(some_str):
         else:
             char_dict[char]=1
     return True
+is_unique_string4 = is_unique_string(None)
 is_unique_string1 = is_unique_string("")
 is_unique_string2 = is_unique_string("abcd")
 is_unique_string3 = is_unique_string("abcccd")
+
+print ("is_unique_string4", is_unique_string4)
 print ("is_unique_string1", is_unique_string1)
 print ("is_unique_string2", is_unique_string2)
 print ("is_unique_string3", is_unique_string3)
+
 
 
 def list_diff(elements):
@@ -188,12 +193,17 @@ def palindrome_num(num):
     :param num: int
     :return: bool. True is palindrome, else False
     """
-    
-    num_reversed = int(str(num)[::-1])
-    if num== num_reversed :
-        return True
-    return False
+    if num <= 9 or num <= 0:
+        return False
+    else:
+        num_reversed = int(str(num)[::-1])
+        if num == num_reversed:
+            return True
+        if num != num_reversed:
+            return False
 
+palindrome_num4=palindrome_num(2)
+print("2 is Palindrome : ",palindrome_num4)
 palindrome_num1=palindrome_num(1441)
 print("1441 is Palindrome : ",palindrome_num1)
 palindrome_num2=palindrome_num(123)
@@ -249,7 +259,7 @@ def pair_match(mens, womens):
 mens = {"John": 20, "Abraham": 45}
 womens = {"July": 18, "Kim": 26}
 pair_match1= pair_match(mens, womens)
-print ("pair_match result is : " ,pair_match1)
+print("pair_match result is : ", pair_match1)
 
 def bad_average(a, b, c):
     """
@@ -261,10 +271,12 @@ def bad_average(a, b, c):
     :return:
     
     """
-    return (a + b + c) / 3
-
+    if a>0 and b>0 and c>0:
+        return (a + b + c) / 3
+    else:
+        return None
 bad_average1= bad_average(1,2,3)
-print ("bad_average1",bad_average1)
+print("bad_average1", bad_average1)
 
 
 def best_student(grades):

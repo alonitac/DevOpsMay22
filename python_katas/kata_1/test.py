@@ -57,14 +57,23 @@ class TestReverseWordsConcatenation(unittest.TestCase):
         pass
 
 
+
 class TestIsUniqueString(unittest.TestCase):
     """
     2 Katas
     """
+    def test_empty_string(self):
+        self.assertTrue(questions.is_unique_string(''))
 
-    def test_sample(self):
+    def test_none(self):
+        self.assertTrue(questions.is_unique_string(None))
+
+    def test_wrong_string(self):
+        self.assertFalse(questions.is_unique_string('abbccbba'))
         # your code here
-        pass
+
+    def test_right_string(self):
+        self.assertTrue(questions.is_unique_string('abcd'))
 
 
 class TestListDiff(unittest.TestCase):
@@ -92,20 +101,35 @@ class TestPalindromeNum(unittest.TestCase):
     1 Katas
     """
 
-    def test_sample(self):
-        # your code here
-        pass
+    def test_palindrome_num_one_digit(self):
+        self.assertFalse(questions.palindrome_num(0))
+        print("TEST: test_palindrome_num_one_digit is pass")
 
+    def test_palindrome_num_wrong(self):
+        self.assertFalse(questions.palindrome_num(123))
+        print("TEST: test_palindrome_num_wrong is pass")
+
+    def test_palindrome_num_valid(self):
+        self.assertTrue(questions.palindrome_num(1441))
+        print("TEST: test_palindrome_num_valid is pass")
 
 class TestPairMatch(unittest.TestCase):
     """
     3 Katas
     """
 
-    def test_sample(self):
+    def test_pair_match_valid(self):
         # your code here
-        pass
+        mens = {"John": 20, "Abraham": 45}
+        womens = {"July": 18, "Kim": 26}
+        result = ['abs(John - July) = abs (20 - 18) = abs(2) =2', 'abs(John - Kim) = abs (20 - 26) = abs(-6) =6', 'abs(Abraham - July) = abs (45 - 18) = abs(27) =27', 'abs(Abraham - Kim) = abs (45 - 26) = abs(19) =19']
+        self.assertEqual(questions.pair_match(mens,womens),result)
+        print("Tests pair_match is : PASS !!!")
 
+    def test_zero_values(self):
+        men = {'Mony': 0, "Nick": 0}
+        women = {"Imbal": 0, "Irit": 0}
+        self.assertEqual(questions.pair_match(men,women), ('Mony', 'Imbal'))
 
 class TestBadAverage(unittest.TestCase):
     """
