@@ -55,4 +55,5 @@ pip install mod_wsgi
           
 </VirtualHost>
 ```
+8. Restart the `httpd` service.
 9. Visit your app in `http://<ip>:8081/myapp`.
