@@ -1,3 +1,7 @@
+import json
+from socket import socket
+
+
 def valid_parentheses(s):
     """
     3 Kata
@@ -13,7 +17,25 @@ def valid_parentheses(s):
     s = '[[{()}](){}]'  -> True
     s = '[{]}'          -> False
     """
-    return None
+
+    # Stack for left symbols
+    leftSymbols = []
+    # Loop for each character of the string
+    for c in s:
+        # If left symbol is encountered
+        if c in ['(', '{', '[']:
+            leftSymbols.append(c)
+        # If right symbol is encountered
+        elif c == ')' and len(leftSymbols) != 0 and leftSymbols[-1] == '(':
+            leftSymbols.pop()
+        elif c == '}' and len(leftSymbols) != 0 and leftSymbols[-1] == '{':
+            leftSymbols.pop()
+        elif c == ']' and len(leftSymbols) != 0 and leftSymbols[-1] == '[':
+            leftSymbols.pop()
+        # If none of the valid symbols is encountered
+        else:
+            return False
+    return leftSymbols == []
 
 
 def fibonacci_fixme(n):
@@ -34,14 +56,19 @@ def fibonacci_fixme(n):
     But it doesn't (it has some bad lines in it...)
     You should (1) correct the for statement and (2) swap two lines, so that the correct fibonacci element will be returned
     """
+
     a = 0
     b = 1
-    for i in range(1, n):
-        a = b
-        tmp = a + b
-        b = tmp
-
-    return a
+    if n == 1:
+        print(a)
+    else:
+        print(a)
+        print(b)
+        for i in range(2, n):
+            c = a + b
+            a = b
+            b = c
+            print(c)
 
 
 def most_frequent_name(file_path):
@@ -56,7 +83,30 @@ def most_frequent_name(file_path):
     :param file_path: str - absolute or relative file to read names from
     :return: str - the mose frequent name. If there are many, return one of them
     """
-    return None
+    names_dic = {}
+    count = 0
+    with open('names.txt','r') as f:
+        #remove the /n with splitlines command
+        mylist = f.read().splitlines()
+    # iterate throw the list and append it to a dic with key and values pair
+    for i in mylist:
+        #add new values to the dic
+        if i not in names_dic:
+            #update the counter and reset it after implementation
+            count += 1
+            names_dic.update({i:count})
+            count = 0
+        else:
+            # if the name exists, update the counter , reset the counter at the end
+            count += 1
+            names_dic.update({i:2})
+            count = 0
+    #create new dic with sorted names if they are bigger or equal to 2
+    mydict = {k: v for k, v in names_dic.items() if v >= 2}
+    # print only one name
+    first_item = list(mydict.items())[0]
+    return first_item
+
 
 
 def files_backup(dir_path):
@@ -76,7 +126,18 @@ def files_backup(dir_path):
     :param dir_path: string - path to a directory
     :return: str - the backup file name
     """
-    return None
+    import os
+    import tarfile
+    def timeStamped(fname, fmt='{fname}_%Y-%m-%d'):
+        import datetime
+        # This creates a timestamped filename so we don't overwrite our good work
+        return datetime.datetime.now().strftime(fmt).format(fname=fname)
+    fname = timeStamped( 'backup_' + dir_path)
+    tgz_path = fname + ".tar.gz"
+    with tarfile.open(tgz_path, "w:gz") as tar_handle:
+            for root, dirs, files in os.walk(dir_path):
+                for file in files:
+                    tar_handle.add(os.path.join(root, file))
 
 
 def replace_in_file(file_path, text, replace_text):
@@ -93,6 +154,11 @@ def replace_in_file(file_path, text, replace_text):
     :param replace_text: text to replace with
     :return: None
     """
+    with open(file_path, 'r') as f:
+        mylist = f.read()
+        mylist = mylist.replace(text,replace_text)
+    with open(file_path,'w') as file:
+        file.write(mylist)
     return None
 
 
@@ -107,7 +173,15 @@ def json_configs_merge(*json_paths):
     :param json_paths:
     :return: dict - the merges json files
     """
-    return None
+
+    import json
+
+    combined_json = {}
+    for filename in json_paths:
+        with open(filename) as f:
+            file_json = json.load(f)
+        combined_json.update(file_json)
+    return combined_json
 
 
 def monotonic_array(lst):
@@ -119,7 +193,16 @@ def monotonic_array(lst):
     :param lst: list of numbers (int, floats)
     :return: bool: indicating for monotonicity
     """
-    return None
+    increasing = decreasing = True
+
+    for i in range(len(lst) - 1):
+        if lst[i] > lst[i + 1]:
+            increasing = False
+        if lst[i] < lst[i + 1]:
+            decreasing = False
+
+    return increasing or decreasing
+
 
 
 def matrix_avg(mat, rows=None):
@@ -133,7 +216,18 @@ def matrix_avg(mat, rows=None):
     :param rows: list of unique integers in the range [0, 2] and length of maximum 3
     :return: int - the average values
     """
-    return None
+    lngh = sum(len(l) for l in mat)
+    if rows == None:
+        total = sum([sum(i) for i in mat])
+        return total / lngh
+    else:
+        point1 = rows[0]
+        point2 = rows[1]
+        avg_len = len(mat[point1]) + len(mat[point2])
+        total = sum(mat[point1] + mat[point2]) / avg_len
+        return total
+
+
 
 
 def merge_sorted_lists(l1, l2):
@@ -149,7 +243,15 @@ def merge_sorted_lists(l1, l2):
     :param l2: list of integers
     :return: list: sorted list combining l1 and l2
     """
-    return None
+    l1.extend(l2)
+    for i in range(len(l1)):
+        for j in range(i + 1, len(l1)):
+
+            if l1[i] > l1[j]:
+                l1[i], l1[j] = l1[j], l1[i]
+
+    return l1
+
 
 
 def longest_common_substring(str1, str2):
@@ -169,7 +271,8 @@ def longest_common_substring(str1, str2):
     :param str2: str
     :return: str - the longest common substring
     """
-    return None
+
+
 
 
 def longest_common_prefix(str1, str2):
@@ -188,8 +291,17 @@ def longest_common_prefix(str1, str2):
     :param str2: str
     :return: str - the longest common prefix
     """
-    return None
-
+    answer = ""
+    len1, len2 = len(str1), len(str2)
+    for i in range(len1):
+        match = ""
+        for j in range(len2):
+            if (i + j < len1 and str1[i + j] == str2[j]):
+                match += str2[j]
+            else:
+                if (len(match) > len(answer)): answer = match
+                match = ""
+    return answer
 
 def rotate_matrix(mat):
     """
@@ -214,8 +326,6 @@ def rotate_matrix(mat):
     :param mat:
     :return: list of lists - rotate matrix
     """
-    return None
-
 
 def is_valid_email(mail_str):
     """
@@ -233,8 +343,18 @@ def is_valid_email(mail_str):
     :param mail_str: mail to check
     :return: bool: True if it's a valid mail (otherwise either False is returned or the program can crash)
     """
-    return None
-
+    import re
+    import socket
+    x = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+    if re.fullmatch(x,mail_str):
+        domain = mail_str.split("@",1)[1]
+        try:
+            check_domain = socket.gethostbyname(domain)
+        except socket.gaierror:
+            return "Not a valid domain name"
+        return ("Valid Email")
+    else:
+        return ("Not Valid Email")
 
 def pascal_triangle(lines):
     """
@@ -286,7 +406,11 @@ def list_flatten(lst):
     :param lst: list of integers of another list
     :return: flatten list
     """
-    return None
+    my_list = [1, 2, [3, 4, [4, 5], 7], 8]
+
+    flat_list = sum(my_list, [])
+
+
 
 
 def str_compression(text):
@@ -356,16 +480,18 @@ if __name__ == '__main__':
 
     print('\nlongest_common_substring:\n--------------------')
     print(longest_common_substring('abcdefg', 'bgtcdesd'))
+    print(longest_common_substring('Introduced in 1991, The Linux kernel is an amazing software', 'The Linux kernel is a mostly free and open-source, monolithic, modular, multitasking, Unix-like operating system kernel.'))
 
     print('\nlongest_common_prefix:\n--------------------')
     print(longest_common_prefix('abcd', 'ttty'))
+    print(longest_common_substring('Introduced in 1991, The Linux kernel is an amazing software', 'The Linux kernel is a mostly free and open-source, monolithic, modular, multitasking, Unix-like operating system kernel.'))
 
     print('\nrotate_matrix:\n--------------------')
     print(rotate_matrix([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]))
 
     print('\nis_valid_email:\n--------------------')
     print(is_valid_email('israel.israeli@gmail.com'))
-
+    print(is_valid_email('israel.israeli@gsaasmail.com'))
     print('\npascal_triangle:\n--------------------')
     print(pascal_triangle(4))
 
