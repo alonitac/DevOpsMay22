@@ -32,7 +32,7 @@ At this point, you should have your own bot, as well as the API token. **Never**
 Under `app.py` you are given a class called `Bot`. This class implements a simple telegram bot, as follows.  
 
 The constructor `__init__` gets `token` arg which is the bot token you have just received from Telegram. Inside the constructor, a `TeleBot` object is created. This object is an interface to Telegram API, it allows you to conveniently receive and send messages to/from Telegram. 
-The function `self._bot_internal_handler` is register as an internal message handler. This function is getting called whenever a new message will be sent to the bot via Telegram app.
+The function `self._bot_internal_handler` is registered as an internal message handler. **This function is getting called whenever a new message will be sent to the bot via Telegram app.**
 
 The default behaviour of Bot class is to “echo” the incoming messages. 
 Run the program and send a message to the bot via Telegram app, observe the response and get an idea of how `_bot_internal_handler` and `handle_message` are functioning (it's recommended to run in debug mode with breakpoints).
@@ -70,7 +70,8 @@ Implement a logic that caches videos that have already been downloaded, such tha
 
 ## Submission guidelines
 
-Demonstrate your results and discuss the code in a personal meetings with course staff.
+Create a PR from `main` branch in your forked repo into `main` branch of `alonitac/TelegramAI` (the upstream repo).   
+
 
 # Good Luck
 
