@@ -222,23 +222,31 @@ So, how do we allow one container to talk to another? Networking.
 ```shell
 docker network create my_app_net
 ```
+
 2. Start a MySQL container and attach it to the network. We’re also going to define a few environment variables that the database will use to initialize the database:
 ```shell
 docker run --network my_app_net --network-alias mysql -v $(pwd)/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=videos mysql:5.7
 ```
+
+[comment]: <> (https://hub.docker.com/r/arm64v8/mysql)
+
 3. Verify MySql is accessible from another container. To figure it out, we’re going to make use of the [nicolaka/netshoot](https://github.com/nicolaka/netshoot) container, which ships with a lot of tools that are useful for troubleshooting or debugging networking issues.
 ```shell
 docker run -it --network my_app_net nicolaka/netshoot
 ```
+
 4. Inside the container, we’re going to use the dig command, which is a useful DNS tool. We’re going to look up the IP address for the hostname mysql.
 ```shell
 dig mysql
 ```
+
 And make sure that `mysql` is being resolved to the IP address of the container.
+
 5. Using the above `docker build` command, build a new image from the app **located in branch `app-multi-containers`** (pick the Dockerfile from main branch if needed), run it using `docker run`. Things to notice:
    1. Both containers should run on the `my_app_net` network.
    2. Your app should listen to port `8082` in the host machine.
    3. Your app is expecting to get two environment variables (search `os.environ` in )
+
 6. Test the app.
 
 ## Docker compose
