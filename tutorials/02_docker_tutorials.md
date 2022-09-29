@@ -241,6 +241,7 @@ And make sure that `mysql` is being resolved to the IP address of the container.
    3. Your app is expecting to get two environment variables (search `os.environ` in )
 6. Test the app.
 
+
 ## Docker compose
 
 [Docker Compose](https://docs.docker.com/compose/) is a tool that was developed to help define and share multi-container applications. With Compose, we can create a YAML file to define the services and with a single command, can spin everything up or tear it all down.
@@ -250,11 +251,14 @@ Let's deploy our app using Docker compose.
 ```shell
 docker-compose version
 ```
+
 2. At the root of the app project, create a file named `docker-compose.yaml`.
+
 3. In the compose file, we’ll start off by defining the schema version. In most cases, it’s best to use the latest supported version.
 ```yaml
 version: "3.7"
 ```
+
 4. Next, we’ll define the list of services (or containers) we want to run as part of our application.
 ```yaml
 version: "3.7"
@@ -272,6 +276,7 @@ services:
   app:  # we can choose any name for our service
     image: <your-image-name-and-tag>
 ```
+
 6. Let’s migrate the `-p 8082:8080` part of the command by defining the ports for the service.
 ```yaml
 version: "3.7"
@@ -295,6 +300,7 @@ services:
   mysql:
     image: mysql:5.7
 ```
+
 8. Next, we’ll define the volume mapping. We need to define the volume in the top-level `volumes:` section and then specify the mountpoint in the service config.
 ```yaml
 version: "3.7"
@@ -320,8 +326,8 @@ services:
      ports:
         - 8082:8080
      environment:
-        MYSQL_ROOT_PASSWORD: secret
-        MYSQL_DATABASE: videos
+        DB_ROOT_PASS: secret
+        DB_NAME: videos
    mysql:
     image: mysql:5.7
     volumes:
@@ -341,9 +347,64 @@ Now that we have our `docker-compose.yaml` file, we can start it up!
 11. Start up the application stack using the `docker-compose up` command.
 12. When you’re ready to tear it all down, simply run `docker-compose down`.
 
+
+## Create and manage volumes
+
+Unlike a bind mount, you can create and manage volumes outside the scope of any container.
+
+1. Create a volume
+```shell
+docker volume create my-vol
+```
+
+2. Inspect the volume to see the actual mounted path
+```shell
+docker volume inspect my-vol
+```
+
+3. Let's run the `nginx` image with mounted volume:
+```shell
+docker run --name=nginxtest -v nginx-vol:/usr/share/nginx/html nginx:latest
+```
+
+4. For some development applications, the container only needs read access to the data (e.g. multiple containers mount the same volume). This example modifies the one above but mounts the directory as a read-only volume, by adding `ro` to the list of options:
+```shell
+docker run -d --name=nginxtest -v nginx-vol:/usr/share/nginx/html:ro nginx:latest
+```
+
 ## Security scanning
 
 When you have built an image, it is a good practice to scan it for security vulnerabilities using the `docker scan` command. Docker has partnered with [Snyk](https://snyk.io/) to provide the vulnerability scanning service.
 
 You must be logged in to Docker Hub to scan your images.
 Run the command `docker scan --login`, and then scan your images using `docker scan <image-name>`.
+
+### Or alternatively using `snyk` directly
+
+The [Snyk](https://docs.snyk.io/products/snyk-container/snyk-cli-for-container-security) Container command line interface helps you find and fix vulnerabilities in container images on your local machine.
+
+1. You must first to [Sign up for Snyk account](https://docs.snyk.io/getting-started/create-a-snyk-account).
+2. Install [Snyk CLI](https://docs.snyk.io/snyk-cli/install-the-snyk-cli).
+3. Get you API token from your [Account Settings](https://app.snyk.io/account) page.
+4. Use `sync auth` to authenticate in Snyk API. Alternatively, set the `SNYK_TOKEN` environment variable with the API token as a value, you can easily [scan docker images](https://docs.snyk.io/products/snyk-container) for vulnerabilities:
+```shell
+# will scan ubuntu docker image from DockerHub
+snyk container test ubuntu 
+
+# will alarm for `high` issue and above 
+snyk container test ubuntu --severity-threshold=high
+ 
+# will scan a local image my-image:latest. The --file=Dockerfile can add more context to the security scanning. 
+snyk container test my-image:latest --file=Dockerfile
+```
+
+## Use the default bridge network
+
+Tutorial reference: https://docs.docker.com/network/network-tutorial-standalone/#use-the-default-bridge-network
+
+* Up to **Use user-defined bridge networks**, not including
+
+## Networking using the host network (optional)
+
+Tutorial reference: https://docs.docker.com/network/network-tutorial-host/
+
