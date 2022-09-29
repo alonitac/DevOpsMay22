@@ -22,7 +22,7 @@ Docker Desktop includes:
 
 #### Linux users
 
-Install [Docker Engine](https://docs.docker.com/engine/install/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/compose-plugin/)
+Install [Docker Engine](https://docs.docker.com/engine/install/ubuntu/) and [Docker Compose](https://docs.docker.com/compose/install/)
 
 You may want to add your Linux user to `docker` group:
 ```shell
