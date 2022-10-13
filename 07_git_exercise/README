@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1. "echo 1 > abc.txt"
@@ -35,6 +36,7 @@
     Use correct lock type in reconnect()
     John's changes for app.py
 
+# TODO good
 # Cherry picking
 
 1. Type "git checkout main" to change a branch to "main" and then type "git checkout -b feature/lambda_migration2" to create a new one.
@@ -45,7 +47,7 @@
 4. There was two files that added: "Use correct lock type in reconnect() > e427990 (.env)" and "Restrict the extensions that can be disabled > 2f4dc8e (config.json)"
 5. Yes, we care about the order because we need to see the last commit that made by user.
 
-
+# TODO good
 # Changes in working tree and switch branches
 
 1. Type "git branch" to checkout on which branch you are.
@@ -55,17 +57,18 @@
 5. No, the changes are lost when i used force checkout.
 6. The file has been removed and deleted from the branch that i worked on after forced checkout.
 
+# TODO good
 # Reset
 
 1. Type "git checkout reset_question"
 2. Explanation of each commands:
-   1. git reset --soft HEAD~1 "Remove the last commit from the current branch, but the file changes will stay in your working tree".
+   1. git reset --soft HEAD~1 "Remove the last commit from the current branch, but the file changes will stay in your working tree".  # TODO in the index (not in the working tree)
    2. git reset --mixed HEAD~1 "Still keep the changes in your working tree but not on the index, so if you want to commit, you will have to add the changes before commiting."
    3. git reset --hard HEAD~1 "Lose all uncommited changes and all untracked files in addition to the changes introduced in the last commit"
    4. git revert HEAD~1 "Undo the last Git commit"
 3. HEAD~1 is a special commit identifier in git. It stands for the previous commit.
 
-
+# TODO good
 # Working with GitHub
 
 1. Created a new repository "Exercise_Repository".
