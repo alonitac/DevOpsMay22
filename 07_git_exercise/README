@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1. touch abc.txt && echo 1 >> abc.txt .
@@ -14,7 +15,7 @@
 9. git add abc.txt
 10. git diff shows an empty window because we added the changes to the index in section 9 and git diff shows changes between the working tree and the repository
  if we want it to compare changes between the index and the repository we need to use 'git diff --staged'.
-11. git diff main (git diff <branch we want to check on> )
+11. git diff main (git diff <branch we want to check on> )  # TODO should be: git diff --staged main
 12. echo 3 >> abc.txt
 13. no 'git diff --staged' shows the difference between the index and the repo and 'git diff main' shows the difference
  between the working tree and the HEAD on branch main.
@@ -23,6 +24,7 @@
   commit and appending 3 waiting for add.
 15. git reset --hard
 
+# TODO good
 # Resolve conflicts
 
 1. git branch
@@ -38,6 +40,7 @@
 6. yes there are two new commits the first one is the merge we did throw the cli and the second one
  is the merge we did throw the gui.
 
+# TODO good
 # Cherry picking
 
 1. git checkout main && git checkout -b feature/lambda_migration2
@@ -50,6 +53,7 @@
 5. yes the order is important because doing cherry picking not by the order of the log can cause problem like bringing back faulty code that was fixed in later commits.
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1. git checkout feature/lambda_migration2
@@ -60,6 +64,7 @@
 5. no the text is different from what we inserted at the start.
 6. no the file is not there, the force checkout throws away local changes and any untracked files or directories that are in the way.
 
+# TODO good
 # Reset
 
 1. git checkout reset_question
@@ -73,7 +78,7 @@
  the original commit still exists but we have a new commit that shows the deletion of commit number 6.
 3. HEAD~1 means one commit before the last head -1 if head is commit number 1- we work on number 9.
 
-
+# TODO good
 # Working with GitHub
 
 1. created repo named course-repo
