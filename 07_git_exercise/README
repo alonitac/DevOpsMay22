@@ -2,9 +2,9 @@
 
 1. touch abcd.txt --- echo "1">abcd.txt
 2. Red
-3. Red
+3. Red  # TODO green
 4. not appear in git status
-5. No , appear as Red
+5. No , appear as Red  # TODO Same color. In step 2 it was `abc.txt`. Now it is `modified:   abc.txt`
 6. git diff
 7. There is no files in stage mode .
 8. We do not have branch named "stage2".  Error is "fatal: ambiguous argument 'staged2': unknown revision or path not in the working tree."
@@ -81,7 +81,7 @@
 3. HEAD~1 is a special commit index pointer in git. It is point to the previous commit.
 
 
-
+# TODO good
 # Working with GitHub
 
 1. Done , manual. Repo name "git_exercise"
