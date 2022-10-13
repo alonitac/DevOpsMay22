@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1.echo "1" >abc.txt
@@ -31,6 +32,7 @@ and git diff master shows the different between working tree to master
    5.
 6.
 
+# TODO good
 # Cherry picking
 
 1.git checkout main , git checkout -b feature/lambda_migration2
@@ -41,7 +43,7 @@ and git diff master shows the different between working tree to master
 4.config.json from: "Restrict the extensions that can be disabled" and env from: "use correct lock type in reconnect()"
 5.yes because we want to get the last commit made from the user
 
-
+# TODO good
 # Changes in working tree and switch branches
 
 1.git branch
@@ -60,10 +62,10 @@ the two approaches are:commit your changes or stash them before you switch branc
    1.git reset --soft HEAD~1 > get the commit before the HEAD but the changes in working tree and in the index will stay
    2.git reset --mixed HEAD~1 > get the commit before the HEAD keeps files the same and unstages the changes in the index
    3.git reset --hard HEAD~1 - going back to the commit before HEAD and reset the files of the index and the working directory.
-   4.
+   4. # TODO reverts the last commit (add another commit that "undo" the previous commit)
 3.HEAD~1 is the commit before the HEAD
 
-
+# TODO good
 # Working with GitHub
 
 1.create new repo and name it myrepo,  generate ssh keygen and add it to the ssh keygen agent in the github
