@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO good job, clean and robust code
+
 RESPONSE=$(curl -X POST -H "Content-Type: application/json" -d '{"clientVersion": "3.2","message": "Client Hello"}' http://16.16.53.16:8080/clienthello)
 
 SESSION_ID=$(jq -r '.sessionID' <<< "$RESPONSE")
