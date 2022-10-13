@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1.echo '1' > abc.txt
@@ -40,6 +41,7 @@ The last modification was not added to the staging area so there is a difference
 
 15. git reset --hard
 
+# TODO great
 # Resolve conflicts
 
 1.git branch
@@ -76,7 +78,7 @@ Merge made by the 'recursive' strategy.
 2-Merge branch 'feature/version2' into feature/lambda_migration
 The result of git merge is immediately committed (unless there is a conflict)
 
-
+# TODO good
 # Cherry picking
 
 1.click "new branch from main"
@@ -88,6 +90,7 @@ The result of git merge is immediately committed (unless there is a conflict)
 5. Yes, so commits that have changes in the same line, will not be overwritten by the unwanted commit, and last commit should be the latest needed commit.
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1. checkout feature/lambda_migration2
@@ -114,18 +117,18 @@ approach 2 - use git stash to record the current working tree and index away and
 
 1.checkout reset_question
 2.
-   1.9.txt and 10.txt
+   1.9.txt and 10.txt # TODO right, but only 10.txt
    reset --soft remove the last commit from the current branch but the file changes will stay in working tree
-   2.8.txt, 9.txt and 10.txt were untracked
+   2.8.txt, 9.txt and 10.txt were untracked # TODO right, but only 9.txt and 10.txt
    reset --mixed resets the staging area
    3.7.txt deleted
    reset --hard resets the staging area and the working tree
-   4. Removing 5.txt
+   4. Removing 5.txt # TODO should be 6.txt
    revert - reverting to the last commit
 
 3.HEAD~1 stands for the previous commit to the current last commit.
 
-
+# TODO good
 # Working with GitHub
 
 1.q
