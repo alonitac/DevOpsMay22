@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1.sudo echo "1" > abc.txt
@@ -21,6 +22,7 @@ the git main command shows the different between working tree to the main reposi
 14.because the file added to the staged area and didn't do commit , and the edit the file so the file added also the the working area as modified status.
 15.git reset --hard
 
+# TODO good
 # Resolve conflicts
 
 1.git branch
@@ -46,10 +48,10 @@ for lambda_migration -    Merge branch 'feature/version2' into feature/lambda_mi
 3.click on chery pick  button and choose the requested commits:
     1."use correct lock type in reconnect()"
     2."Restrict the extensions that can be disabled"
-4.config.json added to the branch
+4.config.json added to the branch # TODO and .env
 5.yes , because we want to order the last commit made by the user .
 
-
+# TODO good
 # Changes in working tree and switch branches
 
 1.git branch
@@ -60,6 +62,7 @@ git status
 5.No changes are lost
 6.No the file is lost , force chekcout will remove your last changes your made on the branch.
 
+# TODO good
 # Reset
 
 1.checkout reset_question
@@ -71,7 +74,7 @@ git status
 3.HEAD~1 means: go back 1 commit from HEAD, using the first parent
 HEAD~1 is so common that it can also be shortened to HEAD~.
 
-
+# TODO good
 # Working with GitHub
 
 1.create new repo and name it Devops_Git_Exr,  generate ssh keygen and add it to the ssh keygen agent in the github
