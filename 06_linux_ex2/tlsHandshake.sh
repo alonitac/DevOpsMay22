@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# TODO good job and added features
+
 clear
 #Loading func to add cool gui to the script
 loading() {
