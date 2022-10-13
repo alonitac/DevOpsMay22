@@ -1,5 +1,8 @@
 #!bin/bash
 
+
+# TODO good job! good code and clean. note the the above sha-bang is missing "/" at the beginning of the bash path.
+
 curl -X POST http://16.16.53.16:8080/clienthello \
 -H 'Content-Type: application/json' \
 --data '{"clientVersion":"3.2","message":"Client Hello"}' | \
