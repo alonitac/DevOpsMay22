@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# TODO Good job Uri
+
 echo welcome to Uri bashbash script lets start
 
 echo "Connecting to the server"
