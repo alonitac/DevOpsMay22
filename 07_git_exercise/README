@@ -43,27 +43,27 @@
 
 # Changes in working tree and switch branches
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. ...
+2. echo "111" >> take.txt; git add take.txt
+3. git checkout dev
+4. ...
+5. No
+6. No. Force Checkout discard the working tree when switching branches.
 
 # Reset
 
-1.
+1. git checkout reset_question
 2.
-   1.
-   2.
-   3.
-   4.
-3.
+   1. The last commit (of 10.txt) was reset softly, file 10.txt is in the index now.
+   2. The last commit (of 9.txt) was reset, files 9.txt and 10.txt are now in the working tree.
+   3. The last commit (of 8.txt) was reset hardly, files 8.txt removed from the index and working tree.
+   4. The last commit (of 6.txt) was reverted, addition commit that removes this file was added.
+3. HEAD~n   - The n'th generation ancestor of the named commit object (HEAD) in out case
 
 
 # Working with GitHub
 
-1.
-2.
-3.
-4.
+1. ...
+2. git remote add origin ...
+3. git push origin main; git push origin dev
+4. ...
