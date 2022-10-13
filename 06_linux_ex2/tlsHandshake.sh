@@ -1,3 +1,5 @@
+# TODO good job
+
 curl -s --header "Content-Type: application/json" -d "{\"clientVersion\":\"3.2\",\"message\":\"Client Hello\"}" http://16.16.53.16:8080/clienthello | jq -r '.serverCert,.sessionID' > clh.txt
 
 sed -n '1,34 p' clh.txt > cert.pem
