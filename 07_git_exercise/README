@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1. echo 1 > abc.txt
@@ -62,7 +63,9 @@
     On branch feature/lambda_migration
     nothing to commit, working tree clean
 
+    # TODO two more commits were supposed to be added after a successfull merge (merge commits - https://stackoverflow.com/questions/18584376/git-what-exactly-is-a-merge-commit-in-git)
 
+# TODO good
 # Cherry picking
 
 1. git checkout main,and then -> git checkout -b feature/lambda_migration2
@@ -76,7 +79,7 @@
 5. Yes, because every commit is made in specific time stamp and commit that are made after are based on last commit
     so if for example you change line or lines in file it has to be the last change that was made to that lines.
 
-
+# TODO good
 # Changes in working tree and switch branches
 
 1. make sure you are in branch different from dev
@@ -97,7 +100,7 @@
 5. No
 6. No, there is no file. The force checkout overwrites what was not commited.
 
-
+# TODO good
 # Reset
 
 1. git checkout reset_question
