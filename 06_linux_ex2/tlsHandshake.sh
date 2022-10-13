@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# TODO well done! clean and organized code
+
 curl -# -o 'response.json' -H "Content-Type: application/json" -d '{"clientVersion": "3.2", "message": "Client Hello"}' -X POST http://16.16.53.16:8080/clienthello
 sessionId=$(jq -r '.sessionID' response.json)
 sampleMessage='Hi server, please encrypt me and send to client!'
@@ -11,6 +14,9 @@ if [ "$verificationResult" != "cert.pem: OK" ]; then
 fi
 openssl rand -out masterkey.txt -base64 32
 masterKey=$(openssl smime -encrypt -aes-256-cbc -in masterkey.txt -outform DER cert.pem | base64 -w 0)
+
+# TODO why is the -# flag necessary?
+
 curl -# -o 'response_message.json' -H "Content-Type: application/json" -d '{"sessionID": "'$sessionId'","masterKey": "'$masterKey'","sampleMessage": "Hi server, please encrypt me and send to client!"}' -X POST http://16.16.53.16:8080/keyexchange
 jq -r '.encryptedSampleMessage' response_message.json | base64 -d > encSampleMsgReady.txt
 decryptedSampleMessage=$(openssl enc -d -aes-256-cbc -pbkdf2 -kfile masterkey.txt -in encSampleMsgReady.txt)
