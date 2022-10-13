@@ -1,20 +1,20 @@
 # Git Basics (commit, diff, branches)
 
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-12.
-13.
-14.
-15.
+1. echo "1" >> abc.txt
+2. red
+3. green
+4. echo "2" >> abc.txt
+5. same color. before: abc.txt. after: modified:   abc.txt
+6. git diff main
+7. No changes between index and main
+8. There is no stage2 branch
+9. git add abc.txt
+10. The differences between working tree to index. Because we've just added abc.txt to the index
+11. git diff --staged main
+12. echo "3" >> abc.txt
+13. No. This former shows the diff between index and main, the later shows diff between working tree to main.
+14. Because it was modified both in the working tree and in the index
+15. git reset --hard
 
 # Resolve conflicts
 
@@ -28,7 +28,7 @@
    3.
    4.
    5.
-6.
+6. This is a merge commit  # https://stackoverflow.com/questions/18584376/git-what-exactly-is-a-merge-commit-in-git
 
 # Cherry picking
 
@@ -38,7 +38,7 @@
     1.
     2.
 4.
-5.
+5. Yes, order is matter
 
 
 # Changes in working tree and switch branches
