@@ -56,6 +56,7 @@
     2 - .env
 5. Sure it is important , we want to pick the latest branch state , that mean we have to take a latest commits .
 
+# TODO good
 # Changes in working tree and switch branches
 
 1. Done
@@ -70,6 +71,7 @@
 5. No all lost , reason force checkout.
 6.  There is no take.txt file - reaseon is forece checkout always drop all not commited changes. 
 
+# TODO good
 # Reset
 
 1. git checkout reset_question
