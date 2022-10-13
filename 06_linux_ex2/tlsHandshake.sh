@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# TODO good job, especially the cleanup before every run
+
 clear
 if [ -f ./cert.pem ] ; then
     rm ./cert.pem -v
