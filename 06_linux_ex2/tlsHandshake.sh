@@ -1,3 +1,5 @@
+# TODO good start, only the last part is missing
+
 ## get response into the server
 
 curl -s --header "Content-Type: application/json" -d '{"clientVersion": "3.2","message": "Client Hello"}' http://16.16.53.16:8080/clienthello > result.json
@@ -33,6 +35,7 @@ MASTER_KEY=$(openssl smime -encrypt -aes-256-cbc -in masterKey.txt -outform DER 
 
 ##
 
+# TODO you were almost there, there is some syntax issues with the below lines
 curl -s --header "Content-Type: application/json" -d '{"sessionID": "'"$SESSION_ID"'","masterKey": "'"$MASTER_KEY"'", "sampleMessage": "Hi server, please encrypt me and send to client!"}' http://16.16.53.16:8080/keyexchange | jq -r '.encryptedSampleMessage' > encSampleMsg.txt
 {
     "sessionID": "'$SESSION_ID'","masterKey": "'$MASTER_KEY'", "sampleMessage": "Hi server, please encrypt me and send to client!"
