@@ -1,3 +1,6 @@
+# TODO great! very clean and organized code
+
+
 curl -d '{"clientVersion":"3.2", "message":"Client Hello"}' -H "Content-Type: application/json" -X POST  http://16.16.53.16:8080/clienthello  > secret.txt
 
 cat secret.txt | jq -r '.serverVersion' > serverVersion.txt
