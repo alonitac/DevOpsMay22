@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1.echo 1 > abc.txt
@@ -10,8 +11,8 @@ need to update changes to commit.
 7.git diff --staged shows us only changes that happen between each commit. this is why we dont see nothing yet.
 8. its print  unknown revision or path. Its print that the argument 'stage2' is ambiguous and we need to specified the rev or path.
 9.git add abc.txt
-10.nothing, all file are added to index.
-11.git diff main
+10.nothing, all file are added to index. # TODO Should print the differences between working tree to index. Because we've just added abc.txt to the index, there should be changes
+11.git diff main # TODO --stages is missing
 12.echo 3 >> abc.txt
 13.No. 'git diff staged' only print the difference between each commit we did.
 and git diff main show us the changes between the main branch and the staged area. it means that git diff main can also shows us
@@ -20,6 +21,7 @@ changes that not added to index yet.
 and also the changes that we did for same files and yet add to stage
 15. git reset --hard // git reset
 
+# TODO good
 # Resolve conflicts
 
 1.git branch
@@ -34,6 +36,7 @@ and also the changes that we did for same files and yet add to stage
    5.gui action done
 6. all merge.  display - 'on branch feature/lambda_migration #changes to be committed: abc.txt'
 
+# TODO good
 # Cherry picking
 
 1.git checkout -b feature/lambda_migration2
@@ -45,6 +48,7 @@ and also the changes that we did for same files and yet add to stage
 5.yes the order is important we need to pick the right files in the correct flow of code for the changes to work correctly.
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1. we in the right branch
@@ -57,14 +61,14 @@ and also the changes that we did for same files and yet add to stage
 # Reset
 
 1.git checkout reset_question
-2.
+2. # TODO explanation is missing
    1.git reset --soft HEAD~1
    2.git reset --mixed HEAD~1
    3.git reset --hard HEAD~1
    4.git revert HEAD~1
 3.The HEAD@{1} is a special notation for the commit that HEAD used to be at prior to the original reset commit (1 change ago)
 
-
+# TODO good
 # Working with GitHub
 
 1.In your GitHub account, create a new repository.
