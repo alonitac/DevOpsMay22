@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO good job, clean and organized
+
 curl -X POST -H "Content-Type: application/json"  -d '{"clientVersion": "3.2", "message": "Client Hello"}' http://16.16.53.16:8080/clienthello | jq -r  >temp_reg.txt
 SESSION_ID=$(cat temp_reg.txt | jq -r '.sessionID')
 cat temp_reg.txt | jq -r '.serverCert' >cert.pem
