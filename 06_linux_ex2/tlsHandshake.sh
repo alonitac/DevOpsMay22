@@ -1,4 +1,6 @@
 
+# TODO good job
+
 curl -X POST -H "Content-Type: application/json" -d '{"clientVersion": "3.2", "message": "Client Hello"}' http://16.16.53.16:8080/clienthello | jq -r '.serverCert,.sessionID' > cert.txt
 sed -n '1,33p' cert.txt > cert.pem
 SESSION_ID=$(tail -n 1 cert.txt)
