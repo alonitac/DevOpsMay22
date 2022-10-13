@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# TODO great job!
+
 echo welcome to naor shell script tls server handshake
 sleep 2
 echo the script is about to begin
