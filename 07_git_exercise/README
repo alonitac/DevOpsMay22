@@ -9,7 +9,7 @@
 7.using git diff --staged It doesnt show any changes because the file abc.txt is in working tree
 8.diff stage2 return fatal error because stage 2 in unknown path and it is not in the working tree and we sould use the separator -- before.
 9.git add abc.txt  using git status = green
-10.git diff print nothing because all of the changes as been commented!
+10.git diff print nothing because all of the changes as been commented!  # TODO should print something because you've just added abc.txt
 11.git diff --staged
 12. using echo 3 >> abc.txt
 13.not the same output because the git diff shows the different between the working area to the staging area.
@@ -17,6 +17,7 @@
    and it let you know that you need to commit one file.
 15.git reset --hard
 
+# TODO good
 # Resolve conflicts
 
 1. git branch
@@ -32,6 +33,7 @@
 6.yes, there was two new commits the first one is the merge we did throw the cli and the second one
  is the merge we did throw the gui.
 
+# TODO good
 # Cherry picking
 
 1.git checkout -b feature/lambda_migration2
@@ -56,13 +58,13 @@
 
 1.git checkout reset_question
 2.git log
-   1. git reset --soft HEAD~1 Remove the last commit from the current branch,the file changes will remain in the working tree.
+   1. git reset --soft HEAD~1 Remove the last commit from the current branch,the file changes will remain in the working tree.  # TODO *remain in the index (not the working tree)
    2. git reset --mixed HEAD~1 "keep the changes in your working tree but not on the index, if you want to commit, you have to add the changes before commit."
    3. git reset --hard HEAD~1 "this action delete all committed files from the last commit.
    4. git revert HEAD~1 Undo the last Git commit
 3. HEAD~1 delete the files from the last commit and create new commit
 
-
+# TODO good
 # Working with GitHub
 
 1.create new repo and name it myrepo,  generate ssh keygen and add it to the ssh keygen agent in the github
