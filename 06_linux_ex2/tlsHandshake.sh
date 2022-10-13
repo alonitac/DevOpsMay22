@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO good job, well organized and documented code
+
 # 1 - Say hello to server
 # 2 - Get from reply:  sessionID & server-certificate
 
