@@ -14,13 +14,7 @@ def sum_of_element(elements):
 
 def verbing(word):
 
-    if word.endswith("ing"):
-        word += "ly"
 
-    elif len(word) > 3:
-        word += "ing"
-
-    return word
     """
     1 Kata
 
@@ -36,8 +30,11 @@ def verbing(word):
     param word: str
     :return: Return the resulting string.
     """
-
-
+    if word.endswith("ing"):
+        word += "ly"
+    elif len(word) > 3:
+        word += "ing"
+    return word
 
 
 def words_concatenation(words):
