@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1. echo "1" > abc.txt
@@ -18,6 +19,7 @@ Use '--' to separate paths from revisions, like this:
 14. Because we first added the file to the 'staged' area, and then we made another change to the file... So now, the file exists in both areas.
 15. git reset --hard
 
+# TODO good
 # Resolve conflicts
 
 1. 'git branch'
@@ -34,6 +36,7 @@ Use '--' to separate paths from revisions, like this:
    1) Merge branch 'feature/version1' into feature/lambda_migration
    2) Merge branch 'feature/version2' into feature/lambda_migration
 
+# TODO great
 # Cherry picking
 
 1. 'git checkout main' ,'git checkout -b feature/lambda_migration2'
@@ -45,6 +48,7 @@ Use '--' to separate paths from revisions, like this:
 5. Yes, we want to pick the most updated state of the branch, which means we should prefer to pick the last commit of the user in the end.
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1. already in 'feature/lambda_migration2'
@@ -65,8 +69,8 @@ Second approach- use git stash. It will preserve the current working tree.
 
 1. 'git checkout reset_question'
 2.
-   1. The commit of '10.txt' file was reverted.
-   'git reset --soft HEAD~1' -> Reverts commited changes and moves them back to the working tree.
+   1. The commit of '10.txt' file was reverted. # TODO `git reset` resets the commit, not reverting them
+   'git reset --soft HEAD~1' -> Reverts commited changes and moves them back to the working tree. (# TODO and to the index as well)
    2. '9.txt' & '10.txt' were changed to untracked.
    'git reset --mixed HEAD~1' -> Moves all the files that were added to the index to the working tree.
    3. '8.txt' got deleted.
@@ -75,7 +79,7 @@ Second approach- use git stash. It will preserve the current working tree.
    'git revert HEAD~1' -> Reverts last commit.
 3. 'HEAD~1' -> Return one commit back from head.
 
-
+# TODO good
 # Working with GitHub
 
 1. Created new repo under my GitHub user (twolf789). (repo name: ex1_git)
