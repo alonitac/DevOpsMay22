@@ -16,6 +16,7 @@
 14.
 15.
 
+# TODO good
 # Resolve conflicts
 
 1.git branch --list
@@ -35,6 +36,7 @@ Author: urits91 <urits91@gmai.com>
 Date:   Mon Aug 29 21:03:45 2022 +0300)
 
 
+# TODO good
 # Cherry picking
 
 1.check out "main" , created new branch from "main"
@@ -46,6 +48,7 @@ Date:   Mon Aug 29 21:03:45 2022 +0300)
 5.yes, bc we want the last commit of the branch
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1.feature/lambda_migration2
@@ -65,11 +68,12 @@ git checkout problem
    1.git reset --soft HEAD~1, new file 10.txt to commit
    reset --soft remove the last commit from the  branc.
    2.untracked files 9.txt and 10.txt
-   3.3.7.txt deleted
-   4.txt file 5 deleted
+   3.3.7.txt deleted  # TODO file 8.txt was supposed to be reverted, not 7.txt
+   4.txt file 5 deleted # TODO file 6.txt was supposed to be reverted, not 5.txt
 3.the previous commit of the last commit
 
 
+# TODO good
 # Working with GitHub
 
 1.
