@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1.echo 1 >> abc.txt
@@ -10,9 +11,9 @@
 8.there is no revision or path 'stage2' in the working tree
 9.git add -A
 10.it prints the differences that were done since the last commit
-11.git diff main
+11.git diff main # TODO `--staged` is missing
 12.echo 3 >> abc.txt
-13.yes, because there were no commits to main
+13.yes, because there were no commits to main  # TODO No. The former shows the diff between index and main, the later shows diff between working tree to main (and we've just changed the working tree in step 12).
 14.one is green with the staged changes and one is without
 15.git restore abc.txt
 
@@ -30,6 +31,7 @@
    5.
 6.there are no commits after the fix
 
+# TODO good
 # Cherry picking
 
 1.git checkout -b feature/lambda_migration2
@@ -41,6 +43,7 @@
 5. yes, because you might override critical changes
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1.
@@ -50,6 +53,7 @@
 5.no
 6.no, this means that force checkout doesn't save the uncommited changes before the checkout
 
+# TODO good
 # Reset
 
 1.git checkout reset_question 
@@ -61,6 +65,7 @@
 3.
 
 
+# TODO good
 # Working with GitHub
 
 1.
