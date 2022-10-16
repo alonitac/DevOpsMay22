@@ -1,3 +1,4 @@
+# TODO very good
 # Git Basics (commit, diff, branches)
 
 1. echo "1" > abc.txt
@@ -58,6 +59,7 @@ It shows changes to be committed and changes not staged for commit.
 'git reset HEAD -- <filePath>' (unstages any modifications made to the file since the last commit (but doesn't revert them in the filesystem); it replaces the index version of the file with the one from repo (HEAD), effectively unstaging the modifications to it.)
 'git rm --cached <filePath>' (makes git stop tracking/remove a file from the index (leaving it in the working directory), and a commit will now remove it from the repo as well).
 
+# TODO good
 # Resolve conflicts
 
 1. List all existed branches of this repo (print them).
@@ -91,6 +93,7 @@ hint: as appropriate to mark resolution and make a commit. fatal: Exiting becaus
 There were 2 types of commits: from merged branches, and merge commits.
 (git show 88f3692 - details of commit)
 
+# TODO good
 # Cherry picking
 
 1. Create a clean fresh branch feature/lambda_migration2, versioned from main.
@@ -136,9 +139,10 @@ No.
 Do you have your take.txt there?
 There is no 'take.txt'.
 So what does Force Checkout do?
-Moves files to shelves.
+Moves files to shelves.  # TODO actually is discards the changes. Moving changes "to the shelve" may be achieved by `git stash`
 (ctrl-shift-L - search by menus)
 
+# TODO good
 # Reset
 
 1. Checkout reset_question branch.
@@ -154,6 +158,7 @@ after each command, observe what happened to your working tree and explain why.
 3. Explain the notation HEAD~1 in git reset command.
 Commit which is the one before HEAD
 
+# TODO good
 # Working with GitHub
 
 1. In your GitHub account, create a new repository.
