@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 #copy init.sh
@@ -19,6 +20,7 @@
 14. one file at working tree (after commit), one working area before commit
 15. git reset --hard
 
+# TODO good
 # Resolve conflicts
 
 1. git branch
@@ -50,10 +52,11 @@
 3. click on chery pick  button and choose the requested commits:
     1."use correct lock type in reconnect()"
     2."Restrict the extensions that can be disabled"
-4. config.json added to the branch
+4. config.json added to the branch (# TODO also .env file)
 5. yes , because we want to order the last commit made by the user .
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1. git checkout main
@@ -73,6 +76,7 @@
 
 
 
+# TODO good
 # Reset
 
 1.  git checkout reset_question
@@ -84,6 +88,7 @@
 3. HEAD~1: go back 1 commit from HEAD
 
 
+# TODO good
 # Working with GitHub
 
 1. create newRepoExercise
