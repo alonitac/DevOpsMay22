@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1. echo '1' > abc.txt
@@ -16,6 +17,7 @@
 14.The appereance in green is a committed one and in red not committed one
 15.git reset --hard
 
+# TODO good
 # Resolve conflicts
 
 1.$ git branch -a
@@ -67,6 +69,7 @@
     commit f1ea109a17d506f42c506dcd4e83c914b544cd2f
     commit 9eba3e1e4cd21c570bd660a88ce7fafc4e863115
 
+# TODO good
 # Cherry picking
 
 1.  git checkout main
@@ -81,6 +84,7 @@
 5.we want to order the last commit
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1.$ git branch --show-current
@@ -103,17 +107,19 @@ Stash is basicaly sort of an snapshot of the working dir and allows to pull that
 5.Not my changes arent in take.txt
 6.No, the file take.txt is not there. Force drops all the local changes.
 
+# TODO good
 # Reset
 
 1.git checkout reset_question
 2.
-   1. keep the changes in file 10.txt and 9.txt and stages these changes
-   2. unstages the changes in files 10,8,9
+   1. keep the changes in file 10.txt and 9.txt and stages these changes # TODO only 10.txt should be affected, not 9.txt
+   2. unstages the changes in files 10,8,9  # TODO only 9.txt and 10.txt should be affected
    3. changes the HEAD to 85ebced 6
    4. Records anew commit to reverse the 1 generation commit from HEAD
 3. to go back a number of generations, in this case 1 generation back
 
 
+# TODO good
 # Working with GitHub
 
 1.https://github.com/polonskyilya/git10092022
