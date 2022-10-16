@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1.echo "1" > abc.txt
@@ -23,6 +24,7 @@ and one between current main to staged
  committed and one to tell you if you want to restore to previous type-git restore <file>
 15. git reset --hard
 
+# TODO good
 # Resolve conflicts
 
 1.git branch
@@ -39,6 +41,7 @@ and one between current main to staged
 for version2 branch -Narayan's changes for app.py
 for lambada_migration Restrict the extensions that can be disabled
 
+# TODO good
 # Cherry picking
 
 1.git checkout -b feature/lambda_migration2
@@ -50,6 +53,7 @@ for lambada_migration Restrict the extensions that can be disabled
 5.yes . to have orders in the commits
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1 checked to ensure im in feature/lambda_migration2
@@ -59,6 +63,7 @@ for lambada_migration Restrict the extensions that can be disabled
 5.No. it was encoded with gibberish
 6.No. i dont have it there it takes it with you and leave it in the branch you forced checkout
 
+# TODO great
 # Reset
 
 1.checkout reset_question
@@ -69,7 +74,7 @@ for lambada_migration Restrict the extensions that can be disabled
    4.git revert HEAD~1  | Undo the last commit you did
 3. goes back 1 commit before HEAD
 
-
+# TODO good
 # Working with GitHub
 1. goes to the github website and from account to my repository .. new repo
 2. does the commands that it write with Http
