@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1. echo 1 > abc.txt
@@ -6,7 +7,7 @@
 4. 2nd line added with digit 2 (using vim).
 5. color now is red same as section 2, but with modified indication.
 6. git diff
-7. actually when I run git diff --staged there was output:
+7. actually when I run git diff --staged there was output:  # TODO maybe you forgot to commit abc.txt?
 iff --git a/abc.txt b/abc.txt
 new file mode 100644
 index 0000000..d00491f
@@ -23,6 +24,7 @@ index 0000000..d00491f
 14. once in the index to be commited (green), 2nd with 3rd line update to be added to index (red)
 15. git reset --hard
 
+# TODO good
 # Resolve conflicts
 
 1. git branch -a
@@ -58,6 +60,7 @@ Fast-forward
    5.Done.
 6. Don't see anything to commite, myabe just if I add app.py
 
+# TODO good
 # Cherry picking
 
 1. Done.
@@ -65,10 +68,11 @@ Fast-forward
 3. Done.
     1. Done.
     2. Done.
-4. I'm not sure, seems as config.json and .env files were added.
+4. I'm not sure, seems as config.json and .env files were added. # TODO exactly
 5. Seems important if same files & lines added/changed.
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1. Done.
@@ -82,6 +86,7 @@ Please commit your changes or stash them before you switch branches.
 5. No, the changes doesn't exist in branch dev.
 6. take.txt doesn't exist, so forced checkout delete the changes and ignore them.
 
+# TODO very good
 # Reset
 
 1. git checkout reset_question
@@ -99,6 +104,7 @@ Please commit your changes or stash them before you switch branches.
 3. The ~1 notation means the 1 change from the end.
 
 
+# TODO good
 # Working with GitHub
 
 1. Done.
