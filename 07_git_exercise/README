@@ -1,3 +1,4 @@
+# TODO good
 # Git Basics (commit, diff, branches)
 
 1.nano abc.txt --> 1 --> ctr + x --> save changes
@@ -16,6 +17,7 @@
 14.Because not all changes were commited commited
 15.git reset
 
+# TODO good
 # Resolve conflicts
 
 1.git branch
@@ -30,6 +32,7 @@
    5.click on x symbol
 6.
 
+# TODO good
 # Cherry picking
 
 1.git checkout -b feature/lambda_migration2 main
@@ -37,10 +40,11 @@
 3.click on chery pick  button and choose the requested commits:
     1."use correct lock type in reconnect()"
     2."Restrict the extensions that can be disabled"
-4.config.json added to the branch
+4.config.json added to the branch (# TODO also .env)
 5.Yes , because we want to order the last commit made by the user
 
 
+# TODO good
 # Changes in working tree and switch branches
 
 1.git branch
@@ -50,6 +54,8 @@
 5.No changes are lost
 6.No the file is lost , force chekcout will remove your last changes your made on the branch.
 
+
+# TODO great
 # Reset
 
 1.checkout reset_question
@@ -61,6 +67,7 @@
 3.Go back one commit from HEAD
 
 
+# TODO good
 # Working with GitHub
 
 1.In GitHub create a new repository and generate ssh keygen and add it to the ssh keygen agent in the github
