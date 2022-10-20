@@ -4,7 +4,7 @@
 
 1. Create an EC2 instance, as follows:
     1. `Amazon Linux 2 AMI` AMI.
-    2. `t2.micto` instance type  (or equivalent medium type from another generation).
+    2. `t2.micro` instance type  (or equivalent medium type from another generation).
     3. Choose your key-pair (create if needed).
     4. In network configurations:
        1. Make sure your instance is provisioned in the default VPC. 
