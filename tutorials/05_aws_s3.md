@@ -1,6 +1,5 @@
-# Storage demos
 
-### Create a Bucket
+## Create a Bucket
 
 1. In S3, Choose **Create bucket**.
 
@@ -26,7 +25,7 @@
 
 You've created a bucket in Amazon S3.
 
-### Upload an object to S3 bucket from an EC2 instance
+## Upload an object to S3 bucket from an EC2 instance
 
 Disclaimer: This is not going to work. Your EC2 instance has to have permissions to operate in S3.
 
@@ -60,7 +59,7 @@ You must create an IAM role before you can launch an instance with that role or 
 1. Choose your created IAM role, click **Save**.
 
 
-### Enable versioning on your bucket bucket
+## Enable versioning on your bucket bucket
 
 1. Sign in to the AWS Management Console and open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
@@ -74,7 +73,7 @@ You must create an IAM role before you can launch an instance with that role or 
 
 6. Upload multiple object with the same key, make sure versioning is working.
 
-### Create lifecycle rule to manage non-current versions
+## Create lifecycle rule to manage non-current versions
 
 1. Choose the **Management** tab, and choose **Create lifecycle rule**\.
 
@@ -99,7 +98,7 @@ You must create an IAM role before you can launch an instance with that role or 
    If the rule does not contain any errors, Amazon S3 enables it, and you can see it on the **Management** tab under **Lifecycle rules**\.
 
 
-### Objects deletion in bucket versioning enabled
+## Objects deletion in bucket versioning enabled
 
 1. In the **Buckets** list, choose a versioning enabled bucket\.
 2. Choose **Upload** and upload an object multiple times under the same key, such that it has non-current versions.
@@ -125,9 +124,9 @@ aws --version
 8. How can you **permanently** delete an object (and its non-current versions) from a version-enabled bucket?
 
 
-### Create S3 event notification to a Lambda Function
+## Create S3 event notification to a Lambda Function
 
-#### Create a private Docker container repository in ECR, build the YoloV5 Docker container and push it
+### Create a private Docker container repository in ECR, build the YoloV5 Docker container and push it
 
 
 1. Open the Amazon ECR console at [https://console\.aws\.amazon\.com/ecr/repositories](https://console.aws.amazon.com/ecr/repositories)\.
@@ -146,7 +145,7 @@ aws --version
 
 8. Following the instructions in **View push commands**, build, tag and push the Docker container specified in `img-object-detection` directory in our shared Git repo. **You must build and push the container from an EC2 instance located in the same region of your container registry**.
 
-#### Create the Lambda Function
+### Create the Lambda Function
 
 1. Open the [Functions page](https://console.aws.amazon.com/lambda/home#/functions) of the Lambda console\.
 
@@ -162,7 +161,7 @@ aws --version
 5. Choose **Create function**\.
 
 
-#### Enabling Lambda notifications
+### Enabling Lambda notifications
 
 
 1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.

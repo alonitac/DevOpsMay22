@@ -1,4 +1,3 @@
-# AWS demos
 
 ## Hello World EC2
 
