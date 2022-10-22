@@ -383,16 +383,11 @@ def list_flatten(lst):
     """
     flat_list = []
 
-    for sublist in lst:
-        if type(sublist) == list:
-            for item in sublist:
-                if type(item) == list:
-                    for sub_item in item:
-                        flat_list.append(sub_item)
-                else:
-                    flat_list.append(item)
-        else:
-            flat_list.append(sublist)
+    if isinstance(lst, list):
+        for x in lst:
+            flat_list.extend(list_flatten(x))
+    else:
+        flat_list.append(lst)
 
     return flat_list
 
