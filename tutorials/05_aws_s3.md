@@ -1,4 +1,3 @@
-
 ## Create a Bucket
 
 1. In S3, Choose **Create bucket**.
@@ -59,7 +58,7 @@ You must create an IAM role before you can launch an instance with that role or 
 1. Choose your created IAM role, click **Save**.
 
 
-## Enable versioning on your bucket bucket
+## Enable versioning on your bucket
 
 1. Sign in to the AWS Management Console and open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
@@ -107,7 +106,7 @@ You must create an IAM role before you can launch an instance with that role or 
 
 We will examine through AWS CLI what happened.
 
-4. From your local machine, open a command terminal with [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)) installed.
+4. From your local machine, open a command terminal with [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed.
 ```shell
 aws --version
 ```
@@ -122,64 +121,3 @@ aws --version
    ```
 7. Can you see the object in the bucket's object list in the AWS Web Console? Can you confirm that the object was "deleted softly"?
 8. How can you **permanently** delete an object (and its non-current versions) from a version-enabled bucket?
-
-
-## Create S3 event notification to a Lambda Function
-
-### Create a private Docker container repository in ECR, build the YoloV5 Docker container and push it
-
-
-1. Open the Amazon ECR console at [https://console\.aws\.amazon\.com/ecr/repositories](https://console.aws.amazon.com/ecr/repositories)\.
-
-2. From the navigation bar, choose the Region to create your repository in\.
-
-3. In the navigation pane, choose **Repositories**\.
-
-4. On the **Repositories** page, choose **Create repository**\.
-
-5. For **Repository name**, enter a unique name for your repository\ (for example `nginx-web-app`\)\.
-
-6. Choose **Create repository**\.
-
-7. Select the repository that you created and choose **View push commands** to view the steps to push an image to your new repository\.
-
-8. Following the instructions in **View push commands**, build, tag and push the Docker container specified in `img-object-detection` directory in our shared Git repo. **You must build and push the container from an EC2 instance located in the same region of your container registry**.
-
-### Create the Lambda Function
-
-1. Open the [Functions page](https://console.aws.amazon.com/lambda/home#/functions) of the Lambda console\.
-
-2. Choose **Create function**\.
-3. Choose **Container image** function type.
-
-4. Under **Basic information**, do the following:
-
-    1. For **Function name**, enter `img-object-detection-<alias>`\, while `<alias>` is your name.
-
-    2. For **Container image URI**, click on **Browse images** and choose the container you've built.
-
-5. Choose **Create function**\.
-
-
-### Enabling Lambda notifications
-
-
-1. Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
-
-2. In the **Buckets** list, choose the name of the bucket that you want to enable events for\.
-
-3. Choose **Properties**\.
-
-4. Navigate to the **Event Notifications** section and choose **Create event notification**\.
-
-5. In the **General configuration** section, specify descriptive event name for your event notification\. Optionally, you can also specify a prefix and a suffix to limit the notifications to objects with keys ending in the specified characters\.
-
-    1. Enter `img-object-detect` for the **Event name**\.
-
-    2. Filter event notifications by prefix, enter `images/`.
-
-6. In the **Event types** section **All object create events**.
-
-7. In the **Destination** section, choose your **Lambda Function** as the event notification destination\.
-8. Choose **Save changes**, and Amazon S3 sends a test message to the event notification destination\.
-9. Test your work by uploading an image into `images/`.
