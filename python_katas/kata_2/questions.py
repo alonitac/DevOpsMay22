@@ -5,7 +5,7 @@ import socket
 import string
 import tarfile
 from datetime import date
-
+from heapq import merge
 
 def valid_parentheses(s):
     """
@@ -217,7 +217,7 @@ def merge_sorted_lists(l1, l2):
     :param l2: list of integers
     :return: list: sorted list combining l1 and l2
     """
-    return None
+    return list(merge(l1, l2))
 
 
 def longest_common_substring(str1, str2):
