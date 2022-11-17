@@ -29,15 +29,15 @@
 
 ### Extend your policy
 
-9. Explore [S3 policy condition key elements](https://docs.aws.amazon.com/AmazonS3/latest/userguide/amazon-s3-policy-keys.html).
-10. Try to add a condition to your above policy such that only objects in `STANDARD_IA` storage-class can be accessed. 
-11. Validate your changes.
+1. Explore [S3 policy condition key elements](https://docs.aws.amazon.com/AmazonS3/latest/userguide/amazon-s3-policy-keys.html).
+2. Try to add a condition to your above policy such that only objects in `STANDARD_IA` storage-class can be accessed. 
+3. Validate your changes.
 
 ### Tag IAM users and roles to control what they can access
 
-12. In IAM roles console, choose your role.
-13. In **Tags** tab, add a tag with the key `BucketPrefix` and some value according to your choice.
-14. Instead of allow operation on prefix `images/`, try to allow access on a dynamic prefix according to the principal tag:
+1. In IAM roles console, choose your role.
+2. In **Tags** tab, add a tag with the key `BucketPrefix` and some value according to your choice.
+3. Instead of allow operation on prefix `images/`, try to allow access on a dynamic prefix according to the principal tag:
 ```text
 "Resource": ["arn:aws:s3:::<your-bucket-name>/${aws:PrincipalTag/BucketPrefix}/*"]
 ```
@@ -60,6 +60,6 @@ In this demo we are going to create a role which can start/stop EC2 instances be
 
 #### Force tagging policy for resources
 
-7. We now want to force a tagging policy in our AWS account. We want all EC2 instances to be tagged with a key `Env` with allowed values of `Dev`, `Test`, or `Prod`.
-8. According to the policy described in [Controlling access during AWS requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html#access_tags_control-requests), add a statement to the above inline policy, that enforces the tagging policy for EC2 instances belonging to different environments. 
-9. Switch to your role and test your policy. 
+1. We now want to force a tagging policy in our AWS account. We want all EC2 instances to be tagged with a key `Env` with allowed values of `Dev`, `Test`, or `Prod`.
+2. According to the policy described in [Controlling access during AWS requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html#access_tags_control-requests), add a statement to the above inline policy, that enforces the tagging policy for EC2 instances belonging to different environments. 
+3. Switch to your role and test your policy. 
