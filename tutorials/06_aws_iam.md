@@ -63,3 +63,15 @@ In this demo we are going to create a role which can start/stop EC2 instances be
 1. We now want to force a tagging policy in our AWS account. We want all EC2 instances to be tagged with a key `Env` with allowed values of `Dev`, `Test`, or `Prod`.
 2. According to the policy described in [Controlling access during AWS requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html#access_tags_control-requests), add a statement to the above inline policy, that enforces the tagging policy for EC2 instances belonging to different environments. 
 3. Switch to your role and test your policy. 
+
+# Home assignment
+
+Create the below policies following the [Principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
+
+1. IAM policy with permissions to start and stop EC2 instance. 
+2. IAM policy with permissions read object from S3 buckets **except** objects starting with "internal/"
+3. IAM policy with permissions to upload objects from `STANDARD` and `STANDARD_IA` storage classes **only**.
+4. IAM policy with permissions to attach EBS to EC2.
+5. IAM policy with permissions to attach EBS to EC2 from `us-east-1` region only.
+6. IAM policy with permissions to attach EBS to EC2 from all US and EU regions.
+7. IAM policy which denying users to assign policies to and identity, which means, users under this policy cannot assign IAM policies to other users, groups, roles.  
