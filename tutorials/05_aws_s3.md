@@ -121,3 +121,8 @@ aws --version
    ```
 7. Can you see the object in the bucket's object list in the AWS Web Console? Can you confirm that the object was "deleted softly"?
 8. How can you **permanently** delete an object (and its non-current versions) from a version-enabled bucket?
+
+
+# Home assignment
+
+- Write some Python code that computes the Etag of a given file. Make sure you get the same results as appears in S3 console when uploading this file to a bucket. The algorithm can be found [here](https://stackoverflow.com/a/43819225).
