@@ -58,7 +58,7 @@ In this demo we are going to create a role which can start/stop EC2 instances be
 6. Test your policy by trying to start/stop EC2 instances with/without appropriate `Env` tag.
 7. Switch back to your IAM user. 
 
-#### Force tagging policy for resources
+### Force tagging policy for resources
 
 1. We now want to force a tagging policy in our AWS account. We want all EC2 instances to be tagged with a key `Env` with allowed values of `Dev`, `Test`, or `Prod`.
 2. According to the policy described in [Controlling access during AWS requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html#access_tags_control-requests), add a statement to the above inline policy, that enforces the tagging policy for EC2 instances belonging to different environments. 
