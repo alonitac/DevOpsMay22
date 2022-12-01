@@ -23,5 +23,10 @@ def profile_picture():
     return send_file('images/profile-1.jpg', mimetype='image/gif')
 
 
+@app.route('/status')
+def status():
+    return 'OK'
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=8080, host='0.0.0.0')
