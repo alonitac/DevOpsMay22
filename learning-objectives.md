@@ -22,3 +22,25 @@ Create the below policies following the [Principle of least privilege](https://e
 #### Etag manual computing
 
 Write some Python code that computes the Etag of a given file. Make sure you get the same results as appears in S3 console when uploading this file to a bucket. The algorithm can be found [here](https://stackoverflow.com/a/43819225).
+
+
+### 20/11 - 1/12
+
+- Subnet sizing - https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html#subnet-sizing
+- Read about Bastion Host
+- Differences between Security Group and Access Control Lists (ACL) in AWS - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html
+- [Async IO in Python: A Complete Walkthrough](https://realpython.com/async-io-python/)
+- Challenge (23k) - Deploy Network Load Balancer with Application Load Balancer as a target, as described [here](https://aws.amazon.com/blogs/networking-and-content-delivery/application-load-balancer-type-target-group-for-network-load-balancer/). 
+
+#### SSH keys rotation
+
+Write bash scripts that automatically rotates SSH keys for a given host `ec2-user@host`. The script should work as follows:
+
+- Generate RSA key pair locally.
+- Connect to the host.
+- Append the public keys of the new generated key-pair into `~/.ssh/authorized_keys` file.
+- Close the connection.
+- Connect to the host using the new generated key, and remove the public key of the old key from `~/.ssh/authorized_keys`.
+
+Note that the above steps should be automatically executed by the Bash script, not manually.
+
