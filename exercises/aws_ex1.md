@@ -10,7 +10,7 @@ Here is a high level diagram of the architecture:
 
 ![](img/botaws2.png)
 
-The general idea of scale
+## Scaling the app
 
 When end-users send a message via Telegram app (1-black), the messages are served by the Bot service (run as a Docker container in the Telegram Bot EC2 instance).
 The Bot service **doesn't** download the video from YouTube itself, otherwise, all it does is sending a "job" to an SQS queue (2-black), and return the end-user a message like "your video is being downloaded...".
@@ -51,7 +51,7 @@ From now on, throughout the exercise you should work on your `microservices` bra
 
 1. `bot/app.py` - The Telegram bot code, similar to what you've implemented in the previous exercise. But this time, the bot doesn't download the videos itself, but sends a "job" to an SQS queue.
 2. `worker/app.py` - The Worker service continuously reads messages from the SQS queue and process them, which means download the video from YouTube and store it in a dedicated S3 bucket.
-3. `metric-sender/app.py` - The Metric Sender service calculate the `backlog_per_instance` metric and send it to CloudWatch
+3. `metric-sender/app.py` - The Metric Sender service calculate the `backlog_per_instance` metric and send it to CloudWatch.
 
 Each service has its own Dockerfile in the root directory of the repo: `bot.Dockerfile` for the bot, `worker.Dockerfile` for the worker, and `metric-sender.Dockerfile` for the metric-sender.
 For example, you can build the Metric Sender image by:
@@ -76,7 +76,11 @@ docker build -t metric-sender:1.0 -f metric-sender.Dockerfile .
 
 ![](img/secretmanagertelegram.png)
 
-6. Lambda
+6. Create a Lambda function for the Metric-sender app.
+   1. In order to do so, first you need to build and push a Docker image on Elastic Container Registry (ECR). Create a private ECR.
+   2. On your local machine, build the image of the Metric Sender (according to `metric-sender.Dockerfile`. It's already implemented, no need to touch) and push it to your ECR registry. In [Amazon ECR console](https://console.aws.amazon.com/ecr/repositories), select the repository that you created and choose **View push commands** to view the steps to build and push an image from your local machine to your new repository\.
+   3. Create a Lambda function based on your container image.
+
 
 ### The Code
 
@@ -94,9 +98,9 @@ docker build -t metric-sender:1.0 -f metric-sender.Dockerfile .
 
 9. After you've implemented the code changes, it is good idea to test everything locally. Run the `bot/app.py` service and a single worker `worker/app.py`. Make sure that when you send a message via Telegram, the Bot service produces a message to the SQS queue, and the Worker consumes the message, downloads the YouTube video and uploads it to S3.
 
-> Note 
+> Note   
 > All services should be run from the root directory of the project!
-> For the convenience of PyCharm users, the services run configurations already there, just choose the service and run it.
+> For the convenience of PyCharm users, the services run configurations already there, just choose the service and run it.   
 > ![](img/awsbotrc.png)
 
 ### Deploy the app in AWS 
@@ -126,7 +130,7 @@ docker build -t metric-sender:1.0 -f metric-sender.Dockerfile .
 
 ## Submission
 
-Present you work in a personal meeting (usually 20 minutes before our bi-weekly class). **Final due date is 30/01/23**.
+Present you work in a personal meeting (usually 20 minutes before our bi-weekly class). **Final due date is 15/02/23**.
 
 # Good Luck
 
