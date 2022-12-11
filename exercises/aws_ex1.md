@@ -18,8 +18,10 @@ So, the Bot service is a very lightweight app that can serve hundreds requests p
 In the other side, there are Worker service (run as a Docker container in the Worker EC2 instance) **consumes** jobs from the SQS queue (3-black) and does the hard work - to download the video from YouTube and upload it to S3 (4-black). When the Worker done with current job, it asks the SQS queue if it has another job for him. As long as there are jobs pending in the queue, a free Worker will consume and perform the job. In such way the Bot service pushes jobs to the SQS queue, making it "full", while the Worker service consumes jobs from the queue, making it "empty".
 
 But what if the rate in which the Bot service is pushing jobs to the queue is much higher than the rate the Worker completing jobs? In such case the queue will overflow...
-To solve that, we will create multiple workers that together consume jobs from the queue. How many workers? we will deploy a dynamic model **that auto-scale the number of workers** depending on the number of messages in the queue. When there are a lot of jobs in the queue, the autoscaler will provision many workers. When there are only a few jobs in the queue, the autoscaler will provision fewer workers.
-The Workers are part of an AutoScaling group, which is scaled in and out by a custom metric that the Metric Sender service (run as a Docker container in a Lambda function) writes to CloudWatch (2-blue) every 3 minutes (1-blue). CloudWatch will trigger an autoscale event (3-blue) when needed, which results in provisioning of another Worker instance, or terminate a redundant Worker instance (4-blue). 
+To solve that, we will create multiple workers that together consume jobs from the queue. How many workers? we will deploy a dynamic model **that auto-scale the number of workers** depending on the number of messages in the queue. 
+When there are a lot of jobs in the queue, the autoscaler will provision many workers. 
+When there are only a few jobs in the queue, the autoscaler will provision fewer workers.
+The Workers are part of an AutoScaling group, which is scaled in and out by a custom metric that the Metric Sender service (run as a Docker container as well on the same VM as the Bot service) writes to CloudWatch every 1 minute (1-blue). CloudWatch will trigger an autoscale event (2-blue) when needed, which results in provisioning of another Worker instance, or terminate a redundant Worker instance (3-blue). 
 
 The metric sent to CloudWatch can be called `BacklogPerInstance`, as it represents the number of jobs in the queue (jobs that was not consumed yet) per Worker instance.
 For example, assuming you have 5 workers up and running, and 100 messages in the queue, thus `BacklogPerInstance` equals 20, since each Worker instance has to consume ~20 messages to get the queue empty. For more information, read [here](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html).
@@ -47,18 +49,15 @@ git checkout -b microservices upstream/microservices
 
 From now on, throughout the exercise you should work on your `microservices` branch. 
 
-### Microservices review 
+### The TelegramAI repo structure 
+
+The repository structure is divided into services - each service under its own directory, while all services are sharing the `common` directory, which contains resources used by all services.
 
 1. `bot/app.py` - The Telegram bot code, similar to what you've implemented in the previous exercise. But this time, the bot doesn't download the videos itself, but sends a "job" to an SQS queue.
 2. `worker/app.py` - The Worker service continuously reads messages from the SQS queue and process them, which means download the video from YouTube and store it in a dedicated S3 bucket.
 3. `metric-sender/app.py` - The Metric Sender service calculate the `backlog_per_instance` metric and send it to CloudWatch.
 
-Each service has its own Dockerfile in the root directory of the repo: `bot.Dockerfile` for the bot, `worker.Dockerfile` for the worker, and `metric-sender.Dockerfile` for the metric-sender.
-For example, you can build the Metric Sender image by:
-```shell
-# execute from the root directory of the repo
-docker build -t metric-sender:1.0 -f metric-sender.Dockerfile .
-```
+Each service has its own Dockerfile. You are responsible to implement the Dockerfiles.
 
 ## Guidelines
 
@@ -76,12 +75,6 @@ docker build -t metric-sender:1.0 -f metric-sender.Dockerfile .
 
 ![](img/secretmanagertelegram.png)
 
-6. Create a Lambda function for the Metric-sender app.
-   1. In order to do so, first you need to build and push a Docker image on Elastic Container Registry (ECR). Create a private ECR.
-   2. On your local machine, build the image of the Metric Sender (according to `metric-sender.Dockerfile`. It's already implemented, no need to touch) and push it to your ECR registry. In [Amazon ECR console](https://console.aws.amazon.com/ecr/repositories), select the repository that you created and choose **View push commands** to view the steps to build and push an image from your local machine to your new repository\.
-   3. Create a Lambda function based on your container image.
-
-
 ### The Code
 
 7. Change `common/config.json` according to your resources in AWS. This file is being used by the different services, hence it is located under `common` directory, which contains resource that are shared by the services.  
@@ -98,21 +91,17 @@ docker build -t metric-sender:1.0 -f metric-sender.Dockerfile .
 
 9. After you've implemented the code changes, it is good idea to test everything locally. Run the `bot/app.py` service and a single worker `worker/app.py`. Make sure that when you send a message via Telegram, the Bot service produces a message to the SQS queue, and the Worker consumes the message, downloads the YouTube video and uploads it to S3.
 
-> Note   
-> All services should be run from the root directory of the project!
-> For the convenience of PyCharm users, the services run configurations already there, just choose the service and run it.   
-> ![](img/awsbotrc.png)
-
 ### Deploy the app in AWS 
 
-10. As mentioned above, all services are running as a Docker containers. Implement the Dockerfiles of `bot.Dockerfile` and `worker.Dockerfile`. No need to implement `metric-sender.Dockerfile`, it's already done.
+10. As mentioned above, all services are running as a Docker containers. Implement the Dockerfiles of the Bot, Worker and Metric-sender service.
 12. Deploy the Worker service to an EC2 instance
     1. Create an Amazon Linux EC2 instance.
     2. Install Docker.
     3. Get your repo code there (install Git if needed).
     4. Build the Worker image by:
        ```shell
-       docker build -t worker:1.0 -f worker.Dockerfile . 
+       cd worker
+       docker build -t worker:1.0 . 
        ```
     5. Run the container such that it starts automatically when the EC2 is launches:
        ```shell
@@ -120,13 +109,32 @@ docker build -t metric-sender:1.0 -f metric-sender.Dockerfile .
        ```
     6. Create an AMI from that instance and base your Launch Template on that AMI, such that when a new instance is created from the launch template, the Worker app will be up and running automatically.
 
-11. Deploy the Bot service on a single EC2 instance (this service is not part of the autoscaling group). It should be similar to Worker deployment - in a Docker container that restarts automatically on OS reboot.
+11. Deploy the Bot and the Metric-sender services **on a single EC2 instance** (those services are not part of the autoscaling group). It should be similar to Worker deployment - each service in a separate Docker container that restarts automatically on OS reboot.
 
 13. Use AWS cli to create a [target tracking scaling policy](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html#create-sqs-policies-cli) in your Autoscaling Group. `MetricName` and `Namespace` should correspond to the metric your Bot service is firing to CloudWatch. Give the `TargetValue` some value that you can test later (e.g. 10, which means if there are more than 10 messages per worker in the SQS queue, a scale up event will trigger).
 
 14. Make sure your services are given the right IAM role permissions.
 
 15. Test your application and make sure the autoscalig group react under load increase/decrease.
+
+## Lambda workers 
+
+We now want to examine another architecture of Bot-Workers dynamic:
+
+![](img/botaws3.png)
+
+Instead of scale EC2 instance with the Worker service deployed there, you will trigger Lambda functions when there are jobs in the SQS queue.
+
+1. Terminate the Metric Sender services such that to metrics will be sent to CloudWatch and the ASG doesn't scale anymore.
+2. Create a Docker based Lambda function for the Worker service.
+    1. In order to do so, first you need to build and push a Docker image on Elastic Container Registry (ECR). Using the AWS console, create a private ECR.
+    2. On your local machine, build the image of the Worker (according to `lambda.Dockerfile`. It's already implemented, no need to touch) and push it to your ECR registry. In [Amazon ECR console](https://console.aws.amazon.com/ecr/repositories), select the repository that you created and choose **View push commands** to view the steps to build and push an image from your local machine to your new repository\. You may use this command to build the image:
+       ```shell
+       cd worker && docker build -t worker:0.1 -f lambda.Dockerfile . 
+       ```
+    3. Create a Lambda function based on your container image you've just pushed to ECR.
+3. Define your SQS queue as a trigger that invokes your function. 
+4. Test your app in this new architecture, make sure the Lambda is triggered when you send a message to the Bot.
 
 ## Submission
 
