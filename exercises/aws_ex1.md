@@ -2,6 +2,8 @@
 
 **Can be done in pairs (highly recommended)**.
 
+**Never commit (and push) AWS credentials! No credentials file is needed to be placed in the repo directory.**
+
 ## Background
 
 Your goal is to provision the TelegramAI chat app as a scalable, micro-services architecture in AWS.
@@ -21,7 +23,7 @@ But what if the rate in which the Bot service is pushing jobs to the queue is mu
 To solve that, we will create multiple workers that together consume jobs from the queue. How many workers? we will deploy a dynamic model **that auto-scale the number of workers** depending on the number of messages in the queue. 
 When there are a lot of jobs in the queue, the autoscaler will provision many workers. 
 When there are only a few jobs in the queue, the autoscaler will provision fewer workers.
-The Workers are part of an AutoScaling group, which is scaled in and out by a custom metric that the Metric Sender service (run as a Docker container as well on the same VM as the Bot service) writes to CloudWatch every 1 minute (1-blue). CloudWatch will trigger an autoscale event (2-blue) when needed, which results in provisioning of another Worker instance, or terminate a redundant Worker instance (3-blue). 
+The Workers are part of an AutoScaling group, which is scaled in and out by a custom metric that the Metric Sender service (run as a Docker container as well, on the same VM as the Bot service) writes to CloudWatch every 1 minute (1-blue). CloudWatch will trigger an autoscale event (2-blue) when needed, which results in provisioning of another Worker instance, or terminate a redundant Worker instance (3-blue). 
 
 The metric sent to CloudWatch can be called `BacklogPerInstance`, as it represents the number of jobs in the queue (jobs that was not consumed yet) per Worker instance.
 For example, assuming you have 5 workers up and running, and 100 messages in the queue, thus `BacklogPerInstance` equals 20, since each Worker instance has to consume ~20 messages to get the queue empty. For more information, read [here](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html).
@@ -59,6 +61,13 @@ The repository structure is divided into services - each service under its own d
 
 Each service has its own Dockerfile. You are responsible to implement the Dockerfiles.
 
+Note: the services should be run from the root directory of the repo (PyCharm usually run applications from the directory the Python file is located, e.g. the Bot app will be run from `TelegramAI/bot/` dir instead of `TelegramAI/`).
+For your convenience, in PyCharm, the run configurations of each service is already there:  
+
+![](img/awsbotrc.png)
+
+Just choose the service and click "run".
+
 ## Guidelines
 
 ### AWS resources
@@ -77,7 +86,7 @@ Each service has its own Dockerfile. You are responsible to implement the Docker
 
 ### The Code
 
-7. Change `common/config.json` according to your resources in AWS. This file is being used by the different services, hence it is located under `common` directory, which contains resource that are shared by the services.  
+7. Change `common/config.json` according to your resources in AWS. This file is being used by the different services, hence it is located under `common` directory, which contains resources that are shared by the services.  
 
 8. You are given most of the code for the Bot, Worker and Metric-sender services. In branch `microservices` complete the following *TODO*s:
 
@@ -85,7 +94,9 @@ Each service has its own Dockerfile. You are responsible to implement the Docker
    2. In `bot/app.py` complete `get_telegram_token_secret()` such that this function returns the value of your Telegram token.
    3. In `metric-sender/app.py` complete `lambda_handler()` such that the value of variable `backlog_per_instance` will be sent as a metric to [CloudWatch](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/cw-example-metrics.html#publish-custom-metrics).
 
-   Except the above changes, you don't need to change the code (unless you want to add more functionality to the service).
+9. Complete the Dockerfile of each service (except `lambda.Dockerfile`).
+
+Except the above changes, you don't need to change the code (unless you want to add more functionality to the service).
 
 ### Test your app locally
 
@@ -98,10 +109,9 @@ Each service has its own Dockerfile. You are responsible to implement the Docker
     1. Create an Amazon Linux EC2 instance.
     2. Install Docker.
     3. Get your repo code there (install Git if needed).
-    4. Build the Worker image by:
+    4. Build the Worker image by (note that the build command should be run from the root directory of the repo):
        ```shell
-       cd worker
-       docker build -t worker:1.0 . 
+       docker build -t worker:1.0 -f worker/Dockerfile . 
        ```
     5. Run the container such that it starts automatically when the EC2 is launches:
        ```shell
@@ -119,22 +129,22 @@ Each service has its own Dockerfile. You are responsible to implement the Docker
 
 ## Lambda workers 
 
-We now want to examine another architecture of Bot-Workers dynamic:
+We now want to examine a serverless architecture of Bot-Workers dynamic:
 
 ![](img/botaws3.png)
 
-Instead of scale EC2 instance with the Worker service deployed there, you will trigger Lambda functions when there are jobs in the SQS queue.
+Instead of scaling EC2 instance with the Worker service deployed there, you will trigger Lambda functions when there are jobs in the SQS queue.
 
-1. Terminate the Metric Sender services such that to metrics will be sent to CloudWatch and the ASG doesn't scale anymore.
+1. Terminate the Metric Sender services such that no metrics will be sent to CloudWatch and the ASG doesn't scale anymore.
 2. Create a Docker based Lambda function for the Worker service.
     1. In order to do so, first you need to build and push a Docker image on Elastic Container Registry (ECR). Using the AWS console, create a private ECR.
     2. On your local machine, build the image of the Worker (according to `lambda.Dockerfile`. It's already implemented, no need to touch) and push it to your ECR registry. In [Amazon ECR console](https://console.aws.amazon.com/ecr/repositories), select the repository that you created and choose **View push commands** to view the steps to build and push an image from your local machine to your new repository\. You may use this command to build the image:
        ```shell
-       cd worker && docker build -t worker:0.1 -f lambda.Dockerfile . 
+       cd worker && docker build -t worker:0.1 -f worker/lambda.Dockerfile . 
        ```
     3. Create a Lambda function based on your container image you've just pushed to ECR.
 3. Define your SQS queue as a trigger that invokes your function. 
-4. Test your app in this new architecture, make sure the Lambda is triggered when you send a message to the Bot.
+4. Test your app in this new architecture, make sure the Lambda is triggered when you send a message to the Bot, and when the execution ends, the YouTube video is in stored in S3.
 
 ## Submission
 
