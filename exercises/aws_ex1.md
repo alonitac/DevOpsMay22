@@ -53,16 +53,16 @@ From now on, throughout the exercise you should work on your `microservices` bra
 
 ### The TelegramAI repo structure 
 
-The repository structure is divided into services - each service under its own directory, while all services are sharing the `common` directory, which contains resources used by all services.
+The repository structure is divided into services - each service under its own directory, while all services are sharing common files (`config.json` and `utils.py`) under the root directory of the repo.
 
 1. `bot/app.py` - The Telegram bot code, similar to what you've implemented in the previous exercise. But this time, the bot doesn't download the videos itself, but sends a "job" to an SQS queue.
 2. `worker/app.py` - The Worker service continuously reads messages from the SQS queue and process them, which means download the video from YouTube and store it in a dedicated S3 bucket.
-3. `metric-sender/app.py` - The Metric Sender service calculate the `backlog_per_instance` metric and send it to CloudWatch.
+3. `metric-sender/app.py` - The Metric Sender service calculates the `backlog_per_instance` metric and send it to CloudWatch.
 
-Each service has its own Dockerfile. You are responsible to implement the Dockerfiles.
+Each service has its own `Dockerfile` under the service's directory.
 
 Note: the services should be run from the root directory of the repo (PyCharm usually run applications from the directory the Python file is located, e.g. the Bot app will be run from `TelegramAI/bot/` dir instead of `TelegramAI/`).
-For your convenience, in PyCharm, the run configurations of each service is already there:  
+For your convenience, in branch `microservices`, the run configurations of each service is already there:  
 
 ![](img/awsbotrc.png)
 
@@ -86,15 +86,13 @@ Just choose the service and click "run".
 
 ### The Code
 
-7. Change `common/config.json` according to your resources in AWS. This file is being used by the different services, hence it is located under `common` directory, which contains resources that are shared by the services.  
+7. Change `config.json` according to your resources in AWS. This file is being used by the different services, hence it is located under in the repo root directory.  
 
-8. You are given most of the code for the Bot, Worker and Metric-sender services. In branch `microservices` complete the following *TODO*s:
+8. You are given most of the code for the Bot, Worker and Metric-sender services. Complete the following *TODO*s:
 
    1. In `worker/app.py` complete the implementation of `process_msg()` function such that the downloaded videos will be uploaded to S3 (you can delete them from the disk afterwards).
    2. In `bot/app.py` complete `get_telegram_token_secret()` such that this function returns the value of your Telegram token.
    3. In `metric-sender/app.py` complete `lambda_handler()` such that the value of variable `backlog_per_instance` will be sent as a metric to [CloudWatch](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/cw-example-metrics.html#publish-custom-metrics).
-
-9. Complete the Dockerfile of each service (except `lambda.Dockerfile`).
 
 Except the above changes, you don't need to change the code (unless you want to add more functionality to the service).
 
@@ -104,12 +102,12 @@ Except the above changes, you don't need to change the code (unless you want to 
 
 ### Deploy the app in AWS 
 
-10. As mentioned above, all services are running as a Docker containers. Implement the Dockerfiles of the Bot, Worker and Metric-sender service.
+10. As mentioned above, all services are running as a Docker containers. Complete the Dockerfile of each service (except `lambda.Dockerfile` which is already implemented).
 12. Deploy the Worker service to an EC2 instance
     1. Create an Amazon Linux EC2 instance.
     2. Install Docker.
     3. Get your repo code there (install Git if needed).
-    4. Build the Worker image by (note that the build command should be run from the root directory of the repo):
+    4. Build the Worker image by (note that the build command should be run from the root directory of the repo, also note the `-f` option which helps when the `Dockefile` is located in a different dir than the build context):
        ```shell
        docker build -t worker:1.0 -f worker/Dockerfile . 
        ```
