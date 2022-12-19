@@ -44,8 +44,11 @@ Write bash scripts that automatically rotates SSH keys for a given host `ec2-use
 
 Note that the above steps should be automatically executed by the Bash script, not manually.
 
-### 04-08/12
+### 04-15/12
 
 - Service outage
 - Read about [Application-based stickiness](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html#application-based-stickiness)
 - Horizontal vs Vertical autoscale
+- [Async communication with AWS SQS and SNS](https://medium.com/@erickgallani/async-communication-with-aws-sqs-and-sns-d6339de81f2e)
+- Familiarize yourself with Apache Kafka and RabbitMQ
+
