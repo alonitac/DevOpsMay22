@@ -302,7 +302,7 @@ An **SQL query** is a statement representing some operation to perform in the da
 
 18. Preview the alarm that you're about to create on the **Preview and create** page, and then choose **Create alarm**\.
 
-#### Testing your alarm
+### Testing your alarm
 
 It is very important to test all the alarms you set, in production environment if possible.
 
