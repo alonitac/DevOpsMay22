@@ -144,7 +144,7 @@ An **SQL query** is a statement representing some operation to perform in the da
 
 4. In **Configuration**, choose **PostgreSQL**\.
 
-5. For **DB instance size**, choose **Dev/Test**\ and choose **Multi-AZ DB instance** in **Availability and durability**.
+5. For **DB instance size**, choose **Free Tier**\.
 
 6. For **DB instance identifier**, enter a name for the DB instance.
 
@@ -263,26 +263,7 @@ An **SQL query** is a statement representing some operation to perform in the da
       GROUP BY to_user;
       ```
 
-
-## Test failover for your DB instance
-
-We would like to understand how long the failover process takes for your particular use case and to ensure that the application that accesses your DB instance can automatically connect to the new DB instance after failover occurs.
-
-Reboot a DB instance to simulate a failover
-
-1. Open the Amazon RDS console at [https://console\.aws\.amazon\.com/rds/](https://console.aws.amazon.com/rds/)\.
-
-1. In the navigation pane, choose **Databases**, and then choose the DB instance that you want to reboot\.
-
-1. For **Actions**, choose **Reboot**\.
-
-   The **Reboot DB Instance** page appears\.
-
-1. Choose **Reboot with failover?** to force a failover from one AZ to another\.
-
-1. Choose **Reboot** to reboot your DB instance\.
-
-### Monitoring and alerting for an RDS database
+## Monitoring and alerting for an RDS database
 
 1. Open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
 
@@ -342,3 +323,25 @@ PGPASSWORD=<password> pgbench -P 10 -t 10000 -j 10 -c 10 -U postgres -h <db-url>
 While `<password>` is you db password. `<db-url>` is you RDS database url and `<internal-db-name>` is an existed table.
 
 For more information on the `pgbench` command, read [here](https://www.postgresql.org/docs/current/pgbench.html).
+
+
+## Test failover for your DB instance (optional)
+
+Note: 
+In order to test the faliover mechanism, a **Multi-AZ DB instance** should be provisioned.
+
+We would like to understand how long the failover process takes for your particular use case and to ensure that the application that accesses your DB instance can automatically connect to the new DB instance after failover occurs.
+
+Reboot a DB instance to simulate a failover
+
+1. Open the Amazon RDS console at [https://console\.aws\.amazon\.com/rds/](https://console.aws.amazon.com/rds/)\.
+
+1. In the navigation pane, choose **Databases**, and then choose the DB instance that you want to reboot\.
+
+1. For **Actions**, choose **Reboot**\.
+
+   The **Reboot DB Instance** page appears\.
+
+1. Choose **Reboot with failover?** to force a failover from one AZ to another\.
+
+1. Choose **Reboot** to reboot your DB instance\.
