@@ -327,7 +327,7 @@ For more information on the `pgbench` command, read [here](https://www.postgresq
 
 ## Test failover for your DB instance (optional)
 
-Note: 
+**Note:** 
 In order to test the faliover mechanism, a **Multi-AZ DB instance** should be provisioned.
 
 We would like to understand how long the failover process takes for your particular use case and to ensure that the application that accesses your DB instance can automatically connect to the new DB instance after failover occurs.
