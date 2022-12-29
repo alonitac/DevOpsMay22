@@ -92,7 +92,7 @@ Just choose the service and click "run".
 
    1. In `worker/app.py` complete the implementation of `process_msg()` function such that the downloaded videos will be uploaded to S3 (you can delete them from the disk afterwards).
    2. In `bot/app.py` complete `get_telegram_token_secret()` such that this function returns the value of your Telegram token.
-   3. In `metric-sender/app.py` complete `lambda_handler()` such that the value of variable `backlog_per_instance` will be sent as a metric to [CloudWatch](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/cw-example-metrics.html#publish-custom-metrics).
+   3. In `metric-sender/app.py` complete `main()` such that the value of variable `backlog_per_instance` will be sent as a metric to [CloudWatch](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/cw-example-metrics.html#publish-custom-metrics).
 
 Except the above changes, you don't need to change the code (unless you want to add more functionality to the service).
 
