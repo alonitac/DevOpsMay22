@@ -1,5 +1,6 @@
 ## Secured Lambda based API using CloudFront, WAF and Cognito
 
+Inspired by [AWS Well-Architected Labs - Multilayered API Security with Cognito and WAF ](https://www.wellarchitectedlabs.com/security/300_labs/300_multilayered_api_security_with_cognito_and_waf/).
 
 ![](img/api-lambda-1.png)
 
@@ -9,7 +10,7 @@ If you've already created the "tweets" DB from the previous demo, you are allowe
 
 ## Create the Lambda Functions
 
-Create a Container based Lambda function, from the code under the `lambda-api` directory. 
+Create a **Container image** Lambda function, from the code under the `lambda-api` directory. 
 Make sure your Lambda function has the following env vars:
  - `DB_HOST` - with a value as your DB host.
  - `DB_USER` - with a value as your DB username.
@@ -93,13 +94,16 @@ Because it's a proxy integration, you can change the Lambda function implementat
 1. Copy the following cURL command and paste it into the terminal window, replacing `<InvokeURL>` with your API's URL.
 
    ```
-   curl -H 'content-type: application/json' <InvokeURL>/tweets?username=_DreamdLead
+   curl -H 'content-type: application/json' <InvokeURL>/tweets?username=MetiersInternet
    ```
 
 You should get a successful response with a payload similar to the following:
 
-```text
-#TODO TBD
+```json
+[
+   ["Bill Gates Talks Databases, Free Software on Reddit http://t.co/ShX4hZlA #billgates #databases"],
+   ["http://t.co/D3KOJIvF article about Madden 2013 using AI to prodict the super bowl #databases #bus311"]
+]
 ``` 
 
 ## Integrate CloudFront for regional API endpoints
@@ -202,7 +206,7 @@ However, it is still possible for malicious SQL code to be injected into a web r
 
 As a simple example, simply add `or 1=1` at the end of your CloudFront domain name as shown:
 
-`curl -H 'content-type: application/json' <CloudFrontURL>/movie?id=1%20or%201=1`
+`curl -H 'content-type: application/json' <CloudFrontURL>/tweets?username=1%20or%201=1`
 
 
 ### Protect the API gateway from SQL injection using WAF
@@ -237,61 +241,3 @@ As a simple example, simply add `or 1=1` at the end of your CloudFront domain na
 3. Under **AWS WAF web ACL - optional** choose the WAF you've just created.
 4. Choose **Save changes**.
 
-## API Access Control with Amazon Cognito
-
-In this section we will be building API Access Control with Amazon Cognito. This will extend our architecture to ensure that only identified users are permitted access to the API.
-
-This addition will allow a user to sign in to a user pool which we create, obtain an identity or access token and then call the API method with one of the tokens. These tokens are typically set to the request’s Authorization header.
-
-![](img/api-lambda-3.png)
-
-### Define AWS Cognito as an API authorizer
-
-1. Go to API Gateway in the AWS console and select your API.
-2. From the main navigation pane, choose **Authorizers** and click **Create New Authorizer** button.
-   - Type an authorizer name in Name.
-   - Select Cognito as Authorizer Type.
-   - Select `PandoUserPool` as Cognito user pool (located in `us-east-1`).
-   - For Token source, type **Authorization** as the header name to pass the identity or access token.
-3. When you have completed the configuration, click on **Create**. You have now successfully added an Authorizer.
-4. From the main navigation pane, choose **Resource** to configure a `COGNITO_USER_POOLS` authorizer on the `/movie` GET method.
-5. Select **Method Request**.
-6. Choose the pencil icon next to **Authorization**. You should be able to see the **Authorizer** we created in the drop-down list. To save the settings, choose the check mark icon.
-7. Since we made a change, we need to re-deploy the API. Choose **Action** and **Deploy API**.
-8. Select `prod` stage, click **Deploy**.
-
-Your API is now using COGNITO_USER_POOLS as Authorizer. Only users registered in COGNITO_USER_POOLS can access your API.
-
-### Add Authorization header in CloudFront
-
-By default, CloudFront doesn’t consider headers when caching your objects in edge locations. Now your request must have an Authorization header with a valid ID Token to access API. Therefore, we need to configure CloudFront to forward headers to the API Gateway.
-
-1. Go to CloudFront in the AWS console and select your CloudFront distribution.
-2. From within the distribution, select the **Behaviors** tab.
-3. Select Cache Behavior associated with our API Gateway using the tick box, click Edit.
-   1. Under **Cache key and origin requests**, in **Headers** drop-down list, choose **Include the following headers**, and add the **Authorization** header.
-4. Save your changes.
-
-If you test out without Authorization header now, you will still see data being returned as it’s served from CloudFront edge caches. Let’s invalidate files to prevent this from happening.
-
-5. In **Invalidation** tab, select **Create Invalidation**.
-6. Type `/*` , then click **Invalidate** button.
-
-## Test the API
-
-Try to access your API without any authorization and expect an unauthorized error.
-
-In order to access the API, a JWT token should be issued. You can utilize `` to generate a token:
-
-```shell
-#python getIDtoken.py <username> <user_password> <user_pool_id> <app_client_id> <app_client_secret>
-python getIDtoken.py <username> <user_password> us-east-1_arPSOrenB 74mh08h8m77iu59ddi6fo3knjb <app_client_secret>
- ```
-
-While `<app_client_secret>` can be found in [PandoUserPoolClientInfo](https://us-east-1.console.aws.amazon.com/cognito/v2/idp/user-pools/us-east-1_arPSOrenB/app-integration/clients/74mh08h8m77iu59ddi6fo3knjb?region=us-east-1) page. The token is valid for 60 minutes.
-
-Once you've got a JWT token, access the API by:
-
-```shell
-curl -H 'Authorization: <YOUR-JWT-TOKEN>' -H 'content-type: application/json'  'https://<cloud-front-dns>/movie?id=1'
-```

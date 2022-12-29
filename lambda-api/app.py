@@ -1,6 +1,7 @@
 import boto3
 import os
 import json
+import psycopg2
 
 
 db_host = os.environ['DB_HOST']
@@ -18,7 +19,7 @@ def lambda_function(event, context):
         password=db_pass)
 
     cur = conn.cursor()
-    cur.execute('select text from tweets where username=' + event['queryStringParameters']['username'])
+    cur.execute("SELECT text FROM tweets WHERE username='" + event['queryStringParameters']['username'] + "';")
     record = cur.fetchall()
     print("Result ", record)
 
