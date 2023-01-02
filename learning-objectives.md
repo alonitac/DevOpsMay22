@@ -52,3 +52,34 @@ Note that the above steps should be automatically executed by the Bash script, n
 - [Async communication with AWS SQS and SNS](https://medium.com/@erickgallani/async-communication-with-aws-sqs-and-sns-d6339de81f2e)
 - Familiarize yourself with Apache Kafka and RabbitMQ
 
+### 18-29/12
+
+#### JWT token
+
+JSON Web Token (JWT) defines a way for securely transmitting information between parties (e.g. two different micro-services) as a JSON object.  
+[Further reading](https://jwt.io/introduction)
+
+### Communicating with your RDS DB using Python code
+
+Inspired by the code under `lambda-api/app.py`, write some Python script that communicates with you RDS database. You can either write/read/delete some data.
+
+### API 
+
+Choose some interesting API from the list bellow:
+
+https://github.com/public-apis/public-apis
+
+Communicate with the API using 3 different ways:
+
+- From your terminal using `curl`.
+- Using [Postman](https://www.postman.com/downloads/).
+- From Python code that you'll write using [`requests`](https://requests.readthedocs.io/en/latest/) package.
+
+### Visualize CloudWatch data using Grafana
+
+Run the [official Grafana Docker image](https://hub.docker.com/r/grafana/grafana-oss) on your local machine. Configure [CloudWatch as a data source](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/). Explore the different metrics...
+
+### Resources Cleanup!
+
+Please clean your redundant and orphan resources from our shared AWS account: VPCs, NAT Gateways, Load Balancers, RDS Databases.
+
