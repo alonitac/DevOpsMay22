@@ -138,7 +138,7 @@ Instead of scaling EC2 instance with the Worker service deployed there, you will
     1. In order to do so, first you need to build and push a Docker image on Elastic Container Registry (ECR). Using the AWS console, create a private ECR.
     2. On your local machine, build the image of the Worker (according to `lambda.Dockerfile`. It's already implemented, no need to touch) and push it to your ECR registry. In [Amazon ECR console](https://console.aws.amazon.com/ecr/repositories), select the repository that you created and choose **View push commands** to view the steps to build and push an image from your local machine to your new repository\. You may use this command to build the image:
        ```shell
-       cd worker && docker build -t worker:0.1 -f worker/lambda.Dockerfile . 
+       docker build -t worker:0.1 -f worker/lambda.Dockerfile . 
        ```
     3. Create a Lambda function based on your container image you've just pushed to ECR.
 3. Define your SQS queue as a trigger that invokes your function. 
