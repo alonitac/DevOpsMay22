@@ -56,8 +56,7 @@ Note that the above steps should be automatically executed by the Bash script, n
 
 #### JWT token
 
-JSON Web Token (JWT) defines a way for securely transmitting information between parties (e.g. two different micro-services) as a JSON object.  
-[Further reading](https://jwt.io/introduction)
+JSON Web Token (JWT) defines a way for securely transmitting information between parties (e.g. two different micro-services) as a JSON object. [Further reading](https://jwt.io/introduction)
 
 ### Communicating with your RDS DB using Python code
 
