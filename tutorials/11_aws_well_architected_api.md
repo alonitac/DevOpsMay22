@@ -206,7 +206,7 @@ However, it is still possible for malicious SQL code to be injected into a web r
 
 As a simple example, simply add `or 1=1` at the end of your CloudFront domain name as shown:
 
-`curl -H 'content-type: application/json' <CloudFrontURL>/tweets?username=1%20or%201=1`
+`curl -H 'content-type: application/json' <CloudFrontURL>/tweets?username=bla%27%20or%20username%21%3D%27`
 
 
 ### Protect the API gateway from SQL injection using WAF
