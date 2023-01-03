@@ -142,7 +142,12 @@ Instead of scaling EC2 instance with the Worker service deployed there, you will
        ```
     3. Create a Lambda function based on your container image you've just pushed to ECR.
 3. Define your SQS queue as a trigger that invokes your function. 
-4. Test your app in this new architecture, make sure the Lambda is triggered when you send a message to the Bot, and when the execution ends, the YouTube video is in stored in S3.
+
+### Test your app
+
+Test the new Lambda based architecture, make sure the Lambda is triggered when you send a message to the Bot, and when the execution ends, the YouTube video is in stored in S3.
+
+**Note the existed bug** when the Lambda code is trying to upload the downloaded YouTube video to S3. Make sure you understand the root cause and suggest a fix for this bug. 
 
 ## Submission
 
