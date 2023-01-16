@@ -17,7 +17,7 @@ Installation as well as starting a cluster instructions can be found here: https
 
 ## Start the Minikube cluster and dashboard
 
-The Minikube cluster can be started by `minikube start --driver-docker`
+The Minikube cluster can be started by `minikube start --driver=docker`
 
 The Kubernetes Dashboard allows you to get easily acclimated to your new cluster.
 
