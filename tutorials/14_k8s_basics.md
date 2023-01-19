@@ -78,6 +78,10 @@ Notes:
 Follow:    
 https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
 
+## Try it yourself
+
+Create a **Deployment** of 2 replicas for the [2048 game dockerized image](https://hub.docker.com/r/alexwhen/docker-2048).
+Expose the Deployment with a **Service** listening on port 5858. Visit the app locally using `port-forward`.
 
 ## Assign Memory Resources to Containers and Pods
 
