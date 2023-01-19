@@ -5,12 +5,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: hello-world
+      run: load-balancer-example
   replicas: 2
   template:
     metadata:
       labels:
-        app: hello-world
+        run: load-balancer-example
     spec:
       containers:
         - name: hello-world
@@ -25,7 +25,7 @@ metadata:
   name: hello-world-service
 spec:
   selector:
-    app: hello-world
+    run: load-balancer-example
   ports:
     - protocol: TCP
       port: 8080
