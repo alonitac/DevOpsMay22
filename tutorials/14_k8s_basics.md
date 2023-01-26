@@ -158,5 +158,8 @@ In the `mysql` Docker image, custom configurations for the MySQL server can be p
 6. Comment **in** the two snippets in `mysql-deployment.yaml` and apply the changes.
 7. Make sure the new configurations applied.
 
+### 
+
+TBD - configmap of bash code mount volume 
 
 
