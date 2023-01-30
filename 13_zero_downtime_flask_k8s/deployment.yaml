@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apptest
+spec:
+  selector:
+    matchLabels:
+      app: apptest
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: apptest
+    spec:
+      containers:
+        - name: apptest
+          image: public.ecr.aws/n5h8m9x0/k8s@sha256:0524d6d9f97b2ac3dac8608029b9e40fbc0bb9566237ad3469ca8b3224a7cc25
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              httpHeaders:
+                - name: Custom-Header
+                  value: Awesome
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "500Mi"
+              cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: apptest
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---

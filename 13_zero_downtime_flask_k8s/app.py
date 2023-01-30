@@ -11,7 +11,7 @@ terminated = False
 @app.route('/', methods=['GET'])
 def index():
     time.sleep(0.1)
-    return 'Hello world\n'
+    return 'Hello world 2\n'
 
 
 @app.route('/ready')
