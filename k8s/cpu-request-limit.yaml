@@ -15,4 +15,4 @@ spec:
           cpu: "100m"
       args:
         - -cpus
-        - "1"
+        - "0.1"
