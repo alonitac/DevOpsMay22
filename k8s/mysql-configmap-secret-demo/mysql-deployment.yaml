@@ -17,21 +17,9 @@ spec:
       containers:
         - name: mysql
           image: mysql:5.7
-          volumeMounts:
-            - name: config-volume
-              mountPath: /etc/mysql/mysql.conf.d
           env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-root-password
-                  key: mysql-password
             - name: MYSQL_DATABASE
               value: 'videos'
-      volumes:
-        - name: config-volume
-          configMap:
-            name: mysql-config
 ---
 apiVersion: v1
 kind: Service
