@@ -94,11 +94,13 @@ When a webhook is configured, GitHub will send a HTTP POST request to a specifie
 ## The Build phase
 
 The Build stage specifies how should the code be built before it's ready to be deployed. In our case, we want to build a Docker image.  
-Let's implement the Build stage in your Jenkinsfile, will build an app called "Yolo5". The complete source code can be found under `14_yolo5_app`, copy the app files into the Git repo you've just created.
+Let's implement the Build stage in your Jenkinsfile, will build an app called "Yolo5". 
 
-1. If you don't have yet, create a private registry in [ECR](https://console.aws.amazon.com/ecr/repositories) for the app.
 
-2. In the registry page, use the **View push commands** to implement a build step in your `Jenkinsfile`. The step may be seen like:
+1. The complete source code can be found under `14_yolo5_app`. Copy the app files into the Git repo you've just set in previous sections.
+2. If you don't have yet, create a private registry in [ECR](https://console.aws.amazon.com/ecr/repositories) for the app.
+
+3. In the registry page, use the **View push commands** to implement a build step in your `Jenkinsfile`. The step may be seen like:
 
 ```text
 stage('Build Yolo5 app') {
