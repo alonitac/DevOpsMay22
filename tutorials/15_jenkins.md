@@ -115,8 +115,102 @@ stage('Build Yolo5 app') {
 }
 ```
 
-You can use the timestamp, or the `BUILD_NUMBER` or `BUILD_TAG` environment variables to tag your Docker images, but don't tag the images as `latest`.
+You can use the timestamp, or the `BUILD_NUMBER` or `BUILD_TAG` [environment variables](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables) to tag your Docker images, but don't tag the images as `latest`.
 
 3. Give your EC2 instance an appropriate role to push an image to ECR.
 
-4. Use the `environment` directive to store global variable (as AWS region and ECR registry URL) and make your pipeline a bit more elegant. 
+4. Use the [`environment` directive](https://www.jenkins.io/doc/book/pipeline/syntax/#environment) to store global variable (as AWS region and ECR registry URL) and make your pipeline a bit more elegant. 
+
+#### (Optional) Clean the build artifacts from Jenkins server
+
+1. As for now, we build the Docker images in the system of the Jenkins server itself, which is a very bad idea (why?).
+2. Use the [`post` directive](https://www.jenkins.io/doc/book/pipeline/syntax/#post) and the [`docker image prune` command](https://docs.docker.com/config/pruning/#prune-images) to cleanup the built Docker images from the disk. 
+
+
+## The Deploy phase
+
+We would like to trigger a Deployment pipeline after every successful running of the Build pipeline (`AppBuild`).
+
+1. In the app repo, create another `Jenkinsfile` called `deploy.Jenkinsfile`. In this pipeline we will define the deployment steps for the Yolo5 app:
+```shell
+pipeline {
+    agent any
+    
+    stages {
+        stage('Deploy') {
+            steps {
+                sh '# kubectl apply -f ....'
+            }
+        }
+    }
+}
+``` 
+
+**Note**: to keep the Jenkinsfiles as clear as possible in the source code, you can change the Build pipeline name to `build.Jenkinsfile`. 
+
+2. Create another Jenkins **Pipeline** named `AppDeploy`, fill it similarly to the Build pipeline, but **don't trigger** this pipeline as a result of a GitHub hook event (why?).
+
+We now want that every **successful** Build pipeline running will **automatically** trigger the Deploy pipeline. We can achieve this using the following two steps: 
+
+1. Use the [Pipeline: Build](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/) step that triggers the Deploy pipeline:
+```text
+stage('Trigger Deploy') {
+    steps {
+        build job: '<deploy-job-name>', wait: false, parameters: [
+            string(name: 'YOLO5_IMAGE_URL', value: "<full-url-to-docker-image>")
+        ]
+    }
+}
+```
+Where:
+- `<deploy-job-name>` is the name of your Deploy pipeline (should be `AppDeploy`).
+- `<full-url-to-docker-image>` is a full URL to your built Docker image. You can use env vars like: `value: "${IMAGE_NAME}:${IMAGE_TAG}"` or something similar.
+
+2. In the `deploy.Jenkinsfile` define a [string parameter](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters) that will be passed to this pipeline from the Build pipeline:
+```shell
+pipeline {
+    agent ..
+    
+    # add the below line in the same level an `agent` and `stages`:
+    parameters { string(name: 'YOLO5_IMAGE_URL', defaultValue: '', description: '') }
+
+    stages ...
+}
+```
+
+### Fine tune the Deploy pipeline
+
+Review some additional pipeline features, as part of the [`options` directive](https://www.jenkins.io/doc/book/pipeline/syntax/#options). Add the `options{}` clause with the relevant features for the Build and Deploy pipelines.
+
+## Security vulnerability scanning
+
+The [Snyk](https://docs.snyk.io/products/snyk-container/snyk-cli-for-container-security) Container command line interface helps you to find and fix Docker image vulnerabilities.
+
+You must first to [Sign up for Snyk account](https://docs.snyk.io/getting-started/create-a-snyk-account).
+Make sure you've installed Snyk on your Jenkins server.
+
+1. Get you API token from your [Account Settings](https://app.snyk.io/account) page.
+2. Once you've set a `SNYK_TOKEN` environment variable with the API token as a value, you can easily [scan docker images](https://docs.snyk.io/products/snyk-container) for vulnerabilities:
+```shell
+# will scan ubuntu docker image from DockerHub
+snyk container test ubuntu 
+
+# will alarm for `high` issue and above 
+snyk container test ubuntu --severity-threshold=high
+
+# will scan a local image my-image:latest. The --file=Dockerfile can add more context to the security scanning. 
+snyk container test my-image:latest --file=Dockerfile
+```
+
+3. Create a **Secret text** Jenkins credentials containing the API token.
+4. Use the [`withCredentials` step](https://www.jenkins.io/doc/pipeline/steps/credentials-binding/), read your Snyk API secret as `SNYK_TOKEN` env var, and perform the security testing using simple `sh` step and `synk` cli.
+
+Sometimes, Snyk alerts you to a vulnerability that has no update or Snyk patch available, or that you do not believe to be currently exploitable in your application.
+
+You can ignore a specific vulnerability in a project using the [`snyk ignore`](https://docs.snyk.io/snyk-cli/test-for-vulnerabilities/ignore-vulnerabilities-using-snyk-cli) command:
+
+```text
+snyk ignore --id=<ISSUE_ID>
+```
+
+
