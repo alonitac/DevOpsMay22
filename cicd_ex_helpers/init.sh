@@ -99,4 +99,7 @@ printf "\n\n${GREEN}Access token is (can be always found in ~/dashboard-token.ya
 cat dashboard-token.yaml
 printf "${NC}"
 
+printf "\n\n${RED}===========README===========${NC}"
+
+
 printf "\n\n${RED}Good Luck!${NC}\n"
