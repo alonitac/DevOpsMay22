@@ -21,9 +21,8 @@ sudo /usr/local/bin/k0s start && printf "\n\n${CYAN}K0s cluster has been started
 
 sleep 10
 
-kubectl version --client &> /dev/null
-
-if [ $? -ne 0 ]; then
+if kubectl version --client &> /dev/null
+then
 	printf "\n\n${CYAN}Installing kubectl cli tool...${NC}\n\n"
 	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 	sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
