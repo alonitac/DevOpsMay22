@@ -2,3 +2,9 @@
 # Usage: pip install -r requirements.txt
 
 flask
+
+# testing
+
+pylint
+unittest2
+pytest
