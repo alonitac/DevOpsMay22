@@ -1,9 +1,10 @@
 # CI/CD with Jenkins
 
+Due date: 15/04/2023
+
 In this exercise you will implement a full CI/CD process for the TelegramAI service in Development and Production environments. 
 
 All the code in this exercise is already given to you in the [TelegramAI-CICD repo](https://github.com/alonitac/TelegramAI-CICD.git), `main` branch. So no need to write any Python. Fork this repo and work on your fork along the exercise.
-Throughout this exercise we will be working with branches `dev` and `main` which representing Development and Production environments accordingly. The app is the old good TelegramAI (excluding the autoscaling functionality).
 
 
 ## Deploy k8s cluster
@@ -57,7 +58,7 @@ Perform the following steps on your existed Jenkins server.
 
 1. In your Jenkins server, create `dev` and `prod` folders (New Item -> Folder). All pipelines will be created in those folders.  
 2. Jenkins needs to talk with the k8s cluster in order to deploy the applications. It does so using the Kubernetes command-line tool, `kubectl`. To configure `kubectl` to work with your k8s cluster, create in Jenkins a **Secret file** credentials called `kubeconfig` in the Jenkins global scope. The secret file content can be found in the EC2 you've installed the k8s cluster under `~/.kube/config`. You can copy & paste this file's content to your local machine and upload to Jenkins.
-3. All pipelines are running on a containerized agent (the same Docker image for all pipelines). The agent's Dockerfile can be found under `infra/jenkins/JenkinsAgent.Dockerfile`. You should build it, push in to an ECR registry, and replace `<jenkins-agent-image>` with your Docker image URI in each Jenkinsfile.
+3. All pipelines are running on a containerized agent (the same Docker image for all pipelines). The agent's Dockerfile can be found under `infra/jenkins/JenkinsAgent.Dockerfile`. You should complete the `TODO` inside the Dockerfile, which is installing `kubectl` cli tool inside the image, then build and push it to an ECR registry, and replace `<jenkins-agent-image>` with your Docker image URI in each Jenkinsfile.
 
 **Note:** no need to run agents on different **nodes**! All pipelines can be running on the Jenkins server itself.
 
@@ -72,10 +73,10 @@ Create the following pipelines in Jenkins and complete the corresponding Jenkins
 
 In your Jenkins server, the following pipelines should be created under `dev` folder:
 
-- The `botBuild` Pipeline - responsible to build the Bot app. The Jenkinsfile is **partially** implemented under `infra/jenkins/dev/BotBuild.Jenkinsfile`. Complete the `TODO`s. This pipeline should be triggered upon changes in `bot/` directory or any other file you may find related to the bot app.
-- The `botDeploy` Pipeline - responsible to deploy the Bot app. The Jenkinsfile is **completely** implemented under `infra/jenkins/dev/BotDeploy.Jenkinsfile`. Don't change it, only review and make sure you understand everything. 
+- The `botBuild` Pipeline - responsible to build the Bot app. The Jenkinsfile is partially implemented under `infra/jenkins/dev/BotBuild.Jenkinsfile`. Complete the `TODO`s. This pipeline should be triggered upon changes in `bot/` directory or any other file you may find related to the bot app.
+- The `botDeploy` Pipeline - responsible to deploy the Bot app. The Jenkinsfile is partially implemented under `infra/jenkins/dev/BotDeploy.Jenkinsfile`. You should create the k8s YAML manifest for the Bot app and replace `<path-to-bot-yaml-k8s-manifest>` with your YAML file (create k8s YAMLs under `infra/k8s`).
 - The `workerBuild` Pipeline - responsible to build the Worker app. The Jenkinsfile configured under `infra/jenkins/dev/WorkerBuild.Jenkinsfile`. You should implement it. This pipeline should be triggered upon changes in `worker/` directory or any other file you may find related to the worker app.
-- The `workerDeploy` Pipeline - responsible to deploy the Worker app. The Jenkinsfile is **partially** implemented under `infra/jenkins/dev/WorkerDeploy.Jenkinsfile`.
+- The `workerDeploy` Pipeline - responsible to deploy the Worker app. The Jenkinsfile is partially implemented under `infra/jenkins/dev/WorkerDeploy.Jenkinsfile`.
 
 #### Notes for `dev` pipelines
 
@@ -90,11 +91,11 @@ In your Jenkins server, the following pipelines should be created under `dev` fo
 
 Similar to `dev` pipelines, the following pipelines should be located under `prod` folder:
 
-- The `botBuild` Pipeline - The Jenkinsfile is partially implemented under `infra/jenkins/dev/BotBuild.Jenkinsfile`. 
-- The `botDeploy` Pipeline - The Jenkinsfile is partially implemented under `infra/jenkins/dev/BotDeploy.Jenkinsfile`. 
-- The `workerBuild` Pipeline - The Jenkinsfile is partially implemented under `infra/jenkins/dev/WorkerBuild.Jenkinsfile`. 
-- The `workerDeploy` Pipeline - The Jenkinsfile is partially implemented under `infra/jenkins/dev/WorkerDeploy.Jenkinsfile`.
-- The `PullRequestTesting` Pipeline -  responsible to execute PR testing before code is being merged to `main` branch. The Jenkinsfile is configured under `infra/jenkins/prod/PullRequest.Jenkinsfile`. This is a **Multi-branch pipeline** that should be triggered upon Pull Request creation as we've seen in class. Make sure that a given PR is blocked from being merged into main when this pipeline fails. Already implemented, no need to touch.
+- The `botBuild` Pipeline - The Jenkinsfile is partially implemented under `infra/jenkins/prod/BotBuild.Jenkinsfile`. 
+- The `botDeploy` Pipeline - The Jenkinsfile is partially implemented under `infra/jenkins/prod/BotDeploy.Jenkinsfile`. 
+- The `workerBuild` Pipeline - The Jenkinsfile is partially implemented under `infra/jenkins/prod/WorkerBuild.Jenkinsfile`. 
+- The `workerDeploy` Pipeline - The Jenkinsfile is partially implemented under `infra/jenkins/prod/WorkerDeploy.Jenkinsfile`.
+- The `PullRequestTesting` Pipeline -  responsible to execute PR testing before code is being merged to `main` branch. The Jenkinsfile is configured under `infra/jenkins/prod/PullRequest.Jenkinsfile`. This is a **Multi-branch pipeline** that should be triggered upon Pull Request creation as we've seen in class. Make sure that a given PR is blocked from being merged into main when this pipeline fails. **Already implemented**, no need to touch.
 
 
 #### Notes for `prod` pipelines
@@ -103,6 +104,8 @@ Similar to `dev` pipelines, the following pipelines should be located under `pro
 2. All `prod` pipelines should be triggered from a Git branch `main`.
 3. In Prod env, `botBuild` and `workerBuild` should **not** trigger the `botDeploy` and `workerDeploy` pipelines automatically. The Deploy pipelines should be triggered manually (In the pipeline configurations, choose **This project is parameterized**, then either **String Parameter** or **Run Parameter** may help).
 4. At the end of `prod` pipelines implementation, you should protect branch `main` from pushing code into it, as we did in class. New code can be merged only through a Pull Request.
+5. Make sure the `Warnings Next Generation` plugin is installed on your Jenkins server. In the builds of `PullRequestTesting`, you can click on the **Pylint warnings** page to get some insights regarding PyLint errors.
+
 
 ### Deploy a new change
 
@@ -112,7 +115,7 @@ Similar to `dev` pipelines, the following pipelines should be located under `pro
 4. Test your change in `dev` env, checkout `dev` branch, and merge `feature/greeting_msg` into `dev`.
 5. Push `dev`. Make sure the pipelines are running, and the change has been deployed to Dev (talk with the dev bot to check the change). 
 6. Everything is good? time to deploy to Production. Create a PR from `feature/greeting_msg` into `main`. Let Jenkins run the PR testing, if needed (and you'll need...), fix some code so Jenkins will approve your PR. Ask a friend to review the code (or review it yourself). Finally, complete the PR. 
-7. Make sure the `prod/botBuild` pipeline is running, and trigger `prod/botDeploy` manually. Check that the change in prod bot has been deployed. 
+7. Make sure the `prod/BotBuild` pipeline is running, and trigger `prod/BotDeploy` manually. Check that the change in prod bot has been deployed. 
 
 Make sure you understand the above process, repeat it again if needed.  
 
