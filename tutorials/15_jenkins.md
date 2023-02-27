@@ -332,6 +332,11 @@ How many warnings do you get? If you need to ignore some unuseful warning, add i
    }
    ```
 
+
+[comment]: <> (### &#40;optional&#41; Run integration tests)
+
+[comment]: <> (`curl -X POST -H "Content-Type: multipart/form-data" -F "file=@11.png" localhost:8081/api`)
+
 ### Run tests in parallel 
 
 Use [`parallel`](https://www.jenkins.io/doc/book/pipeline/syntax/#parallel) directive to run the test stages in parallel, while failing the whole build when one of the stages is failed.
