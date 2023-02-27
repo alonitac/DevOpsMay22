@@ -15,7 +15,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: ecr-registry-helper
-              image: amazon/aws-cli
+              image: amazon/aws-cli:2.10.3
               imagePullPolicy: IfNotPresent
               command:
                 - /bin/sh
@@ -29,7 +29,7 @@ spec:
                   ECR_TOKEN=$(aws ecr get-login-password --region $AWS_REGION)
                   AWS_ACCOUNT=${ACC:1:-1}
 
-                  for NS in $(kubectl get ns  --no-headers -o custom-columns=":metadata.name")
+                  for NS in $(./kubectl get ns  --no-headers -o custom-columns=":metadata.name")
                   do
                     ./kubectl delete secret --ignore-not-found ecr-docker-creds -n $NS
                     ./kubectl create secret docker-registry ecr-docker-creds \
