@@ -6,5 +6,4 @@ flask
 # testing
 
 pylint
-unittest2
 pytest

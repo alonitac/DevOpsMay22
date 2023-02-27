@@ -277,7 +277,7 @@ Let's implement the pull request testing pipeline.
 
 1. In the **updated** app directory (`14_yolo5_app`), you are given directory called `tests`. This is a common name for the directory containing all unittests files. The directory contains a file called `test_allowed_file.py` which implements unittest for the `allowed_file` function in `app.py` file. 
 
-2. Run the unittest locally (you may need to install the following requirements: `pytest`,  `unittest2`), check that all tests are passed:
+2. Run the unittest locally (you may need to install the following requirements: `pytest`), check that all tests are passed:
 ```shell
 python3 -m pytest --junitxml results.xml tests
 ```
@@ -351,6 +351,8 @@ Using Docker for build and test pipelines you can benefit from:
 - Build for different environments
 - Using ephemeral containers for better resource utilization
 
+![](img/jenkinsagent.png)
+
 Let's create a Docker container that will be used as a build agent for the `AppBuild` and `AppDeploy` pipelines.
 Take a look on the following Dockerfile:
 
@@ -383,7 +385,7 @@ In addition, we copy the `docker` **client only** (as we want to build images as
 
 1. Build the image from a machine with an access to ECR.
 2. Push your image to a dedicated container registry in ECR.
-3. In your Jenkinsifles, replace `agent any` by:
+3. In your Jenkinsifles, replace `agent any` by (read more on Jenkins [agent directive](https://www.jenkins.io/doc/book/pipeline/syntax/#agent)):
 ```text
 agent {
     docker {
