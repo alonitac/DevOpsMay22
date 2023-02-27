@@ -1,6 +1,6 @@
 # CI/CD with Jenkins
 
-Due date: 15/04/2023
+**Due date: 15/04/2023**
 
 In this exercise you will implement a full CI/CD process for the TelegramAI service in Development and Production environments. 
 
