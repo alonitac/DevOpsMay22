@@ -2,7 +2,7 @@
 
 ## The problem
 
-CI/CD brings a many benefits, but...
+CI/CD brings many benefits, but...
 
 When committing changes regularly by many teams, an automated CI/CD pipeline produces a considerable number of builds each day. Every build can potentially download or create hundreds of artifacts, e.g. Python packages, Docker images, Git repositories, etc...  
 
@@ -38,7 +38,7 @@ Run on a `*.small` EC2 instance:
 
 ```shell
 sudo mkdir /nexus-data && sudo chmod 777 /nexus-data
-docker run -d --rm -p 8081:8081 --name nexus -v /nexus-data:/nexus-data -e INSTALL4J_ADD_VM_PARAMS="-Xms400m -Xmx400m -XX:MaxDirectMemorySize=400m" sonatype/nexus3
+docker run -d --restart=unless-stopped -p 8081:8081 --name nexus -v /nexus-data:/nexus-data -e INSTALL4J_ADD_VM_PARAMS="-Xms400m -Xmx400m -XX:MaxDirectMemorySize=400m" sonatype/nexus3
 ```
 
 ## Repository Management
