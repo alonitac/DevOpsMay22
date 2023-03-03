@@ -41,6 +41,9 @@ sudo mkdir /nexus-data && sudo chmod 777 /nexus-data
 docker run -d --restart=unless-stopped -p 8081:8081 --name nexus -v /nexus-data:/nexus-data -e INSTALL4J_ADD_VM_PARAMS="-Xms400m -Xmx400m -XX:MaxDirectMemorySize=400m" sonatype/nexus3
 ```
 
+> ### :pencil2: At Home  
+> In the above example, `/nexus-data` dir has way too open permissions than needed. Find how to give it the permissions needed following the least privilege principle. 
+
 ## Repository Management
 
 Nexus ships with a great [Official docs](https://help.sonatype.com/repomanager3/nexus-repository-administration/repository-management) and compatible with [many package managers](https://help.sonatype.com/repomanager3/nexus-repository-administration/formats): Java/Maven, npm, NuGet, PyPI, Docker, Helm, Yum, and APT.
