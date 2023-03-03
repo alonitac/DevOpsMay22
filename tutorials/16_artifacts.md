@@ -41,7 +41,7 @@ sudo mkdir /nexus-data && sudo chmod 777 /nexus-data
 docker run -d --restart=unless-stopped -p 8081:8081 --name nexus -v /nexus-data:/nexus-data -e INSTALL4J_ADD_VM_PARAMS="-Xms400m -Xmx400m -XX:MaxDirectMemorySize=400m" sonatype/nexus3
 ```
 
-> ### :pencil2: At Home  
+> #### :pencil2: Exercise - better Nexus data permissions    
 > In the above example, `/nexus-data` dir has way too open permissions than needed. Find how to give it the permissions needed following the least privilege principle. 
 
 ## Repository Management
@@ -79,6 +79,7 @@ index = http://<nexus-host>:8081/repository/<repo-name>
 While changing `<nexus-host>` to the DNS/IP of your server.
 
 5. Put the `pip.conf` file either in your virtual env folder (`venv`). Alternatively (when installing packages outside a virtual env, e.g. in Jenkins agent), define a custom location by setting the following env var: `PIP_CONFIG_FILE=<path-to-pip-conf>`. Note that there are many [other methods](https://pip.pypa.io/en/stable/topics/configuration/#location).
+6. Try to install the [`insecure-package`](https://pypi.org/project/insecure-package/) pip package, this package contains built-in software vulnerability. Watch how Nexus recognizes the vulnerability. 
 
 ## Repository Health Check
 
@@ -90,7 +91,7 @@ https://help.sonatype.com/repomanager3/nexus-repository-administration/repositor
 
 ## Create a PyPi **hosted** repo, pack and upload a Python library
 
-1. Create a `pypi (hosted)` repo.
+1. Create a `pypi (hosted)` repo called `pypi-hosted`.
 2. Set the configured S3 as the blob store.
 
 ### Build a Python package
@@ -115,6 +116,17 @@ The [official quick start](https://setuptools.pypa.io/en/latest/userguide/quicks
 python3 -m twine upload --config-file <path-to-.pypirc-file> --repository <pypi-repo-name> dist/*
 ```
 
+> #### :pencil2: Exercise - Nexus Docker repo  
+> 1. In your Nexus server, create `Docker(proxy)`
+> 2. From your local machine, pull an image from the created proxy repo.
+> 3. Create `Docker(hosted)` repo
+> 4. From your local machine, push an image into the hosted repo.
+> 5. Create `Docker(group)` which combines the two repos (the proxy and hosted).  
+> 6. Try to pull and push from the group repo.
+
+
+
+
 ## Jenkins integration
 
 ### Fantastic ASCII Build pipeline
@@ -125,7 +137,9 @@ Create a Jenkins Pipeline that builds the `fantastic_ascii` package. General gui
 - The pipeline checks if the package version specified in `setup.py` exists in Nexus. If it doesn't exist, the pipeline builds and upload the package (as done in the two sections above).
 - Store Nexus username and password as a Jenkins credential and use them with `withCredentials()`.
 
-### Install Python dependencies from Nexus repo
 
-Recall that whenever a Docker image is being built as part of a Jenkins pipeline running, the Docker engine install Python packages in your image (the Dockerfile contains `RUN pip install....`).
-Configure your Jenkins server to download and install packages from your Nexus server.
+> #### :pencil2: Exercise - install Python dependencies from Nexus repo  
+> Recall that whenever a Docker image is being built as part of a Jenkins pipeline running, the Docker engine install Python packages in your image (the Dockerfile contains `RUN pip install....`).
+> Configure your Jenkins server to download and install packages from your Nexus server.
+
+
