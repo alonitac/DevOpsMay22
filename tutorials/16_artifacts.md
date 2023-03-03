@@ -41,7 +41,7 @@ sudo mkdir /nexus-data && sudo chmod 777 /nexus-data
 docker run -d --restart=unless-stopped -p 8081:8081 --name nexus -v /nexus-data:/nexus-data -e INSTALL4J_ADD_VM_PARAMS="-Xms400m -Xmx400m -XX:MaxDirectMemorySize=400m" sonatype/nexus3
 ```
 
-> ### :pencil2: Exercise - better Nexus data permissions    
+> ### :pencil2: Exercise - Better Nexus data permissions    
 > In the above example, `/nexus-data` dir has way too open permissions than needed. Find how to give it the permissions needed following the least privilege principle. 
 
 ## Repository Management
@@ -138,7 +138,7 @@ Create a Jenkins Pipeline that builds the `fantastic_ascii` package. General gui
 - Store Nexus username and password as a Jenkins credential and use them with `withCredentials()`.
 
 
-> ### :pencil2: Exercise - install Python dependencies from Nexus repo  
+> ### :pencil2: Exercise - Install Python dependencies from Nexus repo  
 > Recall that whenever a Docker image is being built as part of a Jenkins pipeline running, the Docker engine install Python packages in your image (the Dockerfile contains `RUN pip install....`).
 > Configure your Jenkins server to download and install packages from your Nexus server.
 
