@@ -16,7 +16,7 @@ HashiCorp and the Terraform community have already written more than 1700 provid
 
 You can find all publicly available providers on the [Terraform Registry](https://registry.terraform.io/browse/providers), including AWS, Azure, GCP, Kubernetes, Helm, GitHub, Splunk, DataDog, and many more.
 
-## aaC Benefits
+## IaaC Benefits
 
 - Automated provisioning
 - Consistent environments
