@@ -7,11 +7,11 @@ variable "vpc_cidr" {
 variable "vpc_private_subnets" {
   description = "Private subnets for VPC"
   type        = list(string)
-  default     = ["<your-subnet-1-CIDR-here>", "<your-subnet-2-CIDR-here>"]
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 
 variable "vpc_public_subnets" {
   description = "Public subnets for VPC"
   type        = list(string)
-  default     = ["<as-above-so-below>"]
+  default     = ["10.0.3.0/24", "10.0.4.0/24"]
 }
