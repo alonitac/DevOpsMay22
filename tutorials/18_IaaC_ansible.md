@@ -15,7 +15,7 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
 
 **Note**: While Ansible as a tool can connect and manage remote Windows servers, installing and using Ansible **from** Windows is not supported, only Linux here. 
 
-## Choose the right tool (Terraform vs Ansible)
+## Choosing the right tool (Terraform vs Ansible)
 
 ![](img/ansible_tf.png)
 
