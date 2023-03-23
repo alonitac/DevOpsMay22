@@ -27,6 +27,7 @@ variable "alarm2InstanceId" {
 variable "alarm3InstanceId" {
   description = "EC2 instance ID for Alarm 3"
   type        = string
+  default = null
 }
 
 
