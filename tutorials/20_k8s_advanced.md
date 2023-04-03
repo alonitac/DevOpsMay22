@@ -13,6 +13,8 @@ aws eks --region <region> update-kubeconfig --name <cluster_name>
 
 Change `<region>` and `<cluster_name>` accordingly.
 
+Read [here](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html) how to allow AWS IAM users and role access the cluster.
+
 
 ### Install and connect through OpenLens
 
@@ -22,7 +24,7 @@ https://github.com/MuhammedKalkan/OpenLens
 
 [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress) exposes HTTP and HTTPS routes from outside the cluster to services within the cluster.
 An Ingress may be configured to give Services externally-reachable URLs, load balance traffic, terminate SSL / TLS, and offer name-based virtual hosting.
-In order for the **Ingress** resource to work, the cluster must have an **Ingress Controller** running.
+In order for the **Ingress** resource to work, the cluster must have an [**Ingress Controller**](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) running.
 
 Kubernetes supports and maintains AWS, GCE, and [nginx](https://github.com/kubernetes/ingress-nginx) ingress controllers.
 
