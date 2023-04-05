@@ -46,5 +46,6 @@ Use [Workspaces](https://developer.hashicorp.com/terraform/language/state/worksp
 
 Test your system in Jenkins and AWS. Deploy a change and let Jenkins provision the new configurations, test the alarm in action..
 
+Optional - create another Jenkins pipeline that triggers the pipeline based on `alarams.Jenkinsfile` for every region in a given environment. 
 
 # Good Luck
