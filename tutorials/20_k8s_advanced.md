@@ -120,7 +120,7 @@ Here is an illustration of how Fluent works in the k8s cluster:
 
 Fluentd runs in the cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). A DaemonSet ensures that all **nodes** run a copy of a **pod**. That way, Fluentd can collect log information from every containerized applications easily in each k8s node.
 
-We will deploy the Fluentd chart to collect containers logs to send them to [Elasticsearch](https://www.elastic.co/what-is/elasticsearch) database.
+We will deploy the Fluentd chart to collect containers logs to send them to [CloudWatch](https://www.elastic.co/what-is/elasticsearch) database.
 
 1. Visit the Fluentd Helm chart at https://github.com/fluent/helm-charts/tree/main/charts/fluentd
 2. Install the chart in **your k0s cluster**.
@@ -146,6 +146,10 @@ In addition, search the Helm value that entitled to install fluentD plugins, add
 7. Finally, upgrade the `fluentd` release with your custom values YAML file.
 8. Observe the logs in CloudWatch.
 
+### Visualize logs with Grafana
+
+1. In your k0s cluster, deploy [Grafana](https://github.com/grafana/helm-charts).
+2. Visit grafana service (either by port forward or ingress), integrate the CloudWatch data source, display cluster logs.
 
 ### Fluentd permissions in the cluster
 
@@ -172,5 +176,43 @@ A RoleBinding may reference any Role in the same namespace. Alternatively, a Rol
 ---
 
 Observe the service account used by the fluentd Pods, observe their ClusterRole bound to them.
+
+## Elasticsearch on K8S
+
+Familiarize yourself with the ELK stack:
+
+https://www.elastic.co/what-is/elk-stack
+
+**Note:** this chart should be released once per k8s cluster (the same Elastic will be shared by all students).
+
+https://bitnami.com/stack/elasticsearch/helm
+
+Deploy the Elastic chart. The following configurations should be applied:
+
+- `coordinating.replicaCount: 0`
+- `ingest.enabled: false`
+- Enable Kibana
+- Enable ingress (use the installed nginx controller)
+
+# ## Kibana setup
+
+Visit Kibana by port-forwarding the service:
+
+```shell
+kubectl port-forward svc/<kibana-service> 5601:5601
+```
+
+Then go to `https://localhost:5601`.
+
+### Send logs to Elastic
+
+Update your fluentd chart to send logs to the elastic instance you've just deployed.
+
+
+## StatefulSet
+
+Follow:  
+https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/
+
 
 
