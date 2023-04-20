@@ -194,7 +194,7 @@ Deploy the Elastic chart. The following configurations should be applied:
 - Enable Kibana
 - Enable ingress (use the installed nginx controller)
 
-# ## Kibana setup
+## Kibana setup
 
 Visit Kibana by port-forwarding the service:
 
