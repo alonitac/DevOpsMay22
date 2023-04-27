@@ -40,6 +40,9 @@ We want to access the 2048 game application from a domain such as http://test-20
 4. Add a subdomain A record for the [int-devops-may22.com](https://us-east-1.console.aws.amazon.com/route53/v2/hostedzones#ListRecordSets/Z04765852WWE8ZAF7TX92) domain (e.g. test-2048.int-devops-may22.com). The record should have an alias to the NLB created by EKS after the ingress controller has been deployed.
 5. Inspired by the manifests described in [Nginx ingress docs](https://kubernetes.github.io/ingress-nginx/user-guide/basic-usage/#basic-usage-host-based-routing), create and apply an Ingress resource such that when visiting your registered DNS, the 2048 game will be displayed on screen.
 
+[Read this resource](https://aws.amazon.com/blogs/opensource/network-load-balancer-nginx-ingress-controller-eks/) to enable HTTPS communication with the above provisioned service. 
+
+
 ## Helm
 
 Helm is the package manager for Kubernetes.
