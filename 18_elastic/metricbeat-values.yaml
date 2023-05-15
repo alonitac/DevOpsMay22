@@ -56,14 +56,14 @@ daemonset:
       output.elasticsearch:
         username: '${ELASTICSEARCH_USERNAME}'
         password: '${ELASTICSEARCH_PASSWORD}'
-        protocol: https
+        protocol: http
         hosts: ["elastic-elasticsearch:9200"]
-        ssl.certificate_authorities:
-          - /usr/share/metricbeat/config/certs/ca.crt
-  secretMounts:
-    - name: elastic-certificate-pem
-      secretName: elastic-elasticsearch-coordinating-crt
-      path: /usr/share/metricbeat/config/certs
+#        ssl.certificate_authorities:
+#          - /usr/share/metricbeat/config/certs/ca.crt
+#  secretMounts:
+#    - name: elastic-certificate-pem
+#      secretName: elastic-elasticsearch-coordinating-crt
+#      path: /usr/share/metricbeat/config/certs
   resources:
     limits:
       # Should avoid OOM (Error 137) when running goss tests into the pod
@@ -97,14 +97,14 @@ deployment:
       output.elasticsearch:
         username: '${ELASTICSEARCH_USERNAME}'
         password: '${ELASTICSEARCH_PASSWORD}'
-        protocol: https
+        protocol: http
         hosts: ["elastic-elasticsearch:9200"]
-        ssl.certificate_authorities:
-          - /usr/share/metricbeat/config/certs/ca.crt
-  secretMounts:
-    - name: elastic-certificate-pem
-      secretName: elastic-elasticsearch-coordinating-crt
-      path: /usr/share/metricbeat/config/certs
+#        ssl.certificate_authorities:
+#          - /usr/share/metricbeat/config/certs/ca.crt
+#  secretMounts:
+#    - name: elastic-certificate-pem
+#      secretName: elastic-elasticsearch-coordinating-crt
+#      path: /usr/share/metricbeat/config/certs
   resources:
     limits:
       # Should avoid OOM (Error 137) when running goss tests into the pod
