@@ -250,7 +250,7 @@ Tip - use thew following custom formula:
 
 **Should be applied only once per cluster!!!**
 
-Review and discuss the Helm values file under `22_elastic/elasticsearch-values.yaml`.
+Review and discuss the Helm values file under `18_elastic/elasticsearch-values.yaml`.
 
 From now on, you should connect to Kibana either using `elastic` username (the password is stored as s secret in the cluster), or using your own created username.
 
