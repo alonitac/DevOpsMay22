@@ -22,17 +22,17 @@ security:
 kibana:
   elasticsearch:
     hosts:
-      - elastic-elasticsearch
+      - elastic-search-elasticsearch
     port: 9200
     security:
       auth:
         enabled: true
         createSystemUser: true
         kibanaPassword: secretPass
-        elasticsearchPasswordSecret: elastic-elasticsearch
+        elasticsearchPasswordSecret: elastic-search-elasticsearch
       tls:
         enabled: true
-        existingSecret: elastic-elasticsearch-coordinating-crt
+        existingSecret: elastic-search-elasticsearch-coordinating-crt
         usePemCerts: true
   extraConfiguration:
     "xpack.encryptedSavedObjects.encryptionKey": "23b2676a-fd52-478f-99e1-bfb09250438a"
