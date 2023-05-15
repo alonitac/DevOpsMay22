@@ -8,7 +8,7 @@ master:
   replicaCount: 2
 
 ingest:
-  enabled: true
+  enabled: false
 
 global:
   kibanaEnabled: true
