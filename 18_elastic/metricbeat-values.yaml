@@ -56,7 +56,7 @@ daemonset:
       output.elasticsearch:
         username: '${ELASTICSEARCH_USERNAME}'
         password: '${ELASTICSEARCH_PASSWORD}'
-        protocol: http
+        protocol: https
         hosts: ["elastic-search-elasticsearch:9200"]
         ssl.certificate_authorities:
           - /usr/share/metricbeat/config/certs/ca.crt
@@ -97,7 +97,7 @@ deployment:
       output.elasticsearch:
         username: '${ELASTICSEARCH_USERNAME}'
         password: '${ELASTICSEARCH_PASSWORD}'
-        protocol: http
+        protocol: https
         hosts: ["elastic-search-elasticsearch:9200"]
         ssl.certificate_authorities:
           - /usr/share/metricbeat/config/certs/ca.crt
