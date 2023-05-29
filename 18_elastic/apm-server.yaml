@@ -1,0 +1,101 @@
+apmConfig:
+  apm-server.yml: |
+    apm-server:
+      host: "0.0.0.0:8200"
+      kibana:
+        username: elastic
+        password: elastic
+        enabled: true
+        host: "http://elastic-kibana:5601"
+
+    queue: {}
+    output.elasticsearch:
+      hosts: ["https://elastic-elasticsearch:9200"]
+      username: "elastic"
+      password: "elastic"
+      ## If SSL is enabled
+      protocol: https
+      ssl.certificate_authorities:
+        - |
+          -----BEGIN CERTIFICATE-----
+          MIIDITCCAgmgAwIBAgIQAkRCji6h2CrcupbPYusu0TANBgkqhkiG9w0BAQsFADAb
+          MRkwFwYDVQQDExBlbGFzdGljc2VhcmNoLWNhMB4XDTIzMDExODEwNDA1NFoXDTI0
+          MDExODEwNDA1NFowGzEZMBcGA1UEAxMQZWxhc3RpY3NlYXJjaC1jYTCCASIwDQYJ
+          KoZIhvcNAQEBBQADggEPADCCAQoCggEBAKzECfYQT5YdB5U17t8siEgTJo/l2ARg
+          RU0s2ZZySNJIWVXM5U5IHfQV8QlAToClyjTArXEwZs4Pxr7tfZFBtN8qIoUTcyH6
+          uS4+H1DrHBHukNmKXeQMJR4bEsF2bCYotYyj0x9nDFKlpWRve7MRGUwAZ3MCbb7p
+          nYFPdoONoLh+fi9cNZULBMaweeAT8QB3nheZxZc5usBs/ePBdgk3Q7SUzsNNqc6e
+          tEOlr68qaRV2Gr+rmSRCeIFIRIm/7nr/AgNx3bA+Hmgrxt5N7Gpw/rJ3/krIop+9
+          cRKbFRFL1O8i2tDGT+bjACYQCZAlJJGaG/YRIY8/HL3fO6n6gOjXUVsCAwEAAaNh
+          MF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcD
+          AjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSWpbQCprTjWJYl2504Mw3qQrCI
+          AzANBgkqhkiG9w0BAQsFAAOCAQEAVBhMn+7QQjj6zlXrEAq1Vx9LOeDxGz0bqD64
+          ehxV3OkCzUdG4I3RRCrHaXVenVoWVz/Kctg7AA3t72WyHJYpzfQE//vSOMEEQG8Y
+          JDgGdMu38H+H6Fm2wLHpQZy3loO3yig+s1uT+TeACysVEBjSqrXb0wLYfKfr/2BD
+          4QxRuo9Q1rdi52332GesWaKCw7E8PCgn/TpEnmY2v3GFuK/cLDkcmKaTlY0M3Kyw
+          XosAwfvyRxeMYtNK636FiYnu3seWZ00uyxMml3zgVbqm1GhpvT3kHBf8Pnof2Icq
+          ++s2nkCQw6oglEYcJ8TL636WFShC5L3WXE0Uj4lVsltip9N0vg==
+          -----END CERTIFICATE-----
+        - |
+          -----BEGIN CERTIFICATE-----
+          MIIDIjCCAgqgAwIBAgIRAMYdiJ53yTb1S3YlZK8UgGwwDQYJKoZIhvcNAQELBQAw
+          GzEZMBcGA1UEAxMQZWxhc3RpY3NlYXJjaC1jYTAeFw0yMzAxMTgxMjE3MThaFw0y
+          NDAxMTgxMjE3MThaMBsxGTAXBgNVBAMTEGVsYXN0aWNzZWFyY2gtY2EwggEiMA0G
+          CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDRw/8q+LxyC9X0I6bhhT5aXXzaH5yR
+          VnYG1ZZz1nui1ZwNtjulzG4z/kefAZcRzoZmiq+Y/Z35rwVIYvRmZ2CXSCyYkcdb
+          FoTgpA5RuYkimlOryHfCUCbt5yX4JDlkXXrvRIX1NMxkcq8YMAUzrzVQJDc43LTU
+          knw9vvcsEqUAz9vGkZ/x79DoYTxqhWA1QajKn5145uIu0RgItq3QTv/R8MY1QYjY
+          y0eo366ULSIQW7R+OPiwFNgXvpHriIz6TVJpdqrMHsKQi1hsGdNODEeGZRtJ716I
+          nbnnJWcQupES5+lYjV1fW78Z0kBU4NaS2drBEiydGTC5A0KffGT08HhNAgMBAAGj
+          YTBfMA4GA1UdDwEB/wQEAwICpDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUH
+          AwIwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUOcSnlStivqnIAsEY2XZl8E1D
+          GiAwDQYJKoZIhvcNAQELBQADggEBACoB4HOZv2hh6FNQCkl5Q+hkt2NiU9x43HAC
+          gX/fSHMnmUm1DE0X+bBaisl8KMMUA1G7cz2mqdDDOLIQeSVJVpHSMFzTMWK2Xrxe
+          bZFVGy9X/uOdaxTb5vINiwhDjUcD233C4GnUcu4Q0umWJs5hwkleeS8tYVmcGPD+
+          SgC2OUTDaqwPOMRmpLJAS8PjZ9zXClL06+hG362vx/+1hhrS489wmR1Cki9pHhrW
+          kX1Cnj1DxS6Zq9EUar8LatD9Te25S8o5nb6FQOYRiEOp4TmEIrtbX7lejgZixatc
+          GIQZ+MT5P6+q4d1VgVHQI6IH89ygc1J8gGOi60QFHIzIUBrMXwk=
+          -----END CERTIFICATE-----
+        - |
+          -----BEGIN CERTIFICATE-----
+          MIIDIjCCAgqgAwIBAgIRAMYdiJ53yTb1S3YlZK8UgGwwDQYJKoZIhvcNAQELBQAw
+          GzEZMBcGA1UEAxMQZWxhc3RpY3NlYXJjaC1jYTAeFw0yMzAxMTgxMjE3MThaFw0y
+          NDAxMTgxMjE3MThaMBsxGTAXBgNVBAMTEGVsYXN0aWNzZWFyY2gtY2EwggEiMA0G
+          CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDRw/8q+LxyC9X0I6bhhT5aXXzaH5yR
+          VnYG1ZZz1nui1ZwNtjulzG4z/kefAZcRzoZmiq+Y/Z35rwVIYvRmZ2CXSCyYkcdb
+          FoTgpA5RuYkimlOryHfCUCbt5yX4JDlkXXrvRIX1NMxkcq8YMAUzrzVQJDc43LTU
+          knw9vvcsEqUAz9vGkZ/x79DoYTxqhWA1QajKn5145uIu0RgItq3QTv/R8MY1QYjY
+          y0eo366ULSIQW7R+OPiwFNgXvpHriIz6TVJpdqrMHsKQi1hsGdNODEeGZRtJ716I
+          nbnnJWcQupES5+lYjV1fW78Z0kBU4NaS2drBEiydGTC5A0KffGT08HhNAgMBAAGj
+          YTBfMA4GA1UdDwEB/wQEAwICpDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUH
+          AwIwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUOcSnlStivqnIAsEY2XZl8E1D
+          GiAwDQYJKoZIhvcNAQELBQADggEBACoB4HOZv2hh6FNQCkl5Q+hkt2NiU9x43HAC
+          gX/fSHMnmUm1DE0X+bBaisl8KMMUA1G7cz2mqdDDOLIQeSVJVpHSMFzTMWK2Xrxe
+          bZFVGy9X/uOdaxTb5vINiwhDjUcD233C4GnUcu4Q0umWJs5hwkleeS8tYVmcGPD+
+          SgC2OUTDaqwPOMRmpLJAS8PjZ9zXClL06+hG362vx/+1hhrS489wmR1Cki9pHhrW
+          kX1Cnj1DxS6Zq9EUar8LatD9Te25S8o5nb6FQOYRiEOp4TmEIrtbX7lejgZixatc
+          GIQZ+MT5P6+q4d1VgVHQI6IH89ygc1J8gGOi60QFHIzIUBrMXwk=
+          -----END CERTIFICATE-----
+        - |
+          -----BEGIN CERTIFICATE-----
+          MIIDITCCAgmgAwIBAgIQSbtAxZF3gzCuau3K0f45aDANBgkqhkiG9w0BAQsFADAb
+          MRkwFwYDVQQDExBlbGFzdGljc2VhcmNoLWNhMB4XDTIzMDExODEyMzMzMVoXDTI0
+          MDExODEyMzMzMVowGzEZMBcGA1UEAxMQZWxhc3RpY3NlYXJjaC1jYTCCASIwDQYJ
+          KoZIhvcNAQEBBQADggEPADCCAQoCggEBAKyapUZsdo8kRkIBQDayS/TL/VTHhWp9
+          b2bllv7MKy3CIAos2vS3Jrn1HuDJ/Qz/vvM3WSMDqwz820nP/BZCMwqdUA+9Naxi
+          hxxAK1hHK/EcZnqc7unGul7qFkZ+hoXriKA5Y/ffaHsTvWz4AdMBI+X86kPpnE61
+          FNa++TLFofphVOK2xckY3k+/68kAC4t0XI7L1Vj04rvbjRk7FLSDTC7O4qChMhkd
+          JKApN9KHTn5iQea10ztFCaEwIZUvBYMLH8d8VUmdAKZqJJgwM8/ID2JWB4hBAzoX
+          sQsTQTO4fK+Fwes/PvvVKzHLrbJsofodSkVMue09DIT9Dn6bb6y5uZcCAwEAAaNh
+          MF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcD
+          AjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBT9zCS3vkpL0ZKLVEPKoqLSISzA
+          3DANBgkqhkiG9w0BAQsFAAOCAQEApbRi8KTpLNQMuAz5uXl2z6oA9tHDbUISjm06
+          V+r/uAxz0DAORx6M11+CZPLmhUVgs7pO4KONs4s3lmoEreMnDeRB7A5FV8Q5Zh4A
+          Jnq4c9zv0oby+UT4AkZF/jkJKzgnY38hK35Dz0y3QHcfzNiEuYiHAbX7Xf8PIY81
+          O+mjU/IU86NbgYlgCzF/0Ky5ZQZIXevaoB5xlD03DDEnfemj3mumAMGq1i7pjKMm
+          wPAbrTazIpSoao6padt0mqCnUGjjNQMN2X0rdBtlmKLqUZTuN4wXlLgcTj3GmU6C
+          dFjPzUErATIRv+tpvs+pmvIwG3oRq/wjzmKHtOqbvhO1IvmSww==
+          -----END CERTIFICATE-----
+
+
+extraEnvs: {}
