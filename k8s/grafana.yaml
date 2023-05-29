@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: grafana2
+spec:
+  replicas: 1
+  serviceName: grafana-svc
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      name: grafana
+      labels:
+        app: grafana
+    spec:
+      securityContext:
+        runAsUser: 472
+        runAsGroup: 8020
+        fsGroup: 8020
+      containers:
+      - name: grafana
+        image: grafana/grafana-oss:9.1.8
+        ports:
+        - name: grafana
+          containerPort: 3000
+        env:
+          - name: GF_SERVER_DOMAIN
+            value: "grafana-svc"
+        volumeMounts:
+          - mountPath: "/var/lib/grafana"
+            name: grafana-storage
+  volumeClaimTemplates:
+    - metadata:
+        name: grafana-storage
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: gp2
+        resources:
+          requests:
+            storage: 5Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-svc
+spec:
+  selector:
+    app: grafana
+  ports:
+    - port: 3000
+      targetPort: 3000
