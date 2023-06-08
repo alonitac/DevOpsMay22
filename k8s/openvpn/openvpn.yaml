@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ovpn
+  labels:
+    app: ovpn
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: ovpn
+  template:
+    metadata:
+      labels:
+        app: ovpn
+    spec:
+      containers:
+      - name: ovpn
+        image: ... # TODO your image
+        command: ["/etc/openvpn/setup/configure.sh"]
+        ports:
+        - containerPort: 443
+          name: openvpn
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 30
+          successThreshold: 2
+          exec:
+            command: ["nc", "-z", "127.0.0.1", "443"]
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        volumeMounts:
+          - mountPath: /etc/openvpn/setup
+            name: openvpn
+            readOnly: false
+          - mountPath: /etc/openvpn/certs
+            name: certs
+            readOnly: false
+#          - mountPath: /etc/openvpn/ccd
+#            name: openvpn-ccd
+      volumes:
+      - name: openvpn
+        configMap:
+          name: ovpn
+          defaultMode: 0775
+#      - name: openvpn-ccd
+#        configMap:
+#          name: ovpn-ccd
+#          defaultMode: 0775
+      - name: certs
+        emptyDir: {}
+      nodeSelector:
+        node-type: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ovpn
+  labels:
+    app: ovpn
+spec:
+  ports:
+    - name: openvpn
+      port: 443
+      targetPort: 443
+      protocol: TCP
+      nodePort: 30767
+  selector:
+    app: ovpn
+  type: NodePort

@@ -1,0 +1,3 @@
+resources:
+- config-openvpn.yaml
+- openvpn.yaml
